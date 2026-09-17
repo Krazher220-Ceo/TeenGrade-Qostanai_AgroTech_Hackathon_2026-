@@ -1,10 +1,15 @@
 import csv
 import io
 import json
+import sys
 from pathlib import Path
 
 import pytest
 from PIL import Image
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 from case1.viewer_pipeline import run_uploaded_field_image, validate_uploaded_image
 

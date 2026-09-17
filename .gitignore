@@ -29,6 +29,7 @@ case1/output/crops/
 case1/output/test_run/
 case1/output/field_check/
 case1/output/viewer_runs/
+case1/output/detector_boxes/
 
 # Вложенный upstream-репозиторий модели не должен случайно стать submodule
 weedblaster-vision-yolov8s/.git/

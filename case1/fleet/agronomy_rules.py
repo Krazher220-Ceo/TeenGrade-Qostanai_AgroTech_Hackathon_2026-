@@ -37,16 +37,19 @@ class AgronomyRuleEngine:
         perennial_density_per_m2: float = 0.0,
         growth_stage: str = "cotyledon_to_2_leaves",
         model_version_or_hash: Optional[str] = None,
+        is_unknown: bool = False,
     ) -> Dict[str, Any]:
         """
-        Оценка участка засорённости:
-        - малолетние <= 5 шт/м2 -> слабая засорённость -> не опрыскивать
-        - малолетние 6-15 шт/м2 -> средняя -> стандартная норма
-        - малолетние > 15 шт/м2 -> сильная -> повышенная обработка
-        - многолетние >= 2 шт/м2 -> критическая угроза -> срочная обработка
-        - семядоли-2 листа -> оптимальное окно
-        - 4-6 листьев -> рекомендация об увеличении дозировки на 15-20%
+        Оценка участка засорённости по агрономической шпаргалке ментора:
+        - малолетние <= 5 шт/м² -> слабая засорённость -> не опрыскивать (ниже ЭПВ)
+        - малолетние 6–15 шт/м² (5 < d <= 15) -> средняя -> стандартная норма
+        - малолетние > 15 шт/м² -> сильная -> повышенная обработка
+        - многолетние >= 2 шт/м² -> критическая угроза -> срочная обработка
+        - семядоли — 2 листа -> оптимальное технологическое окно
+        - 4–6 листьев -> рекомендация об увеличении дозировки на 15–20%
         - более 6 листьев / цветение -> предупреждение о пропущенном окне
+        - unknown -> не опрыскивать, только manual_review
+        - human_confirmation_required ВСЕГДА равен True
         """
         annual_cfg = self.rules["density_thresholds"]["annual_weeds"]
         perennial_cfg = self.rules["density_thresholds"]["perennial_weeds"]
@@ -57,12 +60,20 @@ class AgronomyRuleEngine:
         action_ru = "не опрыскивать"
         threat_level = "low"
 
+        if is_unknown:
+            threat_level = "review_required"
+            action = "manual_review"
+            action_ru = "ручная проверка агрономом"
+            explanations.append(
+                "Вид сорняка не определён достоверно (уверенность < 65%). "
+                "Автоматическое опрыскивание запрещено. Требуется ручной осмотр специалистом."
+            )
         # 1. Анализ многолетних сорняков (высший приоритет)
-        crit_thresh = perennial_cfg["critical"]["min_density_per_m2"]
-        if perennial_density_per_m2 >= crit_thresh:
+        elif perennial_density_per_m2 >= perennial_cfg["critical"]["min_density_per_m2"]:
             threat_level = "critical"
             action = perennial_cfg["critical"]["action"]
             action_ru = perennial_cfg["critical"]["action_ru"]
+            crit_thresh = perennial_cfg["critical"]["min_density_per_m2"]
             explanations.append(
                 f"Многолетние сорняки ({perennial_density_per_m2:.1f} шт/м² >= {crit_thresh} шт/м²): "
                 f"критическая угроза (Класс A/B). Корнеотпрысковые сорняки подавляют культуру, требуется срочная локальная обработка."
@@ -123,3 +134,121 @@ class AgronomyRuleEngine:
             "human_confirmation_required": True,
             "auto_spray_enabled": False,
         }
+
+    def evaluate_field_detections(
+        self,
+        detections: list,
+        field_area_m2: float = 12.0,
+        dominant_stage: Optional[str] = None,
+        model_version_or_hash: Optional[str] = None,
+        execution_latency_s: Optional[float] = None,
+    ) -> Dict[str, Any]:
+        """
+        Расчёт плотности и агрономического заключения для набора обнаруженных объектов кадра:
+        - Исключает культуру (crop_wheat).
+        - Разделяет сорняки на многолетние (Класс A: бодяк, вьюнок; Класс B: пырей) и малолетние.
+        - Учитывает долю сомнительных детекций (unknown).
+        - Оценивает смещение штанги опрыскивателя на скоростях 18 и 20 км/ч.
+        """
+        area = max(float(field_area_m2), 0.1)
+
+        perennial_species = {"field_thistle", "field_bindweed", "couch_grass"}
+        annual_count = 0
+        perennial_count = 0
+        unknown_count = 0
+        crop_count = 0
+        stage_votes: Dict[str, int] = {}
+
+        for det in detections:
+            sp = det.get("species", "")
+            stage = det.get("stage", "")
+            rev = det.get("review_required", False)
+
+            if sp == "crop_wheat":
+                crop_count += 1
+                continue
+
+            if rev or sp in {"unknown", "uncertain"}:
+                unknown_count += 1
+                continue
+
+            if sp in perennial_species:
+                perennial_count += 1
+            else:
+                annual_count += 1
+
+            if stage and stage != "unknown":
+                stage_votes[stage] = stage_votes.get(stage, 0) + 1
+
+        total_weeds = perennial_count + annual_count
+        annual_density = round(annual_count / area, 2)
+        perennial_density = round(perennial_count / area, 2)
+
+        # Определение доминирующей фазы вегетации
+        if dominant_stage:
+            resolved_stage = dominant_stage
+        elif stage_votes:
+            top_stage = max(stage_votes.items(), key=lambda item: item[1])[0]
+            if top_stage == "rosette":
+                resolved_stage = "cotyledon_to_2_leaves"
+            elif top_stage == "stem_elongation":
+                resolved_stage = "4_to_6_leaves"
+            else:
+                resolved_stage = "cotyledon_to_2_leaves"
+        else:
+            resolved_stage = "cotyledon_to_2_leaves"
+
+        if total_weeds == 0 and unknown_count == 0:
+            result = {
+                "rules_version": self.version,
+                "threat_level": "clean",
+                "recommended_action": "do_not_spray",
+                "recommended_action_ru": "не опрыскивать",
+                "growth_stage_status": "not_applicable",
+                "growth_stage_status_ru": "Сорняки отсутствуют",
+                "dosage_adjustment_note": "",
+                "explanation": "На снимке не обнаружено сорных растений (фон / культура). Опрыскивание не требуется.",
+                "model_version_or_hash": model_version_or_hash or "unspecified",
+                "human_confirmation_required": True,
+                "auto_spray_enabled": False,
+            }
+        elif total_weeds == 0 and unknown_count > 0:
+            result = self.evaluate_weed_patch(
+                annual_density_per_m2=0.0,
+                perennial_density_per_m2=0.0,
+                growth_stage=resolved_stage,
+                model_version_or_hash=model_version_or_hash,
+                is_unknown=True,
+            )
+        else:
+            result = self.evaluate_weed_patch(
+                annual_density_per_m2=annual_density,
+                perennial_density_per_m2=perennial_density,
+                growth_stage=resolved_stage,
+                model_version_or_hash=model_version_or_hash,
+                is_unknown=False,
+            )
+
+        # Статистика и задержка
+        result["field_area_m2"] = round(area, 2)
+        result["annual_density_per_m2"] = annual_density
+        result["perennial_density_per_m2"] = perennial_density
+        result["counts"] = {
+            "perennial": perennial_count,
+            "annual": annual_count,
+            "unknown": unknown_count,
+            "crop": crop_count,
+            "total_weeds": total_weeds,
+        }
+
+        if execution_latency_s is not None and execution_latency_s > 0:
+            result["sprayer_displacement"] = {
+                "speed_18kmh_m_s": 5.0,
+                "displacement_18kmh_m": round(5.0 * execution_latency_s, 3),
+                "speed_20kmh_m_s": 5.56,
+                "displacement_20kmh_m": round(5.56 * execution_latency_s, 3),
+                "latency_s": round(execution_latency_s, 4),
+                "recommendation": "Post-flight Advisory Mapping" if execution_latency_s > 0.1 else "Real-time Capable",
+            }
+
+        return result

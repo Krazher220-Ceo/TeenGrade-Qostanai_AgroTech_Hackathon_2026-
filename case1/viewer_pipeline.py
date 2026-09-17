@@ -116,5 +116,6 @@ def run_uploaded_field_image(
         "report": report,
         "detections": detections,
         "summary": summary,
+        "agronomy_evaluation": summary.get("agronomy_evaluation", {}),
         "upload": metadata,
     }

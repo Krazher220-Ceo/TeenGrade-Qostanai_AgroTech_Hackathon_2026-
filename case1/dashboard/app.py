@@ -30,6 +30,7 @@ from case1.ml.multitask_model import (
 )
 from case1.fleet.ui import render_fleet_planning_tab
 from case1.viewer_pipeline import run_uploaded_field_image
+from case1.fleet.agronomy_rules import AgronomyRuleEngine
 try:
     from case1.ml.multitask_model import infer_num_species_from_state_dict
 except ImportError:
@@ -282,6 +283,53 @@ with tab0:
         metric_cols[2].metric("Время детекции", f"{summary.get('time_s', 0):.1f} с")
         metric_cols[3].metric("Средняя уверенность вида", f"{summary.get('avg_species_conf', 0) * 100:.1f}%")
 
+        # Агрономическое заключение по шпаргалке ментора (Qostanai 2026)
+        agro_eval = viewer_result.get("agronomy_evaluation") or summary.get("agronomy_evaluation")
+        if not agro_eval and detections:
+            try:
+                rule_engine = AgronomyRuleEngine()
+                agro_eval = rule_engine.evaluate_field_detections(
+                    detections=detections,
+                    field_area_m2=12.0,
+                    execution_latency_s=float(summary.get("time_s", 0.1)) / max(1, len(detections))
+                )
+            except Exception:
+                agro_eval = None
+
+        if agro_eval:
+            with st.container():
+                st.markdown("---")
+                st.subheader("📋 Агрономическое заключение по шпаргалке ментора (Qostanai AgroTech 2026)")
+                ag_col1, ag_col2, ag_col3, ag_col4 = st.columns(4)
+                ann_d = agro_eval.get("annual_density_per_m2", 0.0)
+                per_d = agro_eval.get("perennial_density_per_m2", 0.0)
+                action_ru = agro_eval.get("recommended_action_ru", "не опрыскивать")
+                stage_status = agro_eval.get("growth_stage_status_ru", "Оптимальное окно")
+
+                ag_col1.metric("Плотность малолетних (ЭПВ: 5–15)", f"{ann_d:.2f} шт/м²")
+                ag_col2.metric("Многолетние (критич. ≥ 2.0)", f"{per_d:.2f} шт/м²")
+                ag_col3.metric("Рекомендация по обработке", action_ru)
+                ag_col4.metric("Статус технологического окна", stage_status)
+
+                st.info(f"💡 **Пояснение агронома:** {agro_eval.get('explanation', '')}")
+                dosage_note = agro_eval.get("dosage_adjustment_note")
+                if dosage_note:
+                    st.warning(f"⚠️ **Корректировка нормы расхода:** {dosage_note}")
+
+                disp = agro_eval.get("sprayer_displacement")
+                if disp:
+                    st.caption(
+                        f"🚜 **Кинематика опрыскивателя (18–20 км/ч = 5,0–5,56 м/с):** задержка {disp.get('latency_s', 0)*1000:.1f} мс · "
+                        f"смещение штанги при 18 км/ч: {disp.get('displacement_18kmh_m', 0)*100:.1f} см, "
+                        f"при 20 км/ч: {disp.get('displacement_20kmh_m', 0)*100:.1f} см · "
+                        f"Режим: **{disp.get('recommendation', 'Post-flight Advisory Mapping')}**."
+                    )
+                st.markdown(
+                    "> 🛡️ **Human-In-The-Loop:** Решение носит рекомендательный (advisory) характер. "
+                    "Прямая подача химического раствора заблокирована до подтверждения ответственным агрономом."
+                )
+                st.markdown("---")
+
         st.markdown("### 1. Исходный снимок")
         st.caption("Снимок без разметки — именно он поступает на вход конвейера.")
         st.image(viewer_result["input_path"], caption="Оригинал", width="stretch")
@@ -510,6 +558,62 @@ with tab2:
             """)
 
             st.success(f"🌱 **Экологический эффект:** снижение токсической нагрузки на почву Костанайской области на **{savings_pct:.1f}%**.")
+
+        # --- Блок правил из шпаргалки ментора ---
+        st.markdown("---")
+        st.subheader("📐 Агрономическая оценка выбранного участка по шпаргалке ментора")
+
+        try:
+            rule_engine = AgronomyRuleEngine()
+            # Оценка площади кадра по высоте (при h=1.5–2.2 м площадь около 7–12 м²)
+            sample_rel_alt = float(df_img["drone_rel_alt"].iloc[0]) if not df_img.empty and "drone_rel_alt" in df_img.columns and pd.notna(df_img["drone_rel_alt"].iloc[0]) else 2.0
+            calc_area_m2 = max(2.0, round(sample_rel_alt * (6.4 / 4.5) * sample_rel_alt * (4.8 / 4.5), 2))
+            sample_agro_eval = rule_engine.evaluate_field_detections(
+                detections=df_img.to_dict("records"),
+                field_area_m2=calc_area_m2,
+                execution_latency_s=0.08
+            )
+
+            c_ag1, c_ag2, c_ag3, c_ag4 = st.columns(4)
+            c_ag1.metric("Малолетние (ЭПВ: 5–15)", f"{sample_agro_eval['annual_density_per_m2']:.2f} шт/м²")
+            c_ag2.metric("Многолетние (критич. ≥ 2)", f"{sample_agro_eval['perennial_density_per_m2']:.2f} шт/м²")
+            c_ag3.metric("Рекомендация по шпаргалке", sample_agro_eval["recommended_action_ru"])
+            c_ag4.metric("Окно фазы вегетации", sample_agro_eval.get("growth_stage_status_ru", "Оптимальное"))
+
+            st.info(f"💡 **Агрономическое обоснование:** {sample_agro_eval['explanation']}")
+            if sample_agro_eval.get("dosage_adjustment_note"):
+                st.warning(f"⚠️ **Рекомендация по дозировке:** {sample_agro_eval['dosage_adjustment_note']}")
+        except Exception as err:
+            st.caption(f"Оценка по правилам формируется динамически: {err}")
+
+        with st.expander("📖 Нормативная таблица порогов из шпаргалки ментора (Qostanai 2026)", expanded=False):
+            st.markdown("""
+            | Тип засорённости | Плотность (шт/м²) | Уровень угрозы | Рекомендация из шпаргалки | Действие системы |
+            | :--- | :--- | :--- | :--- | :--- |
+            | **Малолетние сорняки** | $\le 5$ шт/м² | Слабая засорённость | Не опрыскивать (ниже ЭПВ) | `do_not_spray` (экономия гербицида) |
+            | **Малолетние сорняки** | $6–15$ шт/м² | Средняя засорённость | Стандартная норма расхода | `standard_spray` |
+            | **Малолетние сорняки** | $> 15$ шт/м² | Сильная засорённость | Повышенная обработка / баковые смеси | `increased_spray` |
+            | **Многолетние сорняки** | $\ge 2$ шт/м² | **Критическая угроза** | Срочная локальная обработка | `urgent_spray` (наивысший приоритет) |
+            | **Фаза: семядоли — 2 листа** | Любая | Оптимальное окно | Базовая норма внесения | Минимальный стресс для пшеницы |
+            | **Фаза: 4–6 листьев** | Любая | Допустимое окно | **Увеличение дозы на 15–20%** | Сорняк огрубел, восковой налёт |
+            | **Фаза: >6 листьев / цветение** | Любая | Пропущенное окно | Предупреждение о неэффективности | Риск фитотоксичности и отсутствия эффекта |
+            | **Культурное растение (пшеница)** | Любая | Защищаемый объект | Никогда не опрыскивать как сорняк | Исключается из контура внесения |
+            | **Неопределённый сорняк (unknown)** | Уверенность < 65% | Сомнительный объект | Не опрыскивать, ручной осмотр | `manual_review` (Safety First) |
+            """)
+
+        with st.expander("🌿 Ботанический справочник видов (Класс A и Класс B)", expanded=False):
+            st.markdown("""
+            **Класс A — Двудольные (широколистные):**
+            - *Малолетние:* Щирица запрокинутая (*Amaranthus retroflexus*), Марь белая (*Chenopodium album*), Горец вьюнковый (*Fallopia convolvulus*), Пикульник обыкновенный (*Galeopsis tetrahit*).
+            - *Многолетние (высокий приоритет):* Бодяк полевой / Осот розовый (*Cirsium arvense*), Вьюнок полевой / Берёзка (*Convolvulus arvensis*), Осот полевой жёлтый (*Sonchus arvensis*).
+
+            **Класс B — Злаковые (узколистные):**
+            - *Малолетние:* Овсюг обыкновенный (*Avena fatua*), Просо куриное (*Echinochloa crus-galli*), Щетинник сизый (*Setaria pumila*).
+            - *Многолетние (высокий приоритет):* Пырей ползучий (*Elymus repens*), Свинорой пальчатый (*Cynodon dactylon*).
+
+            **Защищаемые культуры Костанайской области:**
+            - Пшеница яровая (*Triticum aestivum*), Ячмень, Рапс, Подсолнечник.
+            """)
 
         # Агрономические рекомендации по видам
         st.subheader("📋 Регламент применения гербицидов для обнаруженных сорняков")

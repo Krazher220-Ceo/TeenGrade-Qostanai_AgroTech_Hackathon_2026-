@@ -609,6 +609,24 @@ def cmd_process(
         med_w = np.median([d["bbox_wh"][0] for d in detections_data]) if detections_data else 0
         med_h = np.median([d["bbox_wh"][1] for d in detections_data]) if detections_data else 0
 
+        # Агрономическая оценка по шпаргалке ментора (Qostanai 2026)
+        from case1.fleet.agronomy_rules import AgronomyRuleEngine
+        rule_engine = AgronomyRuleEngine()
+        rel_alt = meta.get("rel_alt")
+        if rel_alt is not None and float(rel_alt) > 0.1:
+            alt_m = float(rel_alt)
+        else:
+            alt_m = 2.0
+        footprint_w = alt_m * (6.4 / 4.5)
+        footprint_h = alt_m * (4.8 / 4.5)
+        field_area_m2 = max(1.0, round(footprint_w * footprint_h, 2))
+        per_crop_latency_s = t_inf / max(1, len(final_boxes))
+        agronomy_eval = rule_engine.evaluate_field_detections(
+            detections=detections_data,
+            field_area_m2=field_area_m2,
+            execution_latency_s=per_crop_latency_s,
+        )
+
         summary_stats.append({
             "filename": p.name,
             "rel_alt_m": meta["rel_alt"],
@@ -624,6 +642,7 @@ def cmd_process(
             "median_box_wh": [int(med_w), int(med_h)],
             "annotated_image": str(annotated_file.name),
             "detector_boxes_image": str(detector_boxes_file.name),
+            "agronomy_evaluation": agronomy_eval,
             "detections": detections_data
         })
 
@@ -696,6 +715,23 @@ def cmd_cluster_analysis():
     """Запуск кластерного анализа эмбеддингов t-SNE / Silhouette для защиты от галлюцинаций."""
     from case1.ml.cluster_analysis import run_cluster_analysis
     run_cluster_analysis()
+
+
+def cmd_benchmark_latency(iterations: int = 40):
+    """Бенчмарк задержки конвейера и расчет кинематики опрыскивателя (18–20 км/ч)."""
+    from case1.ml.latency_benchmark import run_latency_benchmark
+    rep = run_latency_benchmark(iterations=iterations)
+    print("=" * 80)
+    print("РЕЗУЛЬТАТЫ БЕНЧМАРКА ЗАДЕРЖКИ (18-20 КМ/Ч ОПРЫСКИВАТЕЛЬ)")
+    print("=" * 80)
+    print(f"Устройство:             {rep['environment']['device_used']} ({rep['environment']['processor']})")
+    print(f"Задержка на объект (p50): {rep['latency_breakdown']['total_per_crop']['p50_ms']} мс")
+    print(f"Задержка на объект (p95): {rep['latency_breakdown']['total_per_crop']['p95_ms']} мс")
+    print(f"Смещение при 18 км/ч:   {rep['sprayer_kinematics']['p50_median']['displacement_18kmh_m']} м")
+    print(f"Смещение при 20 км/ч:   {rep['sprayer_kinematics']['p50_median']['displacement_20kmh_m']} м")
+    print(f"Режим применения:       {rep['operational_mode_ru']}")
+    print(f"Заключение:             {rep['engineering_recommendation']}")
+    print("=" * 80)
 
 
 def cmd_fleet_plan(num_drones: int = 3, altitude: float = 30.0, speed: float = 5.0, output_dir: Optional[str] = None):
@@ -786,6 +822,12 @@ def main():
 
     subparsers.add_parser("test", help="Запуск дымовых тестов системы")
 
+    bench_parser = subparsers.add_parser(
+        "benchmark-latency",
+        help="Бенчмарк задержки конвейера и кинематики опрыскивателя (18–20 км/ч)"
+    )
+    bench_parser.add_argument("--iterations", type=int, default=40, help="Количество итераций замера")
+
     args = parser.parse_args()
 
     if args.command == "status":
@@ -796,6 +838,8 @@ def main():
         cmd_download_weights()
     elif args.command == "cluster-analysis":
         cmd_cluster_analysis()
+    elif args.command == "benchmark-latency":
+        cmd_benchmark_latency(iterations=args.iterations)
     elif args.command == "process":
         detector_path = WEIGHTS_PATH if args.detector == "baseline" else FINETUNED_DETECTOR_PATH
         cmd_process(image_path=args.image, output_dir=args.output, detector_path=str(detector_path))
