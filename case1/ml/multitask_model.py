@@ -15,6 +15,8 @@ SPECIES_NAMES = ["field_thistle", "field_bindweed", "couch_grass", "crop_wheat"]
 SPECIES_RU = ["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Пшеница (Культура / Фон)"]
 STAGE_NAMES = ["rosette", "stem_elongation"]
 STAGE_RU = ["Розетка", "Стеблевание"]
+DEFAULT_SPECIES_CONFIDENCE = 0.70
+DEFAULT_STAGE_CONFIDENCE = 0.50
 
 
 def infer_num_species_from_state_dict(state_dict: Dict[str, torch.Tensor]) -> int:
@@ -160,8 +162,8 @@ class WeedMultiTaskModel(nn.Module):
     def predict_crop(
         self,
         img_tensor: torch.Tensor,
-        species_thresh: float = 0.55,
-        stage_thresh: float = 0.50
+        species_thresh: float = DEFAULT_SPECIES_CONFIDENCE,
+        stage_thresh: float = DEFAULT_STAGE_CONFIDENCE
     ) -> Dict[str, Any]:
         self.eval()
         if img_tensor.ndim == 3:
@@ -190,24 +192,26 @@ class WeedMultiTaskModel(nn.Module):
         st_name = STAGE_NAMES[st_idx]
         st_ru = STAGE_RU[st_idx]
 
-        review_required = False
+        review_required = sp_conf < species_thresh
 
-        # Защита от галлюцинаций: если распознана пшеница/культура
-        if sp_name == "crop_wheat":
+        # Единый confidence gate: класс показывается только при достижении
+        # минимальной уверенности. Исходные вероятности остаются в ответе для
+        # объяснимости, но сомнительный объект не получает автоматическое решение.
+        if review_required:
+            sp_name = "unknown"
+            sp_ru = "Не определено"
+            st_name = "unknown"
+            st_ru = "Не определено"
+            spray_action = "manual_review"
+
+        # Защита от галлюцинаций: уверенно распознанная пшеница/культура
+        elif sp_name == "crop_wheat":
             st_name = "not_applicable"
             st_ru = "Культура (Не применимо)"
             spray_action = "do_not_spray"
-            if sp_conf < species_thresh:
-                review_required = True
         else:
             spray_action = "spray_weed"
-            # 1. Порог уверенности вида
-            if sp_conf < species_thresh:
-                sp_name = "unknown"
-                sp_ru = "Неизвестный сорняк"
-                review_required = True
-
-            # 2. Ограничение для пырея: фаза «розетка» невозможна в текущих данных
+            # 1. Ограничение для пырея: фаза «розетка» невозможна в текущих данных
             if sp_name == "couch_grass":
                 if st_idx == 0:
                     st_name = "unknown"
@@ -217,8 +221,8 @@ class WeedMultiTaskModel(nn.Module):
                     st_name = "stem_elongation"
                     st_ru = "Стеблевание"
 
-            # 3. Порог уверенности фазы
-            if st_conf < stage_thresh or sp_name == "unknown":
+            # 2. Порог уверенности фазы
+            if st_conf < stage_thresh:
                 st_name = "unknown"
                 st_ru = "Не определено"
                 review_required = True

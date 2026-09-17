@@ -26,6 +26,7 @@ from case1.ml.multitask_model import (
     SPECIES_RU,
     STAGE_NAMES,
     STAGE_RU,
+    DEFAULT_SPECIES_CONFIDENCE,
 )
 from case1.fleet.ui import render_fleet_planning_tab
 from case1.viewer_pipeline import run_uploaded_field_image
@@ -163,7 +164,9 @@ with st.sidebar:
     st.subheader("⚙️ Параметры инференса")
 
     conf_thresh = st.slider("Порог уверенности детектора", 0.20, 0.90, 0.40, 0.05)
-    review_thresh = st.slider("Порог надежности вида (Review)", 0.40, 0.90, 0.55, 0.05)
+    review_thresh = DEFAULT_SPECIES_CONFIDENCE
+    st.metric("Минимальная уверенность вида", f"{review_thresh:.0%}")
+    st.caption("Если лучший класс ниже порога, результат — «Не определено» и ручная проверка.")
 
     df_detections = load_detections_data()
     all_images = df_detections["image_id"].unique().tolist() if not df_detections.empty else []
@@ -188,7 +191,11 @@ with st.sidebar:
 # ОСНОВНОЙ ЭКРАН
 # ==============================================================================
 st.title("🌾 Мониторинг сорняков и дифференцированное опрыскивание")
-st.markdown("Автоматический бортовой анализ сверхвысоких аэрофотоснимков DJI Mavic 3E с классификацией видов и стадий вегетации.")
+st.markdown("Автоматический анализ полевых RGB-снимков с классификацией видов и стадий вегетации.")
+st.caption(
+    "Демонстрационные данные включают кадры профессионального класса, но для бюджетного MVP "
+    "не требуется покупать DJI Mavic 3E: ниже во вкладке планирования указан реалистичный б/у вариант."
+)
 
 tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "📤 Проверить снимок поля",
@@ -475,6 +482,11 @@ with tab3:
 with tab4:
     st.header("🔬 Инспектор сорняков крупным планом")
     st.markdown("Загрузите или выберите фото сорного растения для мгновенной многозадачной классификации.")
+    st.info(
+        "Вид отображается как подтверждённый только при уверенности **70% или выше**. "
+        "Если ни один класс не достигает порога, итог — **«Не определено»**, "
+        "а все вероятности остаются видны ниже."
+    )
 
     model, device = load_classifier_model()
 
@@ -513,7 +525,16 @@ with tab4:
             pred = model.predict_crop(tensor, species_thresh=review_thresh)
 
             st.subheader("Результат нейросети:")
-            st.markdown(f"### Вид: **{pred['species_ru']}** (`{pred['species_conf']*100:.1f}%`)")
+            if pred["species"] == "unknown":
+                top_name, top_probability = max(pred["all_species_probs"].items(), key=lambda item: item[1])
+                top_label = dict(zip(SPECIES_NAMES, SPECIES_RU)).get(top_name, top_name)
+                st.markdown("### Вид: **Не определено**")
+                st.caption(
+                    f"Наиболее вероятный вариант — {top_label}: {top_probability * 100:.1f}%, "
+                    f"но это ниже порога {review_thresh * 100:.0f}%."
+                )
+            else:
+                st.markdown(f"### Вид: **{pred['species_ru']}** (`{pred['species_conf']*100:.1f}%`)")
             st.markdown(f"### Фаза: **{pred['stage_ru']}** (`{pred['stage_conf']*100:.1f}%`)")
 
             if pred["review_required"]:
@@ -524,10 +545,29 @@ with tab4:
             # График вероятностей
             species_ru_by_name = dict(zip(SPECIES_NAMES, SPECIES_RU))
             df_probs = pd.DataFrame([
-                {"Вид": species_ru_by_name[name], "Вероятность": probability}
+                {
+                    "Вид": species_ru_by_name[name],
+                    "Вероятность": probability,
+                    "Статус": "Достигнут порог" if probability >= review_thresh else "Ниже порога",
+                }
                 for name, probability in pred["all_species_probs"].items()
             ])
-            fig_p = px.bar(df_probs, x="Вид", y="Вероятность", text_auto=".1%", range_y=[0, 1])
+            fig_p = px.bar(
+                df_probs,
+                x="Вид",
+                y="Вероятность",
+                color="Статус",
+                color_discrete_map={"Достигнут порог": "#2f855a", "Ниже порога": "#a0aec0"},
+                text_auto=".1%",
+                range_y=[0, 1],
+            )
+            fig_p.add_hline(
+                y=review_thresh,
+                line_dash="dash",
+                line_color="#c53030",
+                annotation_text=f"Порог {review_thresh:.0%}",
+                annotation_position="top left",
+            )
             st.plotly_chart(fig_p, width="stretch")
 
             # Гербицидный регламент
@@ -568,12 +608,102 @@ with tab5:
         history = metrics_data.get("history", [])
         if history:
             df_hist = pd.DataFrame(history)
-            fig_hist = go.Figure()
-            fig_hist.add_trace(go.Scatter(x=df_hist["epoch"], y=df_hist["train_loss"], name="Train Loss", mode="lines+markers"))
-            fig_hist.add_trace(go.Scatter(x=df_hist["epoch"], y=df_hist["val_species_f1"], name="Val Species F1", mode="lines+markers"))
-            fig_hist.add_trace(go.Scatter(x=df_hist["epoch"], y=df_hist["val_stage_f1"], name="Val Stage F1", mode="lines+markers"))
-            fig_hist.update_layout(title="Динамика обучения (Loss & F1-score по эпохам)", xaxis_title="Эпоха", yaxis_title="Значение")
-            st.plotly_chart(fig_hist, width="stretch")
+            st.subheader("Динамика обучения по эпохам")
+            st.caption(
+                "Loss и метрики качества показаны отдельно: у них разный смысл и их нельзя "
+                "корректно сравнивать по одной общей шкале."
+            )
+            col_loss, col_quality = st.columns(2)
+
+            fig_loss = go.Figure()
+            fig_loss.add_trace(
+                go.Scatter(
+                    x=df_hist["epoch"],
+                    y=df_hist["train_loss"],
+                    name="Train loss",
+                    mode="lines+markers",
+                    line={"color": "#dd6b20"},
+                )
+            )
+            fig_loss.update_layout(
+                title="Ошибка обучения",
+                xaxis_title="Эпоха",
+                yaxis_title="Loss (меньше — лучше)",
+                hovermode="x unified",
+            )
+            col_loss.plotly_chart(fig_loss, width="stretch")
+
+            fig_quality = go.Figure()
+            fig_quality.add_trace(
+                go.Scatter(
+                    x=df_hist["epoch"],
+                    y=df_hist["train_species_acc"],
+                    name="Train species accuracy",
+                    mode="lines",
+                    line={"color": "#3182ce"},
+                )
+            )
+            fig_quality.add_trace(
+                go.Scatter(
+                    x=df_hist["epoch"],
+                    y=df_hist["val_species_f1"],
+                    name="Validation species F1",
+                    mode="lines+markers",
+                    line={"color": "#2f855a"},
+                )
+            )
+            fig_quality.add_trace(
+                go.Scatter(
+                    x=df_hist["epoch"],
+                    y=df_hist["val_stage_f1"],
+                    name="Validation stage F1",
+                    mode="lines+markers",
+                    line={"color": "#68d391"},
+                )
+            )
+            fig_quality.update_layout(
+                title="Качество классификации",
+                xaxis_title="Эпоха",
+                yaxis_title="Метрика (больше — лучше)",
+                yaxis={"range": [0.75, 1.02]},
+                hovermode="x unified",
+            )
+            col_quality.plotly_chart(fig_quality, width="stretch")
+
+        if recalls:
+            recall_names = {
+                "field_thistle": "Бодяк",
+                "field_bindweed": "Вьюнок",
+                "couch_grass": "Пырей",
+                "crop_wheat": "Пшеница / фон",
+            }
+            recall_df = pd.DataFrame(
+                [
+                    {
+                        "Класс": recall_names.get(name, name),
+                        "Recall": value,
+                        "Группа": "Минимальный Recall" if value == min(recalls.values()) else "Другие классы",
+                    }
+                    for name, value in recalls.items()
+                ]
+            )
+            fig_recall = px.bar(
+                recall_df,
+                x="Recall",
+                y="Класс",
+                orientation="h",
+                text_auto=".1%",
+                color="Группа",
+                color_discrete_map={"Другие классы": "#2f855a", "Минимальный Recall": "#c53030"},
+                range_x=[0, 1.05],
+                title="Recall по классам на локальном test split",
+            )
+            fig_recall.update_layout(yaxis={"categoryorder": "total ascending"})
+            st.plotly_chart(fig_recall, width="stretch")
+            st.caption(
+                "Recall показывает, какую долю реальных объектов каждого класса модель нашла. "
+                "Вьюнок — самый слабый класс текущей версии и требует расширения выборки."
+            )
 
     st.info(
         "Метрики выше относятся к локальному отложенному test split проекта. "

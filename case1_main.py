@@ -446,7 +446,7 @@ def cmd_process(
             if classifier is not None and crop_patch.size > 0:
                 pil_crop = Image.fromarray(cv2.cvtColor(crop_patch, cv2.COLOR_BGR2RGB))
                 tensor_crop = crop_transform(pil_crop).unsqueeze(0).to(dev)
-                c_res = classifier.predict_crop(tensor_crop, species_thresh=0.55, stage_thresh=0.50)
+                c_res = classifier.predict_crop(tensor_crop)
             else:
                 c_res = {
                     "species": "unknown", "species_ru": "Неизвестный сорняк",

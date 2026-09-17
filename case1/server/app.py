@@ -128,6 +128,7 @@ def model_info():
             {"id": "unknown", "ru": "Не определено"}
         ],
         "constraints": [
+            "Вид подтверждается только при уверенности 70% или выше; иначе результат unknown и manual_review",
             "Фаза 'Розетка' для пырея ползучего автоматически переводится в unknown (нет эталона)"
         ]
     }
@@ -141,7 +142,7 @@ def classify_crop(req: ClassificationRequest):
     img = load_crop_image(req)
     tensor = TRANSFORM(img).to(DEVICE)
 
-    pred = MODEL.predict_crop(tensor, species_thresh=0.55, stage_thresh=0.50)
+    pred = MODEL.predict_crop(tensor)
 
     return ClassificationResponse(
         object_id=req.object_id,
@@ -171,7 +172,7 @@ def classify_batch(req: BatchClassificationRequest):
         try:
             img = load_crop_image(item)
             tensor = TRANSFORM(img).to(DEVICE)
-            pred = MODEL.predict_crop(tensor, species_thresh=0.55, stage_thresh=0.50)
+            pred = MODEL.predict_crop(tensor)
 
             resp = ClassificationResponse(
                 object_id=item.object_id,

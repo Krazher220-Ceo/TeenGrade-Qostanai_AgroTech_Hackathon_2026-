@@ -48,5 +48,5 @@ detector:
 thresholds:
   det_conf: 0.25
   det_iou: 0.45
-  species_conf: 0.60
+  species_conf: 0.70
   stage_conf: 0.55

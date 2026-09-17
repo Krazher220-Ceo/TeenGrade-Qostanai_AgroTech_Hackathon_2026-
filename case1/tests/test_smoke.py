@@ -80,6 +80,38 @@ def test_uncertain_detection_is_not_marked_for_spraying():
     assert pred["spray_action"] == "manual_review"
 
 
+def test_species_requires_seventy_percent_confidence():
+    model = WeedMultiTaskModel(num_species=4, num_stages=2, backbone_name="mobilenet_v3_small", pretrained=False)
+    model.forward = lambda _: (
+        torch.log(torch.tensor([[0.65, 0.15, 0.10, 0.10]])),
+        torch.log(torch.tensor([[0.10, 0.90]])),
+    )
+
+    pred = model.predict_crop(torch.randn(3, 32, 32))
+
+    assert pred["species"] == "unknown"
+    assert pred["species_ru"] == "Не определено"
+    assert pred["species_conf"] == 0.65
+    assert pred["review_required"] is True
+    assert pred["spray_action"] == "manual_review"
+    assert pred["all_species_probs"]["field_thistle"] == 0.65
+
+
+def test_species_above_seventy_percent_is_displayed():
+    model = WeedMultiTaskModel(num_species=4, num_stages=2, backbone_name="mobilenet_v3_small", pretrained=False)
+    model.forward = lambda _: (
+        torch.log(torch.tensor([[0.75, 0.10, 0.10, 0.05]])),
+        torch.log(torch.tensor([[0.10, 0.90]])),
+    )
+
+    pred = model.predict_crop(torch.randn(3, 32, 32))
+
+    assert pred["species"] == "field_thistle"
+    assert pred["species_conf"] == 0.75
+    assert pred["review_required"] is False
+    assert pred["spray_action"] == "spray_weed"
+
+
 def test_fastapi_server():
     with TestClient(app) as client:
         res_health = client.get("/health")
