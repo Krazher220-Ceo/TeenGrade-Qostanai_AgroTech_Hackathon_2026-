@@ -309,9 +309,38 @@ def cmd_process(
 
     out_base = Path(output_dir) if output_dir else OUTPUT_DIR
     annotated_dir = out_base / "annotated"
+    detector_boxes_dir = out_base / "detector_boxes"
     crops_dir = out_base / "crops"
     annotated_dir.mkdir(parents=True, exist_ok=True)
+    detector_boxes_dir.mkdir(parents=True, exist_ok=True)
     crops_dir.mkdir(parents=True, exist_ok=True)
+
+    def draw_box_label(image, box, label, color, thickness=3):
+        """Draw a readable box label with a filled background."""
+        x1, y1, x2, y2 = box
+        cv2.rectangle(image, (x1, y1), (x2, y2), color, thickness)
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 0.62
+        text_thickness = 2
+        (text_w, text_h), baseline = cv2.getTextSize(label, font, font_scale, text_thickness)
+        label_y = max(text_h + baseline + 6, y1)
+        cv2.rectangle(
+            image,
+            (x1, label_y - text_h - baseline - 8),
+            (min(image.shape[1] - 1, x1 + text_w + 10), label_y + 2),
+            color,
+            -1,
+        )
+        cv2.putText(
+            image,
+            label,
+            (x1 + 5, label_y - baseline - 3),
+            font,
+            font_scale,
+            (255, 255, 255),
+            text_thickness,
+            cv2.LINE_AA,
+        )
 
     if not WEIGHTS_PATH.exists():
         print("[ОШИБКА] Веса best.pt отсутствуют! Сначала запустите: python3 case1_main.py download-weights")
@@ -409,7 +438,7 @@ def cmd_process(
         final_boxes = [raw_boxes[i] for i in keep]
         final_scores = [raw_scores[i] for i in keep]
 
-        print(f"   -> Время детекции: {t_inf:.2f} с | Найдено сорняков: {len(final_boxes)}")
+        print(f"   -> Время детекции: {t_inf:.2f} с | Найдено кандидатов: {len(final_boxes)}")
 
         # Загрузка классификатора видов и фаз
         classifier_path = CASE1_DIR / "models" / "multitask_weeds_best.pt"
@@ -417,7 +446,12 @@ def cmd_process(
         if classifier_path.exists():
             import torch
             from torchvision import transforms
-            from case1.ml.multitask_model import WeedMultiTaskModel, infer_num_species_from_state_dict
+            from case1.ml.multitask_model import (
+                SPECIES_NAMES,
+                SPECIES_RU,
+                WeedMultiTaskModel,
+                infer_num_species_from_state_dict,
+            )
             dev = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
             state_dict = torch.load(classifier_path, map_location=dev)
             num_species = infer_num_species_from_state_dict(state_dict)
@@ -430,8 +464,12 @@ def cmd_process(
                 transforms.ToTensor(),
                 transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
             ])
+            species_label_map = dict(zip(SPECIES_NAMES, SPECIES_RU))
+        else:
+            species_label_map = {}
 
-        cv_img = cv2.imread(str(p))
+        classified_img = cv2.imread(str(p))
+        detector_boxes_img = classified_img.copy()
         photo_crop_dir = crops_dir / p.stem
         photo_crop_dir.mkdir(parents=True, exist_ok=True)
 
@@ -444,8 +482,18 @@ def cmd_process(
             bx1, by1, bx2, by2 = [int(v) for v in box]
             bw = bx2 - bx1
             bh = by2 - by1
+            candidate_id = d_idx + 1
 
-            crop_patch = cv_img[max(0, by1):min(H, by2), max(0, bx1):min(W, bx2)]
+            # Второй кадр честно показывает все кандидаты YOLO до решения
+            # классификатора. На третьем кадре уверенная культура уже отсутствует.
+            draw_box_label(
+                detector_boxes_img,
+                (bx1, by1, bx2, by2),
+                f"#{candidate_id} Кандидат Weed {score:.0%}",
+                (0, 165, 255),
+            )
+
+            crop_patch = classified_img[max(0, by1):min(H, by2), max(0, bx1):min(W, bx2)]
             crop_filename = f"crop_{d_idx:04d}_{score:.2f}.jpg"
             if crop_patch.size > 0:
                 cv2.imwrite(str(photo_crop_dir / crop_filename), crop_patch)
@@ -467,12 +515,20 @@ def cmd_process(
             st_ru = c_res["stage_ru"]
             review = c_res["review_required"]
 
+            top_species = c_res["species"]
+            top_species_ru = sp_ru
+            top_species_conf = c_res["species_conf"]
+            all_species_probs = c_res.get("all_species_probs", {})
+            if all_species_probs:
+                top_species, top_species_conf = max(all_species_probs.items(), key=lambda item: item[1])
+                top_species_ru = species_label_map.get(top_species, top_species)
+
             # Культура нужна модели как защитный фоновый класс, но не является
             # сорняком: не рисуем её и не добавляем в JSON/CSV карты обработки.
             if c_res["species"] == "crop_wheat":
                 continue
 
-            object_id = len(detections_data) + 1
+            object_id = candidate_id
 
             species_counts[sp_ru] = species_counts.get(sp_ru, 0) + 1
             stage_counts[st_ru] = stage_counts.get(st_ru, 0) + 1
@@ -489,12 +545,17 @@ def cmd_process(
             else:
                 color = (0, 0, 255)        # Красный BGR для unknown / review
 
-            cv2.rectangle(cv_img, (bx1, by1), (bx2, by2), color, 4)
-            label_text = f"{sp_ru} [{st_ru}] {c_res['species_conf']:.2f}"
-            if review:
-                label_text += " (!)"
-            cv2.putText(cv_img, label_text, (bx1, max(25, by1 - 10)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
+            if c_res["species"] == "unknown":
+                label_text = (
+                    f"#{object_id} Не определено | вероятнее {top_species_ru} "
+                    f"{top_species_conf:.0%} | проверить"
+                )
+            else:
+                label_text = (
+                    f"#{object_id} {sp_ru} | {st_ru} | "
+                    f"вид {c_res['species_conf']:.0%}"
+                )
+            draw_box_label(classified_img, (bx1, by1, bx2, by2), label_text, color, 4)
 
             det_entry = {
                 "object_id": object_id,
@@ -504,6 +565,9 @@ def cmd_process(
                 "species": c_res["species"],
                 "species_ru": sp_ru,
                 "species_conf": c_res["species_conf"],
+                "top_species": top_species,
+                "top_species_ru": top_species_ru,
+                "top_species_conf": round(float(top_species_conf), 4),
                 "stage": c_res["stage"],
                 "stage_ru": st_ru,
                 "stage_conf": c_res["stage_conf"],
@@ -520,6 +584,9 @@ def cmd_process(
                 "species": c_res["species"],
                 "species_ru": sp_ru,
                 "species_conf": c_res["species_conf"],
+                "top_species": top_species,
+                "top_species_ru": top_species_ru,
+                "top_species_conf": round(float(top_species_conf), 4),
                 "stage": c_res["stage"],
                 "stage_ru": st_ru,
                 "stage_conf": c_res["stage_conf"],
@@ -533,8 +600,10 @@ def cmd_process(
                 "crop_path": f"crops/{p.stem}/{crop_filename}"
             })
 
+        detector_boxes_file = detector_boxes_dir / f"detector_boxes_{p.name}"
         annotated_file = annotated_dir / f"annotated_{p.name}"
-        cv2.imwrite(str(annotated_file), cv_img)
+        cv2.imwrite(str(detector_boxes_file), detector_boxes_img)
+        cv2.imwrite(str(annotated_file), classified_img)
 
         avg_conf = np.mean([d["species_conf"] for d in detections_data]) if detections_data else 0.0
         med_w = np.median([d["bbox_wh"][0] for d in detections_data]) if detections_data else 0
@@ -554,6 +623,7 @@ def cmd_process(
             "avg_species_conf": round(float(avg_conf), 3),
             "median_box_wh": [int(med_w), int(med_h)],
             "annotated_image": str(annotated_file.name),
+            "detector_boxes_image": str(detector_boxes_file.name),
             "detections": detections_data
         })
 
@@ -564,7 +634,8 @@ def cmd_process(
     csv_file = out_base / "all_fields_detections.csv"
     csv_columns = [
         "image_id", "object_id", "detector_conf", "species", "species_ru",
-        "species_conf", "stage", "stage_ru", "stage_conf", "spray_action",
+        "species_conf", "top_species", "top_species_ru", "top_species_conf",
+        "stage", "stage_ru", "stage_conf", "spray_action",
         "review_required", "bbox_x1", "bbox_y1", "bbox_x2", "bbox_y2",
         "bbox_width", "bbox_height", "drone_lat", "drone_lon",
         "drone_abs_alt", "drone_rel_alt", "timestamp", "crop_path",
@@ -584,6 +655,7 @@ def cmd_process(
         "report_json": str(out_base / "all_fields_report.json"),
         "detections_csv": str(csv_file),
         "annotated_dir": str(annotated_dir),
+        "detector_boxes_dir": str(detector_boxes_dir),
         "detector_path": str(selected_detector),
         "images_processed": len(summary_stats),
         "detections_total": len(all_csv_rows),

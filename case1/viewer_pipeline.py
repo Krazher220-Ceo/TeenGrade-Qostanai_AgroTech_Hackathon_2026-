@@ -98,14 +98,18 @@ def run_uploaded_field_image(
         detections = list(csv.DictReader(handle))
 
     annotated_files = sorted((run_dir / "annotated").glob("annotated_*"))
+    detector_box_files = sorted((run_dir / "detector_boxes").glob("detector_boxes_*"))
     if not annotated_files:
-        raise RuntimeError("Конвейер не создал размеченное изображение")
+        raise RuntimeError("Конвейер не создал итоговое изображение с классификацией")
+    if not detector_box_files:
+        raise RuntimeError("Конвейер не создал промежуточное изображение с рамками детектора")
 
     summary = report[0] if report else {}
     return {
         "run_id": run_id,
         "run_dir": str(run_dir),
         "input_path": str(input_path),
+        "detector_boxes_path": str(detector_box_files[0]),
         "annotated_path": str(annotated_files[0]),
         "report_path": str(report_path),
         "csv_path": str(csv_path),

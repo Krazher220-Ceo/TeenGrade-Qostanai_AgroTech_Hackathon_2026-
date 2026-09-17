@@ -35,8 +35,11 @@ def test_run_uploaded_field_image_collects_artifacts(tmp_path):
         assert species_conf == 0.65
         output = Path(output_dir)
         annotated = output / "annotated"
+        detector_boxes = output / "detector_boxes"
         annotated.mkdir(parents=True)
+        detector_boxes.mkdir(parents=True)
         Image.open(image_path).save(annotated / "annotated_input.jpg")
+        Image.open(image_path).save(detector_boxes / "detector_boxes_input.jpg")
         report = [{
             "filename": Path(image_path).name,
             "total_weeds": 1,
@@ -61,3 +64,4 @@ def test_run_uploaded_field_image_collects_artifacts(tmp_path):
     assert result["summary"]["total_weeds"] == 1
     assert result["detections"][0]["species_ru"] == "Бодяк полевой"
     assert Path(result["annotated_path"]).exists()
+    assert Path(result["detector_boxes_path"]).exists()

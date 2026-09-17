@@ -252,7 +252,7 @@ with tab0:
 
     if field_upload is not None:
         upload_bytes = field_upload.getvalue()
-        st.image(upload_bytes, caption=field_upload.name, width="stretch")
+        st.image(upload_bytes, caption=f"Предпросмотр исходного снимка: {field_upload.name}", width="stretch")
         st.caption(
             "Обработка высокодетального DJI-снимка на CPU может занять несколько минут. "
             "Результат не является автоматическим разрешением на опрыскивание."
@@ -282,9 +282,33 @@ with tab0:
         metric_cols[2].metric("Время детекции", f"{summary.get('time_s', 0):.1f} с")
         metric_cols[3].metric("Средняя уверенность вида", f"{summary.get('avg_species_conf', 0) * 100:.1f}%")
 
+        st.markdown("### 1. Исходный снимок")
+        st.caption("Снимок без разметки — именно он поступает на вход конвейера.")
+        st.image(viewer_result["input_path"], caption="Оригинал", width="stretch")
+
+        st.markdown("### 2. YOLO: рамки кандидатов сорняков")
+        st.caption(
+            "Первая модель находит координаты всех кандидатов. На этом шаге она ещё не определяет "
+            "конкретный вид, поэтому часть рамок может затем отсеяться как культура."
+        )
+        detector_boxes_path = viewer_result.get("detector_boxes_path")
+        if detector_boxes_path and Path(detector_boxes_path).exists():
+            st.image(
+                detector_boxes_path,
+                caption="Все кандидаты YOLO до классификации отдельных crop-фрагментов",
+                width="stretch",
+            )
+        else:
+            st.warning("Этот результат создан старой сборкой. Запустите распознавание ещё раз, чтобы получить второй кадр.")
+
+        st.markdown("### 3. Вторая модель: вид, фаза и уверенность")
+        st.caption(
+            "Каждая рамка вырезается в отдельный crop, увеличивается до входного размера классификатора, "
+            "а затем EfficientNet определяет вид и фазу. Сомнительные ответы остаются на ручную проверку."
+        )
         st.image(
             viewer_result["annotated_path"],
-            caption="Размеченный результат: показаны только сорняки и сомнительные объекты",
+            caption="Итог: рамки подписаны результатом второй модели",
             width="stretch",
         )
 
@@ -292,9 +316,40 @@ with tab0:
             result_df = pd.DataFrame(detections)
             visible_columns = [
                 "object_id", "detector_conf", "species_ru", "species_conf",
+                "top_species_ru", "top_species_conf",
                 "stage_ru", "stage_conf", "review_required", "spray_action",
             ]
+            visible_columns = [column for column in visible_columns if column in result_df.columns]
             st.dataframe(result_df[visible_columns], width="stretch", hide_index=True)
+
+            with st.expander(f"🔬 Кропы, обработанные второй моделью ({len(result_df)})", expanded=True):
+                st.caption(
+                    "Это реальные мелкие фрагменты из рамок второго изображения. Номер crop совпадает "
+                    "с номером рамки на обоих размеченных кадрах."
+                )
+                crop_columns = st.columns(4)
+                run_dir = Path(viewer_result["run_dir"])
+                for crop_index, (_, row) in enumerate(result_df.head(16).iterrows()):
+                    crop_relative = row.get("crop_path") or row.get("crop_file")
+                    if not crop_relative:
+                        continue
+                    crop_path = run_dir / str(crop_relative)
+                    if not crop_path.exists():
+                        continue
+
+                    species_label = str(row.get("species_ru", "Не определено"))
+                    species_confidence = float(row.get("species_conf", 0) or 0)
+                    top_label = str(row.get("top_species_ru", species_label))
+                    top_confidence = float(row.get("top_species_conf", species_confidence) or 0)
+                    if species_label == "Не определено":
+                        result_caption = f"Вероятнее: {top_label} — {top_confidence:.0%}; нужна проверка"
+                    else:
+                        result_caption = f"{species_label} — {species_confidence:.0%}"
+
+                    with crop_columns[crop_index % 4]:
+                        st.image(str(crop_path), caption=f"#{row['object_id']} · {result_caption}", width="stretch")
+                if len(result_df) > 16:
+                    st.caption(f"Показаны первые 16 из {len(result_df)} кропов; полный список доступен в CSV/JSON.")
         else:
             st.info("Детектор не нашёл объектов класса Weed. CSV всё равно сформирован с заголовками.")
 
