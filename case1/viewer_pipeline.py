@@ -63,6 +63,8 @@ def run_uploaded_field_image(
     filename: str,
     output_root: Path,
     processor: Callable[..., Any] | None = None,
+    detector_conf: float = 0.65,
+    species_conf: float = 0.65,
 ) -> Dict[str, Any]:
     """Run the existing detector/classifier pipeline for one uploaded image."""
     metadata = validate_uploaded_image(image_bytes, filename)
@@ -77,7 +79,12 @@ def run_uploaded_field_image(
 
         processor = cmd_process
 
-    process_result = processor(image_path=str(input_path), output_dir=str(run_dir))
+    process_result = processor(
+        image_path=str(input_path),
+        output_dir=str(run_dir),
+        detector_conf=detector_conf,
+        species_conf=species_conf,
+    )
     if process_result is None:
         raise RuntimeError("Конвейер не создал результат; проверьте наличие весов моделей")
 

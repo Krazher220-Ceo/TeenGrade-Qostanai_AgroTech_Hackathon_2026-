@@ -46,7 +46,7 @@ detector:
 
 # Пороги уверенности по умолчанию
 thresholds:
-  det_conf: 0.25
+  det_conf: 0.65
   det_iou: 0.45
-  species_conf: 0.70
+  species_conf: 0.65
   stage_conf: 0.55

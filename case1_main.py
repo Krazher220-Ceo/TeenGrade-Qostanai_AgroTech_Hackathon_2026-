@@ -298,6 +298,8 @@ def cmd_process(
     image_path: Optional[str] = None,
     output_dir: Optional[str] = None,
     detector_path: Optional[str] = None,
+    detector_conf: float = 0.65,
+    species_conf: float = 0.65,
 ):
     """Полноценная тайловая обработка полевых снимков с детекцией сорняков."""
     import cv2
@@ -365,7 +367,13 @@ def cmd_process(
 
         for (x1, y1, x2, y2) in tiles:
             tile_crop = img.crop((x1, y1, x2, y2))
-            res = model.predict(tile_crop, imgsz=1280, conf=0.25, verbose=False, device="cpu")
+            res = model.predict(
+                tile_crop,
+                imgsz=1280,
+                conf=detector_conf,
+                verbose=False,
+                device="cpu",
+            )
             for b in res[0].boxes:
                 cls_id = int(b.cls[0].item())
                 conf = float(b.conf[0].item())
@@ -446,7 +454,7 @@ def cmd_process(
             if classifier is not None and crop_patch.size > 0:
                 pil_crop = Image.fromarray(cv2.cvtColor(crop_patch, cv2.COLOR_BGR2RGB))
                 tensor_crop = crop_transform(pil_crop).unsqueeze(0).to(dev)
-                c_res = classifier.predict_crop(tensor_crop)
+                c_res = classifier.predict_crop(tensor_crop, species_thresh=species_conf)
             else:
                 c_res = {
                     "species": "unknown", "species_ru": "Неизвестный сорняк",
@@ -458,6 +466,13 @@ def cmd_process(
             sp_ru = c_res["species_ru"]
             st_ru = c_res["stage_ru"]
             review = c_res["review_required"]
+
+            # Культура нужна модели как защитный фоновый класс, но не является
+            # сорняком: не рисуем её и не добавляем в JSON/CSV карты обработки.
+            if c_res["species"] == "crop_wheat":
+                continue
+
+            object_id = len(detections_data) + 1
 
             species_counts[sp_ru] = species_counts.get(sp_ru, 0) + 1
             stage_counts[st_ru] = stage_counts.get(st_ru, 0) + 1
@@ -482,7 +497,7 @@ def cmd_process(
                         cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
 
             det_entry = {
-                "object_id": d_idx + 1,
+                "object_id": object_id,
                 "bbox_xyxy": [bx1, by1, bx2, by2],
                 "bbox_wh": [bw, bh],
                 "detector_conf": round(score, 4),
@@ -500,7 +515,7 @@ def cmd_process(
 
             all_csv_rows.append({
                 "image_id": p.name,
-                "object_id": d_idx + 1,
+                "object_id": object_id,
                 "detector_conf": round(score, 4),
                 "species": c_res["species"],
                 "species_ru": sp_ru,
@@ -532,7 +547,7 @@ def cmd_process(
             "lat": meta["lat"],
             "lon": meta["lon"],
             "time_s": round(t_inf, 2),
-            "total_weeds": len(final_boxes),
+            "total_weeds": len(detections_data),
             "review_required_count": review_count,
             "counts_by_species": species_counts,
             "counts_by_stage": stage_counts,

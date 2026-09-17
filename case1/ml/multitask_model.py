@@ -15,7 +15,7 @@ SPECIES_NAMES = ["field_thistle", "field_bindweed", "couch_grass", "crop_wheat"]
 SPECIES_RU = ["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Пшеница (Культура / Фон)"]
 STAGE_NAMES = ["rosette", "stem_elongation"]
 STAGE_RU = ["Розетка", "Стеблевание"]
-DEFAULT_SPECIES_CONFIDENCE = 0.70
+DEFAULT_SPECIES_CONFIDENCE = 0.65
 DEFAULT_STAGE_CONFIDENCE = 0.50
 
 

@@ -107,6 +107,8 @@ HERBICIDE_ADVICE = {
 def load_detections_data():
     if CSV_DETECTIONS.exists():
         df = pd.read_csv(CSV_DETECTIONS)
+        if "species" in df.columns:
+            df = df[df["species"] != "crop_wheat"].copy()
         return df
     return pd.DataFrame()
 
@@ -163,10 +165,19 @@ with st.sidebar:
     st.markdown("---")
     st.subheader("⚙️ Параметры инференса")
 
-    conf_thresh = st.slider("Порог уверенности детектора", 0.20, 0.90, 0.40, 0.05)
-    review_thresh = DEFAULT_SPECIES_CONFIDENCE
-    st.metric("Минимальная уверенность вида", f"{review_thresh:.0%}")
-    st.caption("Если лучший класс ниже порога, результат — «Не определено» и ручная проверка.")
+    conf_thresh = st.slider(
+        "Порог уверенности детектора", 0.20, 0.90, 0.65, 0.05,
+        help="Минимальная уверенность YOLO для рамки-кандидата.",
+    )
+    review_thresh = st.slider(
+        "Минимальная уверенность вида", 0.20, 0.90,
+        DEFAULT_SPECIES_CONFIDENCE, 0.05,
+        help="Ниже этого значения вид не подтверждается автоматически.",
+    )
+    st.caption(
+        "По умолчанию оба порога — 65%. Пшеница и другая уверенно распознанная "
+        "культура исключаются: в результатах остаются только сорняки и сомнительные объекты."
+    )
 
     df_detections = load_detections_data()
     all_images = df_detections["image_id"].unique().tolist() if not df_detections.empty else []
@@ -179,8 +190,8 @@ with st.sidebar:
 
     species_filter = st.multiselect(
         "Фильтр сорняков на карте:",
-        options=["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Пшеница (Культура / Фон)", "Неизвестный сорняк"],
-        default=["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Пшеница (Культура / Фон)", "Неизвестный сорняк"]
+        options=["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Неизвестный сорняк", "Не определено"],
+        default=["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Неизвестный сорняк", "Не определено"]
     )
 
     st.markdown("---")
@@ -195,6 +206,19 @@ st.markdown("Автоматический анализ полевых RGB-сни
 st.caption(
     "Демонстрационные данные включают кадры профессионального класса, но для бюджетного MVP "
     "не требуется покупать DJI Mavic 3E: ниже во вкладке планирования указан реалистичный б/у вариант."
+)
+st.info(
+    "Текущая сборка запущена локально на Mac без облака: детектор полевого снимка работает на CPU, "
+    "а классификатор использует Apple MPS, если он доступен, иначе CPU. На сборке с NVIDIA GPU и после "
+    "дообучения на большем наборе размеченных кадров обработка ожидаемо будет быстрее, а качество может "
+    "стать выше после отдельной проверки на новых полях."
+)
+st.warning(
+    "**Статус модели: прототип / этап сбора датасета.** WeedBlaster Vision — открытый baseline, "
+    "который здесь служит временной моделью для проверки полного конвейера: снимок → кандидаты → "
+    "классификация → карта. Это не готовая промышленная модель и не основание для автоматического "
+    "опрыскивания. Open source важен для воспроизводимости, аудита и замены checkpoint на собственную "
+    "модель после накопления и разметки локальных полевых данных."
 )
 
 tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
@@ -241,6 +265,8 @@ with tab0:
                         upload_bytes,
                         field_upload.name,
                         OUTPUT_DIR / "viewer_runs",
+                        detector_conf=conf_thresh,
+                        species_conf=review_thresh,
                     )
             except Exception as exc:
                 st.session_state.pop("viewer_run_result", None)
@@ -258,7 +284,7 @@ with tab0:
 
         st.image(
             viewer_result["annotated_path"],
-            caption="Размеченный результат: рамки, вид, фаза и флаг ручной проверки",
+            caption="Размеченный результат: показаны только сорняки и сомнительные объекты",
             width="stretch",
         )
 
@@ -483,9 +509,9 @@ with tab4:
     st.header("🔬 Инспектор сорняков крупным планом")
     st.markdown("Загрузите или выберите фото сорного растения для мгновенной многозадачной классификации.")
     st.info(
-        "Вид отображается как подтверждённый только при уверенности **70% или выше**. "
+        f"Вид отображается как подтверждённый только при уверенности **{review_thresh:.0%} или выше**. "
         "Если ни один класс не достигает порога, итог — **«Не определено»**, "
-        "а все вероятности остаются видны ниже."
+        "а все вероятности остаются видны ниже. Распознанная культура не считается сорняком."
     )
 
     model, device = load_classifier_model()
@@ -525,7 +551,13 @@ with tab4:
             pred = model.predict_crop(tensor, species_thresh=review_thresh)
 
             st.subheader("Результат нейросети:")
-            if pred["species"] == "unknown":
+            is_crop = pred["species"] == "crop_wheat"
+            if is_crop:
+                st.success(
+                    f"🌾 Определена зерновая культура ({pred['species_conf'] * 100:.1f}%). "
+                    "Объект исключён из списка сорняков и карты обработки."
+                )
+            elif pred["species"] == "unknown":
                 top_name, top_probability = max(pred["all_species_probs"].items(), key=lambda item: item[1])
                 top_label = dict(zip(SPECIES_NAMES, SPECIES_RU)).get(top_name, top_name)
                 st.markdown("### Вид: **Не определено**")
@@ -535,9 +567,12 @@ with tab4:
                 )
             else:
                 st.markdown(f"### Вид: **{pred['species_ru']}** (`{pred['species_conf']*100:.1f}%`)")
-            st.markdown(f"### Фаза: **{pred['stage_ru']}** (`{pred['stage_conf']*100:.1f}%`)")
+            if not is_crop:
+                st.markdown(f"### Фаза: **{pred['stage_ru']}** (`{pred['stage_conf']*100:.1f}%`)")
 
-            if pred["review_required"]:
+            if is_crop:
+                st.info("Показываются только целевые сорняки; для культуры рамка и агрономическая рекомендация не создаются.")
+            elif pred["review_required"]:
                 st.warning("⚠️ Статус: **Требует проверки агрономом** (низкая уверенность или пограничные признаки)")
             else:
                 st.success("✅ Статус: **Уверенная автоматическая классификация**")
@@ -571,8 +606,9 @@ with tab4:
             st.plotly_chart(fig_p, width="stretch")
 
             # Гербицидный регламент
-            advice = HERBICIDE_ADVICE.get(pred["species"], HERBICIDE_ADVICE["unknown"])
-            st.info(f"💡 **Рекомендация по обработке:**\n\n- **Препарат:** {advice['herbicide']}\n- **Дозировка:** {advice['rate']}\n- **Оптимальное окно:** {advice['optimal_stage']}")
+            if not is_crop:
+                advice = HERBICIDE_ADVICE.get(pred["species"], HERBICIDE_ADVICE["unknown"])
+                st.info(f"💡 **Рекомендация по обработке:**\n\n- **Препарат:** {advice['herbicide']}\n- **Дозировка:** {advice['rate']}\n- **Оптимальное окно:** {advice['optimal_stage']}")
 
 
 # ------------------------------------------------------------------------------

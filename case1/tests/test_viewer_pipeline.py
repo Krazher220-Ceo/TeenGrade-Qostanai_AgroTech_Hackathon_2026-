@@ -30,7 +30,9 @@ def test_validate_uploaded_image_rejects_invalid_input(filename, payload):
 
 
 def test_run_uploaded_field_image_collects_artifacts(tmp_path):
-    def fake_processor(image_path, output_dir):
+    def fake_processor(image_path, output_dir, detector_conf, species_conf):
+        assert detector_conf == 0.65
+        assert species_conf == 0.65
         output = Path(output_dir)
         annotated = output / "annotated"
         annotated.mkdir(parents=True)
