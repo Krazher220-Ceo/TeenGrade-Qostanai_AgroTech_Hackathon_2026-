@@ -1,0 +1,8 @@
+path: /Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/yolo_reference
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: field_thistle
+  1: field_bindweed
+  2: couch_grass

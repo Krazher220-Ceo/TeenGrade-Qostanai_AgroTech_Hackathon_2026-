@@ -222,7 +222,7 @@ st.warning(
     "модель после накопления и разметки локальных полевых данных."
 )
 
-tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "📤 Проверить снимок поля",
     "🗺️ Карта поля и детекции",
     "🌡️ Тепловая карта и рецепт опрыскивания",
@@ -230,7 +230,8 @@ tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "🔬 Анализ отдельного образца",
     "📊 Метрики обучения модели",
     "🌌 Кластеры эмбеддингов (t-SNE) & Защита от галлюцинаций",
-    "🛸 Планирование флота (1–5 БПЛА)"
+    "🛸 Планирование флота (1–5 БПЛА)",
+    "📚 Каталог датасетов (YOLOv8)"
 ])
 
 
@@ -970,3 +971,146 @@ with tab6:
 # ------------------------------------------------------------------------------
 with tab7:
     render_fleet_planning_tab()
+
+
+# ------------------------------------------------------------------------------
+# TAB 8: РЕЕСТР И КАТАЛОГ РАЗМЕЧЕННЫХ ДАТАСЕТОВ
+# ------------------------------------------------------------------------------
+with tab8:
+    st.header("📚 Реестр и каталог размеченных датасетов сорняков")
+    st.markdown(
+        "Централизованный каталог размеченных выборок для детекции и классификации сорняков. "
+        "Включает аэрофотосъемку с БПЛА, наземную съемку и эталоны сорняков Костанайской области, "
+        "приведенные к стандарту **YOLOv8** (`images/{train,val,test}`, `labels/{train,val,test}`)."
+    )
+
+    catalog_path = CASE1_DIR / "data" / "dataset_catalog.json"
+    if catalog_path.exists():
+        with open(catalog_path, "r", encoding="utf-8") as f_cat:
+            cat_data = json.load(f_cat)
+
+        col_m1, col_m2, col_m3, col_m4 = st.columns(4)
+        col_m1.metric("📦 Всего датасетов", cat_data.get("total_datasets", 0))
+        col_m2.metric("🖼️ Размеченных кадров", f"{cat_data.get('total_images', 0):,}")
+        col_m3.metric("🎯 Аннотаций объектов", f"{cat_data.get('total_annotations', 0):,}")
+        col_m4.metric("📐 Формат разметки", "YOLOv8 / COCO")
+
+        st.subheader("📋 Реестр датасетов и лицензии")
+        table_rows = []
+        for ds_id, ds_info in cat_data.get("datasets", {}).items():
+            status_badge = "✅ ГОТОВ" if ds_info.get("status") == "ready" else "⚠️ НЕ ГОТОВ"
+            table_rows.append({
+                "ID": ds_id,
+                "Название": ds_info.get("name", ds_id),
+                "Задача": ds_info.get("task", ""),
+                "Модальность": ds_info.get("modality", ""),
+                "Кадры": ds_info.get("total_images", 0),
+                "Боксы": ds_info.get("total_boxes", 0),
+                "Диск (МБ)": ds_info.get("disk_size_mb", 0.0),
+                "Лицензия": ds_info.get("license", ""),
+                "Статус": status_badge,
+            })
+        df_cat = pd.DataFrame(table_rows)
+        st.dataframe(df_cat, use_container_width=True)
+
+        st.markdown("---")
+        st.subheader("🔍 Интерактивный просмотрщик разметки (Ground Truth)")
+
+        # Выбор датасета для визуализации
+        available_ds = [
+            (ds_id, ds_info.get("name", ds_id))
+            for ds_id, ds_info in cat_data.get("datasets", {}).items()
+            if ds_info.get("directory") and (Path(ds_info["directory"]) / "images").exists()
+        ]
+
+        if available_ds:
+            col_sel1, col_sel2 = st.columns(2)
+            with col_sel1:
+                selected_ds_id = st.selectbox(
+                    "Выберите датасет для инспекции:",
+                    options=[item[0] for item in available_ds],
+                    format_func=lambda x: dict(available_ds).get(x, x),
+                    key="dataset_inspect_select"
+                )
+            with col_sel2:
+                selected_split = st.selectbox(
+                    "Сплит выборки:",
+                    options=["train", "val", "test"],
+                    key="dataset_inspect_split"
+                )
+
+            ds_meta = cat_data["datasets"][selected_ds_id]
+            ds_dir = Path(ds_meta["directory"])
+            img_dir = ds_dir / "images" / selected_split
+            lbl_dir = ds_dir / "labels" / selected_split
+
+            img_files = sorted(
+                list(img_dir.glob("*.jpg")) + list(img_dir.glob("*.jpeg")) + list(img_dir.glob("*.png"))
+            ) if img_dir.exists() else []
+
+            if img_files:
+                st.caption(f"Найдено изображений в сплите '{selected_split}': {len(img_files)}")
+                sample_idx = st.slider(
+                    "Индекс кадра для просмотра",
+                    min_value=0,
+                    max_value=len(img_files) - 1,
+                    value=0,
+                    key="dataset_sample_slider"
+                )
+                sample_img_path = img_files[sample_idx]
+                sample_lbl_path = lbl_dir / f"{sample_img_path.stem}.txt"
+
+                # Загрузка и отрисовка боксов
+                pil_img = Image.open(sample_img_path).convert("RGB")
+                w_img, h_img = pil_img.size
+                draw = ImageDraw.Draw(pil_img)
+
+                boxes = []
+                if sample_lbl_path.exists():
+                    txt_content = sample_lbl_path.read_text(encoding="utf-8").strip()
+                    if txt_content:
+                        for line in txt_content.splitlines():
+                            parts = line.strip().split()
+                            if len(parts) >= 5:
+                                cls_id = int(parts[0])
+                                xc, yc, nw, nh = map(float, parts[1:5])
+                                x1 = int((xc - nw / 2.0) * w_img)
+                                y1 = int((yc - nh / 2.0) * h_img)
+                                x2 = int((xc + nw / 2.0) * w_img)
+                                y2 = int((yc + nh / 2.0) * h_img)
+                                cls_name = ds_meta.get("classes", {}).get(str(cls_id), ds_meta.get("classes", {}).get(cls_id, f"cls_{cls_id}"))
+                                boxes.append((cls_name, x1, y1, x2, y2))
+                                box_color = "#EF4444" if "weed" in str(cls_name).lower() or "thistle" in str(cls_name).lower() else "#10B981"
+                                draw.rectangle([x1, y1, x2, y2], outline=box_color, width=3)
+                                draw.text((x1 + 4, max(0, y1 - 15)), str(cls_name), fill=box_color)
+
+                col_view1, col_view2 = st.columns([2, 1])
+                with col_view1:
+                    st.image(
+                        pil_img,
+                        caption=f"Кадр: {sample_img_path.name} ({w_img}x{h_img}, {len(boxes)} боксов)",
+                        use_container_width=True
+                    )
+                with col_view2:
+                    st.markdown("**Разметка кадра:**")
+                    if boxes:
+                        df_boxes = pd.DataFrame(boxes, columns=["Класс", "X1", "Y1", "X2", "Y2"])
+                        st.dataframe(df_boxes, use_container_width=True)
+                    else:
+                        st.info("В данном кадре нет объектов (отрицательный / фоновый пример).")
+
+                    # Распределение классов в датасете
+                    if ds_meta.get("class_distribution"):
+                        st.markdown("**Распределение классов в датасете:**")
+                        df_dist = pd.DataFrame(
+                            list(ds_meta["class_distribution"].items()),
+                            columns=["Класс", "Количество боксов"]
+                        )
+                        st.dataframe(df_dist, use_container_width=True)
+            else:
+                st.warning(f"В папке {img_dir} пока нет файлов изображений.")
+        else:
+            st.info("Нет доступных YOLOv8 датасетов для визуализации.")
+    else:
+        st.warning("Каталог датасетов (`case1/data/dataset_catalog.json`) ещё не сгенерирован. Запустите: `python3 case1_main.py download-datasets`")
+

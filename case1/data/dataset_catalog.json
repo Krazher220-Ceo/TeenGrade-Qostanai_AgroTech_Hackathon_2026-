@@ -1,0 +1,195 @@
+{
+  "catalog_version": "2.0.0",
+  "generated_at": "2026-09-17",
+  "total_datasets": 6,
+  "total_images": 6071,
+  "total_annotations": 17275,
+  "datasets": {
+    "weed_crop_aerial": {
+      "id": "weed_crop_aerial",
+      "name": "Roboflow-100 Weed Crop Aerial",
+      "task": "object_detection",
+      "modality": "uav_aerial",
+      "license": "CC BY 4.0",
+      "description": "Размеченные аэрофотоснимки с дрона в COCO/YOLO формате для бинарной детекции сорняков на фоне культурных посевов.",
+      "classes": {
+        "0": "crop",
+        "1": "weed"
+      },
+      "status": "ready",
+      "splits": {
+        "train": {
+          "images": 823,
+          "boxes": 5466
+        },
+        "val": {
+          "images": 235,
+          "boxes": 1605
+        },
+        "test": {
+          "images": 118,
+          "boxes": 781
+        }
+      },
+      "total_images": 1176,
+      "total_boxes": 7852,
+      "class_distribution": {
+        "weed": 7442,
+        "crop": 410
+      },
+      "disk_size_bytes": 82806743,
+      "disk_size_mb": 78.97,
+      "yaml_config": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/configs/weed_crop_aerial.yaml",
+      "directory": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/yolo_aerial"
+    },
+    "crop_weed_detection": {
+      "id": "crop_weed_detection",
+      "name": "Crop and Weed Field Detection",
+      "task": "object_detection",
+      "modality": "field_surface",
+      "license": "Open Data Commons / Academic",
+      "description": "Полевые снимки высокого разрешения с покадровой нормализованной разметкой YOLO для разделения культурных растений и сорняков.",
+      "classes": {
+        "0": "crop",
+        "1": "weed"
+      },
+      "status": "ready",
+      "splits": {
+        "train": {
+          "images": 910,
+          "boxes": 1460
+        },
+        "val": {
+          "images": 195,
+          "boxes": 323
+        },
+        "test": {
+          "images": 195,
+          "boxes": 289
+        }
+      },
+      "total_images": 1300,
+      "total_boxes": 2072,
+      "class_distribution": {
+        "crop": 1212,
+        "weed": 860
+      },
+      "disk_size_bytes": 82734681,
+      "disk_size_mb": 78.9,
+      "yaml_config": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/configs/crop_weed_field.yaml",
+      "directory": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/yolo_field"
+    },
+    "grass_weeds": {
+      "id": "grass_weeds",
+      "name": "Roboflow-100 Grass Weeds (Rumex)",
+      "task": "object_detection",
+      "modality": "field_surface",
+      "license": "CC BY 4.0",
+      "description": "Размеченный датасет детекции широколистных сорняков (щавель туполистный / Rumex obtusifolius) в травяном покрове.",
+      "classes": {
+        "0": "broadleaf_weed"
+      },
+      "status": "ready",
+      "splits": {
+        "train": {
+          "images": 1661,
+          "boxes": 4198
+        },
+        "val": {
+          "images": 580,
+          "boxes": 1939
+        },
+        "test": {
+          "images": 245,
+          "boxes": 662
+        }
+      },
+      "total_images": 2486,
+      "total_boxes": 6799,
+      "class_distribution": {
+        "broadleaf_weed": 6799
+      },
+      "disk_size_bytes": 213198894,
+      "disk_size_mb": 203.32,
+      "yaml_config": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/configs/grass_weeds.yaml",
+      "directory": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/yolo_grass"
+    },
+    "hackathon_reference": {
+      "id": "hackathon_reference",
+      "name": "Qostanai Regional Reference Weeds",
+      "task": "multi_task_classification",
+      "modality": "macro_reference",
+      "license": "ТОО «Олжа Агро» / Qostanai AgroTech Hackathon 2026",
+      "description": "Официальный эталонный датасет хакатона от агрономов «Олжа Агро»: 552 фото с разметкой вида и фенологической фазы.",
+      "classes": {},
+      "status": "ready",
+      "splits": {},
+      "total_images": 552,
+      "total_boxes": 0,
+      "class_distribution": {
+        "Бодяк полевой": 184,
+        "Вьюнок полевой": 184,
+        "Пырей ползучий": 184
+      },
+      "disk_size_bytes": 440568606,
+      "disk_size_mb": 420.16,
+      "directory": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/Dataset 1 кейс/Сорняки"
+    },
+    "hackathon_reference_detection": {
+      "id": "hackathon_reference_detection",
+      "name": "Qostanai Reference Weed Detection",
+      "task": "object_detection",
+      "modality": "macro_reference",
+      "license": "ТОО «Олжа Агро» / Qostanai AgroTech Hackathon 2026",
+      "description": "Нормализованный детекционный датасет для локализации ключевых видов сорняков Костанайской области (Бодяк, Вьюнок, Пырей).",
+      "classes": {
+        "0": "field_thistle",
+        "1": "field_bindweed",
+        "2": "couch_grass"
+      },
+      "status": "ready",
+      "splits": {
+        "train": {
+          "images": 384,
+          "boxes": 384
+        },
+        "val": {
+          "images": 82,
+          "boxes": 82
+        },
+        "test": {
+          "images": 86,
+          "boxes": 86
+        }
+      },
+      "total_images": 552,
+      "total_boxes": 552,
+      "class_distribution": {
+        "field_bindweed": 222,
+        "field_thistle": 215,
+        "couch_grass": 115
+      },
+      "disk_size_bytes": 440589582,
+      "disk_size_mb": 420.18,
+      "yaml_config": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/configs/hackathon_reference_detection.yaml",
+      "directory": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/yolo_reference"
+    },
+    "hackathon_dji_fields": {
+      "id": "hackathon_dji_fields",
+      "name": "Qostanai DJI UAV Field Survey",
+      "task": "uav_survey",
+      "modality": "uav_aerial_4k",
+      "license": "ТОО «Олжа Агро» / Qostanai AgroTech Hackathon 2026",
+      "description": "Полноразмерные полевые снимки с борта БПЛА DJI Phantom с метаданными высоты и GPS-координат для валидации сквозного пайплайна.",
+      "classes": {},
+      "status": "ready",
+      "splits": {},
+      "total_images": 5,
+      "total_boxes": 0,
+      "class_distribution": {},
+      "disk_size_bytes": 69165056,
+      "disk_size_mb": 65.96,
+      "directory": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/Dataset 1 кейс/ФотоПолей"
+    }
+  }
+}

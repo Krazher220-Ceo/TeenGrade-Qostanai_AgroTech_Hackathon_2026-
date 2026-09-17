@@ -202,6 +202,15 @@ def cmd_status():
     else:
         print(f"  [-] Папка {FIELD_DIR} не найдена!")
 
+    catalog_path = CASE1_DIR / "data" / "dataset_catalog.json"
+    if catalog_path.exists():
+        try:
+            with open(catalog_path, "r", encoding="utf-8") as f:
+                cat = json.load(f)
+            print(f"  [+] Размеченные датасеты:     {cat.get('total_datasets', 0)} датасетов, {cat.get('total_images', 0)} кадров, {cat.get('total_annotations', 0)} боксов")
+        except Exception:
+            pass
+
     # Проверка модели
     print("\n--- Проверка модели детектора (WeedBlaster) ---")
     w_stat = check_weights_status()
@@ -210,7 +219,22 @@ def cmd_status():
         print(f"  -> Для загрузки запустите: python3 case1_main.py download-weights")
 
 
+def cmd_download_datasets(force: bool = False):
+    """Команда загрузки, распаковки и нормализации размеченных датасетов сорняков."""
+    from case1.data.dataset_downloader import download_and_prepare_all_datasets, get_dataset_summary
+    print("Запуск загрузки и подготовки размеченных датасетов сорняков...")
+    cat = download_and_prepare_all_datasets(force=force)
+    print("\n" + get_dataset_summary(cat))
+
+
+def cmd_datasets_status():
+    """Команда вывода статуса и статистики каталога размеченных датасетов."""
+    from case1.data.dataset_downloader import get_dataset_summary
+    print(get_dataset_summary())
+
+
 def cmd_audit():
+
     """Команда подробного аудита данных."""
     print("================================================================================")
     print("ПОДРОБНЫЙ АУДИТ ДАННЫХ КЕЙСА №1")
@@ -794,7 +818,13 @@ def main():
     subparsers.add_parser("download-weights", help="Скачать официальные веса с Hugging Face")
     subparsers.add_parser("cluster-analysis", help="Кластерный анализ эмбеддингов (t-SNE/Silhouette)")
 
+    ds_parser = subparsers.add_parser("download-datasets", help="Загрузка и сборка размеченных датасетов сорняков (YOLOv8)")
+    ds_parser.add_argument("--force", action="store_true", help="Принудительная повторная распаковка")
+
+    subparsers.add_parser("datasets-status", help="Статус и статистика каталога размеченных датасетов")
+
     proc_parser = subparsers.add_parser("process", help="Запуск конвейера обработки полевых фото")
+
     proc_parser.add_argument("--image", type=str, default=None, help="Путь к конкретному снимку (по умолчанию вся папка)")
     proc_parser.add_argument("--output", type=str, default=str(OUTPUT_DIR), help="Каталог для результатов")
     proc_parser.add_argument(
@@ -836,7 +866,12 @@ def main():
         cmd_audit()
     elif args.command == "download-weights":
         cmd_download_weights()
+    elif args.command == "download-datasets":
+        cmd_download_datasets(force=args.force)
+    elif args.command == "datasets-status":
+        cmd_datasets_status()
     elif args.command == "cluster-analysis":
+
         cmd_cluster_analysis()
     elif args.command == "benchmark-latency":
         cmd_benchmark_latency(iterations=args.iterations)

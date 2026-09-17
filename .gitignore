@@ -19,7 +19,9 @@ CLAUDE.md
 Dataset 1 */
 case1/data/external/
 case1/data/yolo_aerial/
+case1/data/yolo_*/
 *.tar.gz
+*.zip
 
 # Большие модели должны добавляться только через Git LFS (см. .gitattributes)
 
