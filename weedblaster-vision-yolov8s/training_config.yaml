@@ -1,0 +1,73 @@
+# WeedBlaster Vision Model — Training Configuration
+# YOLOv8s on CropAndWeed (CropsOrWeed9 variant)
+# Version: v1.9
+
+# Model
+model: yolov8s.pt
+task: detect
+mode: train
+
+# Dataset
+data: datasets/yolo_cropandweed/dataset.yaml
+classes:
+  0: Maize
+  1: Sugar Beet
+  2: Soy
+  3: Sunflower
+  4: Potato
+  5: Pea
+  6: Bean
+  7: Pumpkin
+  8: Weed
+label_mapping: CropsOrWeed9  # 8 crop species + 1 weed superclass (58 species merged)
+
+# Training
+epochs: 100
+imgsz: 1280
+batch: 8
+device: cuda:0
+amp: true  # Automatic Mixed Precision (FP16)
+save_period: 10
+
+# Optimizer
+optimizer: AdamW
+lr0: 0.001
+lrf: 0.01  # Final LR = lr0 * lrf = 0.00001 (cosine annealing)
+weight_decay: 0.0005
+warmup_epochs: 3
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# Data Augmentation
+hsv_h: 0.015      # Hue shift ±1.5%
+hsv_s: 0.7        # Saturation shift ±70%
+hsv_v: 0.4        # Value/brightness shift ±40%
+degrees: 0.0      # Rotation disabled (preserve crop orientation)
+translate: 0.1    # Translation ±10%
+scale: 0.5        # Scale ±50%
+shear: 0.0        # Shear disabled
+perspective: 0.0  # Perspective disabled (top-down views)
+flipud: 0.0       # Vertical flip disabled (crops have orientation)
+fliplr: 0.5       # Horizontal flip 50%
+mosaic: 1.0       # Mosaic augmentation 100%
+mixup: 0.1        # Mixup augmentation 10%
+copy_paste: 0.1   # Copy-paste augmentation 10%
+
+# Hardware
+hardware:
+  gpu: NVIDIA Quadro RTX 6000
+  vram_gb: 24
+
+# Results (v1.9)
+results:
+  overall_precision: 0.960
+  weed_precision: 0.850
+  per_class_precision:
+    Maize: 0.973
+    Sugar Beet: 0.973
+    Soy: 0.950
+    Sunflower: 0.985
+    Potato: 0.920
+    Pea: 0.975
+    Bean: 0.988
+    Pumpkin: 0.980
