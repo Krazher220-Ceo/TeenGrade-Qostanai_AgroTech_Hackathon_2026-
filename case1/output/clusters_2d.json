@@ -1,0 +1,2894 @@
+{
+  "num_samples": 287,
+  "embedding_dim": 1280,
+  "silhouette_score": 0.1912,
+  "centroid_separations": {
+    "wheat_vs_field_thistle": {
+      "cosine_distance": 0.7029,
+      "euclidean_distance": 0.7978,
+      "is_well_separated": true
+    },
+    "wheat_vs_field_bindweed": {
+      "cosine_distance": 1.0458,
+      "euclidean_distance": 0.8497,
+      "is_well_separated": true
+    },
+    "wheat_vs_couch_grass": {
+      "cosine_distance": 0.8171,
+      "euclidean_distance": 0.9748,
+      "is_well_separated": true
+    }
+  },
+  "points": [
+    {
+      "tsne_x": 25.283,
+      "tsne_y": -3.874,
+      "pca_x": 0.076,
+      "pca_y": 0.109,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009652_e5058756-f60a-45c9-bce1-80b39670c210.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009652_e5058756-f60a-45c9-bce1-80b39670c210.jpg"
+    },
+    {
+      "tsne_x": 23.892,
+      "tsne_y": -5.816,
+      "pca_x": 0.098,
+      "pca_y": 0.138,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009653_20cc4736-c80c-4591-ba2a-0423bfa1f6e2.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009653_20cc4736-c80c-4591-ba2a-0423bfa1f6e2.jpg"
+    },
+    {
+      "tsne_x": 24.267,
+      "tsne_y": -3.432,
+      "pca_x": 0.036,
+      "pca_y": 0.144,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009654_db393bf0-31ce-4ad4-adb9-50ab7a6dbc2e.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009654_db393bf0-31ce-4ad4-adb9-50ab7a6dbc2e.jpg"
+    },
+    {
+      "tsne_x": 23.357,
+      "tsne_y": -2.762,
+      "pca_x": -0.045,
+      "pca_y": 0.243,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009655_a9d128dd-119c-46fb-81c3-959b34a8f0e1.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009655_a9d128dd-119c-46fb-81c3-959b34a8f0e1.jpg"
+    },
+    {
+      "tsne_x": 22.741,
+      "tsne_y": -2.968,
+      "pca_x": -0.012,
+      "pca_y": 0.248,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009656_95451643-f24b-47cf-aaae-d21347dc51c6.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009656_95451643-f24b-47cf-aaae-d21347dc51c6.jpg"
+    },
+    {
+      "tsne_x": 23.01,
+      "tsne_y": -4.93,
+      "pca_x": 0.146,
+      "pca_y": 0.094,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009657_f5d98871-7dc1-4996-9edc-a3a84d7ec746.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009657_f5d98871-7dc1-4996-9edc-a3a84d7ec746.jpg"
+    },
+    {
+      "tsne_x": 23.691,
+      "tsne_y": -3.312,
+      "pca_x": 0.016,
+      "pca_y": 0.147,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009658_8c3290e5-fcfd-4efc-a265-5de70e1fb289.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009658_8c3290e5-fcfd-4efc-a265-5de70e1fb289.jpg"
+    },
+    {
+      "tsne_x": 23.16,
+      "tsne_y": -3.768,
+      "pca_x": 0.086,
+      "pca_y": 0.163,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009659_118d108d-0551-4908-8b8e-f6955ff56efc.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009659_118d108d-0551-4908-8b8e-f6955ff56efc.jpg"
+    },
+    {
+      "tsne_x": 22.827,
+      "tsne_y": -5.679,
+      "pca_x": 0.074,
+      "pca_y": 0.202,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009660_90bac4d9-19c7-4cf7-bf45-cd2d7db05e81.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009660_90bac4d9-19c7-4cf7-bf45-cd2d7db05e81.jpg"
+    },
+    {
+      "tsne_x": 22.619,
+      "tsne_y": -2.863,
+      "pca_x": -0.01,
+      "pca_y": 0.24,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009661_85ccd96c-2128-40e5-a6e9-16b8d34ccf46.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009661_85ccd96c-2128-40e5-a6e9-16b8d34ccf46.jpg"
+    },
+    {
+      "tsne_x": 24.396,
+      "tsne_y": -2.467,
+      "pca_x": -0.0,
+      "pca_y": 0.157,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009662_37607f75-c1e6-4eb4-9154-2254ac5fc1b0.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009662_37607f75-c1e6-4eb4-9154-2254ac5fc1b0.jpg"
+    },
+    {
+      "tsne_x": 25.297,
+      "tsne_y": -2.116,
+      "pca_x": -0.146,
+      "pca_y": 0.144,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009663_dada3c38-eca6-45ab-b150-fa171d636972.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009663_dada3c38-eca6-45ab-b150-fa171d636972.jpg"
+    },
+    {
+      "tsne_x": 24.887,
+      "tsne_y": -4.494,
+      "pca_x": 0.077,
+      "pca_y": 0.046,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009664_ef1f3e48-4bb9-4483-bf0a-4bb563608d63.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009664_ef1f3e48-4bb9-4483-bf0a-4bb563608d63.jpg"
+    },
+    {
+      "tsne_x": 25.102,
+      "tsne_y": -3.754,
+      "pca_x": 0.035,
+      "pca_y": 0.11,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009665_a2af0326-7ff0-4fdd-aae6-e75542f65d9b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009665_a2af0326-7ff0-4fdd-aae6-e75542f65d9b.jpg"
+    },
+    {
+      "tsne_x": 25.468,
+      "tsne_y": -6.032,
+      "pca_x": 0.106,
+      "pca_y": 0.14,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009666_d8c1acd8-fa64-4d7e-881f-895a06247fc7.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009666_d8c1acd8-fa64-4d7e-881f-895a06247fc7.jpg"
+    },
+    {
+      "tsne_x": 25.602,
+      "tsne_y": -5.853,
+      "pca_x": 0.073,
+      "pca_y": 0.184,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009667_d51953c9-dbc5-4684-a758-a84c16f88df1.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009667_d51953c9-dbc5-4684-a758-a84c16f88df1.jpg"
+    },
+    {
+      "tsne_x": 25.104,
+      "tsne_y": -5.945,
+      "pca_x": 0.158,
+      "pca_y": 0.097,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009668_a7b23424-c742-41c9-bba6-1c7eb3878fd2.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009668_a7b23424-c742-41c9-bba6-1c7eb3878fd2.jpg"
+    },
+    {
+      "tsne_x": -32.824,
+      "tsne_y": 4.053,
+      "pca_x": -0.682,
+      "pca_y": -0.664,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002207_9690302e-7c80-4ef8-937f-d0dbaeec240f.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002207_9690302e-7c80-4ef8-937f-d0dbaeec240f.jpg"
+    },
+    {
+      "tsne_x": -34.016,
+      "tsne_y": 5.182,
+      "pca_x": -0.641,
+      "pca_y": -0.679,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002208_b91b5d76-05aa-49bc-8454-580f95f972bb.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002208_b91b5d76-05aa-49bc-8454-580f95f972bb.jpg"
+    },
+    {
+      "tsne_x": -32.231,
+      "tsne_y": 3.433,
+      "pca_x": -0.69,
+      "pca_y": -0.623,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002209_7a23e89f-839e-4569-a116-e6ae532f269f.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002209_7a23e89f-839e-4569-a116-e6ae532f269f.jpg"
+    },
+    {
+      "tsne_x": -34.853,
+      "tsne_y": 3.371,
+      "pca_x": -0.631,
+      "pca_y": -0.673,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002210_770227f5-641a-4fcd-80be-9a14b99883fd.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002210_770227f5-641a-4fcd-80be-9a14b99883fd.jpg"
+    },
+    {
+      "tsne_x": -31.659,
+      "tsne_y": 6.645,
+      "pca_x": -0.607,
+      "pca_y": -0.722,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002211_a82bae45-09a5-4775-8f21-aaf625500ddb.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002211_a82bae45-09a5-4775-8f21-aaf625500ddb.jpg"
+    },
+    {
+      "tsne_x": -33.692,
+      "tsne_y": 4.694,
+      "pca_x": -0.653,
+      "pca_y": -0.701,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002212_135b1b37-34dd-4f72-ae2e-df1ab6e97cb6.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002212_135b1b37-34dd-4f72-ae2e-df1ab6e97cb6.jpg"
+    },
+    {
+      "tsne_x": -29.766,
+      "tsne_y": 4.384,
+      "pca_x": -0.584,
+      "pca_y": -0.536,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002213_59522e8e-a8a7-4588-be33-d1f414cc49f0.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002213_59522e8e-a8a7-4588-be33-d1f414cc49f0.jpg"
+    },
+    {
+      "tsne_x": -32.701,
+      "tsne_y": 3.789,
+      "pca_x": -0.676,
+      "pca_y": -0.662,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002214_fd32c9ab-45a8-4c1b-887e-fab5331fb06a.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002214_fd32c9ab-45a8-4c1b-887e-fab5331fb06a.jpg"
+    },
+    {
+      "tsne_x": -33.102,
+      "tsne_y": 4.562,
+      "pca_x": -0.651,
+      "pca_y": -0.682,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002215_1b0be6c0-720d-413f-88e4-4b9584ad0faf.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002215_1b0be6c0-720d-413f-88e4-4b9584ad0faf.jpg"
+    },
+    {
+      "tsne_x": -32.101,
+      "tsne_y": 4.429,
+      "pca_x": -0.66,
+      "pca_y": -0.643,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002216_9081ca48-ad5e-4d65-93d6-5dfdd760f003.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002216_9081ca48-ad5e-4d65-93d6-5dfdd760f003.jpg"
+    },
+    {
+      "tsne_x": -31.375,
+      "tsne_y": 3.463,
+      "pca_x": -0.672,
+      "pca_y": -0.593,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002217_7063607b-fffc-4428-aaff-1fb44df8693b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002217_7063607b-fffc-4428-aaff-1fb44df8693b.jpg"
+    },
+    {
+      "tsne_x": -32.313,
+      "tsne_y": 3.822,
+      "pca_x": -0.683,
+      "pca_y": -0.658,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002218_d1208156-5360-451c-8b11-a171f8fc8075.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002218_d1208156-5360-451c-8b11-a171f8fc8075.jpg"
+    },
+    {
+      "tsne_x": -33.561,
+      "tsne_y": 4.384,
+      "pca_x": -0.646,
+      "pca_y": -0.691,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002219_e9faab0f-76f4-48a9-b1a7-5b00d9e4c656.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002219_e9faab0f-76f4-48a9-b1a7-5b00d9e4c656.jpg"
+    },
+    {
+      "tsne_x": -31.028,
+      "tsne_y": 3.343,
+      "pca_x": -0.641,
+      "pca_y": -0.675,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002220_22e13b5d-646e-426e-b59a-70093f71c1ee.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002220_22e13b5d-646e-426e-b59a-70093f71c1ee.jpg"
+    },
+    {
+      "tsne_x": -32.511,
+      "tsne_y": 2.787,
+      "pca_x": -0.667,
+      "pca_y": -0.656,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002221_77622a23-78a5-4e88-8fd4-1db8e229f847.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002221_77622a23-78a5-4e88-8fd4-1db8e229f847.jpg"
+    },
+    {
+      "tsne_x": -32.006,
+      "tsne_y": 4.596,
+      "pca_x": -0.654,
+      "pca_y": -0.635,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002222_e9051454-a5e7-4bf3-9f47-378e4fa8bc3a.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002222_e9051454-a5e7-4bf3-9f47-378e4fa8bc3a.jpg"
+    },
+    {
+      "tsne_x": -33.739,
+      "tsne_y": 5.596,
+      "pca_x": -0.64,
+      "pca_y": -0.676,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002223_2b188312-55f3-4498-88d8-607da2c7fb8b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002223_2b188312-55f3-4498-88d8-607da2c7fb8b.jpg"
+    },
+    {
+      "tsne_x": -35.069,
+      "tsne_y": 2.881,
+      "pca_x": -0.597,
+      "pca_y": -0.661,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002224_77dd0569-4d84-4281-88a1-6b98a867991c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002224_77dd0569-4d84-4281-88a1-6b98a867991c.jpg"
+    },
+    {
+      "tsne_x": 14.712,
+      "tsne_y": 6.26,
+      "pca_x": 0.319,
+      "pca_y": -0.227,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000418_6271b098-ac26-4d8e-9f56-6946263430a2.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000418_6271b098-ac26-4d8e-9f56-6946263430a2.jpg"
+    },
+    {
+      "tsne_x": 14.438,
+      "tsne_y": 7.361,
+      "pca_x": 0.027,
+      "pca_y": -0.116,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000419_fd5a19c1-38ca-461d-b25c-d878784b368a.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000419_fd5a19c1-38ca-461d-b25c-d878784b368a.jpg"
+    },
+    {
+      "tsne_x": 14.532,
+      "tsne_y": 6.8,
+      "pca_x": 0.114,
+      "pca_y": -0.168,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000420_2681a6a6-a15f-4e9b-902e-9a3dc375895b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000420_2681a6a6-a15f-4e9b-902e-9a3dc375895b.jpg"
+    },
+    {
+      "tsne_x": 13.787,
+      "tsne_y": 7.38,
+      "pca_x": 0.01,
+      "pca_y": -0.235,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000421_4417c820-2271-4843-bdb2-327d2752d6d2.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000421_4417c820-2271-4843-bdb2-327d2752d6d2.jpg"
+    },
+    {
+      "tsne_x": 13.895,
+      "tsne_y": 7.544,
+      "pca_x": -0.009,
+      "pca_y": -0.15,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000422_e76bf7df-f904-4d8f-b2ce-95693eff51a4.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000422_e76bf7df-f904-4d8f-b2ce-95693eff51a4.jpg"
+    },
+    {
+      "tsne_x": 14.02,
+      "tsne_y": 7.102,
+      "pca_x": 0.081,
+      "pca_y": -0.173,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000423_dcdb44f0-9653-4d2b-984e-6828fbaf0a2e.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000423_dcdb44f0-9653-4d2b-984e-6828fbaf0a2e.jpg"
+    },
+    {
+      "tsne_x": 14.67,
+      "tsne_y": 7.417,
+      "pca_x": 0.06,
+      "pca_y": -0.095,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000424_ea8d4e55-95af-4c41-8fa0-e86814ccdef0.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000424_ea8d4e55-95af-4c41-8fa0-e86814ccdef0.jpg"
+    },
+    {
+      "tsne_x": 14.111,
+      "tsne_y": 7.59,
+      "pca_x": 0.027,
+      "pca_y": -0.131,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000425_e3249394-a8b1-4ee3-a22e-d08a01e3c7eb.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000425_e3249394-a8b1-4ee3-a22e-d08a01e3c7eb.jpg"
+    },
+    {
+      "tsne_x": 14.081,
+      "tsne_y": 7.787,
+      "pca_x": 0.002,
+      "pca_y": -0.185,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000426_143a0871-2773-4be1-9330-142666d18539.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000426_143a0871-2773-4be1-9330-142666d18539.jpg"
+    },
+    {
+      "tsne_x": 14.465,
+      "tsne_y": 7.636,
+      "pca_x": 0.028,
+      "pca_y": -0.107,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000427_8fa0e0d9-f92c-4375-8963-c643151b365e.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000427_8fa0e0d9-f92c-4375-8963-c643151b365e.jpg"
+    },
+    {
+      "tsne_x": 11.885,
+      "tsne_y": 14.554,
+      "pca_x": -0.163,
+      "pca_y": 0.331,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000428_cf7df99d-9039-4c2b-acd6-8855c47cd5e0.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000428_cf7df99d-9039-4c2b-acd6-8855c47cd5e0.jpg"
+    },
+    {
+      "tsne_x": 11.301,
+      "tsne_y": 14.792,
+      "pca_x": -0.188,
+      "pca_y": 0.449,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000429_8b5131de-b983-4bdf-8d77-089bcef0cd67.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000429_8b5131de-b983-4bdf-8d77-089bcef0cd67.jpg"
+    },
+    {
+      "tsne_x": 12.759,
+      "tsne_y": 13.344,
+      "pca_x": -0.195,
+      "pca_y": 0.223,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000430_ae7086ee-9529-4049-8596-22d512c549ca.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000430_ae7086ee-9529-4049-8596-22d512c549ca.jpg"
+    },
+    {
+      "tsne_x": 11.551,
+      "tsne_y": 15.623,
+      "pca_x": -0.253,
+      "pca_y": 0.444,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000431_b9208adb-b050-44ed-a5b5-a29405103def.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000431_b9208adb-b050-44ed-a5b5-a29405103def.jpg"
+    },
+    {
+      "tsne_x": 12.047,
+      "tsne_y": 13.446,
+      "pca_x": -0.16,
+      "pca_y": 0.334,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000432_ca046675-833b-45fa-a71b-778435582c96.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000432_ca046675-833b-45fa-a71b-778435582c96.jpg"
+    },
+    {
+      "tsne_x": -5.621,
+      "tsne_y": 24.448,
+      "pca_x": -0.277,
+      "pca_y": 0.234,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009580_059c85e7-19bf-49f9-9b3e-d5b29c3b93c7.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009580_059c85e7-19bf-49f9-9b3e-d5b29c3b93c7.jpg"
+    },
+    {
+      "tsne_x": -2.807,
+      "tsne_y": 21.057,
+      "pca_x": -0.137,
+      "pca_y": 0.412,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009581_6392816e-f6e9-4e1a-a076-8cb4e916ae57.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009581_6392816e-f6e9-4e1a-a076-8cb4e916ae57.jpg"
+    },
+    {
+      "tsne_x": -3.461,
+      "tsne_y": 21.259,
+      "pca_x": -0.19,
+      "pca_y": 0.406,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009582_7609f495-93da-4a7c-86af-3f62b6146771.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009582_7609f495-93da-4a7c-86af-3f62b6146771.jpg"
+    },
+    {
+      "tsne_x": -3.541,
+      "tsne_y": 23.071,
+      "pca_x": -0.227,
+      "pca_y": 0.375,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009583_da33960f-4972-49e0-90d8-bfb5ed745304.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009583_da33960f-4972-49e0-90d8-bfb5ed745304.jpg"
+    },
+    {
+      "tsne_x": -6.252,
+      "tsne_y": 21.855,
+      "pca_x": -0.312,
+      "pca_y": 0.353,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009584_7cbdd8be-b19e-48ca-af4a-ded6abeba978.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009584_7cbdd8be-b19e-48ca-af4a-ded6abeba978.jpg"
+    },
+    {
+      "tsne_x": -5.197,
+      "tsne_y": 21.248,
+      "pca_x": -0.366,
+      "pca_y": 0.238,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009585_d69c3cef-c03a-4a72-9828-be83bef98b7c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009585_d69c3cef-c03a-4a72-9828-be83bef98b7c.jpg"
+    },
+    {
+      "tsne_x": -6.092,
+      "tsne_y": 22.484,
+      "pca_x": -0.277,
+      "pca_y": 0.36,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009586_2eab5abb-4898-4442-a1bb-1ed8a8f9ab76.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009586_2eab5abb-4898-4442-a1bb-1ed8a8f9ab76.jpg"
+    },
+    {
+      "tsne_x": -7.33,
+      "tsne_y": 22.567,
+      "pca_x": -0.258,
+      "pca_y": 0.236,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009587_73d0ca38-0d08-4111-9038-ca94791498c8.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009587_73d0ca38-0d08-4111-9038-ca94791498c8.jpg"
+    },
+    {
+      "tsne_x": -3.984,
+      "tsne_y": 20.656,
+      "pca_x": -0.236,
+      "pca_y": 0.346,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009588_1bf9b5cb-815e-4470-b5f7-c382c690e711.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009588_1bf9b5cb-815e-4470-b5f7-c382c690e711.jpg"
+    },
+    {
+      "tsne_x": -5.709,
+      "tsne_y": 23.55,
+      "pca_x": -0.347,
+      "pca_y": 0.184,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009589_f7378d54-d53f-45b9-b465-b72b12707d94.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009589_f7378d54-d53f-45b9-b465-b72b12707d94.jpg"
+    },
+    {
+      "tsne_x": -4.996,
+      "tsne_y": 22.098,
+      "pca_x": -0.338,
+      "pca_y": 0.33,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009590_0f7fd827-1caf-4330-974f-f62b23a7bd8b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009590_0f7fd827-1caf-4330-974f-f62b23a7bd8b.jpg"
+    },
+    {
+      "tsne_x": -4.892,
+      "tsne_y": 22.871,
+      "pca_x": -0.304,
+      "pca_y": 0.33,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009591_50a623be-a64a-4190-802d-35af7649d327.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009591_50a623be-a64a-4190-802d-35af7649d327.jpg"
+    },
+    {
+      "tsne_x": -3.179,
+      "tsne_y": 22.06,
+      "pca_x": -0.311,
+      "pca_y": 0.357,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009592_af269b74-dd17-45bb-99cc-bb84de184e11.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009592_af269b74-dd17-45bb-99cc-bb84de184e11.jpg"
+    },
+    {
+      "tsne_x": -3.203,
+      "tsne_y": 22.18,
+      "pca_x": -0.299,
+      "pca_y": 0.409,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009593_382c49af-a5ca-44ef-8b95-681a50a7a3f1.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009593_382c49af-a5ca-44ef-8b95-681a50a7a3f1.jpg"
+    },
+    {
+      "tsne_x": -4.247,
+      "tsne_y": 22.369,
+      "pca_x": -0.283,
+      "pca_y": 0.347,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009594_e47eecd3-ee7e-4296-beb3-1d2e61150450.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009594_e47eecd3-ee7e-4296-beb3-1d2e61150450.jpg"
+    },
+    {
+      "tsne_x": -2.525,
+      "tsne_y": 22.881,
+      "pca_x": -0.274,
+      "pca_y": 0.473,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009595_7d2df10b-d97d-49f9-8407-daa7358b0876.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009595_7d2df10b-d97d-49f9-8407-daa7358b0876.jpg"
+    },
+    {
+      "tsne_x": -5.893,
+      "tsne_y": 24.824,
+      "pca_x": -0.241,
+      "pca_y": 0.175,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009596_323916ad-b8bd-4cc5-a015-051af82ace72.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009596_323916ad-b8bd-4cc5-a015-051af82ace72.jpg"
+    },
+    {
+      "tsne_x": 22.504,
+      "tsne_y": -1.925,
+      "pca_x": -0.114,
+      "pca_y": 0.415,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000334_e285c7a7-4117-47a1-85a4-beb45bc17815.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000334_e285c7a7-4117-47a1-85a4-beb45bc17815.jpg"
+    },
+    {
+      "tsne_x": 5.496,
+      "tsne_y": 16.655,
+      "pca_x": -0.323,
+      "pca_y": 0.467,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000335_0585c846-490d-4d03-acfb-11e35442cc77.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000335_0585c846-490d-4d03-acfb-11e35442cc77.jpg"
+    },
+    {
+      "tsne_x": 6.108,
+      "tsne_y": 13.672,
+      "pca_x": -0.249,
+      "pca_y": 0.512,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000336_0873bd15-fbee-43fc-bee1-4090ddc872bd.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000336_0873bd15-fbee-43fc-bee1-4090ddc872bd.jpg"
+    },
+    {
+      "tsne_x": 6.811,
+      "tsne_y": 13.473,
+      "pca_x": -0.139,
+      "pca_y": 0.451,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000337_2f3f4568-8228-4d1e-8999-e22db0817d95.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000337_2f3f4568-8228-4d1e-8999-e22db0817d95.jpg"
+    },
+    {
+      "tsne_x": 6.814,
+      "tsne_y": 14.036,
+      "pca_x": -0.097,
+      "pca_y": 0.482,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000338_9169882b-c55e-48a6-b88f-3915c0743994.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000338_9169882b-c55e-48a6-b88f-3915c0743994.jpg"
+    },
+    {
+      "tsne_x": 5.514,
+      "tsne_y": 15.834,
+      "pca_x": -0.239,
+      "pca_y": 0.379,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000339_ddc6a30f-ace5-487f-bbf8-0d4241da07cd.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000339_ddc6a30f-ace5-487f-bbf8-0d4241da07cd.jpg"
+    },
+    {
+      "tsne_x": 6.395,
+      "tsne_y": 16.86,
+      "pca_x": -0.282,
+      "pca_y": 0.486,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000340_4d07fe09-b479-4a36-882b-7b3a5ee8bbcb.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000340_4d07fe09-b479-4a36-882b-7b3a5ee8bbcb.jpg"
+    },
+    {
+      "tsne_x": 5.376,
+      "tsne_y": 15.224,
+      "pca_x": -0.366,
+      "pca_y": 0.236,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000341_deb2a5fe-3631-421b-96fb-4fc582219d5a.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000341_deb2a5fe-3631-421b-96fb-4fc582219d5a.jpg"
+    },
+    {
+      "tsne_x": 5.267,
+      "tsne_y": 14.824,
+      "pca_x": -0.242,
+      "pca_y": 0.261,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000342_8a8c6a6e-85c2-4a4e-9099-49b0f86fd218.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000342_8a8c6a6e-85c2-4a4e-9099-49b0f86fd218.jpg"
+    },
+    {
+      "tsne_x": 6.574,
+      "tsne_y": 14.517,
+      "pca_x": -0.121,
+      "pca_y": 0.408,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000343_4885a540-0146-4c83-acf6-094d1e917ef7.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000343_4885a540-0146-4c83-acf6-094d1e917ef7.jpg"
+    },
+    {
+      "tsne_x": 7.189,
+      "tsne_y": 14.929,
+      "pca_x": -0.135,
+      "pca_y": 0.472,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000344_c349b541-295c-4fae-b6a9-ced3500ee99b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000344_c349b541-295c-4fae-b6a9-ced3500ee99b.jpg"
+    },
+    {
+      "tsne_x": 8.264,
+      "tsne_y": 13.253,
+      "pca_x": -0.094,
+      "pca_y": 0.464,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000345_0f1f67a4-d7fb-4c11-aeee-89a85fab18c0.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000345_0f1f67a4-d7fb-4c11-aeee-89a85fab18c0.jpg"
+    },
+    {
+      "tsne_x": 6.978,
+      "tsne_y": 14.266,
+      "pca_x": -0.136,
+      "pca_y": 0.538,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000346_8ca38012-5f6f-4f61-bce2-cc430793b2e0.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000346_8ca38012-5f6f-4f61-bce2-cc430793b2e0.jpg"
+    },
+    {
+      "tsne_x": 8.07,
+      "tsne_y": 15.442,
+      "pca_x": -0.149,
+      "pca_y": 0.447,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000448_2ad31489-e572-4220-b339-c054598853e3.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000448_2ad31489-e572-4220-b339-c054598853e3.jpg"
+    },
+    {
+      "tsne_x": 9.293,
+      "tsne_y": 17.169,
+      "pca_x": -0.227,
+      "pca_y": 0.503,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000449_f48046e2-8299-4152-9aa9-367ed8e5e661.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000449_f48046e2-8299-4152-9aa9-367ed8e5e661.jpg"
+    },
+    {
+      "tsne_x": -11.779,
+      "tsne_y": -10.378,
+      "pca_x": 0.113,
+      "pca_y": -0.114,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0000.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0000.jpg"
+    },
+    {
+      "tsne_x": -3.379,
+      "tsne_y": -13.123,
+      "pca_x": 0.304,
+      "pca_y": 0.116,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0002.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0002.jpg"
+    },
+    {
+      "tsne_x": -3.38,
+      "tsne_y": -13.274,
+      "pca_x": 0.303,
+      "pca_y": 0.063,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0003.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0003.jpg"
+    },
+    {
+      "tsne_x": -4.578,
+      "tsne_y": -13.269,
+      "pca_x": 0.307,
+      "pca_y": -0.115,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0005.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0005.jpg"
+    },
+    {
+      "tsne_x": -11.404,
+      "tsne_y": -10.051,
+      "pca_x": -0.012,
+      "pca_y": 0.096,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0006.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0006.jpg"
+    },
+    {
+      "tsne_x": -8.459,
+      "tsne_y": -8.988,
+      "pca_x": -0.022,
+      "pca_y": 0.329,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0008.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0008.jpg"
+    },
+    {
+      "tsne_x": -7.191,
+      "tsne_y": -9.425,
+      "pca_x": 0.127,
+      "pca_y": 0.273,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0010.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0010.jpg"
+    },
+    {
+      "tsne_x": -8.933,
+      "tsne_y": -9.28,
+      "pca_x": 0.022,
+      "pca_y": 0.268,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0011.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0011.jpg"
+    },
+    {
+      "tsne_x": -8.546,
+      "tsne_y": -8.911,
+      "pca_x": 0.036,
+      "pca_y": 0.306,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0012.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0012.jpg"
+    },
+    {
+      "tsne_x": -8.612,
+      "tsne_y": -13.668,
+      "pca_x": 0.061,
+      "pca_y": 0.134,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0013.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0013.jpg"
+    },
+    {
+      "tsne_x": -5.825,
+      "tsne_y": -10.647,
+      "pca_x": 0.291,
+      "pca_y": 0.075,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0015.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0015.jpg"
+    },
+    {
+      "tsne_x": -6.683,
+      "tsne_y": -10.387,
+      "pca_x": 0.162,
+      "pca_y": 0.207,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0016.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0016.jpg"
+    },
+    {
+      "tsne_x": -8.05,
+      "tsne_y": -10.991,
+      "pca_x": 0.035,
+      "pca_y": 0.298,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0017.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0017.jpg"
+    },
+    {
+      "tsne_x": -8.106,
+      "tsne_y": -14.193,
+      "pca_x": 0.28,
+      "pca_y": 0.041,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0019.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0019.jpg"
+    },
+    {
+      "tsne_x": -11.263,
+      "tsne_y": -9.74,
+      "pca_x": -0.025,
+      "pca_y": 0.045,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0020.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0020.jpg"
+    },
+    {
+      "tsne_x": -10.908,
+      "tsne_y": -9.455,
+      "pca_x": 0.084,
+      "pca_y": 0.023,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0021.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0021.jpg"
+    },
+    {
+      "tsne_x": -7.478,
+      "tsne_y": -8.44,
+      "pca_x": 0.035,
+      "pca_y": 0.321,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0022.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0022.jpg"
+    },
+    {
+      "tsne_x": 4.722,
+      "tsne_y": -12.36,
+      "pca_x": 0.606,
+      "pca_y": -0.402,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0024.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0024.jpg"
+    },
+    {
+      "tsne_x": -6.107,
+      "tsne_y": -9.234,
+      "pca_x": 0.201,
+      "pca_y": 0.161,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0025.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0025.jpg"
+    },
+    {
+      "tsne_x": -7.97,
+      "tsne_y": -9.385,
+      "pca_x": 0.023,
+      "pca_y": 0.321,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0026.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0026.jpg"
+    },
+    {
+      "tsne_x": -7.059,
+      "tsne_y": -10.72,
+      "pca_x": 0.111,
+      "pca_y": 0.212,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0029.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0029.jpg"
+    },
+    {
+      "tsne_x": -4.112,
+      "tsne_y": -10.971,
+      "pca_x": 0.41,
+      "pca_y": -0.098,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0030.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0030.jpg"
+    },
+    {
+      "tsne_x": -8.673,
+      "tsne_y": -10.265,
+      "pca_x": -0.038,
+      "pca_y": 0.298,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0031.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0031.jpg"
+    },
+    {
+      "tsne_x": -7.892,
+      "tsne_y": -14.755,
+      "pca_x": 0.321,
+      "pca_y": -0.058,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0034.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0034.jpg"
+    },
+    {
+      "tsne_x": -7.093,
+      "tsne_y": -13.156,
+      "pca_x": 0.277,
+      "pca_y": 0.069,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0035.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0035.jpg"
+    },
+    {
+      "tsne_x": 2.765,
+      "tsne_y": -13.398,
+      "pca_x": 0.59,
+      "pca_y": -0.292,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0036.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0036.jpg"
+    },
+    {
+      "tsne_x": -4.974,
+      "tsne_y": -8.988,
+      "pca_x": 0.264,
+      "pca_y": 0.082,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0037.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0037.jpg"
+    },
+    {
+      "tsne_x": -5.102,
+      "tsne_y": -8.949,
+      "pca_x": 0.149,
+      "pca_y": 0.216,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0038.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0038.jpg"
+    },
+    {
+      "tsne_x": -7.377,
+      "tsne_y": -11.528,
+      "pca_x": 0.129,
+      "pca_y": 0.225,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0039.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0039.jpg"
+    },
+    {
+      "tsne_x": -6.876,
+      "tsne_y": -9.143,
+      "pca_x": 0.148,
+      "pca_y": 0.303,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0040.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0040.jpg"
+    },
+    {
+      "tsne_x": 2.023,
+      "tsne_y": -13.08,
+      "pca_x": 0.607,
+      "pca_y": -0.265,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0042.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0042.jpg"
+    },
+    {
+      "tsne_x": -0.962,
+      "tsne_y": -13.197,
+      "pca_x": 0.511,
+      "pca_y": -0.134,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0043.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0043.jpg"
+    },
+    {
+      "tsne_x": 0.194,
+      "tsne_y": -13.25,
+      "pca_x": 0.477,
+      "pca_y": -0.075,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0045.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0045.jpg"
+    },
+    {
+      "tsne_x": 1.001,
+      "tsne_y": -12.847,
+      "pca_x": 0.51,
+      "pca_y": -0.16,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_valid_0046.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_valid_0046.jpg"
+    },
+    {
+      "tsne_x": 5.381,
+      "tsne_y": -14.39,
+      "pca_x": 0.606,
+      "pca_y": -0.482,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134520_0343_D_06.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134520_0343_D_06.jpg"
+    },
+    {
+      "tsne_x": 8.464,
+      "tsne_y": -16.287,
+      "pca_x": 0.478,
+      "pca_y": -0.29,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134520_0343_D_09.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134520_0343_D_09.jpg"
+    },
+    {
+      "tsne_x": 5.254,
+      "tsne_y": -14.396,
+      "pca_x": 0.562,
+      "pca_y": -0.385,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134520_0343_D_13.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134520_0343_D_13.jpg"
+    },
+    {
+      "tsne_x": 5.323,
+      "tsne_y": -14.474,
+      "pca_x": 0.593,
+      "pca_y": -0.444,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134520_0343_D_14.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134520_0343_D_14.jpg"
+    },
+    {
+      "tsne_x": 9.814,
+      "tsne_y": -11.633,
+      "pca_x": 0.412,
+      "pca_y": -0.259,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_06.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_06.jpg"
+    },
+    {
+      "tsne_x": 11.124,
+      "tsne_y": -12.697,
+      "pca_x": 0.397,
+      "pca_y": -0.227,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_15.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_15.jpg"
+    },
+    {
+      "tsne_x": 9.908,
+      "tsne_y": -13.532,
+      "pca_x": 0.546,
+      "pca_y": -0.339,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_16.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_16.jpg"
+    },
+    {
+      "tsne_x": 7.034,
+      "tsne_y": -12.463,
+      "pca_x": 0.469,
+      "pca_y": -0.412,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_00.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_00.jpg"
+    },
+    {
+      "tsne_x": 9.382,
+      "tsne_y": -12.7,
+      "pca_x": 0.546,
+      "pca_y": -0.342,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_05.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_05.jpg"
+    },
+    {
+      "tsne_x": 9.239,
+      "tsne_y": -13.654,
+      "pca_x": 0.527,
+      "pca_y": -0.372,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_10.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_10.jpg"
+    },
+    {
+      "tsne_x": 9.158,
+      "tsne_y": -12.525,
+      "pca_x": 0.523,
+      "pca_y": -0.317,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_18.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_18.jpg"
+    },
+    {
+      "tsne_x": 7.852,
+      "tsne_y": -13.902,
+      "pca_x": 0.58,
+      "pca_y": -0.33,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_19.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_19.jpg"
+    },
+    {
+      "tsne_x": 6.971,
+      "tsne_y": -14.617,
+      "pca_x": 0.603,
+      "pca_y": -0.417,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615115515_0164_D_03.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615115515_0164_D_03.jpg"
+    },
+    {
+      "tsne_x": 5.031,
+      "tsne_y": -14.299,
+      "pca_x": 0.578,
+      "pca_y": -0.437,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615115515_0164_D_14.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615115515_0164_D_14.jpg"
+    },
+    {
+      "tsne_x": 7.021,
+      "tsne_y": -14.714,
+      "pca_x": 0.643,
+      "pca_y": -0.452,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615115515_0164_D_19.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615115515_0164_D_19.jpg"
+    },
+    {
+      "tsne_x": 5.829,
+      "tsne_y": -12.204,
+      "pca_x": 0.605,
+      "pca_y": -0.405,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134710_0347_D_03.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134710_0347_D_03.jpg"
+    },
+    {
+      "tsne_x": 9.493,
+      "tsne_y": -15.484,
+      "pca_x": 0.436,
+      "pca_y": -0.118,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134710_0347_D_05.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134710_0347_D_05.jpg"
+    },
+    {
+      "tsne_x": 9.788,
+      "tsne_y": -14.97,
+      "pca_x": 0.499,
+      "pca_y": -0.246,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134710_0347_D_14.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134710_0347_D_14.jpg"
+    },
+    {
+      "tsne_x": 25.563,
+      "tsne_y": -4.761,
+      "pca_x": 0.097,
+      "pca_y": 0.111,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009669_814dd60f-81ac-4827-a762-ddfde39adb7c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009669_814dd60f-81ac-4827-a762-ddfde39adb7c.jpg"
+    },
+    {
+      "tsne_x": 24.162,
+      "tsne_y": -4.958,
+      "pca_x": 0.128,
+      "pca_y": 0.105,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009670_171361a4-f358-462a-9471-3e8ba4ac0e9c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009670_171361a4-f358-462a-9471-3e8ba4ac0e9c.jpg"
+    },
+    {
+      "tsne_x": 24.609,
+      "tsne_y": -6.338,
+      "pca_x": 0.081,
+      "pca_y": 0.195,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009671_45badebf-1d72-4a18-8c15-ab0ea10f39b9.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009671_45badebf-1d72-4a18-8c15-ab0ea10f39b9.jpg"
+    },
+    {
+      "tsne_x": 26.426,
+      "tsne_y": -3.961,
+      "pca_x": -0.03,
+      "pca_y": 0.203,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009672_7e34f25a-c432-4779-bee3-e817b645b898.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009672_7e34f25a-c432-4779-bee3-e817b645b898.jpg"
+    },
+    {
+      "tsne_x": 24.138,
+      "tsne_y": -4.203,
+      "pca_x": 0.093,
+      "pca_y": 0.174,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009673_2d3c242c-3b7c-401c-84f6-9323993e878e.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009673_2d3c242c-3b7c-401c-84f6-9323993e878e.jpg"
+    },
+    {
+      "tsne_x": 23.153,
+      "tsne_y": -1.487,
+      "pca_x": -0.006,
+      "pca_y": 0.35,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009674_1cd3c85a-c0a8-41b7-8b95-6eb0ca99b04c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009674_1cd3c85a-c0a8-41b7-8b95-6eb0ca99b04c.jpg"
+    },
+    {
+      "tsne_x": 24.634,
+      "tsne_y": -6.081,
+      "pca_x": 0.075,
+      "pca_y": 0.19,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009675_92d3db43-361d-4330-b04b-1f6a2466337e.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009675_92d3db43-361d-4330-b04b-1f6a2466337e.jpg"
+    },
+    {
+      "tsne_x": 23.378,
+      "tsne_y": -5.158,
+      "pca_x": 0.138,
+      "pca_y": 0.152,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009676_f50e3bd8-f497-45a2-a0c1-631372952019.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009676_f50e3bd8-f497-45a2-a0c1-631372952019.jpg"
+    },
+    {
+      "tsne_x": 22.199,
+      "tsne_y": -4.863,
+      "pca_x": 0.208,
+      "pca_y": 0.103,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009677_8b59e73a-cf5e-4190-baf0-bede0fb5f39c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009677_8b59e73a-cf5e-4190-baf0-bede0fb5f39c.jpg"
+    },
+    {
+      "tsne_x": 23.203,
+      "tsne_y": -3.907,
+      "pca_x": 0.064,
+      "pca_y": 0.225,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009678_98fd3ea1-2e5f-4a40-8741-19650b41c687.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009678_98fd3ea1-2e5f-4a40-8741-19650b41c687.jpg"
+    },
+    {
+      "tsne_x": 24.979,
+      "tsne_y": -3.155,
+      "pca_x": 0.051,
+      "pca_y": 0.129,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009679_185e371e-5bac-4581-bd98-079202ba2bb0.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009679_185e371e-5bac-4581-bd98-079202ba2bb0.jpg"
+    },
+    {
+      "tsne_x": 22.696,
+      "tsne_y": -6.739,
+      "pca_x": 0.116,
+      "pca_y": 0.173,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009680_1c7dacc0-8154-4bfc-93ec-95fc0e3ec58c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009680_1c7dacc0-8154-4bfc-93ec-95fc0e3ec58c.jpg"
+    },
+    {
+      "tsne_x": 24.654,
+      "tsne_y": -4.657,
+      "pca_x": 0.142,
+      "pca_y": 0.109,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009681_187d98ab-e2d4-4994-ad8b-4128aad29ebf.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009681_187d98ab-e2d4-4994-ad8b-4128aad29ebf.jpg"
+    },
+    {
+      "tsne_x": 24.228,
+      "tsne_y": -4.919,
+      "pca_x": 0.191,
+      "pca_y": 0.016,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009682_22b1ec2c-5bf7-452b-9d23-8d265f0f25c7.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009682_22b1ec2c-5bf7-452b-9d23-8d265f0f25c7.jpg"
+    },
+    {
+      "tsne_x": 25.622,
+      "tsne_y": -5.455,
+      "pca_x": 0.088,
+      "pca_y": 0.179,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009683_d5f50387-1218-4eca-a676-dbe089e10f54.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009683_d5f50387-1218-4eca-a676-dbe089e10f54.jpg"
+    },
+    {
+      "tsne_x": 23.185,
+      "tsne_y": -6.367,
+      "pca_x": 0.245,
+      "pca_y": 0.069,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009684_327123f0-b502-412a-9959-768930ca59df.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009684_327123f0-b502-412a-9959-768930ca59df.jpg"
+    },
+    {
+      "tsne_x": 23.372,
+      "tsne_y": -4.665,
+      "pca_x": 0.118,
+      "pca_y": 0.128,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009685_8898eee3-ce22-4093-bc03-dd2878e7720f.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009685_8898eee3-ce22-4093-bc03-dd2878e7720f.jpg"
+    },
+    {
+      "tsne_x": 23.599,
+      "tsne_y": -4.616,
+      "pca_x": 0.116,
+      "pca_y": 0.167,
+      "species": "couch_grass",
+      "species_ru": "Пырей ползучий",
+      "filename": "009686_27d95a54-d3b4-444f-bead-45e8685d35c2.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Пырей ползучий/Стеблевание/009686_27d95a54-d3b4-444f-bead-45e8685d35c2.jpg"
+    },
+    {
+      "tsne_x": -34.96,
+      "tsne_y": 4.603,
+      "pca_x": -0.6,
+      "pca_y": -0.707,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002225_0c560778-13ee-4424-a8bb-694676c3a68c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002225_0c560778-13ee-4424-a8bb-694676c3a68c.jpg"
+    },
+    {
+      "tsne_x": -33.992,
+      "tsne_y": 3.316,
+      "pca_x": -0.655,
+      "pca_y": -0.695,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002226_0595f938-a4ef-49cd-95c8-8f89c6c847dd.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002226_0595f938-a4ef-49cd-95c8-8f89c6c847dd.jpg"
+    },
+    {
+      "tsne_x": -34.34,
+      "tsne_y": 4.423,
+      "pca_x": -0.644,
+      "pca_y": -0.665,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002227_9ad3eab6-f5c5-4023-b7e4-3a20acbb3e85.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002227_9ad3eab6-f5c5-4023-b7e4-3a20acbb3e85.jpg"
+    },
+    {
+      "tsne_x": -32.638,
+      "tsne_y": 4.884,
+      "pca_x": -0.635,
+      "pca_y": -0.689,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002228_89f4fe0f-b687-4350-adac-830b23a692c4.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002228_89f4fe0f-b687-4350-adac-830b23a692c4.jpg"
+    },
+    {
+      "tsne_x": -31.041,
+      "tsne_y": 5.542,
+      "pca_x": -0.636,
+      "pca_y": -0.629,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002229_39eae23d-8b95-4f1a-97f5-24d09a113852.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002229_39eae23d-8b95-4f1a-97f5-24d09a113852.jpg"
+    },
+    {
+      "tsne_x": -29.889,
+      "tsne_y": 4.289,
+      "pca_x": -0.612,
+      "pca_y": -0.584,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002230_d9f626c3-a52b-4791-ac51-b4030d657378.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002230_d9f626c3-a52b-4791-ac51-b4030d657378.jpg"
+    },
+    {
+      "tsne_x": -34.638,
+      "tsne_y": 4.147,
+      "pca_x": -0.627,
+      "pca_y": -0.71,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002231_b826b7c5-ba1c-4f1d-b4d8-e3f95b9f5c9b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002231_b826b7c5-ba1c-4f1d-b4d8-e3f95b9f5c9b.jpg"
+    },
+    {
+      "tsne_x": -34.931,
+      "tsne_y": 5.615,
+      "pca_x": -0.58,
+      "pca_y": -0.712,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002232_e2d29eb9-6487-462a-8e4a-7cf3df5ebdbe.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002232_e2d29eb9-6487-462a-8e4a-7cf3df5ebdbe.jpg"
+    },
+    {
+      "tsne_x": -33.84,
+      "tsne_y": 4.177,
+      "pca_x": -0.646,
+      "pca_y": -0.721,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002233_28572c2c-2230-4a08-bfdb-091388797149.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002233_28572c2c-2230-4a08-bfdb-091388797149.jpg"
+    },
+    {
+      "tsne_x": -33.322,
+      "tsne_y": 5.401,
+      "pca_x": -0.644,
+      "pca_y": -0.7,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002234_8d2e58ae-61b6-4b4b-b62a-46d1de94e8b6.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002234_8d2e58ae-61b6-4b4b-b62a-46d1de94e8b6.jpg"
+    },
+    {
+      "tsne_x": -31.973,
+      "tsne_y": 5.333,
+      "pca_x": -0.659,
+      "pca_y": -0.691,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002235_cc5fcb2d-380c-49b3-9ad1-66360f968ac9.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002235_cc5fcb2d-380c-49b3-9ad1-66360f968ac9.jpg"
+    },
+    {
+      "tsne_x": -33.11,
+      "tsne_y": 2.138,
+      "pca_x": -0.616,
+      "pca_y": -0.635,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002236_c6db8c67-afc7-4db8-b82c-060b905a0a94.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002236_c6db8c67-afc7-4db8-b82c-060b905a0a94.jpg"
+    },
+    {
+      "tsne_x": -33.043,
+      "tsne_y": 6.501,
+      "pca_x": -0.621,
+      "pca_y": -0.696,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002237_3a95e84a-76e0-4fe2-9e48-cae0d64933bf.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002237_3a95e84a-76e0-4fe2-9e48-cae0d64933bf.jpg"
+    },
+    {
+      "tsne_x": -33.677,
+      "tsne_y": 5.113,
+      "pca_x": -0.642,
+      "pca_y": -0.707,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002238_99e8dcf5-d491-4265-9b74-87ab03feaba2.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002238_99e8dcf5-d491-4265-9b74-87ab03feaba2.jpg"
+    },
+    {
+      "tsne_x": -31.347,
+      "tsne_y": 5.06,
+      "pca_x": -0.666,
+      "pca_y": -0.641,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002239_16a47f09-82fa-45fe-9a9c-479d17e85813.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002239_16a47f09-82fa-45fe-9a9c-479d17e85813.jpg"
+    },
+    {
+      "tsne_x": -31.55,
+      "tsne_y": 5.63,
+      "pca_x": -0.645,
+      "pca_y": -0.668,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002240_e520ddd5-b062-473c-b898-39d69c1a4abc.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002240_e520ddd5-b062-473c-b898-39d69c1a4abc.jpg"
+    },
+    {
+      "tsne_x": -31.549,
+      "tsne_y": 2.176,
+      "pca_x": -0.681,
+      "pca_y": -0.461,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002241_559e9614-71b1-4f24-9924-06e797850b91.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002241_559e9614-71b1-4f24-9924-06e797850b91.jpg"
+    },
+    {
+      "tsne_x": -31.511,
+      "tsne_y": 4.248,
+      "pca_x": -0.676,
+      "pca_y": -0.645,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002242_8691970a-7a46-454c-ac33-d8f351ffeaeb.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002242_8691970a-7a46-454c-ac33-d8f351ffeaeb.jpg"
+    },
+    {
+      "tsne_x": -32.405,
+      "tsne_y": 6.056,
+      "pca_x": -0.616,
+      "pca_y": -0.662,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "002243_033fadc1-ffb4-4bc4-8269-1c0213e6215e.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Розетка/002243_033fadc1-ffb4-4bc4-8269-1c0213e6215e.jpg"
+    },
+    {
+      "tsne_x": 13.246,
+      "tsne_y": 13.318,
+      "pca_x": -0.256,
+      "pca_y": 0.235,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000433_44b44e7e-da3d-4f21-bd94-1737d569ab74.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000433_44b44e7e-da3d-4f21-bd94-1737d569ab74.jpg"
+    },
+    {
+      "tsne_x": 13.341,
+      "tsne_y": 13.348,
+      "pca_x": -0.281,
+      "pca_y": 0.152,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000434_5ca9a594-58aa-490c-8915-23808370c1ba.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000434_5ca9a594-58aa-490c-8915-23808370c1ba.jpg"
+    },
+    {
+      "tsne_x": 15.194,
+      "tsne_y": 7.489,
+      "pca_x": 0.081,
+      "pca_y": -0.035,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000435_a13513a1-b481-4ee1-97a3-11cd33a38f67.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000435_a13513a1-b481-4ee1-97a3-11cd33a38f67.jpg"
+    },
+    {
+      "tsne_x": 11.664,
+      "tsne_y": 14.35,
+      "pca_x": -0.254,
+      "pca_y": 0.386,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000436_03ccc43d-12a2-4432-ba67-add9c2871027.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000436_03ccc43d-12a2-4432-ba67-add9c2871027.jpg"
+    },
+    {
+      "tsne_x": 10.8,
+      "tsne_y": 14.386,
+      "pca_x": -0.197,
+      "pca_y": 0.44,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000437_3380babe-2f2f-40be-9d47-0e1ea72b76d3.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000437_3380babe-2f2f-40be-9d47-0e1ea72b76d3.jpg"
+    },
+    {
+      "tsne_x": 11.227,
+      "tsne_y": 12.389,
+      "pca_x": -0.035,
+      "pca_y": 0.184,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000438_6dd98b49-f858-41a3-8e58-cc5142d3e044.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000438_6dd98b49-f858-41a3-8e58-cc5142d3e044.jpg"
+    },
+    {
+      "tsne_x": 10.682,
+      "tsne_y": 12.81,
+      "pca_x": -0.026,
+      "pca_y": 0.348,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000439_d1ca90b9-e0f2-47bf-8419-2bedace317cc.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000439_d1ca90b9-e0f2-47bf-8419-2bedace317cc.jpg"
+    },
+    {
+      "tsne_x": 11.453,
+      "tsne_y": 14.989,
+      "pca_x": -0.181,
+      "pca_y": 0.42,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000440_54291407-2ae1-4a8f-90a2-99fb0aec102d.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000440_54291407-2ae1-4a8f-90a2-99fb0aec102d.jpg"
+    },
+    {
+      "tsne_x": 11.126,
+      "tsne_y": 12.544,
+      "pca_x": -0.016,
+      "pca_y": 0.261,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000441_ae6da9c3-794a-4cdf-8e52-01b8acfd7dfe.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000441_ae6da9c3-794a-4cdf-8e52-01b8acfd7dfe.jpg"
+    },
+    {
+      "tsne_x": 10.635,
+      "tsne_y": 16.376,
+      "pca_x": -0.148,
+      "pca_y": 0.413,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000442_ec4f31d8-67a9-4795-893d-68544af753df.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000442_ec4f31d8-67a9-4795-893d-68544af753df.jpg"
+    },
+    {
+      "tsne_x": 10.482,
+      "tsne_y": 13.671,
+      "pca_x": -0.099,
+      "pca_y": 0.448,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000443_b271e99a-252d-4e07-8175-84708cd84b42.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000443_b271e99a-252d-4e07-8175-84708cd84b42.jpg"
+    },
+    {
+      "tsne_x": 9.268,
+      "tsne_y": 13.664,
+      "pca_x": -0.182,
+      "pca_y": 0.507,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000444_3693719c-a85b-4913-8277-ce49afd5ce03.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000444_3693719c-a85b-4913-8277-ce49afd5ce03.jpg"
+    },
+    {
+      "tsne_x": 9.669,
+      "tsne_y": 16.501,
+      "pca_x": -0.258,
+      "pca_y": 0.453,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000445_a9ec7537-63a0-49b0-bc93-7dce5d4c0c33.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000445_a9ec7537-63a0-49b0-bc93-7dce5d4c0c33.jpg"
+    },
+    {
+      "tsne_x": 10.088,
+      "tsne_y": 15.493,
+      "pca_x": -0.165,
+      "pca_y": 0.427,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000446_63480f41-ee99-4de5-af5f-28567aaefc6a.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000446_63480f41-ee99-4de5-af5f-28567aaefc6a.jpg"
+    },
+    {
+      "tsne_x": 10.162,
+      "tsne_y": 14.268,
+      "pca_x": -0.113,
+      "pca_y": 0.41,
+      "species": "field_bindweed",
+      "species_ru": "Вьюнок полевой",
+      "filename": "000447_f2e254fd-ffe1-4c90-93be-4e4cddb37822.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Вьюнок полевой/Стеблевание/000447_f2e254fd-ffe1-4c90-93be-4e4cddb37822.jpg"
+    },
+    {
+      "tsne_x": -4.809,
+      "tsne_y": 22.38,
+      "pca_x": -0.36,
+      "pca_y": 0.277,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009597_e53ba766-7e8f-4c14-a1ba-ae04fc0a306f.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009597_e53ba766-7e8f-4c14-a1ba-ae04fc0a306f.jpg"
+    },
+    {
+      "tsne_x": -6.823,
+      "tsne_y": 24.24,
+      "pca_x": -0.331,
+      "pca_y": 0.292,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009598_6e1690fe-d93c-4d7f-a61d-9ea181318097.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009598_6e1690fe-d93c-4d7f-a61d-9ea181318097.jpg"
+    },
+    {
+      "tsne_x": -4.663,
+      "tsne_y": 25.139,
+      "pca_x": -0.273,
+      "pca_y": 0.203,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009599_faae474c-9501-4de1-849b-6a9e2b3a9bab.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009599_faae474c-9501-4de1-849b-6a9e2b3a9bab.jpg"
+    },
+    {
+      "tsne_x": -4.417,
+      "tsne_y": 21.911,
+      "pca_x": -0.306,
+      "pca_y": 0.299,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009600_f127dd2b-e873-4075-867e-8a57e68108e4.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009600_f127dd2b-e873-4075-867e-8a57e68108e4.jpg"
+    },
+    {
+      "tsne_x": -6.187,
+      "tsne_y": 25.217,
+      "pca_x": -0.103,
+      "pca_y": 0.184,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009601_5adf422e-91f4-4e2e-8382-85925de6afe2.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009601_5adf422e-91f4-4e2e-8382-85925de6afe2.jpg"
+    },
+    {
+      "tsne_x": -3.903,
+      "tsne_y": 24.376,
+      "pca_x": -0.197,
+      "pca_y": 0.315,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009602_b33063e0-8c8e-4ff2-ba99-9cc96f973e67.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009602_b33063e0-8c8e-4ff2-ba99-9cc96f973e67.jpg"
+    },
+    {
+      "tsne_x": -3.959,
+      "tsne_y": 23.211,
+      "pca_x": -0.241,
+      "pca_y": 0.371,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009603_62b58aa1-9353-4323-8b56-a53a221541b3.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009603_62b58aa1-9353-4323-8b56-a53a221541b3.jpg"
+    },
+    {
+      "tsne_x": -4.029,
+      "tsne_y": 23.509,
+      "pca_x": -0.304,
+      "pca_y": 0.313,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009604_35d41964-1e36-4484-bf72-46eee05bd345.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009604_35d41964-1e36-4484-bf72-46eee05bd345.jpg"
+    },
+    {
+      "tsne_x": -5.339,
+      "tsne_y": 23.014,
+      "pca_x": -0.312,
+      "pca_y": 0.276,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009605_bcdfd0ef-6886-464c-8c08-d03870766f27.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009605_bcdfd0ef-6886-464c-8c08-d03870766f27.jpg"
+    },
+    {
+      "tsne_x": -5.831,
+      "tsne_y": 22.747,
+      "pca_x": -0.343,
+      "pca_y": 0.277,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009606_beecc105-b346-4bf6-8825-cf0c4f057703.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009606_beecc105-b346-4bf6-8825-cf0c4f057703.jpg"
+    },
+    {
+      "tsne_x": -6.452,
+      "tsne_y": 23.511,
+      "pca_x": -0.342,
+      "pca_y": 0.273,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009607_3ec46ae5-36eb-4191-bf58-cd383efc421b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009607_3ec46ae5-36eb-4191-bf58-cd383efc421b.jpg"
+    },
+    {
+      "tsne_x": -7.084,
+      "tsne_y": 23.315,
+      "pca_x": -0.282,
+      "pca_y": 0.269,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009608_c8261797-ac0b-4860-9343-187bdab1ec8c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009608_c8261797-ac0b-4860-9343-187bdab1ec8c.jpg"
+    },
+    {
+      "tsne_x": -6.952,
+      "tsne_y": 23.436,
+      "pca_x": -0.245,
+      "pca_y": 0.272,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009609_7a17a7c2-112c-4303-8717-0ae09e380a45.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009609_7a17a7c2-112c-4303-8717-0ae09e380a45.jpg"
+    },
+    {
+      "tsne_x": -7.347,
+      "tsne_y": 22.686,
+      "pca_x": -0.277,
+      "pca_y": 0.268,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009610_4a2e203e-def8-42cd-a182-3549421d03eb.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009610_4a2e203e-def8-42cd-a182-3549421d03eb.jpg"
+    },
+    {
+      "tsne_x": -5.737,
+      "tsne_y": 22.398,
+      "pca_x": -0.321,
+      "pca_y": 0.303,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009611_009b98bd-633c-463f-94e0-567c275de895.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009611_009b98bd-633c-463f-94e0-567c275de895.jpg"
+    },
+    {
+      "tsne_x": -5.033,
+      "tsne_y": 23.096,
+      "pca_x": -0.286,
+      "pca_y": 0.338,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009612_11821d1a-a564-4336-859c-0ff09861eda1.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009612_11821d1a-a564-4336-859c-0ff09861eda1.jpg"
+    },
+    {
+      "tsne_x": -4.377,
+      "tsne_y": 21.887,
+      "pca_x": -0.285,
+      "pca_y": 0.365,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009613_96df2d6c-a6c1-4134-bd3a-ca00ae6c8301.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009613_96df2d6c-a6c1-4134-bd3a-ca00ae6c8301.jpg"
+    },
+    {
+      "tsne_x": -5.267,
+      "tsne_y": 23.441,
+      "pca_x": -0.323,
+      "pca_y": 0.293,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "009614_2a40244a-581a-4834-8ad9-69277f6890fe.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Розетка/009614_2a40244a-581a-4834-8ad9-69277f6890fe.jpg"
+    },
+    {
+      "tsne_x": 7.419,
+      "tsne_y": 16.475,
+      "pca_x": -0.246,
+      "pca_y": 0.47,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000450_a5aeeb39-2245-499e-8391-d010cb731d37.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000450_a5aeeb39-2245-499e-8391-d010cb731d37.jpg"
+    },
+    {
+      "tsne_x": 7.57,
+      "tsne_y": 16.963,
+      "pca_x": -0.255,
+      "pca_y": 0.478,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000451_ce420668-3b6a-4623-9d15-0a0ef534ae6c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000451_ce420668-3b6a-4623-9d15-0a0ef534ae6c.jpg"
+    },
+    {
+      "tsne_x": 9.17,
+      "tsne_y": 14.652,
+      "pca_x": -0.105,
+      "pca_y": 0.443,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000452_92af7d10-853a-4061-9550-b44c8c4bddec.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000452_92af7d10-853a-4061-9550-b44c8c4bddec.jpg"
+    },
+    {
+      "tsne_x": 8.394,
+      "tsne_y": 15.942,
+      "pca_x": -0.187,
+      "pca_y": 0.476,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000453_a4b43a9e-58ed-4201-81d0-6c9965e452fa.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000453_a4b43a9e-58ed-4201-81d0-6c9965e452fa.jpg"
+    },
+    {
+      "tsne_x": 9.696,
+      "tsne_y": 15.564,
+      "pca_x": -0.166,
+      "pca_y": 0.472,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000454_62797fbd-78ee-449f-984e-8b5ea7da5569.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000454_62797fbd-78ee-449f-984e-8b5ea7da5569.jpg"
+    },
+    {
+      "tsne_x": 8.438,
+      "tsne_y": 15.677,
+      "pca_x": -0.159,
+      "pca_y": 0.484,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000455_3b4b1f5c-442b-497c-b29f-4f84bcf07b73.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000455_3b4b1f5c-442b-497c-b29f-4f84bcf07b73.jpg"
+    },
+    {
+      "tsne_x": 9.996,
+      "tsne_y": 16.732,
+      "pca_x": -0.26,
+      "pca_y": 0.456,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000456_7f8d8d89-08be-40bc-8755-ba9fbad7f588.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000456_7f8d8d89-08be-40bc-8755-ba9fbad7f588.jpg"
+    },
+    {
+      "tsne_x": 8.994,
+      "tsne_y": 14.548,
+      "pca_x": -0.037,
+      "pca_y": 0.394,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000457_092f1e43-6617-4f20-b57d-9f7820463b90.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000457_092f1e43-6617-4f20-b57d-9f7820463b90.jpg"
+    },
+    {
+      "tsne_x": 8.924,
+      "tsne_y": 15.477,
+      "pca_x": -0.167,
+      "pca_y": 0.493,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000458_1a492d56-0e95-41f2-9460-ced3c5bbd46b.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000458_1a492d56-0e95-41f2-9460-ced3c5bbd46b.jpg"
+    },
+    {
+      "tsne_x": 12.611,
+      "tsne_y": 14.77,
+      "pca_x": -0.179,
+      "pca_y": 0.35,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000459_c2d695a4-7ad9-4959-b35a-cd9e61373584.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000459_c2d695a4-7ad9-4959-b35a-cd9e61373584.jpg"
+    },
+    {
+      "tsne_x": 9.239,
+      "tsne_y": 16.029,
+      "pca_x": -0.212,
+      "pca_y": 0.515,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000460_e2fcca7e-0f3a-4cb2-a29d-2bd04429582c.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000460_e2fcca7e-0f3a-4cb2-a29d-2bd04429582c.jpg"
+    },
+    {
+      "tsne_x": 12.501,
+      "tsne_y": 14.215,
+      "pca_x": -0.167,
+      "pca_y": 0.327,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000461_21e5f7ad-05e5-4924-88b3-99d2ba594504.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000461_21e5f7ad-05e5-4924-88b3-99d2ba594504.jpg"
+    },
+    {
+      "tsne_x": 8.878,
+      "tsne_y": 16.16,
+      "pca_x": -0.197,
+      "pca_y": 0.46,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000462_96a82aa0-dfdb-4c4d-aa9e-c8bc1657ae65.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000462_96a82aa0-dfdb-4c4d-aa9e-c8bc1657ae65.jpg"
+    },
+    {
+      "tsne_x": 8.161,
+      "tsne_y": 16.968,
+      "pca_x": -0.263,
+      "pca_y": 0.515,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000463_91509586-5db8-4b68-8b60-b6a64ee35930.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000463_91509586-5db8-4b68-8b60-b6a64ee35930.jpg"
+    },
+    {
+      "tsne_x": 9.856,
+      "tsne_y": 17.647,
+      "pca_x": -0.285,
+      "pca_y": 0.447,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000464_8f737e30-2fd8-46d0-8488-0839473b7605.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000464_8f737e30-2fd8-46d0-8488-0839473b7605.jpg"
+    },
+    {
+      "tsne_x": 7.531,
+      "tsne_y": 17.499,
+      "pca_x": -0.161,
+      "pca_y": 0.392,
+      "species": "field_thistle",
+      "species_ru": "Бодяк полевой",
+      "filename": "000465_5ab39bb2-da61-4296-a39c-1b21aae08f37.jpg",
+      "path": "Dataset 1 кейс/Сорняки/Бодяк полевой/Стеблевание/000465_5ab39bb2-da61-4296-a39c-1b21aae08f37.jpg"
+    },
+    {
+      "tsne_x": -8.88,
+      "tsne_y": -10.599,
+      "pca_x": -0.036,
+      "pca_y": 0.256,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0000.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0000.jpg"
+    },
+    {
+      "tsne_x": -8.616,
+      "tsne_y": -10.077,
+      "pca_x": -0.026,
+      "pca_y": 0.24,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0002.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0002.jpg"
+    },
+    {
+      "tsne_x": -7.892,
+      "tsne_y": -14.838,
+      "pca_x": 0.324,
+      "pca_y": -0.071,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0004.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0004.jpg"
+    },
+    {
+      "tsne_x": -7.157,
+      "tsne_y": -10.35,
+      "pca_x": 0.116,
+      "pca_y": 0.264,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0006.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0006.jpg"
+    },
+    {
+      "tsne_x": -8.156,
+      "tsne_y": -11.573,
+      "pca_x": 0.082,
+      "pca_y": 0.16,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0007.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0007.jpg"
+    },
+    {
+      "tsne_x": -7.614,
+      "tsne_y": -10.36,
+      "pca_x": 0.147,
+      "pca_y": 0.213,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0010.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0010.jpg"
+    },
+    {
+      "tsne_x": -5.126,
+      "tsne_y": -12.917,
+      "pca_x": 0.191,
+      "pca_y": 0.094,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0012.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0012.jpg"
+    },
+    {
+      "tsne_x": 1.039,
+      "tsne_y": -11.223,
+      "pca_x": 0.49,
+      "pca_y": -0.228,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0013.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0013.jpg"
+    },
+    {
+      "tsne_x": 1.03,
+      "tsne_y": -11.14,
+      "pca_x": 0.452,
+      "pca_y": -0.251,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0014.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0014.jpg"
+    },
+    {
+      "tsne_x": 1.469,
+      "tsne_y": -11.244,
+      "pca_x": 0.522,
+      "pca_y": -0.339,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0015.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0015.jpg"
+    },
+    {
+      "tsne_x": -2.919,
+      "tsne_y": -16.131,
+      "pca_x": 0.206,
+      "pca_y": -0.104,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0016.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0016.jpg"
+    },
+    {
+      "tsne_x": 1.002,
+      "tsne_y": -11.138,
+      "pca_x": 0.365,
+      "pca_y": -0.171,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0017.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0017.jpg"
+    },
+    {
+      "tsne_x": -2.439,
+      "tsne_y": -13.068,
+      "pca_x": 0.295,
+      "pca_y": 0.033,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0018.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0018.jpg"
+    },
+    {
+      "tsne_x": -6.519,
+      "tsne_y": -8.121,
+      "pca_x": 0.233,
+      "pca_y": 0.128,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0019.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0019.jpg"
+    },
+    {
+      "tsne_x": 0.556,
+      "tsne_y": -13.844,
+      "pca_x": 0.526,
+      "pca_y": -0.159,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0020.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0020.jpg"
+    },
+    {
+      "tsne_x": -6.913,
+      "tsne_y": -11.767,
+      "pca_x": 0.137,
+      "pca_y": 0.187,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0021.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0021.jpg"
+    },
+    {
+      "tsne_x": -8.179,
+      "tsne_y": -10.199,
+      "pca_x": 0.029,
+      "pca_y": 0.28,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0025.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0025.jpg"
+    },
+    {
+      "tsne_x": -7.429,
+      "tsne_y": -12.547,
+      "pca_x": 0.22,
+      "pca_y": 0.158,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0026.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0026.jpg"
+    },
+    {
+      "tsne_x": -3.153,
+      "tsne_y": -13.49,
+      "pca_x": 0.315,
+      "pca_y": 0.037,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0030.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0030.jpg"
+    },
+    {
+      "tsne_x": 4.18,
+      "tsne_y": -12.589,
+      "pca_x": 0.589,
+      "pca_y": -0.38,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0031.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0031.jpg"
+    },
+    {
+      "tsne_x": 0.916,
+      "tsne_y": -14.544,
+      "pca_x": 0.459,
+      "pca_y": -0.169,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0032.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0032.jpg"
+    },
+    {
+      "tsne_x": -3.18,
+      "tsne_y": -13.667,
+      "pca_x": 0.34,
+      "pca_y": -0.088,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0033.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0033.jpg"
+    },
+    {
+      "tsne_x": 1.247,
+      "tsne_y": -13.877,
+      "pca_x": 0.591,
+      "pca_y": -0.32,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0034.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0034.jpg"
+    },
+    {
+      "tsne_x": 0.863,
+      "tsne_y": -15.379,
+      "pca_x": 0.328,
+      "pca_y": -0.08,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0035.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0035.jpg"
+    },
+    {
+      "tsne_x": 4.256,
+      "tsne_y": -12.632,
+      "pca_x": 0.599,
+      "pca_y": -0.414,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0036.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0036.jpg"
+    },
+    {
+      "tsne_x": -7.237,
+      "tsne_y": -12.292,
+      "pca_x": 0.181,
+      "pca_y": 0.231,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0039.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0039.jpg"
+    },
+    {
+      "tsne_x": -10.297,
+      "tsne_y": -12.332,
+      "pca_x": 0.046,
+      "pca_y": 0.214,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0041.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0041.jpg"
+    },
+    {
+      "tsne_x": -9.173,
+      "tsne_y": -12.473,
+      "pca_x": 0.122,
+      "pca_y": 0.151,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0042.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0042.jpg"
+    },
+    {
+      "tsne_x": -10.071,
+      "tsne_y": -11.912,
+      "pca_x": -0.015,
+      "pca_y": 0.248,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0044.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0044.jpg"
+    },
+    {
+      "tsne_x": -9.985,
+      "tsne_y": -12.499,
+      "pca_x": 0.088,
+      "pca_y": 0.205,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0045.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0045.jpg"
+    },
+    {
+      "tsne_x": -10.138,
+      "tsne_y": -12.396,
+      "pca_x": 0.088,
+      "pca_y": 0.169,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0047.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0047.jpg"
+    },
+    {
+      "tsne_x": -3.922,
+      "tsne_y": -15.633,
+      "pca_x": 0.278,
+      "pca_y": -0.067,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0048.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0048.jpg"
+    },
+    {
+      "tsne_x": -4.568,
+      "tsne_y": -16.519,
+      "pca_x": 0.145,
+      "pca_y": 0.072,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0049.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0049.jpg"
+    },
+    {
+      "tsne_x": -4.337,
+      "tsne_y": -16.241,
+      "pca_x": 0.215,
+      "pca_y": -0.006,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0050.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0050.jpg"
+    },
+    {
+      "tsne_x": -4.558,
+      "tsne_y": -16.087,
+      "pca_x": 0.174,
+      "pca_y": -0.064,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0052.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0052.jpg"
+    },
+    {
+      "tsne_x": -4.206,
+      "tsne_y": -15.993,
+      "pca_x": 0.222,
+      "pca_y": -0.106,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0053.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0053.jpg"
+    },
+    {
+      "tsne_x": -4.064,
+      "tsne_y": -16.222,
+      "pca_x": 0.117,
+      "pca_y": 0.031,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0054.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0054.jpg"
+    },
+    {
+      "tsne_x": 3.04,
+      "tsne_y": -14.416,
+      "pca_x": 0.546,
+      "pca_y": -0.33,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0063.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0063.jpg"
+    },
+    {
+      "tsne_x": 2.645,
+      "tsne_y": -14.453,
+      "pca_x": 0.587,
+      "pca_y": -0.222,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0064.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0064.jpg"
+    },
+    {
+      "tsne_x": -3.664,
+      "tsne_y": -8.941,
+      "pca_x": 0.238,
+      "pca_y": -0.095,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0065.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0065.jpg"
+    },
+    {
+      "tsne_x": 2.498,
+      "tsne_y": -15.129,
+      "pca_x": 0.526,
+      "pca_y": -0.326,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0066.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0066.jpg"
+    },
+    {
+      "tsne_x": -5.536,
+      "tsne_y": -8.373,
+      "pca_x": 0.227,
+      "pca_y": 0.102,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0067.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0067.jpg"
+    },
+    {
+      "tsne_x": -7.37,
+      "tsne_y": -9.017,
+      "pca_x": 0.129,
+      "pca_y": 0.254,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0069.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0069.jpg"
+    },
+    {
+      "tsne_x": -8.895,
+      "tsne_y": -11.366,
+      "pca_x": 0.092,
+      "pca_y": 0.153,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0077.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0077.jpg"
+    },
+    {
+      "tsne_x": 3.385,
+      "tsne_y": -13.504,
+      "pca_x": 0.6,
+      "pca_y": -0.32,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0078.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0078.jpg"
+    },
+    {
+      "tsne_x": 3.377,
+      "tsne_y": -13.969,
+      "pca_x": 0.618,
+      "pca_y": -0.334,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0079.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0079.jpg"
+    },
+    {
+      "tsne_x": 3.146,
+      "tsne_y": -13.611,
+      "pca_x": 0.613,
+      "pca_y": -0.306,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0080.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0080.jpg"
+    },
+    {
+      "tsne_x": 2.436,
+      "tsne_y": -14.332,
+      "pca_x": 0.503,
+      "pca_y": -0.151,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0081.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0081.jpg"
+    },
+    {
+      "tsne_x": 3.42,
+      "tsne_y": -12.878,
+      "pca_x": 0.575,
+      "pca_y": -0.297,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0082.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0082.jpg"
+    },
+    {
+      "tsne_x": -26.392,
+      "tsne_y": 2.07,
+      "pca_x": -0.116,
+      "pca_y": -0.128,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0083.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0083.jpg"
+    },
+    {
+      "tsne_x": -26.485,
+      "tsne_y": 2.11,
+      "pca_x": -0.371,
+      "pca_y": -0.223,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "crop_aerial_test_0084.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/crop_aerial_test_0084.jpg"
+    },
+    {
+      "tsne_x": 7.094,
+      "tsne_y": -15.665,
+      "pca_x": 0.479,
+      "pca_y": -0.284,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134520_0343_D_11.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134520_0343_D_11.jpg"
+    },
+    {
+      "tsne_x": 8.548,
+      "tsne_y": -16.3,
+      "pca_x": 0.458,
+      "pca_y": -0.205,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134520_0343_D_17.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134520_0343_D_17.jpg"
+    },
+    {
+      "tsne_x": 10.35,
+      "tsne_y": -12.385,
+      "pca_x": 0.471,
+      "pca_y": -0.254,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_00.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_00.jpg"
+    },
+    {
+      "tsne_x": 10.903,
+      "tsne_y": -12.721,
+      "pca_x": 0.438,
+      "pca_y": -0.187,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_01.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_01.jpg"
+    },
+    {
+      "tsne_x": 12.2,
+      "tsne_y": -12.361,
+      "pca_x": 0.233,
+      "pca_y": -0.007,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_11.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_11.jpg"
+    },
+    {
+      "tsne_x": 9.442,
+      "tsne_y": -14.012,
+      "pca_x": 0.548,
+      "pca_y": -0.366,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_13.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_13.jpg"
+    },
+    {
+      "tsne_x": 9.249,
+      "tsne_y": -11.973,
+      "pca_x": 0.463,
+      "pca_y": -0.336,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134123_0339_D_19.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134123_0339_D_19.jpg"
+    },
+    {
+      "tsne_x": 7.986,
+      "tsne_y": -12.712,
+      "pca_x": 0.601,
+      "pca_y": -0.435,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_02.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_02.jpg"
+    },
+    {
+      "tsne_x": 7.637,
+      "tsne_y": -12.817,
+      "pca_x": 0.613,
+      "pca_y": -0.436,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_03.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_03.jpg"
+    },
+    {
+      "tsne_x": 8.355,
+      "tsne_y": -13.925,
+      "pca_x": 0.586,
+      "pca_y": -0.39,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_08.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_08.jpg"
+    },
+    {
+      "tsne_x": 7.824,
+      "tsne_y": -13.788,
+      "pca_x": 0.615,
+      "pca_y": -0.343,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_13.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_13.jpg"
+    },
+    {
+      "tsne_x": 8.546,
+      "tsne_y": -13.114,
+      "pca_x": 0.563,
+      "pca_y": -0.33,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_15.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_15.jpg"
+    },
+    {
+      "tsne_x": 8.591,
+      "tsne_y": -12.614,
+      "pca_x": 0.594,
+      "pca_y": -0.447,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260609122641_0177_D_17.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260609122641_0177_D_17.jpg"
+    },
+    {
+      "tsne_x": 6.028,
+      "tsne_y": -13.805,
+      "pca_x": 0.607,
+      "pca_y": -0.434,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615115515_0164_D_00.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615115515_0164_D_00.jpg"
+    },
+    {
+      "tsne_x": 6.371,
+      "tsne_y": -15.077,
+      "pca_x": 0.581,
+      "pca_y": -0.457,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615115515_0164_D_02.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615115515_0164_D_02.jpg"
+    },
+    {
+      "tsne_x": 10.135,
+      "tsne_y": -14.103,
+      "pca_x": 0.519,
+      "pca_y": -0.335,
+      "species": "crop_wheat",
+      "species_ru": "Пшеница (Культура / Фон)",
+      "filename": "patch_dji_DJI_20260615134710_0347_D_17.jpg",
+      "path": "/Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/crops_wheat/patch_dji_DJI_20260615134710_0347_D_17.jpg"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+# Конфигурация классов для Кейса №1: Мониторинг сорняков с БПЛА
+
+# Локальные виды сорняков (Костанайская область)
+species:
+  0:
+    id: "field_thistle"
+    ru_name: "Бодяк полевой"
+    latin_name: "Cirsium arvense"
+    valid_stages: ["rosette", "stem_elongation"]
+  1:
+    id: "field_bindweed"
+    ru_name: "Вьюнок полевой"
+    latin_name: "Convolvulus arvensis"
+    valid_stages: ["rosette", "stem_elongation"]
+  2:
+    id: "couch_grass"
+    ru_name: "Пырей ползучий"
+    latin_name: "Elymus repens"
+    # Внимание: для пырея в предоставленных данных нет фазы розетка!
+    valid_stages: ["stem_elongation"]
+
+# Фазы вегетации
+growth_stages:
+  0:
+    id: "rosette"
+    ru_name: "Розетка"
+    description: "Прикорневая розетка листьев, оптимальная фаза для химобработки"
+  1:
+    id: "stem_elongation"
+    ru_name: "Стеблевание"
+    description: "Фаза роста стебля в высоту"
+
+# Классы детектора WeedBlaster YOLOv8s (CropsOrWeed9)
+detector:
+  weed_class_id: 8
+  classes:
+    0: "Maize"
+    1: "Sugar Beet"
+    2: "Soy"
+    3: "Sunflower"
+    4: "Potato"
+    5: "Pea"
+    6: "Bean"
+    7: "Pumpkin"
+    8: "Weed"
+
+# Пороги уверенности по умолчанию
+thresholds:
+  det_conf: 0.25
+  det_iou: 0.45
+  species_conf: 0.60
+  stage_conf: 0.55

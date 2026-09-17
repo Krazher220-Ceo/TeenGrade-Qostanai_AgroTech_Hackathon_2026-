@@ -1,0 +1,31 @@
+# Системные настройки конвейера Кейса №1 (Main)
+
+project:
+  name: "qostanai-case1-weed-monitoring"
+  version: "1.0.0"
+  case_type: "main"
+
+paths:
+  dataset_root: "Dataset 1 кейс"
+  weeds_dir: "Dataset 1 кейс/Сорняки"
+  field_photos_dir: "Dataset 1 кейс/ФотоПолей"
+  detector_model: "weedblaster-vision-yolov8s/best.pt"
+  output_dir: "case1/output"
+  crops_cache_dir: "case1/output/crops"
+  logs_dir: "case1/output/logs"
+
+tiling:
+  tile_size: 1280
+  overlap_ratio: 0.20
+  iou_threshold: 0.45
+
+detector:
+  imgsz: 1280
+  conf_threshold: 0.25
+  device: "cpu" # "mps" для Apple Silicon или "cuda" при наличии
+
+server:
+  host: "127.0.0.1"
+  port: 8000
+  api_prefix: "/api/v1"
+  fallback_offline_mode: true

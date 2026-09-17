@@ -1,0 +1,9 @@
+# Автоматически сгенерированный датасет weed-crop-aerial для YOLOv8
+path: /Users/kr220/Documents/Projects/Qostanai_AgroTech_Hackathon_2026/case1/data/yolo_aerial
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: crop
+  1: weed

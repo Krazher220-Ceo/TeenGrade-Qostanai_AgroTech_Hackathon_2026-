@@ -1,0 +1,107 @@
+{
+  "rules_version": "2026.1-cheatsheet",
+  "source": "Шпаргалка ментора агронома Qostanai AgroTech Hackathon 2026",
+  "disclaimer": "Рекомендации формируются в режиме advisory. Никакая рекомендация не является прямой командой распылителю и требует обязательного подтверждения агрономом.",
+  "human_confirmation_required": true,
+  "density_thresholds": {
+    "annual_weeds": {
+      "low": {
+        "max_density_per_m2": 5.0,
+        "level_ru": "слабая засорённость",
+        "action": "do_not_spray",
+        "action_ru": "не опрыскивать",
+        "description": "Плотность малолетних сорняков не превышает экономический порог вредоносности (≤ 5 шт/м²). Обработка не требуется."
+      },
+      "medium": {
+        "min_density_per_m2": 6.0,
+        "max_density_per_m2": 15.0,
+        "level_ru": "средняя засорённость",
+        "action": "standard_spray",
+        "action_ru": "стандартная норма расхода",
+        "description": "Плотность малолетних сорняков 6–15 шт/м²: порог превышен, рекомендована обработка стандартной нормой расхода препарата."
+      },
+      "high": {
+        "min_density_per_m2": 15.01,
+        "level_ru": "сильная засорённость",
+        "action": "increased_spray",
+        "action_ru": "повышенная обработка",
+        "description": "Плотность малолетних сорняков превышает 15 шт/м²: высокая конкуренция с культурой, требуется усиленный контроль."
+      }
+    },
+    "perennial_weeds": {
+      "critical": {
+        "min_density_per_m2": 2.0,
+        "level_ru": "критическая угроза",
+        "action": "urgent_spray",
+        "action_ru": "срочная обработка",
+        "description": "Многолетние корнеотпрысковые сорняки (бодяк, вьюнок, пырей) ≥ 2 шт/м²: критическая угроза урожаю, первоочередная обработка."
+      },
+      "low": {
+        "max_density_per_m2": 1.99,
+        "level_ru": "локальное присутствие",
+        "action": "monitor",
+        "action_ru": "мониторинг очагов",
+        "description": "Плотность многолетних сорняков < 2 шт/м²: мониторинг динамики очагов."
+      }
+    }
+  },
+  "growth_stages": {
+    "cotyledon_to_2_leaves": {
+      "stage_id": "rosette_early",
+      "stage_ru": "Семядоли — 2 листа",
+      "window_status": "optimal",
+      "window_status_ru": "Оптимальное технологическое окно",
+      "dosage_modifier": 1.0,
+      "description": "Максимальная чувствительность сорняков, минимальное угнетение культурных растений."
+    },
+    "4_to_6_leaves": {
+      "stage_id": "stem_early",
+      "stage_ru": "4–6 листьев",
+      "window_status": "acceptable_with_increased_dose",
+      "window_status_ru": "Допустимое окно с увеличением дозировки",
+      "dosage_modifier": 1.175,
+      "dosage_change_pct": "+15-20%",
+      "description": "Сорняки огрубевают, формируется восковой налёт. Рекомендация из шпаргалки: увеличение дозировки на 15–20%."
+    },
+    "over_6_leaves_or_flowering": {
+      "stage_id": "flowering_late",
+      "stage_ru": "Более 6 листьев / цветение",
+      "window_status": "missed_window",
+      "window_status_ru": "Предупреждение: пропущенное окно",
+      "dosage_modifier": 0.0,
+      "description": "Пропущено оптимальное окно обработки. Высокий риск фитотоксичности для культуры и низкой биологической эффективности гербицида."
+    }
+  },
+  "species_classification": {
+    "field_thistle": {
+      "type": "perennial",
+      "class": "A",
+      "botanical_group": "двудольные многолетние",
+      "priority": "high"
+    },
+    "field_bindweed": {
+      "type": "perennial",
+      "class": "A",
+      "botanical_group": "двудольные многолетние",
+      "priority": "high"
+    },
+    "couch_grass": {
+      "type": "perennial",
+      "class": "B",
+      "botanical_group": "злаковые многолетние",
+      "priority": "high"
+    },
+    "crop_wheat": {
+      "type": "crop",
+      "class": "culture",
+      "botanical_group": "культурное растение",
+      "priority": "protected"
+    },
+    "unknown": {
+      "type": "uncertain",
+      "class": "unknown",
+      "botanical_group": "неопределено",
+      "priority": "review"
+    }
+  }
+}

@@ -1,0 +1,1838 @@
+{
+  "plan_id": "plan_1789646991_ba6bbd",
+  "created_at": "2026-09-17 17:09:51",
+  "field_id": "kostanay_field_demo_01",
+  "state": "VALIDATED",
+  "num_drones_requested": 5,
+  "num_drones_assigned": 5,
+  "altitude_m": 30.0,
+  "ground_speed_m_s": 5.0,
+  "side_overlap": 0.7,
+  "front_overlap": 0.8,
+  "footprint_width_m": 48.0,
+  "footprint_height_m": 36.0,
+  "gsd_x_cm_px": 1.2,
+  "gsd_y_cm_px": 1.2,
+  "line_spacing_m": 14.4,
+  "trigger_distance_m": 7.2,
+  "trigger_interval_s": 1.44,
+  "sweep_angle_deg": 93.8,
+  "total_lanes_count": 41,
+  "field_area_ha": 23.44,
+  "covered_area_ha": 23.32,
+  "coverage_percentage": 99.5,
+  "makespan_s": 1044.2,
+  "theoretical_single_drone_time_s": 4848.7,
+  "speedup_factor": 4.64,
+  "vehicles": [
+    {
+      "system_id": 1,
+      "color_hex": "#2563EB",
+      "pad": {
+        "pad_id": "P1",
+        "system_id": 1,
+        "lat": 53.2124,
+        "lon": 63.6247,
+        "alt_m": 0.0
+      },
+      "lanes": [
+        {
+          "lane_id": 1,
+          "system_id": 1,
+          "start_metric": [
+            254.72,
+            -229.52
+          ],
+          "end_metric": [
+            222.12,
+            261.31
+          ],
+          "start_wgs84": [
+            53.2130375,
+            63.6288128
+          ],
+          "end_wgs84": [
+            53.217448,
+            63.6283251
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 2,
+          "system_id": 1,
+          "start_metric": [
+            207.75,
+            260.36
+          ],
+          "end_metric": [
+            240.35,
+            -230.48
+          ],
+          "start_wgs84": [
+            53.2174394,
+            63.6281101
+          ],
+          "end_wgs84": [
+            53.2130289,
+            63.6285977
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 3,
+          "system_id": 1,
+          "start_metric": [
+            225.98,
+            -231.44
+          ],
+          "end_metric": [
+            193.38,
+            259.4
+          ],
+          "start_wgs84": [
+            53.2130204,
+            63.6283827
+          ],
+          "end_wgs84": [
+            53.2174308,
+            63.627895
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 4,
+          "system_id": 1,
+          "start_metric": [
+            179.01,
+            258.44
+          ],
+          "end_metric": [
+            211.62,
+            -232.4
+          ],
+          "start_wgs84": [
+            53.2174222,
+            63.6276799
+          ],
+          "end_wgs84": [
+            53.2130118,
+            63.6281676
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 5,
+          "system_id": 1,
+          "start_metric": [
+            197.25,
+            -233.35
+          ],
+          "end_metric": [
+            164.65,
+            257.48
+          ],
+          "start_wgs84": [
+            53.2130032,
+            63.6279525
+          ],
+          "end_wgs84": [
+            53.2174136,
+            63.6274648
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 6,
+          "system_id": 1,
+          "start_metric": [
+            150.28,
+            256.53
+          ],
+          "end_metric": [
+            182.88,
+            -234.31
+          ],
+          "start_wgs84": [
+            53.217405,
+            63.6272497
+          ],
+          "end_wgs84": [
+            53.2129946,
+            63.6277374
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 7,
+          "system_id": 1,
+          "start_metric": [
+            168.51,
+            -235.27
+          ],
+          "end_metric": [
+            135.91,
+            255.57
+          ],
+          "start_wgs84": [
+            53.212986,
+            63.6275224
+          ],
+          "end_wgs84": [
+            53.2173964,
+            63.6270346
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 8,
+          "system_id": 1,
+          "start_metric": [
+            121.54,
+            254.61
+          ],
+          "end_metric": [
+            154.14,
+            -236.23
+          ],
+          "start_wgs84": [
+            53.2173878,
+            63.6268195
+          ],
+          "end_wgs84": [
+            53.2129774,
+            63.6273073
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 9,
+          "system_id": 1,
+          "start_metric": [
+            139.77,
+            -237.18
+          ],
+          "end_metric": [
+            107.17,
+            253.65
+          ],
+          "start_wgs84": [
+            53.2129688,
+            63.6270922
+          ],
+          "end_wgs84": [
+            53.2173792,
+            63.6266044
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        }
+      ],
+      "flight_length_m": 4427.28,
+      "survey_time_s": 885.5,
+      "turns_count": 8,
+      "turn_time_s": 70.4,
+      "transit_length_m": 618.23,
+      "transit_time_s": 88.3,
+      "total_estimated_time_s": 1044.2,
+      "battery_consumed_pct": 69.6,
+      "battery_safe": true,
+      "waypoints": [
+        {
+          "seq": 0,
+          "type": "TAKEOFF",
+          "lat": 53.2124,
+          "lon": 63.6247,
+          "alt_m": 5.0,
+          "system_id": 1
+        },
+        {
+          "seq": 1,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 1,
+          "lat": 53.2130375,
+          "lon": 63.6288128,
+          "system_id": 1
+        },
+        {
+          "seq": 2,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 1,
+          "lat": 53.217448,
+          "lon": 63.6283251,
+          "system_id": 1
+        },
+        {
+          "seq": 3,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 2,
+          "lat": 53.2174394,
+          "lon": 63.6281101,
+          "system_id": 1
+        },
+        {
+          "seq": 4,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 2,
+          "lat": 53.2130289,
+          "lon": 63.6285977,
+          "system_id": 1
+        },
+        {
+          "seq": 5,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 3,
+          "lat": 53.2130204,
+          "lon": 63.6283827,
+          "system_id": 1
+        },
+        {
+          "seq": 6,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 3,
+          "lat": 53.2174308,
+          "lon": 63.627895,
+          "system_id": 1
+        },
+        {
+          "seq": 7,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 4,
+          "lat": 53.2174222,
+          "lon": 63.6276799,
+          "system_id": 1
+        },
+        {
+          "seq": 8,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 4,
+          "lat": 53.2130118,
+          "lon": 63.6281676,
+          "system_id": 1
+        },
+        {
+          "seq": 9,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 5,
+          "lat": 53.2130032,
+          "lon": 63.6279525,
+          "system_id": 1
+        },
+        {
+          "seq": 10,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 5,
+          "lat": 53.2174136,
+          "lon": 63.6274648,
+          "system_id": 1
+        },
+        {
+          "seq": 11,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 6,
+          "lat": 53.217405,
+          "lon": 63.6272497,
+          "system_id": 1
+        },
+        {
+          "seq": 12,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 6,
+          "lat": 53.2129946,
+          "lon": 63.6277374,
+          "system_id": 1
+        },
+        {
+          "seq": 13,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 7,
+          "lat": 53.212986,
+          "lon": 63.6275224,
+          "system_id": 1
+        },
+        {
+          "seq": 14,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 7,
+          "lat": 53.2173964,
+          "lon": 63.6270346,
+          "system_id": 1
+        },
+        {
+          "seq": 15,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 8,
+          "lat": 53.2173878,
+          "lon": 63.6268195,
+          "system_id": 1
+        },
+        {
+          "seq": 16,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 8,
+          "lat": 53.2129774,
+          "lon": 63.6273073,
+          "system_id": 1
+        },
+        {
+          "seq": 17,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 9,
+          "lat": 53.2129688,
+          "lon": 63.6270922,
+          "system_id": 1
+        },
+        {
+          "seq": 18,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 9,
+          "lat": 53.2173792,
+          "lon": 63.6266044,
+          "system_id": 1
+        },
+        {
+          "seq": 19,
+          "type": "RETURN_TO_PAD",
+          "lat": 53.2124,
+          "lon": 63.6247,
+          "system_id": 1
+        },
+        {
+          "seq": 20,
+          "type": "LAND",
+          "lat": 53.2124,
+          "lon": 63.6247,
+          "system_id": 1
+        }
+      ]
+    },
+    {
+      "system_id": 2,
+      "color_hex": "#10B981",
+      "pad": {
+        "pad_id": "P2",
+        "system_id": 2,
+        "lat": 53.2124,
+        "lon": 63.62485,
+        "alt_m": 0.0
+      },
+      "lanes": [
+        {
+          "lane_id": 10,
+          "system_id": 2,
+          "start_metric": [
+            92.8,
+            252.7
+          ],
+          "end_metric": [
+            125.41,
+            -238.14
+          ],
+          "start_wgs84": [
+            53.2173706,
+            63.6263893
+          ],
+          "end_wgs84": [
+            53.2129602,
+            63.6268772
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 11,
+          "system_id": 2,
+          "start_metric": [
+            111.04,
+            -239.1
+          ],
+          "end_metric": [
+            78.44,
+            251.74
+          ],
+          "start_wgs84": [
+            53.2129516,
+            63.6266621
+          ],
+          "end_wgs84": [
+            53.217362,
+            63.6261742
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 12,
+          "system_id": 2,
+          "start_metric": [
+            64.07,
+            250.78
+          ],
+          "end_metric": [
+            96.67,
+            -240.06
+          ],
+          "start_wgs84": [
+            53.2173534,
+            63.6259591
+          ],
+          "end_wgs84": [
+            53.212943,
+            63.626447
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 13,
+          "system_id": 2,
+          "start_metric": [
+            82.3,
+            -241.01
+          ],
+          "end_metric": [
+            49.7,
+            249.82
+          ],
+          "start_wgs84": [
+            53.2129344,
+            63.6262319
+          ],
+          "end_wgs84": [
+            53.2173448,
+            63.625744
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 14,
+          "system_id": 2,
+          "start_metric": [
+            35.33,
+            248.87
+          ],
+          "end_metric": [
+            67.93,
+            -241.97
+          ],
+          "start_wgs84": [
+            53.2173362,
+            63.6255289
+          ],
+          "end_wgs84": [
+            53.2129258,
+            63.6260169
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 15,
+          "system_id": 2,
+          "start_metric": [
+            53.57,
+            -242.93
+          ],
+          "end_metric": [
+            20.96,
+            247.91
+          ],
+          "start_wgs84": [
+            53.2129172,
+            63.6258018
+          ],
+          "end_wgs84": [
+            53.2173276,
+            63.6253138
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 16,
+          "system_id": 2,
+          "start_metric": [
+            30.1,
+            -106.95
+          ],
+          "end_metric": [
+            39.2,
+            -243.89
+          ],
+          "start_wgs84": [
+            53.214139,
+            63.6254506
+          ],
+          "end_wgs84": [
+            53.2129086,
+            63.6255867
+          ],
+          "length_m": 137.24,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 17,
+          "system_id": 2,
+          "start_metric": [
+            27.1,
+            -61.78
+          ],
+          "end_metric": [
+            6.6,
+            246.95
+          ],
+          "start_wgs84": [
+            53.2145449,
+            63.6254057
+          ],
+          "end_wgs84": [
+            53.217319,
+            63.6250987
+          ],
+          "length_m": 309.41,
+          "direction_deg": 93.8
+        }
+      ],
+      "flight_length_m": 3398.17,
+      "survey_time_s": 679.6,
+      "turns_count": 7,
+      "turn_time_s": 231.2,
+      "transit_length_m": 516.24,
+      "transit_time_s": 73.7,
+      "total_estimated_time_s": 984.5,
+      "battery_consumed_pct": 65.6,
+      "battery_safe": true,
+      "waypoints": [
+        {
+          "seq": 0,
+          "type": "TAKEOFF",
+          "lat": 53.2124,
+          "lon": 63.62485,
+          "alt_m": 5.0,
+          "system_id": 2
+        },
+        {
+          "seq": 1,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 10,
+          "lat": 53.2173706,
+          "lon": 63.6263893,
+          "system_id": 2
+        },
+        {
+          "seq": 2,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 10,
+          "lat": 53.2129602,
+          "lon": 63.6268772,
+          "system_id": 2
+        },
+        {
+          "seq": 3,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 11,
+          "lat": 53.2129516,
+          "lon": 63.6266621,
+          "system_id": 2
+        },
+        {
+          "seq": 4,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 11,
+          "lat": 53.217362,
+          "lon": 63.6261742,
+          "system_id": 2
+        },
+        {
+          "seq": 5,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 12,
+          "lat": 53.2173534,
+          "lon": 63.6259591,
+          "system_id": 2
+        },
+        {
+          "seq": 6,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 12,
+          "lat": 53.212943,
+          "lon": 63.626447,
+          "system_id": 2
+        },
+        {
+          "seq": 7,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 13,
+          "lat": 53.2129344,
+          "lon": 63.6262319,
+          "system_id": 2
+        },
+        {
+          "seq": 8,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 13,
+          "lat": 53.2173448,
+          "lon": 63.625744,
+          "system_id": 2
+        },
+        {
+          "seq": 9,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 14,
+          "lat": 53.2173362,
+          "lon": 63.6255289,
+          "system_id": 2
+        },
+        {
+          "seq": 10,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 14,
+          "lat": 53.2129258,
+          "lon": 63.6260169,
+          "system_id": 2
+        },
+        {
+          "seq": 11,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 15,
+          "lat": 53.2129172,
+          "lon": 63.6258018,
+          "system_id": 2
+        },
+        {
+          "seq": 12,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 15,
+          "lat": 53.2173276,
+          "lon": 63.6253138,
+          "system_id": 2
+        },
+        {
+          "seq": 13,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 16,
+          "lat": 53.214139,
+          "lon": 63.6254506,
+          "system_id": 2
+        },
+        {
+          "seq": 14,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 16,
+          "lat": 53.2129086,
+          "lon": 63.6255867,
+          "system_id": 2
+        },
+        {
+          "seq": 15,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 17,
+          "lat": 53.2145449,
+          "lon": 63.6254057,
+          "system_id": 2
+        },
+        {
+          "seq": 16,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 17,
+          "lat": 53.217319,
+          "lon": 63.6250987,
+          "system_id": 2
+        },
+        {
+          "seq": 17,
+          "type": "RETURN_TO_PAD",
+          "lat": 53.2124,
+          "lon": 63.62485,
+          "system_id": 2
+        },
+        {
+          "seq": 18,
+          "type": "LAND",
+          "lat": 53.2124,
+          "lon": 63.62485,
+          "system_id": 2
+        }
+      ]
+    },
+    {
+      "system_id": 3,
+      "color_hex": "#F59E0B",
+      "pad": {
+        "pad_id": "P3",
+        "system_id": 3,
+        "lat": 53.2124,
+        "lon": 63.625,
+        "alt_m": 0.0
+      },
+      "lanes": [
+        {
+          "lane_id": 18,
+          "system_id": 3,
+          "start_metric": [
+            16.06,
+            -112.8
+          ],
+          "end_metric": [
+            24.83,
+            -244.84
+          ],
+          "start_wgs84": [
+            53.2140864,
+            63.6252404
+          ],
+          "end_wgs84": [
+            53.2129,
+            63.6253717
+          ],
+          "length_m": 132.33,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 19,
+          "system_id": 3,
+          "start_metric": [
+            10.5,
+            -29.16
+          ],
+          "end_metric": [
+            -7.77,
+            245.99
+          ],
+          "start_wgs84": [
+            53.214838,
+            63.6251572
+          ],
+          "end_wgs84": [
+            53.2173104,
+            63.6248837
+          ],
+          "length_m": 275.76,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 20,
+          "system_id": 3,
+          "start_metric": [
+            2.02,
+            -118.65
+          ],
+          "end_metric": [
+            10.46,
+            -245.8
+          ],
+          "start_wgs84": [
+            53.2140339,
+            63.6250302
+          ],
+          "end_wgs84": [
+            53.2128914,
+            63.6251566
+          ],
+          "length_m": 127.43,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 21,
+          "system_id": 3,
+          "start_metric": [
+            -3.54,
+            -35.01
+          ],
+          "end_metric": [
+            -22.14,
+            245.04
+          ],
+          "start_wgs84": [
+            53.2147854,
+            63.624947
+          ],
+          "end_wgs84": [
+            53.2173018,
+            63.6246686
+          ],
+          "length_m": 280.66,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 22,
+          "system_id": 3,
+          "start_metric": [
+            -12.03,
+            -124.5
+          ],
+          "end_metric": [
+            -3.91,
+            -246.76
+          ],
+          "start_wgs84": [
+            53.2139813,
+            63.62482
+          ],
+          "end_wgs84": [
+            53.2128827,
+            63.6249415
+          ],
+          "length_m": 122.53,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 23,
+          "system_id": 3,
+          "start_metric": [
+            -17.58,
+            -40.86
+          ],
+          "end_metric": [
+            -36.51,
+            244.08
+          ],
+          "start_wgs84": [
+            53.2147329,
+            63.6247368
+          ],
+          "end_wgs84": [
+            53.2172932,
+            63.6244535
+          ],
+          "length_m": 285.56,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 24,
+          "system_id": 3,
+          "start_metric": [
+            -26.07,
+            -130.35
+          ],
+          "end_metric": [
+            -18.28,
+            -247.72
+          ],
+          "start_wgs84": [
+            53.2139288,
+            63.6246097
+          ],
+          "end_wgs84": [
+            53.2128741,
+            63.6247264
+          ],
+          "length_m": 117.63,
+          "direction_deg": 273.8
+        }
+      ],
+      "flight_length_m": 1341.9,
+      "survey_time_s": 268.4,
+      "turns_count": 6,
+      "turn_time_s": 604.9,
+      "transit_length_m": 362.33,
+      "transit_time_s": 51.8,
+      "total_estimated_time_s": 925.1,
+      "battery_consumed_pct": 61.7,
+      "battery_safe": true,
+      "waypoints": [
+        {
+          "seq": 0,
+          "type": "TAKEOFF",
+          "lat": 53.2124,
+          "lon": 63.625,
+          "alt_m": 5.0,
+          "system_id": 3
+        },
+        {
+          "seq": 1,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 18,
+          "lat": 53.2140864,
+          "lon": 63.6252404,
+          "system_id": 3
+        },
+        {
+          "seq": 2,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 18,
+          "lat": 53.2129,
+          "lon": 63.6253717,
+          "system_id": 3
+        },
+        {
+          "seq": 3,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 19,
+          "lat": 53.214838,
+          "lon": 63.6251572,
+          "system_id": 3
+        },
+        {
+          "seq": 4,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 19,
+          "lat": 53.2173104,
+          "lon": 63.6248837,
+          "system_id": 3
+        },
+        {
+          "seq": 5,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 20,
+          "lat": 53.2140339,
+          "lon": 63.6250302,
+          "system_id": 3
+        },
+        {
+          "seq": 6,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 20,
+          "lat": 53.2128914,
+          "lon": 63.6251566,
+          "system_id": 3
+        },
+        {
+          "seq": 7,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 21,
+          "lat": 53.2147854,
+          "lon": 63.624947,
+          "system_id": 3
+        },
+        {
+          "seq": 8,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 21,
+          "lat": 53.2173018,
+          "lon": 63.6246686,
+          "system_id": 3
+        },
+        {
+          "seq": 9,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 22,
+          "lat": 53.2139813,
+          "lon": 63.62482,
+          "system_id": 3
+        },
+        {
+          "seq": 10,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 22,
+          "lat": 53.2128827,
+          "lon": 63.6249415,
+          "system_id": 3
+        },
+        {
+          "seq": 11,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 23,
+          "lat": 53.2147329,
+          "lon": 63.6247368,
+          "system_id": 3
+        },
+        {
+          "seq": 12,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 23,
+          "lat": 53.2172932,
+          "lon": 63.6244535,
+          "system_id": 3
+        },
+        {
+          "seq": 13,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 24,
+          "lat": 53.2139288,
+          "lon": 63.6246097,
+          "system_id": 3
+        },
+        {
+          "seq": 14,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 24,
+          "lat": 53.2128741,
+          "lon": 63.6247264,
+          "system_id": 3
+        },
+        {
+          "seq": 15,
+          "type": "RETURN_TO_PAD",
+          "lat": 53.2124,
+          "lon": 63.625,
+          "system_id": 3
+        },
+        {
+          "seq": 16,
+          "type": "LAND",
+          "lat": 53.2124,
+          "lon": 63.625,
+          "system_id": 3
+        }
+      ]
+    },
+    {
+      "system_id": 4,
+      "color_hex": "#8B5CF6",
+      "pad": {
+        "pad_id": "P4",
+        "system_id": 4,
+        "lat": 53.2124,
+        "lon": 63.62515,
+        "alt_m": 0.0
+      },
+      "lanes": [
+        {
+          "lane_id": 25,
+          "system_id": 4,
+          "start_metric": [
+            -31.63,
+            -46.71
+          ],
+          "end_metric": [
+            -50.88,
+            243.12
+          ],
+          "start_wgs84": [
+            53.2146803,
+            63.6245266
+          ],
+          "end_wgs84": [
+            53.2172846,
+            63.6242384
+          ],
+          "length_m": 290.47,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 26,
+          "system_id": 4,
+          "start_metric": [
+            -40.11,
+            -136.2
+          ],
+          "end_metric": [
+            -32.64,
+            -248.67
+          ],
+          "start_wgs84": [
+            53.2138762,
+            63.6243995
+          ],
+          "end_wgs84": [
+            53.2128655,
+            63.6245114
+          ],
+          "length_m": 112.73,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 27,
+          "system_id": 4,
+          "start_metric": [
+            -45.67,
+            -52.56
+          ],
+          "end_metric": [
+            -65.24,
+            242.16
+          ],
+          "start_wgs84": [
+            53.2146278,
+            63.6243164
+          ],
+          "end_wgs84": [
+            53.217276,
+            63.6240233
+          ],
+          "length_m": 295.37,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 28,
+          "system_id": 4,
+          "start_metric": [
+            -55.5,
+            -121.83
+          ],
+          "end_metric": [
+            -47.01,
+            -249.63
+          ],
+          "start_wgs84": [
+            53.2140053,
+            63.6241692
+          ],
+          "end_wgs84": [
+            53.2128569,
+            63.6242963
+          ],
+          "length_m": 128.08,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 29,
+          "system_id": 4,
+          "start_metric": [
+            -59.71,
+            -58.4
+          ],
+          "end_metric": [
+            -79.61,
+            241.21
+          ],
+          "start_wgs84": [
+            53.2145752,
+            63.6241061
+          ],
+          "end_wgs84": [
+            53.2172674,
+            63.6238082
+          ],
+          "length_m": 300.27,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 30,
+          "system_id": 4,
+          "start_metric": [
+            -93.98,
+            240.25
+          ],
+          "end_metric": [
+            -61.38,
+            -250.59
+          ],
+          "start_wgs84": [
+            53.2172588,
+            63.6235931
+          ],
+          "end_wgs84": [
+            53.2128483,
+            63.6240812
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 31,
+          "system_id": 4,
+          "start_metric": [
+            -75.75,
+            -251.55
+          ],
+          "end_metric": [
+            -108.35,
+            239.29
+          ],
+          "start_wgs84": [
+            53.2128397,
+            63.6238662
+          ],
+          "end_wgs84": [
+            53.2172501,
+            63.623378
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 32,
+          "system_id": 4,
+          "start_metric": [
+            -122.72,
+            238.33
+          ],
+          "end_metric": [
+            -90.12,
+            -252.5
+          ],
+          "start_wgs84": [
+            53.2172415,
+            63.6231629
+          ],
+          "end_wgs84": [
+            53.2128311,
+            63.6236511
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        }
+      ],
+      "flight_length_m": 2602.68,
+      "survey_time_s": 520.5,
+      "turns_count": 7,
+      "turn_time_s": 419.7,
+      "transit_length_m": 324.51,
+      "transit_time_s": 46.4,
+      "total_estimated_time_s": 986.6,
+      "battery_consumed_pct": 65.8,
+      "battery_safe": true,
+      "waypoints": [
+        {
+          "seq": 0,
+          "type": "TAKEOFF",
+          "lat": 53.2124,
+          "lon": 63.62515,
+          "alt_m": 5.0,
+          "system_id": 4
+        },
+        {
+          "seq": 1,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 25,
+          "lat": 53.2146803,
+          "lon": 63.6245266,
+          "system_id": 4
+        },
+        {
+          "seq": 2,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 25,
+          "lat": 53.2172846,
+          "lon": 63.6242384,
+          "system_id": 4
+        },
+        {
+          "seq": 3,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 26,
+          "lat": 53.2138762,
+          "lon": 63.6243995,
+          "system_id": 4
+        },
+        {
+          "seq": 4,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 26,
+          "lat": 53.2128655,
+          "lon": 63.6245114,
+          "system_id": 4
+        },
+        {
+          "seq": 5,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 27,
+          "lat": 53.2146278,
+          "lon": 63.6243164,
+          "system_id": 4
+        },
+        {
+          "seq": 6,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 27,
+          "lat": 53.217276,
+          "lon": 63.6240233,
+          "system_id": 4
+        },
+        {
+          "seq": 7,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 28,
+          "lat": 53.2140053,
+          "lon": 63.6241692,
+          "system_id": 4
+        },
+        {
+          "seq": 8,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 28,
+          "lat": 53.2128569,
+          "lon": 63.6242963,
+          "system_id": 4
+        },
+        {
+          "seq": 9,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 29,
+          "lat": 53.2145752,
+          "lon": 63.6241061,
+          "system_id": 4
+        },
+        {
+          "seq": 10,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 29,
+          "lat": 53.2172674,
+          "lon": 63.6238082,
+          "system_id": 4
+        },
+        {
+          "seq": 11,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 30,
+          "lat": 53.2172588,
+          "lon": 63.6235931,
+          "system_id": 4
+        },
+        {
+          "seq": 12,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 30,
+          "lat": 53.2128483,
+          "lon": 63.6240812,
+          "system_id": 4
+        },
+        {
+          "seq": 13,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 31,
+          "lat": 53.2128397,
+          "lon": 63.6238662,
+          "system_id": 4
+        },
+        {
+          "seq": 14,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 31,
+          "lat": 53.2172501,
+          "lon": 63.623378,
+          "system_id": 4
+        },
+        {
+          "seq": 15,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 32,
+          "lat": 53.2172415,
+          "lon": 63.6231629,
+          "system_id": 4
+        },
+        {
+          "seq": 16,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 32,
+          "lat": 53.2128311,
+          "lon": 63.6236511,
+          "system_id": 4
+        },
+        {
+          "seq": 17,
+          "type": "RETURN_TO_PAD",
+          "lat": 53.2124,
+          "lon": 63.62515,
+          "system_id": 4
+        },
+        {
+          "seq": 18,
+          "type": "LAND",
+          "lat": 53.2124,
+          "lon": 63.62515,
+          "system_id": 4
+        }
+      ]
+    },
+    {
+      "system_id": 5,
+      "color_hex": "#EC4899",
+      "pad": {
+        "pad_id": "P5",
+        "system_id": 5,
+        "lat": 53.2124,
+        "lon": 63.6253,
+        "alt_m": 0.0
+      },
+      "lanes": [
+        {
+          "lane_id": 33,
+          "system_id": 5,
+          "start_metric": [
+            -104.48,
+            -253.46
+          ],
+          "end_metric": [
+            -137.09,
+            237.38
+          ],
+          "start_wgs84": [
+            53.2128225,
+            63.623436
+          ],
+          "end_wgs84": [
+            53.2172329,
+            63.6229478
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 34,
+          "system_id": 5,
+          "start_metric": [
+            -151.45,
+            236.42
+          ],
+          "end_metric": [
+            -118.85,
+            -254.42
+          ],
+          "start_wgs84": [
+            53.2172243,
+            63.6227327
+          ],
+          "end_wgs84": [
+            53.2128139,
+            63.623221
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 35,
+          "system_id": 5,
+          "start_metric": [
+            -133.22,
+            -255.38
+          ],
+          "end_metric": [
+            -165.82,
+            235.46
+          ],
+          "start_wgs84": [
+            53.2128053,
+            63.6230059
+          ],
+          "end_wgs84": [
+            53.2172157,
+            63.6225176
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 36,
+          "system_id": 5,
+          "start_metric": [
+            -180.19,
+            234.5
+          ],
+          "end_metric": [
+            -147.59,
+            -256.33
+          ],
+          "start_wgs84": [
+            53.2172071,
+            63.6223025
+          ],
+          "end_wgs84": [
+            53.2127967,
+            63.6227908
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 37,
+          "system_id": 5,
+          "start_metric": [
+            -161.96,
+            -257.29
+          ],
+          "end_metric": [
+            -194.56,
+            233.55
+          ],
+          "start_wgs84": [
+            53.2127881,
+            63.6225757
+          ],
+          "end_wgs84": [
+            53.2171985,
+            63.6220874
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 38,
+          "system_id": 5,
+          "start_metric": [
+            -208.93,
+            232.59
+          ],
+          "end_metric": [
+            -176.32,
+            -258.25
+          ],
+          "start_wgs84": [
+            53.2171899,
+            63.6218724
+          ],
+          "end_wgs84": [
+            53.2127795,
+            63.6223607
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 39,
+          "system_id": 5,
+          "start_metric": [
+            -190.69,
+            -259.21
+          ],
+          "end_metric": [
+            -223.29,
+            231.63
+          ],
+          "start_wgs84": [
+            53.2127709,
+            63.6221456
+          ],
+          "end_wgs84": [
+            53.2171813,
+            63.6216573
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        },
+        {
+          "lane_id": 40,
+          "system_id": 5,
+          "start_metric": [
+            -237.66,
+            230.67
+          ],
+          "end_metric": [
+            -205.06,
+            -260.16
+          ],
+          "start_wgs84": [
+            53.2171727,
+            63.6214422
+          ],
+          "end_wgs84": [
+            53.2127623,
+            63.6219305
+          ],
+          "length_m": 491.92,
+          "direction_deg": 273.8
+        },
+        {
+          "lane_id": 41,
+          "system_id": 5,
+          "start_metric": [
+            -219.43,
+            -261.12
+          ],
+          "end_metric": [
+            -252.03,
+            229.72
+          ],
+          "start_wgs84": [
+            53.2127537,
+            63.6217155
+          ],
+          "end_wgs84": [
+            53.2171641,
+            63.6212271
+          ],
+          "length_m": 491.92,
+          "direction_deg": 93.8
+        }
+      ],
+      "flight_length_m": 4427.28,
+      "survey_time_s": 885.5,
+      "turns_count": 8,
+      "turn_time_s": 70.4,
+      "transit_length_m": 615.16,
+      "transit_time_s": 87.9,
+      "total_estimated_time_s": 1043.7,
+      "battery_consumed_pct": 69.6,
+      "battery_safe": true,
+      "waypoints": [
+        {
+          "seq": 0,
+          "type": "TAKEOFF",
+          "lat": 53.2124,
+          "lon": 63.6253,
+          "alt_m": 5.0,
+          "system_id": 5
+        },
+        {
+          "seq": 1,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 33,
+          "lat": 53.2128225,
+          "lon": 63.623436,
+          "system_id": 5
+        },
+        {
+          "seq": 2,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 33,
+          "lat": 53.2172329,
+          "lon": 63.6229478,
+          "system_id": 5
+        },
+        {
+          "seq": 3,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 34,
+          "lat": 53.2172243,
+          "lon": 63.6227327,
+          "system_id": 5
+        },
+        {
+          "seq": 4,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 34,
+          "lat": 53.2128139,
+          "lon": 63.623221,
+          "system_id": 5
+        },
+        {
+          "seq": 5,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 35,
+          "lat": 53.2128053,
+          "lon": 63.6230059,
+          "system_id": 5
+        },
+        {
+          "seq": 6,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 35,
+          "lat": 53.2172157,
+          "lon": 63.6225176,
+          "system_id": 5
+        },
+        {
+          "seq": 7,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 36,
+          "lat": 53.2172071,
+          "lon": 63.6223025,
+          "system_id": 5
+        },
+        {
+          "seq": 8,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 36,
+          "lat": 53.2127967,
+          "lon": 63.6227908,
+          "system_id": 5
+        },
+        {
+          "seq": 9,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 37,
+          "lat": 53.2127881,
+          "lon": 63.6225757,
+          "system_id": 5
+        },
+        {
+          "seq": 10,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 37,
+          "lat": 53.2171985,
+          "lon": 63.6220874,
+          "system_id": 5
+        },
+        {
+          "seq": 11,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 38,
+          "lat": 53.2171899,
+          "lon": 63.6218724,
+          "system_id": 5
+        },
+        {
+          "seq": 12,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 38,
+          "lat": 53.2127795,
+          "lon": 63.6223607,
+          "system_id": 5
+        },
+        {
+          "seq": 13,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 39,
+          "lat": 53.2127709,
+          "lon": 63.6221456,
+          "system_id": 5
+        },
+        {
+          "seq": 14,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 39,
+          "lat": 53.2171813,
+          "lon": 63.6216573,
+          "system_id": 5
+        },
+        {
+          "seq": 15,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 40,
+          "lat": 53.2171727,
+          "lon": 63.6214422,
+          "system_id": 5
+        },
+        {
+          "seq": 16,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 40,
+          "lat": 53.2127623,
+          "lon": 63.6219305,
+          "system_id": 5
+        },
+        {
+          "seq": 17,
+          "type": "WAYPOINT_LANE_START",
+          "lane_id": 41,
+          "lat": 53.2127537,
+          "lon": 63.6217155,
+          "system_id": 5
+        },
+        {
+          "seq": 18,
+          "type": "WAYPOINT_LANE_END",
+          "lane_id": 41,
+          "lat": 53.2171641,
+          "lon": 63.6212271,
+          "system_id": 5
+        },
+        {
+          "seq": 19,
+          "type": "RETURN_TO_PAD",
+          "lat": 53.2124,
+          "lon": 63.6253,
+          "system_id": 5
+        },
+        {
+          "seq": 20,
+          "type": "LAND",
+          "lat": 53.2124,
+          "lon": 63.6253,
+          "system_id": 5
+        }
+      ]
+    }
+  ],
+  "is_safe": true,
+  "safety_violations": [],
+  "safety_warnings": [
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #1 и #2 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #1 и #3 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #1 и #4 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #1 и #5 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #2 и #3 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #2 и #4 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #2 и #5 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #3 и #4 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #3 и #5 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд.",
+    "[ВНИМАНИЕ] Подлётные маршруты дронов #4 и #5 пересекаются в плане. Необходим ступенчатый взлёт (time-slot takeoff) с интервалом не менее 30 секунд."
+  ],
+  "advisories": [
+    "РЕЖИМ: Демонстрационная симуляция",
+    "Не является разрешением на реальный групповой полёт",
+    "Рекомендация требует обязательного подтверждения агрономом"
+  ],
+  "human_confirmation_required": true,
+  "rules_version": "2026.1-cheatsheet"
+}
