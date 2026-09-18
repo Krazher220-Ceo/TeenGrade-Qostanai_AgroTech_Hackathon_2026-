@@ -58,11 +58,20 @@ def run_cluster_analysis(
     eval_samples = val_ds.samples + test_ds.samples
     print(f"Всего анализируемых контрольных образцов: {len(eval_samples)}")
 
-    model = WeedMultiTaskModel(num_species=len(SPECIES_NAMES), num_stages=2, backbone_name="efficientnet_b0", pretrained=False)
     if Path(model_path).exists():
-        model.load_state_dict(torch.load(model_path, map_location=device))
-        print(f"Загружены веса из {model_path}")
+        from case1.ml.multitask_model import infer_num_species_from_state_dict
+        state_dict = torch.load(model_path, map_location=device)
+        num_species = infer_num_species_from_state_dict(state_dict)
+        num_stages = 3
+        for k, v in state_dict.items():
+            if k.endswith("stage_head.4.weight"):
+                num_stages = int(v.shape[0])
+                break
+        model = WeedMultiTaskModel(num_species=num_species, num_stages=num_stages, backbone_name="efficientnet_b0", pretrained=False)
+        model.load_state_dict(state_dict)
+        print(f"Загружены веса из {model_path} ({num_species} видов, {num_stages} фаз)")
     else:
+        model = WeedMultiTaskModel(num_species=len(SPECIES_NAMES), num_stages=3, backbone_name="efficientnet_b0", pretrained=False)
         print(f"[WARN] Веса не найдены по пути {model_path}, используются дефолтные")
 
     model.to(device)

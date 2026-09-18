@@ -1,0 +1,7 @@
+{
+  "note": "Full scan of all drone JPGs under /data/ФотоПолей for DJI XMP RelativeAltitude tag (regex on raw JPEG bytes). Independent of the 40-image sample used for the main field_eval run.",
+  "total_files": 1178,
+  "parsed_relativealtitude": 1178,
+  "negative_count": 140,
+  "negative_share": 0.1188
+}

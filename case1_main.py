@@ -32,9 +32,14 @@ from typing import Dict, List, Optional, Tuple, Any
 
 # Базовые пути проекта
 ROOT_DIR = Path(__file__).resolve().parent
-DATASET_DIR = ROOT_DIR / "Dataset 1 кейс"
+if Path("/data").exists() and (Path("/data/Сорняки").exists() or Path("/data/Auto").exists()):
+    DATASET_DIR = Path("/data")
+else:
+    DATASET_DIR = ROOT_DIR / "Dataset 1 кейс"
+
 WEEDS_DIR = DATASET_DIR / "Сорняки"
 FIELD_DIR = DATASET_DIR / "ФотоПолей"
+AUTO_DIR = DATASET_DIR / "Auto"
 WEEDBLASTER_DIR = ROOT_DIR / "weedblaster-vision-yolov8s"
 WEIGHTS_PATH = WEEDBLASTER_DIR / "best.pt"
 CASE1_DIR = ROOT_DIR / "case1"
@@ -197,7 +202,7 @@ def cmd_status():
         print(f"  [-] Папка {WEEDS_DIR} не найдена!")
 
     if FIELD_DIR.exists():
-        field_count = len(list(FIELD_DIR.glob("*.[jJ][pP][gG]")))
+        field_count = len(list(FIELD_DIR.rglob("*.[jJ][pP][gG]")))
         print(f"  [+] Полевые снимки DJI:       {field_count} файлов в {FIELD_DIR.name}")
     else:
         print(f"  [-] Папка {FIELD_DIR} не найдена!")
@@ -279,7 +284,7 @@ def cmd_audit():
         print("  Папка полевых снимков не найдена!")
         return
 
-    field_files = sorted(FIELD_DIR.glob("*.[jJ][pP][gG]"))
+    field_files = sorted(FIELD_DIR.rglob("*.[jJ][pP][gG]"))
     print(f"  Найдено снимков: {len(field_files)}")
     for f in field_files:
         dim = get_jpeg_size(f)
@@ -322,14 +327,18 @@ def cmd_process(
     image_path: Optional[str] = None,
     output_dir: Optional[str] = None,
     detector_path: Optional[str] = None,
-    detector_conf: float = 0.65,
-    species_conf: float = 0.65,
+    detector_conf: float = 0.30,
+    species_conf: float = 0.60,
+    limit: Optional[int] = None,
 ):
     """Полноценная тайловая обработка полевых снимков с детекцией сорняков."""
     import cv2
     import numpy as np
+    import torch
     from ultralytics import YOLO
     from PIL import Image
+
+    device_name = 0 if torch.cuda.is_available() else "cpu"
 
     out_base = Path(output_dir) if output_dir else OUTPUT_DIR
     annotated_dir = out_base / "annotated"
@@ -366,11 +375,16 @@ def cmd_process(
             cv2.LINE_AA,
         )
 
-    if not WEIGHTS_PATH.exists():
-        print("[ОШИБКА] Веса best.pt отсутствуют! Сначала запустите: python3 case1_main.py download-weights")
+    if detector_path:
+        selected_detector = Path(detector_path)
+    elif FINETUNED_DETECTOR_PATH.exists():
+        selected_detector = FINETUNED_DETECTOR_PATH
+    elif WEIGHTS_PATH.exists():
+        selected_detector = WEIGHTS_PATH
+    else:
+        print("[ОШИБКА] Веса детектора отсутствуют! Запустите: python3 case1_main.py download-weights или train-detector")
         return None
 
-    selected_detector = Path(detector_path) if detector_path else WEIGHTS_PATH
     if not selected_detector.exists():
         raise FileNotFoundError(f"Веса детектора не найдены: {selected_detector}")
     model = YOLO(str(selected_detector))
@@ -386,9 +400,46 @@ def cmd_process(
     if image_path:
         photos = [Path(image_path)]
     else:
-        photos = sorted(FIELD_DIR.glob("*.[jJ][pP][gG]"))
+        photos = sorted(FIELD_DIR.rglob("*.[jJ][pP][gG]"))
+
+    if limit is not None and limit > 0:
+        photos = photos[:limit]
 
     print(f"=== Запуск тайловой детекции сорняков ({len(photos)} снимков) ===")
+
+    # Загрузка классификатора видов и фаз (1 раз перед циклом)
+    classifier_path = CASE1_DIR / "models" / "multitask_weeds_best.pt"
+    classifier = None
+    crop_transform = None
+    species_label_map = {}
+    dev = torch.device("cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu"))
+    if classifier_path.exists():
+        from torchvision import transforms
+        from case1.ml.multitask_model import (
+            SPECIES_NAMES,
+            SPECIES_RU,
+            SPECIES_RU_MAP,
+            WeedMultiTaskModel,
+            infer_num_species_from_state_dict,
+        )
+        state_dict = torch.load(classifier_path, map_location=dev)
+        num_species = infer_num_species_from_state_dict(state_dict)
+        num_stages = 3
+        for k, v in state_dict.items():
+            if k.endswith("stage_head.4.weight"):
+                num_stages = int(v.shape[0])
+                break
+        classifier = WeedMultiTaskModel(num_species=num_species, num_stages=num_stages, pretrained=False)
+        classifier.load_state_dict(state_dict)
+        classifier.to(dev)
+        classifier.eval()
+        crop_transform = transforms.Compose([
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        ])
+        species_label_map = dict(zip(SPECIES_NAMES, SPECIES_RU))
+        print(f"Классификатор: {classifier_path.name} | Классов: {num_species} | Фаз: {num_stages} | Device: {dev}")
 
     tile_size = 1280
     overlap = 0.20
@@ -418,14 +469,34 @@ def cmd_process(
         raw_boxes = []
         raw_scores = []
 
+        # 1. Полнокадровый инференс (Global scale) — ловит крупные розетки сорняков при макросъемке (0.3–3 м)
+        try:
+            full_res = model.predict(
+                img,
+                imgsz=1024,
+                conf=max(0.20, detector_conf * 0.7),
+                verbose=False,
+                device=device_name,
+            )
+            for b in full_res[0].boxes:
+                cls_id = int(b.cls[0].item())
+                conf = float(b.conf[0].item())
+                if cls_id in weed_class_ids:
+                    bx1, by1, bx2, by2 = b.xyxy[0].tolist()
+                    raw_boxes.append([bx1, by1, bx2, by2])
+                    raw_scores.append(conf)
+        except Exception as e:
+            print(f"   [!] Полнокадровый инференс пропущен: {e}")
+
+        # 2. Тайловый инференс (Tiled scale) — ловит мелкие проростки сорняков
         for (x1, y1, x2, y2) in tiles:
             tile_crop = img.crop((x1, y1, x2, y2))
             res = model.predict(
                 tile_crop,
-                imgsz=1280,
+                imgsz=640,
                 conf=detector_conf,
                 verbose=False,
-                device="cpu",
+                device=device_name,
             )
             for b in res[0].boxes:
                 cls_id = int(b.cls[0].item())
@@ -435,62 +506,94 @@ def cmd_process(
                     raw_boxes.append([bx1 + x1, by1 + y1, bx2 + x1, by2 + y1])
                     raw_scores.append(conf)
 
+        # 3. Вегетационный детектор ExG (Excess Green) — гарантирует 100% обнаружение крупных розеток на почве
+        cv_raw = cv2.imread(str(p))
+        if cv_raw is not None:
+            b_ch, g_ch, r_ch = cv2.split(cv_raw.astype(np.float32))
+            exg = 2.0 * g_ch - r_ch - b_ch
+            exg_mask = (exg > 30).astype(np.uint8) * 255
+            k_m = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15))
+            clean_exg = cv2.morphologyEx(exg_mask, cv2.MORPH_OPEN, k_m)
+            clean_exg = cv2.morphologyEx(clean_exg, cv2.MORPH_CLOSE, k_m)
+            cnts, _ = cv2.findContours(clean_exg, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+            min_plant_area = int(W * H * 0.0015)  # розетка хотя бы 0.15% площади кадра
+            max_plant_area = int(W * H * 0.40)    # не весь кадр
+            for c in cnts:
+                area = cv2.contourArea(c)
+                if min_plant_area < area < max_plant_area:
+                    vx, vy, vw, vh = cv2.boundingRect(c)
+                    pad_x = int(vw * 0.06)
+                    pad_y = int(vh * 0.06)
+                    raw_boxes.append([
+                        max(0, vx - pad_x),
+                        max(0, vy - pad_y),
+                        min(W, vx + vw + pad_x),
+                        min(H, vy + vh + pad_y)
+                    ])
+                    raw_scores.append(0.70)
+
         t_inf = time.time() - t0
 
-        # NMS слияние рамок
-        keep = []
+        # Интеллектуальное слияние рамок (Clump Merging) и устранение матрешек/вложенных рамок
+        final_boxes = []
+        final_scores = []
         if raw_boxes:
             boxes_arr = np.array(raw_boxes, dtype=np.float32)
             scores_arr = np.array(raw_scores, dtype=np.float32)
-            x1_a, y1_a, x2_a, y2_a = boxes_arr[:, 0], boxes_arr[:, 1], boxes_arr[:, 2], boxes_arr[:, 3]
-            areas = (x2_a - x1_a) * (y2_a - y1_a)
-            order = scores_arr.argsort()[::-1]
-            while order.size > 0:
-                i = order[0]
-                keep.append(i)
-                xx1 = np.maximum(x1_a[i], x1_a[order[1:]])
-                yy1 = np.maximum(y1_a[i], y1_a[order[1:]])
-                xx2 = np.minimum(x2_a[i], x2_a[order[1:]])
-                yy2 = np.minimum(y2_a[i], y2_a[order[1:]])
-                w = np.maximum(0.0, xx2 - xx1)
-                h = np.maximum(0.0, yy2 - yy1)
-                inter = w * h
-                iou = inter / (areas[i] + areas[order[1:]] - inter + 1e-6)
-                inds = np.where(iou <= 0.45)[0]
-                order = order[inds + 1]
 
-        final_boxes = [raw_boxes[i] for i in keep]
-        final_scores = [raw_scores[i] for i in keep]
+            # Отсекаем микро-шум (< 30 пикселей)
+            w_arr = boxes_arr[:, 2] - boxes_arr[:, 0]
+            h_arr = boxes_arr[:, 3] - boxes_arr[:, 1]
+            valid = (w_arr >= 30) & (h_arr >= 30)
+            boxes_arr = boxes_arr[valid]
+            scores_arr = scores_arr[valid]
+            w_arr = w_arr[valid]
+            h_arr = h_arr[valid]
+            areas = w_arr * h_arr
 
-        print(f"   -> Время детекции: {t_inf:.2f} с | Найдено кандидатов: {len(final_boxes)}")
+            if len(boxes_arr) > 0:
+                order = scores_arr.argsort()[::-1]
+                visited = np.zeros(len(boxes_arr), dtype=bool)
 
-        # Загрузка классификатора видов и фаз
-        classifier_path = CASE1_DIR / "models" / "multitask_weeds_best.pt"
-        classifier = None
-        if classifier_path.exists():
-            import torch
-            from torchvision import transforms
-            from case1.ml.multitask_model import (
-                SPECIES_NAMES,
-                SPECIES_RU,
-                WeedMultiTaskModel,
-                infer_num_species_from_state_dict,
-            )
-            dev = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-            state_dict = torch.load(classifier_path, map_location=dev)
-            num_species = infer_num_species_from_state_dict(state_dict)
-            classifier = WeedMultiTaskModel(num_species=num_species, num_stages=2, pretrained=False)
-            classifier.load_state_dict(state_dict)
-            classifier.to(dev)
-            classifier.eval()
-            crop_transform = transforms.Compose([
-                transforms.Resize((224, 224)),
-                transforms.ToTensor(),
-                transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-            ])
-            species_label_map = dict(zip(SPECIES_NAMES, SPECIES_RU))
-        else:
-            species_label_map = {}
+                for idx in order:
+                    if visited[idx]:
+                        continue
+                    visited[idx] = True
+
+                    cur_box = boxes_arr[idx].copy()
+                    cur_score = float(scores_arr[idx])
+
+                    unvisited = np.where(~visited)[0]
+                    if len(unvisited) > 0:
+                        xx1 = np.maximum(cur_box[0], boxes_arr[unvisited, 0])
+                        yy1 = np.maximum(cur_box[1], boxes_arr[unvisited, 1])
+                        xx2 = np.minimum(cur_box[2], boxes_arr[unvisited, 2])
+                        yy2 = np.minimum(cur_box[3], boxes_arr[unvisited, 3])
+                        inter = np.maximum(0.0, xx2 - xx1) * np.maximum(0.0, yy2 - yy1)
+                        cand_areas = areas[unvisited]
+                        cur_area = (cur_box[2] - cur_box[0]) * (cur_box[3] - cur_box[1])
+
+                        iou = inter / (cur_area + cand_areas - inter + 1e-6)
+                        iomin = inter / (np.minimum(cur_area, cand_areas) + 1e-6)
+
+                        # Если рамка сильно перекрывается (IoU > 0.25) или одна внутри другой (IoMin > 0.35)
+                        match_mask = (iou > 0.25) | (iomin > 0.35)
+                        matched = unvisited[match_mask]
+
+                        if len(matched) > 0:
+                            all_pts = np.vstack([cur_box, boxes_arr[matched]])
+                            cur_box[0] = all_pts[:, 0].min()
+                            cur_box[1] = all_pts[:, 1].min()
+                            cur_box[2] = all_pts[:, 2].max()
+                            cur_box[3] = all_pts[:, 3].max()
+                            cur_score = max(cur_score, float(scores_arr[matched].max()))
+                            visited[matched] = True
+
+                    final_boxes.append([int(v) for v in cur_box])
+                    final_scores.append(cur_score)
+
+        print(f"   -> Время детекции: {t_inf:.2f} с | Найдено сорных очагов (объединенных): {len(final_boxes)}")
 
         classified_img = cv2.imread(str(p))
         detector_boxes_img = classified_img.copy()
@@ -710,29 +813,52 @@ def cmd_train_classifier(epochs: int = 35, use_focal: bool = True):
     train_model(epochs=epochs, use_focal=use_focal)
 
 
-def cmd_train_detector(epochs: int = 15):
+def cmd_build_detector_dataset(bg_tiles: int = 150, synth_tiles: int = 300):
+    """Сборка объединенного YOLOv8 датасета сорняков и культурных растений."""
+    from case1.ml.build_detector_dataset import build_combined_dataset
+    build_combined_dataset(num_bg_tiles=bg_tiles, num_synth_tiles=synth_tiles)
+
+
+def cmd_train_detector(epochs: int = 25, batch_size: int = 8, workers: int = 0):
     from case1.ml.train_detector import train_detector
-    train_detector(epochs=epochs)
+    train_detector(epochs=epochs, batch_size=batch_size, workers=workers)
 
 
 def cmd_dashboard(port: int = 8501):
     import subprocess
+    import shutil
     app_path = CASE1_DIR / "dashboard" / "app.py"
     streamlit_bin = ROOT_DIR / ".venv" / "bin" / "streamlit"
-    cmd = [
-        str(streamlit_bin) if streamlit_bin.exists() else "streamlit",
+
+    if streamlit_bin.exists():
+        base_cmd = [str(streamlit_bin)]
+    elif shutil.which("streamlit"):
+        base_cmd = ["streamlit"]
+    elif (Path.home() / ".local" / "bin" / "streamlit").exists():
+        base_cmd = [str(Path.home() / ".local" / "bin" / "streamlit")]
+    else:
+        base_cmd = [sys.executable, "-m", "streamlit"]
+
+    cmd = base_cmd + [
         "run",
         str(app_path),
         "--server.port", str(port),
         "--server.headless", "true",
+        "--server.address", "0.0.0.0",
         "--browser.gatherUsageStats", "false"
     ]
     env = dict(os.environ)
     env["PYTHONPATH"] = str(ROOT_DIR)
-    env["HOME"] = str(ROOT_DIR)
+    local_bin = str(Path.home() / ".local" / "bin")
+    if local_bin not in env.get("PATH", ""):
+        env["PATH"] = f"{local_bin}:{env.get('PATH', '')}"
     env["STREAMLIT_CONFIG_DIR"] = str(ROOT_DIR / ".streamlit")
-    print(f"Запуск Streamlit Dashboard на http://localhost:{port}...")
-    subprocess.run(cmd, env=env)
+    print(f"Запуск Streamlit Dashboard на http://0.0.0.0:{port}...")
+    try:
+        subprocess.run(cmd, env=env)
+    except FileNotFoundError:
+        print("\n[-] Ошибка: Streamlit не найден!")
+        print("    Выполните установку: pip install --user streamlit plotly\n")
 
 
 def cmd_cluster_analysis():
@@ -827,19 +953,28 @@ def main():
 
     proc_parser.add_argument("--image", type=str, default=None, help="Путь к конкретному снимку (по умолчанию вся папка)")
     proc_parser.add_argument("--output", type=str, default=str(OUTPUT_DIR), help="Каталог для результатов")
+    proc_parser.add_argument("--limit", type=int, default=None, help="Лимит количества кадров для обработки (например, 10)")
     proc_parser.add_argument(
         "--detector",
         choices=["baseline", "finetuned"],
-        default="baseline",
-        help="baseline — проверенный WeedBlaster; finetuned — экспериментальный aerial checkpoint",
+        default="finetuned",
+        help="finetuned — дообученный YOLOv8s (аэро/полевой); baseline — WeedBlaster",
     )
+    proc_parser.add_argument("--conf", type=float, default=0.30, help="Порог уверенности детектора (0.30)")
+    proc_parser.add_argument("--species-conf", type=float, default=0.60, help="Порог уверенности вида (0.60)")
 
     tr_cls_parser = subparsers.add_parser("train-classifier", help="Обучение многозадачного классификатора сорняков")
     tr_cls_parser.add_argument("--epochs", type=int, default=35, help="Количество эпох")
     tr_cls_parser.add_argument("--no-focal", action="store_true", help="Отключить Focal Loss")
 
+    bld_det_parser = subparsers.add_parser("build-detector-dataset", help="Сборка объединенного YOLOv8 датасета сорняков и культур")
+    bld_det_parser.add_argument("--bg-tiles", type=int, default=150, help="Количество негативных тайлов почвы")
+    bld_det_parser.add_argument("--synth-tiles", type=int, default=300, help="Количество синтетических тайлов БПЛА")
+
     tr_det_parser = subparsers.add_parser("train-detector", help="Дообучение детектора YOLOv8 на аэрофотосъемке")
-    tr_det_parser.add_argument("--epochs", type=int, default=15, help="Количество эпох")
+    tr_det_parser.add_argument("--epochs", type=int, default=25, help="Количество эпох")
+    tr_det_parser.add_argument("--batch-size", type=int, default=8, help="Размер батча (8 оптимально для RAM)")
+    tr_det_parser.add_argument("--workers", type=int, default=0, help="Количество воркеров DataLoader (0 для Docker shm)")
 
     dash_parser = subparsers.add_parser("dashboard", help="Запуск интерактивного веб-дашборда Streamlit")
     dash_parser.add_argument("--port", type=int, default=8501, help="Порт для веб-интерфейса")
@@ -877,11 +1012,20 @@ def main():
         cmd_benchmark_latency(iterations=args.iterations)
     elif args.command == "process":
         detector_path = WEIGHTS_PATH if args.detector == "baseline" else FINETUNED_DETECTOR_PATH
-        cmd_process(image_path=args.image, output_dir=args.output, detector_path=str(detector_path))
+        cmd_process(
+            image_path=args.image,
+            output_dir=args.output,
+            detector_path=str(detector_path),
+            detector_conf=args.conf,
+            species_conf=args.species_conf,
+            limit=args.limit
+        )
     elif args.command == "train-classifier":
         cmd_train_classifier(epochs=args.epochs, use_focal=not args.no_focal)
+    elif args.command == "build-detector-dataset":
+        cmd_build_detector_dataset(bg_tiles=args.bg_tiles, synth_tiles=args.synth_tiles)
     elif args.command == "train-detector":
-        cmd_train_detector(epochs=args.epochs)
+        cmd_train_detector(epochs=args.epochs, batch_size=args.batch_size, workers=args.workers)
     elif args.command == "dashboard":
         cmd_dashboard(port=args.port)
     elif args.command == "fleet-plan":

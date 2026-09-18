@@ -17,28 +17,40 @@ SPECIES_TO_IDX = {
 }
 IDX_TO_SPECIES = {v: k for k, v in SPECIES_TO_IDX.items()}
 
+# Базовые 3 агрономические фазы по шпаргалке ментора «Олжа Агро»:
 STAGE_TO_IDX = {
+    # 1. Семядоли — 2 листа (Оптимальное окно, базовая/минимальная дозировка)
+    "cotyledon_to_2_leaves": 0,
     "rosette": 0,
+    "всходы": 0,
+    "розетка": 0,
+
+    # 2. 4–6 листьев (Сорняк грубеет, дозировка +15–20%)
+    "4_to_6_leaves": 1,
     "stem_elongation": 1,
+    "стеблевание": 1,
+
+    # 3. Более 6 листьев / цветение (Упущенное окно, риск фитотоксичности культуры)
+    "over_6_leaves_or_flowering": 2,
+    "цветение": 2,
+    "плодоношение": 2,
+    "flowering": 2,
+    "fruiting": 2,
 }
-IDX_TO_STAGE = {v: k for k, v in STAGE_TO_IDX.items()}
+IDX_TO_STAGE = {0: "cotyledon_to_2_leaves", 1: "4_to_6_leaves", 2: "over_6_leaves_or_flowering"}
+STAGE_NAMES = ["cotyledon_to_2_leaves", "4_to_6_leaves", "over_6_leaves_or_flowering"]
 
 
 class WeedMultiTaskDataset(Dataset):
     """
-    Датасет эталонных фотографий и вырезок сорняков и культурных растений.
-    Возвращает:
-      image: Tensor [3, H, W]
-      species_target: LongTensor (0..3)
-      stage_target: LongTensor (0..1)
-      stage_mask: FloatTensor (1.0 если стадия известна и применима, иначе 0.0)
-      meta: Dict (путь, имя файла, группа)
+    Датасет эталонных фотографий сорняков (до 26 видов и 3 фаз по шпаргалке «Олжа Агро»).
     """
     def __init__(
         self,
         manifest_path: str,
         split: str = "train",
-        transform: Optional[Callable] = None
+        transform: Optional[Callable] = None,
+        species_to_idx: Optional[Dict[str, int]] = None,
     ):
         self.split = split
         self.transform = transform
@@ -49,33 +61,40 @@ class WeedMultiTaskDataset(Dataset):
             raise FileNotFoundError(f"Manifest not found: {manifest_file}")
 
         with open(manifest_file, "r", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                if row["split"] == split:
-                    sp_str = row["species"]
-                    st_str = row["stage"]
+            all_rows = list(csv.DictReader(f))
 
-                    sp_idx = SPECIES_TO_IDX.get(sp_str, -1)
-                    st_idx = STAGE_TO_IDX.get(st_str, -1)
+        # Динамическое определение видов сорняков
+        if species_to_idx is None:
+            unique_species = sorted(list(set(row["species"] for row in all_rows if row.get("species"))))
+            self.species_to_idx = {sp: idx for idx, sp in enumerate(unique_species)}
+        else:
+            self.species_to_idx = species_to_idx
 
-                    # Стадия маскируется для пшеницы и для пырея (если розетка)
-                    if sp_str == "crop_wheat":
-                        has_valid_stage = False
-                    elif sp_str == "couch_grass":
-                        has_valid_stage = (st_idx != -1 and st_str == "stem_elongation")
-                    else:
-                        has_valid_stage = (st_idx != -1)
+        self.idx_to_species = {v: k for k, v in self.species_to_idx.items()}
 
-                    stage_mask = 1.0 if has_valid_stage else 0.0
+        for row in all_rows:
+            if row.get("split") == split:
+                sp_str = row.get("species", "")
+                st_str = row.get("stage_code") or row.get("stage") or row.get("stage_folder", "")
 
-                    self.samples.append({
-                        "path": row["path"],
-                        "species_idx": sp_idx,
-                        "stage_idx": max(0, st_idx),
-                        "stage_mask": stage_mask,
-                        "group_id": row.get("group_id", ""),
-                        "filename": row.get("filename", "")
-                    })
+                sp_idx = self.species_to_idx.get(sp_str, -1)
+                st_idx = STAGE_TO_IDX.get(st_str.lower(), -1)
+
+                has_valid_stage = (st_idx != -1)
+                stage_mask = 1.0 if has_valid_stage else 0.0
+
+                self.samples.append({
+                    "path": row["path"],
+                    "species_idx": max(0, sp_idx),
+                    "stage_idx": max(0, st_idx),
+                    "stage_mask": stage_mask,
+                    "group_id": row.get("group_id", ""),
+                    "filename": row.get("filename", ""),
+                    "species": sp_str,
+                    "stage": st_str,
+                    "weed_type": row.get("weed_type", "annual"),
+                    "botanical_class": row.get("botanical_class", "A"),
+                })
 
     def __len__(self) -> int:
         return len(self.samples)

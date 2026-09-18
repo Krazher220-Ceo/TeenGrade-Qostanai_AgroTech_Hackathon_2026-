@@ -65,6 +65,7 @@ def run_uploaded_field_image(
     processor: Callable[..., Any] | None = None,
     detector_conf: float = 0.65,
     species_conf: float = 0.65,
+    detector_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Run the existing detector/classifier pipeline for one uploaded image."""
     metadata = validate_uploaded_image(image_bytes, filename)
@@ -82,6 +83,7 @@ def run_uploaded_field_image(
     process_result = processor(
         image_path=str(input_path),
         output_dir=str(run_dir),
+        detector_path=detector_path,
         detector_conf=detector_conf,
         species_conf=species_conf,
     )

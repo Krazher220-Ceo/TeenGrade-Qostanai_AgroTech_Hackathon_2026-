@@ -14,6 +14,7 @@ CLAUDE.md
 **/*prompt*.md
 .agents/
 .codex/
+.claude/
 
 # Локальные исходные данные и обучающие выборки
 Dataset 1 */
@@ -32,6 +33,8 @@ case1/output/test_run/
 case1/output/field_check/
 case1/output/viewer_runs/
 case1/output/detector_boxes/
+case1/output/dock_simulation/
+case1/output/e2e_simulation/
 
 # Вложенный upstream-репозиторий модели не должен случайно стать submodule
 weedblaster-vision-yolov8s/.git/

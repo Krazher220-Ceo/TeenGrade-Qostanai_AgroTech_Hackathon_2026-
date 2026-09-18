@@ -1,0 +1,53 @@
+{
+  "dataset": "real_only_test_313_images_excl_synth_and_negatives",
+  "weights": "/workspace/case1/models/weed_detector_finetuned.pt",
+  "data_yaml": "/workspace/case1/output/eval_2026-09-18/real_subset.yaml",
+  "map50": 0.7571209223617787,
+  "map50_95": 0.47127305748282733,
+  "map75": 0.516880116955654,
+  "mean_precision": 0.728151356484918,
+  "mean_recall": 0.7283701200974251,
+  "per_class": {
+    "crop": {
+      "precision": 0.721483450127936,
+      "recall": 0.7533039647577092,
+      "map50": 0.7830124398383431,
+      "map50_95": 0.5415191958623947
+    },
+    "weed": {
+      "precision": 0.7348192628419,
+      "recall": 0.703436275437141,
+      "map50": 0.7312294048852144,
+      "map50_95": 0.40102691910326005
+    }
+  },
+  "speed_ms": {
+    "preprocess": 0.22936900030634108,
+    "inference": 3.152169015785953,
+    "loss": 0.0006959999735934285,
+    "postprocess": 0.4055478113380591
+  },
+  "save_dir": "/workspace/case1/output/eval_2026-09-18/detector_test_real_only",
+  "confusion_matrix_raw": [
+    [
+      178.0,
+      11.0,
+      70.0
+    ],
+    [
+      5.0,
+      635.0,
+      275.0
+    ],
+    [
+      44.0,
+      197.0,
+      0.0
+    ]
+  ],
+  "confusion_matrix_class_order": [
+    "crop",
+    "weed",
+    "background"
+  ]
+}

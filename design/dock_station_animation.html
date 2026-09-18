@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Мобильная дрон-станция — анимация</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#f3f7f4; --card:#ffffff; --border:#dfe8e1;
+    --ink:#122b20; --ink-soft:#52645b; --ink-faint:#84948b;
+    --green:#1f9d55; --green-dark:#0c3d2c; --green-pale:#e6f5ec;
+    --amber:#f59e0b; --amber-pale:#fef3e0;
+    --blue:#2563eb; --blue-pale:#e8f0fe;
+    --purple:#7c3aed; --purple-pale:#f1e9fd;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);}
+  body{
+    font-family:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    width:1920px; height:1080px; overflow:hidden;
+  }
+  #stage-wrap{ width:1920px; height:1080px; position:relative; background:var(--bg); }
+  svg{ width:1920px; height:1080px; display:block; }
+  .lbl-title{ font-weight:800; }
+  .lbl-sub{ font-weight:600; }
+  .lbl-stage{ font-weight:700; transition:opacity .25s ease; }
+  .box-title{ font-weight:700; }
+  .box-desc{ font-weight:500; }
+</style>
+</head>
+<body>
+<div id="stage-wrap">
+<svg id="svgRoot" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowSoft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9db3a7"/>
+    </marker>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0c3d2c" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="var(--bg)"/>
+
+  <!-- ===================== HEADER (always visible) ===================== -->
+  <g>
+    <circle cx="70" cy="56" r="26" fill="var(--green)"/>
+    <path d="M70 39 C 58 43, 53 53, 56 66 C 63 68, 73 65, 77 55 C 79 49, 75 41, 70 39 Z" fill="#ffffff" opacity="0.95"/>
+    <text x="112" y="54" class="lbl-title" font-size="34" fill="var(--green-dark)">Мобильная дрон-станция</text>
+    <text id="stageLabel" x="112" y="84" class="lbl-stage" font-size="21" fill="var(--green)">Один выезд агронома — четыре дрона по секторам</text>
+    <text x="1852" y="40" text-anchor="end" class="lbl-sub" font-size="13" fill="var(--ink-faint)">AgroVision AI</text>
+    <text x="1852" y="60" text-anchor="end" class="lbl-sub" font-size="13" fill="var(--ink-faint)">концепция ментора · Qostanai AgroTech 2026</text>
+  </g>
+  <rect x="60" y="100" width="1800" height="6" rx="3" fill="var(--border)"/>
+  <rect id="progressFill" x="60" y="100" width="0" height="6" rx="3" fill="var(--green)"/>
+
+  <!-- ===================== SCENE (fades at loop seam) ===================== -->
+  <g id="scene">
+
+    <!-- FIELD -->
+    <rect x="140" y="200" width="1000" height="680" rx="14" fill="#eef2ee" stroke="var(--border)" stroke-width="2"/>
+    <rect id="q0" x="140" y="200" width="500" height="340" fill="var(--green-pale)"/>
+    <rect id="q1" x="640" y="200" width="500" height="340" fill="var(--blue-pale)"/>
+    <rect id="q2" x="140" y="540" width="500" height="340" fill="var(--amber-pale)"/>
+    <rect id="q3" x="640" y="540" width="500" height="340" fill="var(--purple-pale)"/>
+    <line x1="640" y1="200" x2="640" y2="880" stroke="var(--card)" stroke-width="3"/>
+    <line x1="140" y1="540" x2="1140" y2="540" stroke="var(--card)" stroke-width="3"/>
+    <rect id="fieldGlow" x="140" y="200" width="1000" height="680" rx="14" fill="none" stroke="var(--green)" stroke-width="6" opacity="0"/>
+    <rect x="140" y="200" width="1000" height="680" rx="14" fill="none" stroke="var(--border)" stroke-width="2"/>
+    <text x="1120" y="192" text-anchor="end" font-size="14" font-weight="600" fill="var(--ink-faint)">поле 2×2 км</text>
+
+    <!-- echelon altitude guide lines -->
+    <g id="echelonLines" stroke-dasharray="4 6" stroke-width="1.5" opacity="0.55">
+      <line x1="140" y1="230" x2="1140" y2="230" stroke="#1f9d55"/>
+      <line x1="140" y1="250" x2="1140" y2="250" stroke="#2563eb"/>
+      <line x1="140" y1="270" x2="1140" y2="270" stroke="#f59e0b"/>
+      <line x1="140" y1="290" x2="1140" y2="290" stroke="#7c3aed"/>
+    </g>
+    <text x="1150" y="234" font-size="12" fill="#1f9d55" font-weight="700">45 м</text>
+    <text x="1150" y="254" font-size="12" fill="#2563eb" font-weight="700">40 м</text>
+    <text x="1150" y="274" font-size="12" fill="#f59e0b" font-weight="700">35 м</text>
+    <text x="1150" y="294" font-size="12" fill="#7c3aed" font-weight="700">30 м</text>
+
+    <!-- sweep trail paths (visible, revealed via dashoffset) -->
+    <path id="trail0" fill="none" stroke="#1f9d55" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <path id="trail1" fill="none" stroke="#2563eb" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <path id="trail2" fill="none" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <path id="trail3" fill="none" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+    <!-- invisible geometry paths (motion only) -->
+    <g visibility="hidden">
+      <path id="launch0"/><path id="sweep0"/><path id="return0"/>
+      <path id="launch1"/><path id="sweep1"/><path id="return1"/>
+      <path id="launch2"/><path id="sweep2"/><path id="return2"/>
+      <path id="launch3"/><path id="sweep3"/><path id="return3"/>
+    </g>
+
+    <!-- drone markers -->
+    <g id="drone0" opacity="0"><path d="M0,-11 L11,0 L0,11 L-11,0 Z" fill="#1f9d55"/></g>
+    <g id="drone1" opacity="0"><path d="M0,-11 L11,0 L0,11 L-11,0 Z" fill="#2563eb"/></g>
+    <g id="drone2" opacity="0"><path d="M0,-11 L11,0 L0,11 L-11,0 Z" fill="#f59e0b"/></g>
+    <g id="drone3" opacity="0"><path d="M0,-11 L11,0 L0,11 L-11,0 Z" fill="#7c3aed"/></g>
+
+    <!-- CAR + STATION (position driven by JS) -->
+    <g id="carGroup">
+      <rect x="10" y="0" width="220" height="58" rx="10" fill="var(--green-pale)" stroke="var(--green)" stroke-width="3"/>
+      <circle id="dock0ring" cx="46" cy="29" r="15" fill="var(--card)" stroke="var(--green)" stroke-width="3"/>
+      <circle id="dock1ring" cx="90" cy="29" r="15" fill="var(--card)" stroke="var(--blue)" stroke-width="3"/>
+      <circle id="dock2ring" cx="134" cy="29" r="15" fill="var(--card)" stroke="var(--amber)" stroke-width="3"/>
+      <circle id="dock3ring" cx="178" cy="29" r="15" fill="var(--card)" stroke="var(--purple)" stroke-width="3"/>
+      <path id="dock0drone" d="M46 19 L56 29 L46 39 L36 29 Z" fill="#1f9d55"/>
+      <path id="dock1drone" d="M90 19 L100 29 L90 39 L80 29 Z" fill="#2563eb"/>
+      <path id="dock2drone" d="M134 19 L144 29 L134 39 L124 29 Z" fill="#f59e0b"/>
+      <path id="dock3drone" d="M178 19 L188 29 L178 39 L168 29 Z" fill="#7c3aed"/>
+      <rect x="0" y="68" width="220" height="62" rx="16" fill="var(--green-dark)"/>
+      <rect x="30" y="52" width="105" height="22" rx="6" fill="var(--green-dark)"/>
+      <circle cx="48" cy="132" r="16" fill="var(--ink)"/><circle cx="48" cy="132" r="6" fill="var(--card)"/>
+      <circle cx="172" cy="132" r="16" fill="var(--ink)"/><circle cx="172" cy="132" r="6" fill="var(--card)"/>
+      <g id="stationIcons" opacity="0" transform="translate(4,148)">
+        <circle cx="20" cy="18" r="18" fill="var(--green-pale)"/>
+        <path d="M23 4 L10 20 L18 20 L14 34 L28 15 L19 15 Z" fill="var(--green)"/>
+        <circle cx="66" cy="18" r="18" fill="var(--blue-pale)"/>
+        <path d="M66 6 L66 24 M58 15 L66 27 L74 15" fill="none" stroke="var(--blue)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="112" cy="18" r="18" fill="var(--purple-pale)"/>
+        <rect x="102" y="8" width="20" height="20" rx="4" fill="none" stroke="var(--purple)" stroke-width="3"/>
+        <rect x="108" y="14" width="8" height="8" rx="2" fill="var(--purple)"/>
+      </g>
+    </g>
+
+    <!-- ===================== PIPELINE CARDS (right column) ===================== -->
+    <!-- connector arrows -->
+    <line id="connArrow1" x1="1690" y1="392" x2="1690" y2="420" stroke="#9db3a7" stroke-width="3" marker-end="url(#arrowSoft)" opacity="0"/>
+    <line id="connArrow2" x1="1690" y1="612" x2="1690" y2="640" stroke="#9db3a7" stroke-width="3" marker-end="url(#arrowSoft)" opacity="0"/>
+    <line id="connArrow3" x1="1690" y1="832" x2="1690" y2="860" stroke="#9db3a7" stroke-width="3" marker-end="url(#arrowSoft)" opacity="0"/>
+
+    <!-- card: Starlink -->
+    <g id="cardStarlink" opacity="0">
+      <g filter="url(#cardShadow)"><rect x="1520" y="190" width="340" height="200" rx="18" fill="var(--card)" stroke="var(--blue)" stroke-width="2"/></g>
+      <text x="1546" y="222" font-size="13" font-weight="800" letter-spacing="1" fill="var(--blue)">STARLINK</text>
+      <g transform="translate(1546,232)">
+        <ellipse cx="24" cy="34" rx="22" ry="12" fill="var(--blue-pale)" stroke="var(--blue)" stroke-width="3" transform="rotate(-16 24 34)"/>
+        <line x1="27" y1="26" x2="42" y2="8" stroke="var(--blue)" stroke-width="3" stroke-linecap="round"/>
+        <circle id="dishFeed" cx="42" cy="8" r="4" fill="var(--blue)"/>
+        <line x1="20" y1="43" x2="20" y2="56" stroke="var(--blue)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M8,56 L32,56 L26,64 L14,64 Z" fill="var(--blue)"/>
+        <path id="wave1" d="M46 2 Q 55 10 46 18" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        <path id="wave2" d="M52 -4 Q 66 10 52 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+      </g>
+      <text x="1650" y="248" font-size="15.5" class="box-title" fill="var(--ink)">Только кропы + GPS</text>
+      <text x="1650" y="270" font-size="13" class="box-desc" fill="var(--ink-soft)">≈12 ГБ/1000 фото → сервер получает</text>
+      <text x="1650" y="288" font-size="13" class="box-desc" fill="var(--ink-soft)">лишь кропы-боксы: десятки МБ</text>
+    </g>
+
+    <!-- card: Server -->
+    <g id="cardServer" opacity="0">
+      <g filter="url(#cardShadow)"><rect x="1520" y="420" width="340" height="180" rx="18" fill="var(--card)" stroke="var(--purple)" stroke-width="2"/></g>
+      <text x="1546" y="452" font-size="13" font-weight="800" letter-spacing="1" fill="var(--purple)">СЕРВЕР</text>
+      <g id="serverIcon" transform="translate(1546,462)">
+        <rect x="0" y="0" width="60" height="17" rx="4" fill="var(--purple-pale)" stroke="var(--purple)" stroke-width="2.2"/>
+        <rect x="0" y="21" width="60" height="17" rx="4" fill="var(--purple-pale)" stroke="var(--purple)" stroke-width="2.2"/>
+        <rect x="0" y="42" width="60" height="17" rx="4" fill="var(--purple-pale)" stroke="var(--purple)" stroke-width="2.2"/>
+        <circle cx="9" cy="8.5" r="2.6" fill="var(--purple)"/><circle cx="9" cy="29.5" r="2.6" fill="var(--purple)"/><circle cx="9" cy="50.5" r="2.6" fill="var(--purple)"/>
+      </g>
+      <text x="1636" y="478" font-size="15.5" class="box-title" fill="var(--ink)">2-я модель уточняет</text>
+      <text x="1636" y="500" font-size="13" class="box-desc" fill="var(--ink-soft)">вид, фазу и высоту сорняка</text>
+    </g>
+
+    <!-- card: Phone / HITL -->
+    <g id="cardPhone" opacity="0">
+      <g filter="url(#cardShadow)"><rect x="1520" y="640" width="340" height="200" rx="18" fill="var(--card)" stroke="var(--amber)" stroke-width="2.4"/></g>
+      <text x="1546" y="672" font-size="13" font-weight="800" letter-spacing="1" fill="var(--amber)">АГРОНОМ · HITL</text>
+      <g transform="translate(1546,682)">
+        <rect x="0" y="0" width="52" height="82" rx="10" fill="var(--card)" stroke="var(--amber)" stroke-width="3"/>
+        <rect x="7" y="9" width="38" height="56" rx="4" fill="var(--amber-pale)"/>
+        <circle cx="26" cy="72" r="3.5" fill="var(--amber)"/>
+        <g id="hitlCheck" opacity="0">
+          <path d="M15 36 l7 7 l14 -16" fill="none" stroke="var(--amber)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+      <text x="1616" y="700" font-size="15.5" class="box-title" fill="var(--ink)">&lt;75% уверенности</text>
+      <text x="1616" y="722" font-size="13" class="box-desc" fill="var(--ink-soft)">выбрать вариант или указать</text>
+      <text x="1616" y="740" font-size="13" class="box-desc" fill="var(--ink-soft)">свой → в дообучение</text>
+    </g>
+
+    <!-- card: Map -->
+    <g id="cardMap" opacity="0">
+      <g filter="url(#cardShadow)"><rect x="1520" y="860" width="340" height="190" rx="18" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+      <text x="1546" y="892" font-size="13" font-weight="800" letter-spacing="1" fill="var(--green)">КАРТА-ПРЕДПИСАНИЕ</text>
+      <g transform="translate(1560,902)">
+        <circle id="zonePulse" cx="30" cy="30" r="10" fill="none" stroke="var(--green)" stroke-width="3" opacity="0"/>
+        <circle cx="30" cy="30" r="28" fill="var(--green-pale)" stroke="var(--green)" stroke-width="2" stroke-dasharray="5 5"/>
+        <path d="M30 12 C 20 12, 13 19, 13 27 C 13 38, 30 52, 30 52 C 30 52, 47 38, 47 27 C 47 19, 40 12, 30 12 Z" fill="var(--green)"/>
+        <circle cx="30" cy="26" r="6" fill="#ffffff"/>
+      </g>
+      <text x="1636" y="924" font-size="15.5" class="box-title" fill="var(--ink)">GPS-зоны вокруг очагов</text>
+      <text x="1636" y="946" font-size="13" class="box-desc" fill="var(--ink-soft)">многолетники → отдельная база</text>
+      <g id="perennialNote" opacity="0" transform="translate(1636,958)">
+        <rect x="0" y="0" width="16" height="16" rx="3" fill="none" stroke="var(--purple)" stroke-width="2"/>
+        <ellipse cx="8" cy="4" rx="8" ry="3" fill="none" stroke="var(--purple)" stroke-width="2"/>
+        <text x="22" y="13" font-size="12.5" fill="var(--purple)" font-weight="600">по сезонам</text>
+      </g>
+    </g>
+
+    <!-- packet traveling through pipeline -->
+    <g id="packet" opacity="0">
+      <rect x="-14" y="-10" width="28" height="20" rx="5" fill="#ffffff" stroke="var(--green)" stroke-width="3"/>
+      <line x1="-8" y1="-3" x2="8" y2="-3" stroke="var(--green)" stroke-width="2"/>
+      <line x1="-8" y1="3" x2="4" y2="3" stroke="var(--green)" stroke-width="2"/>
+    </g>
+
+    <!-- SPRAYER + bottom road -->
+    <line x1="120" y1="1042" x2="1820" y2="1042" stroke="var(--border)" stroke-width="3" stroke-dasharray="10 8"/>
+    <g id="sprayerGroup" opacity="0">
+      <rect x="20" y="16" width="56" height="30" rx="7" fill="var(--green-dark)"/>
+      <circle cx="34" cy="48" r="9" fill="var(--ink)"/><circle cx="66" cy="48" r="9" fill="var(--ink)"/>
+      <line x1="-26" y1="16" x2="122" y2="16" stroke="var(--green-dark)" stroke-width="4.5" stroke-linecap="round"/>
+      <line x1="-26" y1="16" x2="-26" y2="28" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="8" y1="16" x2="8" y2="28" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="48" y1="16" x2="48" y2="28" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="88" y1="16" x2="88" y2="28" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="122" y1="16" x2="122" y2="28" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+    <text id="sprayerLabel" x="960" y="975" text-anchor="middle" font-size="16" font-weight="700" fill="var(--green-dark)" opacity="0">ISO-XML TaskData → точный вылив по GPS-зонам</text>
+
+  </g>
+
+  <!-- fade overlay masks the loop seam -->
+  <rect id="fadeOverlay" x="0" y="118" width="1920" height="962" fill="var(--bg)" opacity="1" pointer-events="none"/>
+</svg>
+</div>
+
+<script>
+(function(){
+  const DURATION = 26000;
+  const svg = document.getElementById('svgRoot');
+  const NS = 'http://www.w3.org/2000/svg';
+
+  function $(id){ return document.getElementById(id); }
+  function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+  function lerp(a,b,f){ return a + (b-a)*f; }
+  function smooth(a,b,t){ const p = clamp01((t-a)/(b-a)); return p*p*(3-2*p); }
+  function setPos(el,x,y){ el.setAttribute('transform', 'translate(' + x + ',' + y + ')'); }
+  function setOpacity(el,v){ el.setAttribute('opacity', v); }
+
+  // ---------- STAGE LABELS ----------
+  const STAGES = [
+    {s:0,    e:1200,  label:'Один выезд агронома — четыре дрона по секторам'},
+    {s:1200, e:3600,  label:'1. Машина приезжает на позицию'},
+    {s:3600, e:4800,  label:'2. Крыша открывается — станция готова'},
+    {s:4800, e:12200, label:'3–4. Взлёт по очереди и облёт секторов (эшелоны 30/35/40/45 м)'},
+    {s:12200,e:14500, label:'5. Возврат: зарядка · выгрузка · edge-детектор'},
+    {s:14500,e:16900, label:'6. Кропы + GPS — через Starlink'},
+    {s:16900,e:19100, label:'7. Сервер уточняет вид и фазу'},
+    {s:19100,e:21300, label:'8. Агроном подтверждает (<75%)'},
+    {s:21300,e:23300, label:'9. Карта-предписание: GPS-зоны'},
+    {s:23300,e:26000, label:'10. Опрыскиватель работает по зонам'},
+  ];
+  const stageLabelEl = $('stageLabel');
+  let lastLabel = '';
+
+  // ---------- CAR ----------
+  const carGroup = $('carGroup');
+  const CAR_PARKED = {x:530, y:828};
+  const CAR_START_X = -420;
+  const T_CAR_S = 1200, T_CAR_E = 3600;
+  const T_ROOF_S = 3600, T_ROOF_E = 4800;
+  const stationIcons = $('stationIcons');
+
+  // ---------- DRONES ----------
+  function mkPath(id, d){ const el = $(id); el.setAttribute('d', d); return el; }
+
+  const DRONES = [
+    { color:'#1f9d55', home:{x:576,y:857}, echelonY:230,
+      quad:{cx:390,cy:370,left:190,right:590,p0:260,p1:370,p2:480},
+      launch:{s:4800,e:6200}, sweep:{s:6200,e:10400}, ret:{s:10400,e:12200} },
+    { color:'#2563eb', home:{x:620,y:857}, echelonY:250,
+      quad:{cx:890,cy:370,left:690,right:1090,p0:260,p1:370,p2:480},
+      launch:{s:5400,e:6800}, sweep:{s:6800,e:11000}, ret:{s:11000,e:12800} },
+    { color:'#f59e0b', home:{x:664,y:857}, echelonY:270,
+      quad:{cx:390,cy:710,left:190,right:590,p0:600,p1:710,p2:820},
+      launch:{s:6000,e:7400}, sweep:{s:7400,e:11600}, ret:{s:11600,e:13400} },
+    { color:'#7c3aed', home:{x:708,y:857}, echelonY:290,
+      quad:{cx:890,cy:710,left:690,right:1090,p0:600,p1:710,p2:820},
+      launch:{s:6600,e:8000}, sweep:{s:8000,e:12200}, ret:{s:12200,e:14000} },
+  ];
+
+  DRONES.forEach((d,i)=>{
+    const h = d.home, q = d.quad, ey = d.echelonY;
+    const launchD = 'M '+h.x+','+h.y+' L '+h.x+','+ey+' L '+q.cx+','+ey;
+    const sweepD  = 'M '+q.cx+','+ey+' L '+q.cx+','+q.p0+' L '+q.right+','+q.p0+' L '+q.right+','+q.p1+' L '+q.left+','+q.p1+' L '+q.left+','+q.p2+' L '+q.right+','+q.p2;
+    const returnD = 'M '+q.right+','+q.p2+' L '+q.right+','+ey+' L '+h.x+','+ey+' L '+h.x+','+h.y;
+    d.launchPath = mkPath('launch'+i, launchD);
+    d.sweepPath  = mkPath('sweep'+i, sweepD);
+    d.returnPath = mkPath('return'+i, returnD);
+    d.trailEl = $('trail'+i);
+    d.trailEl.setAttribute('d', sweepD);
+    d.marker = $('drone'+i);
+    d.dockRing = $('dock'+i+'ring');
+    d.dockDrone = $('dock'+i+'drone');
+    // cache lengths (safe to call immediately; elements are in the DOM)
+    d.launchLen = d.launchPath.getTotalLength();
+    d.sweepLen  = d.sweepPath.getTotalLength();
+    d.returnLen = d.returnPath.getTotalLength();
+    d.trailLen  = d.trailEl.getTotalLength();
+    d.trailEl.setAttribute('stroke-dasharray', d.trailLen);
+    d.trailEl.setAttribute('stroke-dashoffset', d.trailLen);
+  });
+
+  function updateDrone(d, t){
+    let pos, flying = true, dashOffset = d.trailLen;
+    if (t < d.launch.s){
+      pos = d.home; flying = false; dashOffset = d.trailLen;
+    } else if (t < d.launch.e){
+      const f = smooth(d.launch.s, d.launch.e, t);
+      pos = d.launchPath.getPointAtLength(f * d.launchLen);
+      dashOffset = d.trailLen;
+    } else if (t < d.sweep.e){
+      const f = clamp01((t - d.sweep.s) / (d.sweep.e - d.sweep.s));
+      pos = d.sweepPath.getPointAtLength(f * d.sweepLen);
+      dashOffset = d.trailLen * (1 - f);
+    } else if (t < d.ret.e){
+      const f = smooth(d.ret.s, d.ret.e, t);
+      pos = d.returnPath.getPointAtLength(f * d.returnLen);
+      dashOffset = 0;
+    } else {
+      pos = d.home; flying = false; dashOffset = 0;
+    }
+    setPos(d.marker, pos.x, pos.y);
+    setOpacity(d.marker, flying ? 1 : 0);
+    setOpacity(d.dockDrone, flying ? 0 : 1);
+    setOpacity(d.dockRing, flying ? 1 : 0);
+    d.trailEl.setAttribute('stroke-dashoffset', dashOffset);
+  }
+
+  // ---------- STATION ICONS (charge/upload/detect) ----------
+  const STATION_S = 10400, STATION_E = 14500;
+
+  // ---------- PIPELINE ----------
+  const CAR_TOP = {x:640, y:828};
+  const DISH_PT = {x:1566, y:266};
+  const SERVER_PT = {x:1566, y:496};
+  const PHONE_PT = {x:1566, y:718};
+  const MAP_PT = {x:1580, y:932};
+
+  const LEG1 = {s:14500,e:16900, from:CAR_TOP, to:DISH_PT};
+  const LEG2 = {s:16900,e:19100, from:DISH_PT, to:SERVER_PT};
+  const LEG3 = {s:19100,e:21300, from:SERVER_PT, to:PHONE_PT};
+  const LEG4 = {s:21300,e:23300, from:PHONE_PT, to:MAP_PT};
+
+  const packet = $('packet');
+  const cardStarlink = $('cardStarlink');
+  const cardServer = $('cardServer');
+  const cardPhone = $('cardPhone');
+  const cardMap = $('cardMap');
+  const connArrow1 = $('connArrow1');
+  const connArrow2 = $('connArrow2');
+  const connArrow3 = $('connArrow3');
+  const wave1 = $('wave1'), wave2 = $('wave2');
+  const hitlCheck = $('hitlCheck');
+  const zonePulse = $('zonePulse');
+  const perennialNote = $('perennialNote');
+  const sprayerGroup = $('sprayerGroup');
+  const sprayerLabel = $('sprayerLabel');
+  const fieldGlow = $('fieldGlow');
+
+  const SPRAY_S = 23300, SPRAY_E = 25300;
+
+  function updateFrame(t){
+    // --- stage label ---
+    let label = STAGES[STAGES.length-1].label;
+    for (const st of STAGES){ if (t >= st.s && t < st.e){ label = st.label; break; } }
+    if (label !== lastLabel){ lastLabel = label; stageLabelEl.textContent = label; }
+
+    // --- progress bar ---
+    $('progressFill').setAttribute('width', 1800 * clamp01(t/DURATION));
+
+    // --- car ---
+    const carX = t < T_CAR_E ? lerp(CAR_START_X, CAR_PARKED.x, smooth(T_CAR_S,T_CAR_E,t)) : CAR_PARKED.x;
+    setPos(carGroup, carX, CAR_PARKED.y);
+
+    // --- roof / docks reveal ---
+    const roofOpen = smooth(T_ROOF_S, T_ROOF_E, t);
+    ['dock0ring','dock1ring','dock2ring','dock3ring','dock0drone','dock1drone','dock2drone','dock3drone'].forEach(id=>{
+      // opacity handled per-drone below for drone-state accuracy after roof opens; before roof open force 0
+    });
+    const rings = [$('dock0ring'),$('dock1ring'),$('dock2ring'),$('dock3ring')];
+    const preRoof = t < T_ROOF_E;
+
+    // --- drones ---
+    DRONES.forEach((d,i)=>{
+      updateDrone(d, t);
+      if (preRoof){ setOpacity(d.dockRing, 0); setOpacity(d.dockDrone, roofOpen); setOpacity(d.marker,0); }
+    });
+
+    // --- station indicator icons ---
+    const stationOn = smooth(STATION_S, STATION_S+400, t) * (1 - smooth(STATION_E-300, STATION_E, t));
+    setOpacity(stationIcons, t < T_ROOF_E ? 0 : Math.max(0, stationOn));
+
+    // --- pipeline packet + cards ---
+    let pOpacity = 0, px=0, py=0;
+    if (t >= LEG1.s && t < LEG4.e){
+      pOpacity = 1;
+      let leg = t < LEG1.e ? LEG1 : (t < LEG2.e ? LEG2 : (t < LEG3.e ? LEG3 : LEG4));
+      const f = smooth(leg.s, leg.e, t);
+      px = lerp(leg.from.x, leg.to.x, f);
+      py = lerp(leg.from.y, leg.to.y, f);
+    }
+    setOpacity(packet, pOpacity);
+    setPos(packet, px, py);
+
+    setOpacity(cardStarlink, smooth(LEG1.s, LEG1.s+400, t));
+    setOpacity(connArrow1, smooth(LEG2.s, LEG2.s+300, t));
+    setOpacity(cardServer, smooth(LEG2.s, LEG2.s+400, t));
+    setOpacity(connArrow2, smooth(LEG3.s, LEG3.s+300, t));
+    setOpacity(cardPhone, smooth(LEG3.s, LEG3.s+400, t));
+    setOpacity(connArrow3, smooth(LEG4.s, LEG4.s+300, t));
+    setOpacity(cardMap, smooth(LEG4.s, LEG4.s+400, t));
+
+    // dish signal waves once packet arrives
+    const waveOn = smooth(LEG1.e, LEG1.e+600, t) * (1 - smooth(SPRAY_S-500, SPRAY_S, t));
+    setOpacity(wave1, Math.max(0,waveOn));
+    setOpacity(wave2, Math.max(0,waveOn));
+
+    // HITL check mark
+    setOpacity(hitlCheck, smooth(LEG3.e, LEG3.e+500, t));
+
+    // map zone pulse + perennial note
+    const zoneT = clamp01((t - LEG4.e) / 900);
+    if (t >= LEG4.e && zoneT < 1){
+      setOpacity(zonePulse, 1 - zoneT);
+      zonePulse.setAttribute('r', 10 + zoneT*36);
+    } else {
+      setOpacity(zonePulse, 0);
+    }
+    setOpacity(perennialNote, smooth(LEG4.e+700, LEG4.e+1400, t));
+
+    // --- sprayer ---
+    if (t >= SPRAY_S && t < SPRAY_E){
+      const f = clamp01((t - SPRAY_S)/(SPRAY_E - SPRAY_S));
+      setOpacity(sprayerGroup, 1);
+      setOpacity(sprayerLabel, smooth(SPRAY_S, SPRAY_S+400, t));
+      setPos(sprayerGroup, lerp(1720, 260, f), 1000);
+      const glow = Math.sin(f*Math.PI);
+      setOpacity(fieldGlow, glow*0.5);
+    } else if (t >= SPRAY_E){
+      setOpacity(sprayerGroup, 1);
+      setOpacity(sprayerLabel, 1);
+      setPos(sprayerGroup, 260, 1000);
+      setOpacity(fieldGlow, 0);
+    } else {
+      setOpacity(sprayerGroup, 0);
+      setOpacity(sprayerLabel, 0);
+      setOpacity(fieldGlow, 0);
+    }
+
+    // --- loop-seam fade ---
+    const fadeIn = 1 - smooth(0,700,t);
+    const fadeOut = smooth(DURATION-700, DURATION, t);
+    $('fadeOverlay').setAttribute('opacity', Math.max(fadeIn, fadeOut));
+  }
+
+  let startTime = null;
+  function frame(now){
+    if (startTime === null) startTime = now;
+    const t = (now - startTime) % DURATION;
+    updateFrame(t);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

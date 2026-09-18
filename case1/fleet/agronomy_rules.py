@@ -152,7 +152,24 @@ class AgronomyRuleEngine:
         """
         area = max(float(field_area_m2), 0.1)
 
-        perennial_species = {"field_thistle", "field_bindweed", "couch_grass"}
+        # Полный справочник агрономической классификации «Олжа Агро» (26 сорняков):
+        # Класс A: Двудольные (Широколистные), Класс B: Злаковые (Узколистные)
+        # Многолетники — самый опасный и приоритетный сектор!
+        perennial_names = {
+            # Класс A — многолетники:
+            "field_thistle", "бодяк полевой", "бодяк",
+            "field_bindweed", "вьюнок полевой", "вьюнок",
+            "осот полевой", "осот", "perennial_sowthistle",
+            "молочай лозный", "молочай", "leafy_spurge",
+            "молокан татарский", "молокан", "tatarian_lettuce",
+            "полынь горькая", "полынь обыкновенная", "полынь", "wormwood",
+            "кермек широколистный", "кермек", "statice",
+            "одуванчик лекарственный", "одуванчик", "dandelion",
+            "конский щавель", "щавель", "horse_sorrel",
+            # Класс B — многолетники:
+            "couch_grass", "пырей ползучий", "пырей",
+        }
+        
         annual_count = 0
         perennial_count = 0
         unknown_count = 0
@@ -160,41 +177,52 @@ class AgronomyRuleEngine:
         stage_votes: Dict[str, int] = {}
 
         for det in detections:
-            sp = det.get("species", "")
-            stage = det.get("stage", "")
+            sp = str(det.get("species", "") or det.get("top_species_ru", "") or det.get("species_ru", "")).strip().lower()
+            stage = str(det.get("stage", "") or det.get("stage_ru", "")).strip().lower()
             rev = det.get("review_required", False)
 
-            if sp == "crop_wheat":
+            if "wheat" in sp or "пшениц" in sp or "культур" in sp:
                 crop_count += 1
                 continue
 
-            if rev or sp in {"unknown", "uncertain"}:
+            if rev or sp in {"unknown", "uncertain", "неизвестно"}:
                 unknown_count += 1
                 continue
 
-            if sp in perennial_species:
+            if any(p in sp for p in perennial_names):
                 perennial_count += 1
             else:
                 annual_count += 1
 
-            if stage and stage != "unknown":
+            if stage and stage not in {"unknown", "неизвестно"}:
                 stage_votes[stage] = stage_votes.get(stage, 0) + 1
 
         total_weeds = perennial_count + annual_count
         annual_density = round(annual_count / area, 2)
         perennial_density = round(perennial_count / area, 2)
 
-        # Определение доминирующей фазы вегетации
+        # Определение доминирующей фазы вегетации по шпаргалке «Олжа Агро»:
+        stage_map = {
+            "всходы": "cotyledon_to_2_leaves",
+            "розетка": "cotyledon_to_2_leaves",
+            "rosette": "cotyledon_to_2_leaves",
+            "seedling": "cotyledon_to_2_leaves",
+            "cotyledon_to_2_leaves": "cotyledon_to_2_leaves",
+            "стеблевание": "4_to_6_leaves",
+            "stem_elongation": "4_to_6_leaves",
+            "4_to_6_leaves": "4_to_6_leaves",
+            "цветение": "over_6_leaves_or_flowering",
+            "плодоношение": "over_6_leaves_or_flowering",
+            "flowering": "over_6_leaves_or_flowering",
+            "fruiting": "over_6_leaves_or_flowering",
+            "over_6_leaves_or_flowering": "over_6_leaves_or_flowering",
+        }
+
         if dominant_stage:
-            resolved_stage = dominant_stage
+            resolved_stage = stage_map.get(str(dominant_stage).lower(), "cotyledon_to_2_leaves")
         elif stage_votes:
             top_stage = max(stage_votes.items(), key=lambda item: item[1])[0]
-            if top_stage == "rosette":
-                resolved_stage = "cotyledon_to_2_leaves"
-            elif top_stage == "stem_elongation":
-                resolved_stage = "4_to_6_leaves"
-            else:
-                resolved_stage = "cotyledon_to_2_leaves"
+            resolved_stage = stage_map.get(str(top_stage).lower(), "cotyledon_to_2_leaves")
         else:
             resolved_stage = "cotyledon_to_2_leaves"
 

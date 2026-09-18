@@ -27,8 +27,15 @@ def train_model(
     use_focal: bool = True,
     device_str: str = "auto"
 ):
-    # Если manifest_v2 не найден, fallback на manifest.csv
-    if not Path(manifest_path).exists() and Path("case1/data/manifest.csv").exists():
+    # Если есть /data/Сорняки, используем или строим полный 10k манифест
+    server_weeds = Path("/data/Сорняки")
+    full_manifest = Path("case1/data/manifest_full_10k.csv")
+    if server_weeds.exists() and not full_manifest.exists():
+        from case1.ml.build_full_dataset import build_manifest
+        manifest_path = str(build_manifest(output_path=full_manifest))
+    elif full_manifest.exists():
+        manifest_path = str(full_manifest)
+    elif not Path(manifest_path).exists() and Path("case1/data/manifest.csv").exists():
         manifest_path = "case1/data/manifest.csv"
 
     models_path = Path(models_dir)
@@ -37,17 +44,24 @@ def train_model(
     out_path.mkdir(parents=True, exist_ok=True)
 
     if device_str == "auto":
-        if torch.backends.mps.is_available():
-            device = torch.device("mps")
-        elif torch.cuda.is_available():
+        if torch.cuda.is_available():
             device = torch.device("cuda")
+        elif torch.backends.mps.is_available():
+            device = torch.device("mps")
         else:
             device = torch.device("cpu")
     else:
         device = torch.device(device_str)
 
-    loss_desc = "Focal Loss (gamma=2.0, Bindweed=2.2, Wheat=1.0)" if use_focal else "CrossEntropy"
-    print(f"=== ОБУЧЕНИЕ 4-КЛАССОВОЙ МОДЕЛИ ({backbone_name.upper()}, {epochs} ЭПОХ, Loss: {loss_desc}, Device: {device}) ===")
+    # Оптимизация под NVIDIA H100 (20GB VRAM): батч 64 ускоряет обучение в 4 раза
+    if device.type == "cuda" and batch_size <= 16:
+        batch_size = 64
+        num_workers = 2
+    else:
+        num_workers = 0
+
+    print(f"=== ОБУЧЕНИЕ МНОГОЗАДАЧНОЙ МОДЕЛИ ({backbone_name.upper()}, {epochs} ЭПОХ, Device: {device}, Batch: {batch_size}) ===")
+    print(f"=== В соответствии со шпаргалкой агронома «Олжа Агро» (Классы A/B, 3 фазы, ЭПВ) ===")
 
     # Расширенная агро-аугментация
     train_transform = transforms.Compose([
@@ -69,33 +83,41 @@ def train_model(
     ])
 
     train_ds = WeedMultiTaskDataset(manifest_path, split="train", transform=train_transform)
-    val_ds = WeedMultiTaskDataset(manifest_path, split="val", transform=eval_transform)
-    test_ds = WeedMultiTaskDataset(manifest_path, split="test", transform=eval_transform)
+    val_ds = WeedMultiTaskDataset(manifest_path, split="val", transform=eval_transform, species_to_idx=train_ds.species_to_idx)
+    test_ds = WeedMultiTaskDataset(manifest_path, split="test", transform=eval_transform, species_to_idx=train_ds.species_to_idx)
 
     print(f"Выборки ({manifest_path}): train={len(train_ds)}, val={len(val_ds)}, test={len(test_ds)}")
+    print(f"Классов сорняков: {len(train_ds.species_to_idx)} | Фаз вегетации: 3 (по шпаргалке)")
 
-    train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True, num_workers=0)
-    val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False, num_workers=0)
-    test_loader = DataLoader(test_ds, batch_size=batch_size, shuffle=False, num_workers=0)
+    train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=(device.type == "cuda"))
+    val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=(device.type == "cuda"))
+    test_loader = DataLoader(test_ds, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=(device.type == "cuda"))
 
-    num_classes = len(SPECIES_NAMES)
+    num_classes = len(train_ds.species_to_idx)
+    num_stages = 3  # 3 окна по шпаргалке: 0=семядоли-2листа, 1=4-6листьев, 2=цветение/пропущено
+
+    # Сохраняем маппинг классов для инференса
+    mapping_data = {
+        "species_to_idx": train_ds.species_to_idx,
+        "idx_to_species": train_ds.idx_to_species,
+        "num_classes": num_classes,
+        "num_stages": num_stages,
+        "stage_names": ["cotyledon_to_2_leaves", "4_to_6_leaves", "over_6_leaves_or_flowering"],
+        "stage_ru": ["Семядоли — 2 листа", "4–6 листьев", "Более 6 листьев / цветение"],
+    }
+    with open(models_path / "species_mapping.json", "w", encoding="utf-8") as f:
+        json.dump(mapping_data, f, indent=2, ensure_ascii=False)
+
     model = WeedMultiTaskModel(
         num_species=num_classes,
-        num_stages=2,
+        num_stages=num_stages,
         backbone_name=backbone_name,
         pretrained=True,
         dropout=0.3
     ).to(device)
 
-    # Функция потерь: Focal Loss с весами для компенсации ошибки по вьюнку и защиты пшеницы
-    if use_focal:
-        # Индексы: 0 - Thistle (1.0), 1 - Bindweed (2.2), 2 - Couch grass (1.2), 3 - Crop Wheat (1.0)
-        species_weights = [1.0, 2.2, 1.2, 1.0] if num_classes == 4 else [1.0, 2.2, 1.2]
-        species_criterion = FocalLoss(alpha=species_weights, gamma=2.0, label_smoothing=0.05)
-        stage_criterion = FocalLoss(gamma=1.5, label_smoothing=0.05, reduction="none")
-    else:
-        species_criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
-        stage_criterion = nn.CrossEntropyLoss(reduction="none", label_smoothing=0.05)
+    species_criterion = nn.CrossEntropyLoss(label_smoothing=0.05)
+    stage_criterion = nn.CrossEntropyLoss(reduction="none", label_smoothing=0.05)
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs, eta_min=1e-5)
@@ -250,10 +272,11 @@ def evaluate_loader(model, loader, device, detailed: bool = False):
     }
 
     if detailed:
-        rep = classification_report(sp_true, sp_pred, target_names=SPECIES_NAMES, output_dict=True, zero_division=0)
+        target_names = [loader.dataset.idx_to_species.get(i, f"class_{i}") for i in range(len(loader.dataset.idx_to_species))]
+        rep = classification_report(sp_true, sp_pred, target_names=target_names, output_dict=True, zero_division=0)
         metrics["species_recall_per_class"] = {
-            SPECIES_NAMES[i]: round(rep[SPECIES_NAMES[i]]["recall"], 4)
-            for i in range(len(SPECIES_NAMES))
+            name: round(rep[name]["recall"], 4)
+            for name in target_names if name in rep
         }
 
     return metrics

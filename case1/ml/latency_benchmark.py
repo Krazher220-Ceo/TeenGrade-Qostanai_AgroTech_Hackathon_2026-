@@ -89,7 +89,12 @@ def run_latency_benchmark(
 
     state_dict = torch.load(MODEL_PATH, map_location=target_device)
     num_species = infer_num_species_from_state_dict(state_dict)
-    model = WeedMultiTaskModel(num_species=num_species, num_stages=2, pretrained=False)
+    num_stages = 3
+    for k, v in state_dict.items():
+        if k.endswith("stage_head.4.weight"):
+            num_stages = int(v.shape[0])
+            break
+    model = WeedMultiTaskModel(num_species=num_species, num_stages=num_stages, pretrained=False)
     model.load_state_dict(state_dict)
     model.to(target_device)
     model.eval()

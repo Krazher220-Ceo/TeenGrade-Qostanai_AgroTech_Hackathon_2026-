@@ -1,0 +1,59 @@
+{
+  "benchmark_title": "AgroVision AI — Latency & Kinematics Benchmark",
+  "cheatsheet_reference": "Шпаргалка ментора: скорость опрыскивателя 18–20 км/ч, задержка пайплайна",
+  "iterations": 40,
+  "environment": {
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.36",
+    "processor": "x86_64",
+    "python_version": "3.14.7",
+    "torch_version": "2.13.0+cu130",
+    "mps_available": false,
+    "cuda_available": true,
+    "device_used": "cuda"
+  },
+  "latency_breakdown": {
+    "preprocessing": {
+      "p50_ms": 1.17,
+      "p95_ms": 60.85,
+      "p99_ms": 85.38,
+      "mean_ms": 7.99
+    },
+    "classifier_inference": {
+      "p50_ms": 5.6,
+      "p95_ms": 58.04,
+      "p99_ms": 63.42,
+      "mean_ms": 11.33
+    },
+    "agronomy_rules": {
+      "p50_ms": 0.01,
+      "p95_ms": 0.01,
+      "p99_ms": 0.01,
+      "mean_ms": 0.01
+    },
+    "total_per_crop": {
+      "p50_ms": 6.8,
+      "p95_ms": 67.99,
+      "p99_ms": 91.09,
+      "mean_ms": 19.32
+    }
+  },
+  "sprayer_kinematics": {
+    "p50_median": {
+      "latency_s": 0.0068,
+      "speed_18kmh_m_s": 5.0,
+      "displacement_18kmh_m": 0.034,
+      "speed_20kmh_m_s": 5.56,
+      "displacement_20kmh_m": 0.0378
+    },
+    "p95_high_load": {
+      "latency_s": 0.06799,
+      "speed_18kmh_m_s": 5.0,
+      "displacement_18kmh_m": 0.3399,
+      "speed_20kmh_m_s": 5.56,
+      "displacement_20kmh_m": 0.378
+    }
+  },
+  "operational_mode": "Post-flight Advisory Mapping",
+  "operational_mode_ru": "Режим предварительного картирования поля (Post-flight Advisory Mapping)",
+  "engineering_recommendation": "При скорости штанги опрыскивателя 18–20 км/ч (5,0–5,56 м/с) задержка конвейера p50=6.8 мс и p95=67.99 мс приводит к смещению точки срабатывания на 3.4–37.8 см. Поэтому надёжный сценарий внедрения MVP — предварительный облет поля БПЛА и загрузка карты дифференцированного опрыскивания в бортовой терминал опрыскивателя перед обработкой."
+}
