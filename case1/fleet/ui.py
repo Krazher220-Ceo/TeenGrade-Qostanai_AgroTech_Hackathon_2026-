@@ -26,6 +26,17 @@ from case1.fleet.demo_field import get_kostanay_demo_field, get_demo_landing_pad
 from case1.fleet.planner import plan_fleet_coverage
 from case1.fleet.exporters import export_fleet_plan_json, export_fleet_plan_geojson
 
+# Dock-режим (мобильная станция на крыше машины) — опционален: модуль/модели могут
+# параллельно дорабатываться, поэтому импорт защищён и не должен ронять весь дашборд.
+try:
+    from case1.fleet.models import DockStation
+    from case1.fleet.dock import recommend_dock_position, plan_dock_fleet_mission
+    DOCK_MODE_AVAILABLE = True
+    _DOCK_IMPORT_ERROR = None
+except Exception as _dock_import_exc:  # noqa: BLE001
+    DOCK_MODE_AVAILABLE = False
+    _DOCK_IMPORT_ERROR = _dock_import_exc
+
 
 def create_fleet_plotly_figure(plan: FleetPlan, field: FieldPolygon) -> go.Figure:
     """
@@ -155,6 +166,24 @@ def render_fleet_planning_tab():
         st.warning("⚠️ **Не является разрешением на полёт**\n\nТребуется согласование УВД и оператор категории 3 (Правила №706 РК).")
     with col_w3:
         st.info("📋 **Требует подтверждения агрономом**\n\nРаспылитель отключён. Выход системы носит рекомендательный характер.")
+
+    st.markdown("---")
+    station_mode = st.radio(
+        "Режим станции:",
+        ["🅿️ Отдельные площадки", "🚐 Мобильная станция (машина)"],
+        index=0,
+        horizontal=True,
+        help=(
+            "«Отдельные площадки» — классический режим: у каждого дрона своя независимая точка "
+            "взлёта/посадки. «Мобильная станция» — все дроны взлетают из ОДНОЙ точки: раскладной "
+            "станции на крыше машины агронома, с многовылетным планированием и моделью потока данных."
+        ),
+    )
+    st.markdown("---")
+
+    if station_mode == "🚐 Мобильная станция (машина)":
+        _render_mobile_dock_mode()
+        return
 
     st.subheader("💰 Реалистичный вариант техники для MVP")
     st.caption("Все цены ниже приблизительные: вторичный рынок меняется, а итог зависит от состояния и комплектации.")
@@ -382,3 +411,240 @@ def render_fleet_planning_tab():
         )
 
     st.success("✅ План проверен валидатором безопасности: готов к демонстрации в симуляторе!")
+
+
+# ---------------------------------------------------------------------------
+# Режим "Мобильная дрон-станция (машина)"
+# ---------------------------------------------------------------------------
+
+@st.cache_data(show_spinner=False)
+def _cached_dock_recommendation(
+    field_json: str, num_drones: int, altitude_m: float, ground_speed_m_s: float
+):
+    """Кэшированный подбор позиции машины (пересчитывается только при смене параметров)."""
+    field = FieldPolygon.model_validate_json(field_json)
+    return recommend_dock_position(
+        field=field,
+        num_drones=num_drones,
+        altitude_m=altitude_m,
+        ground_speed_m_s=ground_speed_m_s,
+    )
+
+
+@st.cache_data(show_spinner=False)
+def _cached_dock_mission_plan(
+    field_json: str,
+    dock_json: str,
+    num_drones: int,
+    altitude_m: float,
+    ground_speed_m_s: float,
+):
+    """Кэшированный полный расчёт dock-миссии (галсы, вылеты, поток данных)."""
+    field = FieldPolygon.model_validate_json(field_json)
+    dock = DockStation.model_validate_json(dock_json)
+    return plan_dock_fleet_mission(
+        field=field,
+        dock=dock,
+        num_drones=num_drones,
+        altitude_m=altitude_m,
+        ground_speed_m_s=ground_speed_m_s,
+    )
+
+
+def _add_dock_marker(fig: "go.Figure", dock) -> "go.Figure":
+    """Добавляет на автономную Plotly-карту маркер станции (машины) поверх карты флота."""
+    fig.add_trace(go.Scatter(
+        x=[dock.lon],
+        y=[dock.lat],
+        mode="markers+text",
+        name=f"🚐 Станция «{dock.dock_id}» ({dock.num_slots} гнёзд)",
+        marker=dict(size=28, color="#7C3AED", symbol="star", line=dict(color="black", width=2)),
+        text=["  🚐 Станция"],
+        textposition="top center",
+        textfont=dict(size=14, color="#4C1D95"),
+        hoverinfo="text",
+        hovertext=(
+            f"Мобильная станция «{dock.dock_id}»<br>"
+            f"Гнёзд: {dock.num_slots} · Шаг: {dock.slot_offset_m} м<br>"
+            f"Зарядка: {dock.charge_time_min:.0f} мин · "
+            f"Замена батареи: {'да' if dock.battery_swap_enabled else 'нет'}"
+        ),
+    ))
+    return fig
+
+
+def _render_mobile_dock_mode() -> None:
+    """Наглядный демо-режим: все дроны взлетают из одной точки — станции на крыше машины."""
+    st.subheader("🚐 Мобильная дрон-станция (машина агронома)")
+    st.markdown(
+        "У агронома машина (УАЗ/минивэн) с раскладной крышей. На крыше — станция с гнёздами "
+        "зарядки: все дроны взлетают из **одной точки**, облетают свой сектор поля и возвращаются "
+        "на станцию. Станция заряжает дроны, прогоняет edge-детектор (1-я модель) и отправляет "
+        "через Starlink на сервер только кропы-боксы — сырые фото синхронизируются позже на базе."
+    )
+
+    if not DOCK_MODE_AVAILABLE:
+        st.warning(
+            "⚠️ Модуль dock-режима (`case1.fleet.dock` / `case1.fleet.models.DockStation`) сейчас "
+            "недоступен — вероятно, он ещё дорабатывается параллельно. Переключитесь на режим "
+            "«Отдельные площадки», либо повторите попытку через минуту.\n\n"
+            f"Техническая причина: `{_DOCK_IMPORT_ERROR}`"
+        )
+        return
+
+    current_field = get_kostanay_demo_field()
+
+    c_params1, c_params2, c_params3 = st.columns(3)
+    with c_params1:
+        num_drones = st.slider(
+            "Число дронов на станции:", min_value=3, max_value=4, value=4, step=1, key="dock_num_drones"
+        )
+    with c_params2:
+        altitude = st.slider(
+            "Высота полёта (м):", min_value=15.0, max_value=100.0, value=30.0, step=5.0, key="dock_altitude"
+        )
+    with c_params3:
+        speed_ms = st.slider(
+            "Скорость съёмки (м/с):", min_value=3.0, max_value=10.0, value=5.0, step=0.5, key="dock_speed"
+        )
+
+    st.caption(
+        f"Демо-поле: **{current_field.name}** ({len(current_field.coordinates)} вершин). "
+        "Расчёт выполняется автоматически при изменении параметров (результат кэшируется)."
+    )
+
+    field_json = current_field.model_dump_json()
+
+    try:
+        recommendation = _cached_dock_recommendation(field_json, num_drones, altitude, speed_ms)
+    except Exception as exc:  # noqa: BLE001
+        st.warning(f"⚠️ Не удалось рассчитать рекомендацию позиции станции: {exc}")
+        return
+
+    chosen = recommendation.chosen
+    st.success(
+        f"📍 **Рекомендованная позиция машины: {chosen.label}** "
+        f"({chosen.lat:.5f}, {chosen.lon:.5f})\n\n{chosen.explanation}"
+    )
+
+    dock = DockStation(
+        dock_id="DOCK1",
+        lat=chosen.lat,
+        lon=chosen.lon,
+        num_slots=num_drones,
+    )
+    dock_swap = dock.model_copy(update={"battery_swap_enabled": True})
+
+    try:
+        plan = _cached_dock_mission_plan(
+            field_json, dock.model_dump_json(), num_drones, altitude, speed_ms
+        )
+        plan_swap = _cached_dock_mission_plan(
+            field_json, dock_swap.model_dump_json(), num_drones, altitude, speed_ms
+        )
+    except Exception as exc:  # noqa: BLE001
+        st.warning(f"⚠️ Не удалось рассчитать dock-миссию: {exc}")
+        return
+
+    if plan.advisories:
+        for adv in plan.advisories:
+            st.info(f"💡 {adv}")
+
+    # --- Метрики ---
+    st.subheader("📊 Ключевые метрики операции")
+    m1, m2, m3, m4 = st.columns(4)
+    with m1:
+        st.metric("Дронов задействовано", f"{plan.num_drones_assigned}")
+    with m2:
+        st.metric("Площадь покрытия", f"{plan.covered_area_ha:.1f} га", f"{plan.coverage_percentage:.1f}% от {plan.field_area_ha:.1f} га")
+    with m3:
+        st.metric("Циклов (вылетов на дрон)", f"{plan.num_cycles}")
+    with m4:
+        total_sorties = sum(v.num_sorties for v in plan.vehicles)
+        st.metric("Всего вылетов флота", f"{total_sorties}")
+
+    m5, m6, m7, m8 = st.columns(4)
+    with m5:
+        st.metric(
+            "Время операции (зарядка)",
+            f"{plan.makespan_with_charging_s / 60.0:.1f} мин",
+            f"{plan.makespan_with_charging_s:.0f} с · цикл {dock.charge_time_min:.0f} мин",
+        )
+    with m6:
+        st.metric(
+            "Время операции (замена батарей)",
+            f"{plan_swap.makespan_with_charging_s / 60.0:.1f} мин",
+            f"{plan_swap.makespan_with_charging_s:.0f} с · замена {dock_swap.battery_swap_time_min:.1f} мин",
+        )
+    with m7:
+        data_flow = plan.data_flow_total
+        st.metric("Кадров всего", f"{data_flow.frames_count if data_flow else 0} шт")
+    with m8:
+        if data_flow:
+            st.metric(
+                "Сырые ГБ vs кропы МБ",
+                f"{data_flow.raw_data_mb / 1024.0:.2f} ГБ",
+                f"после edge-детектора: {data_flow.edge_output_mb:.1f} МБ",
+                delta_color="inverse",
+            )
+        else:
+            st.metric("Сырые ГБ vs кропы МБ", "—")
+
+    m9, m10 = st.columns(2)
+    with m9:
+        if data_flow:
+            st.metric(
+                "Отправка через Starlink — СЫРЫЕ фото",
+                f"{data_flow.raw_uplink_time_s / 60.0:.1f} мин",
+                f"{data_flow.raw_uplink_time_s:.0f} с при {dock.uplink_mbps:.0f} Мбит/с",
+            )
+    with m10:
+        if data_flow:
+            st.metric(
+                "Отправка через Starlink — КРОПЫ (после edge)",
+                f"{data_flow.edge_uplink_time_s:.1f} с",
+                f"выигрыш ×{(data_flow.raw_uplink_time_s / max(0.01, data_flow.edge_uplink_time_s)):.0f}",
+            )
+
+    # --- Карта ---
+    st.subheader("🗺️ Карта облёта со станцией")
+    try:
+        fig_map = create_fleet_plotly_figure(plan, current_field)
+        fig_map = _add_dock_marker(fig_map, dock)
+        st.plotly_chart(fig_map, width="stretch")
+    except Exception as exc:  # noqa: BLE001
+        st.warning(f"⚠️ Не удалось построить карту: {exc}")
+
+    # --- Таблица вылетов по дронам ---
+    st.subheader("📋 Вылеты по дронам")
+    try:
+        import pandas as pd
+        rows = []
+        for v in plan.vehicles:
+            rows.append({
+                "Дрон": f"#{v.system_id}",
+                "Эшелон перелёта (м)": f"{v.transit_altitude_m:.0f}",
+                "Смещение взлёта (с)": f"{v.takeoff_offset_s:.1f}",
+                "Число вылетов": v.num_sorties,
+                "Время с зарядкой (мин)": f"{v.mission_time_with_charging_s / 60.0:.1f}",
+                "Расход батареи (макс, %)": f"{v.battery_consumed_pct:.1f}",
+                "Статус батареи": "✅ В норме" if v.battery_safe else "❌ Превышение резерва",
+            })
+        st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
+    except Exception as exc:  # noqa: BLE001
+        st.warning(f"⚠️ Не удалось построить таблицу вылетов: {exc}")
+
+    # --- Видео симуляции (если сгенерировано) ---
+    video_candidates = [
+        (Path("case1/output/dock_simulation/dock_mission_simulation.mp4"), "Симуляция облёта"),
+        (Path("design/dock_station_animation.mp4"), "Анимация станции"),
+    ]
+    for video_path, title in video_candidates:
+        try:
+            if video_path.exists():
+                st.subheader(f"🎬 {title}")
+                st.video(str(video_path))
+        except Exception as exc:  # noqa: BLE001
+            st.warning(f"⚠️ Не удалось загрузить видео «{title}»: {exc}")
+
+    st.success("✅ Dock-режим рассчитан офлайн: готов для скриншота/демонстрации на питче!")

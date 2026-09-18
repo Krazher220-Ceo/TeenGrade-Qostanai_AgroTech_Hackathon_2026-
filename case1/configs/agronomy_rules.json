@@ -77,31 +77,142 @@
       "type": "perennial",
       "class": "A",
       "botanical_group": "двудольные многолетние",
-      "priority": "high"
+      "priority": "high",
+      "ru_name": "Бодяк полевой (Осот розовый)",
+      "latin_name": "Cirsium arvense"
     },
     "field_bindweed": {
       "type": "perennial",
       "class": "A",
       "botanical_group": "двудольные многолетние",
-      "priority": "high"
+      "priority": "high",
+      "ru_name": "Вьюнок полевой (Берёзка)",
+      "latin_name": "Convolvulus arvensis"
     },
     "couch_grass": {
       "type": "perennial",
       "class": "B",
       "botanical_group": "злаковые многолетние",
-      "priority": "high"
+      "priority": "high",
+      "ru_name": "Пырей ползучий",
+      "latin_name": "Elymus repens"
     },
     "crop_wheat": {
       "type": "crop",
       "class": "culture",
       "botanical_group": "культурное растение",
-      "priority": "protected"
+      "priority": "protected",
+      "ru_name": "Пшеница яровая (Культура)",
+      "latin_name": "Triticum aestivum"
     },
     "unknown": {
       "type": "uncertain",
       "class": "unknown",
       "botanical_group": "неопределено",
-      "priority": "review"
+      "priority": "review",
+      "ru_name": "Неизвестный сорняк",
+      "latin_name": "Incertae sedis"
+    }
+  },
+  "botanical_reference": {
+    "class_A_broadleaf": {
+      "group_ru": "Класс A — Двудольные (широколистные)",
+      "annual_species": [
+        {
+          "ru_name": "Щирица запрокинутая",
+          "latin_name": "Amaranthus retroflexus",
+          "biological_type": "малолетний",
+          "epv_note": "ЭПВ: 5–10 шт/м²"
+        },
+        {
+          "ru_name": "Марь белая",
+          "latin_name": "Chenopodium album",
+          "biological_type": "малолетний",
+          "epv_note": "ЭПВ: 5 шт/м²"
+        },
+        {
+          "ru_name": "Горец вьюнковый",
+          "latin_name": "Fallopia convolvulus",
+          "biological_type": "малолетний",
+          "epv_note": "ЭПВ: 5 шт/м²"
+        },
+        {
+          "ru_name": "Пикульник обыкновенный",
+          "latin_name": "Galeopsis tetrahit",
+          "biological_type": "малолетний",
+          "epv_note": "ЭПВ: 4–6 шт/м²"
+        }
+      ],
+      "perennial_species": [
+        {
+          "ru_name": "Бодяк полевой (Осот розовый)",
+          "latin_name": "Cirsium arvense",
+          "biological_type": "многолетний корнеотпрысковый",
+          "priority": "высокий",
+          "epv_note": "ЭПВ: 2–3 шт/м² (критическая угроза)"
+        },
+        {
+          "ru_name": "Вьюнок полевой (Берёзка)",
+          "latin_name": "Convolvulus arvensis",
+          "biological_type": "многолетний корнеотпрысковый",
+          "priority": "высокий",
+          "epv_note": "ЭПВ: 2–4 шт/м² (критическая угроза)"
+        },
+        {
+          "ru_name": "Осот полевой (жёлтый)",
+          "latin_name": "Sonchus arvensis",
+          "biological_type": "многолетний корнеотпрысковый",
+          "priority": "высокий",
+          "epv_note": "ЭПВ: 2 шт/м² (критическая угроза)"
+        }
+      ]
+    },
+    "class_B_grass": {
+      "group_ru": "Класс B — Злаковые (узколистные)",
+      "annual_species": [
+        {
+          "ru_name": "Овсюг обыкновенный",
+          "latin_name": "Avena fatua",
+          "biological_type": "малолетний яровой",
+          "epv_note": "ЭПВ: 8–10 шт/м²"
+        },
+        {
+          "ru_name": "Просо куриное (Ежовник)",
+          "latin_name": "Echinochloa crus-galli",
+          "biological_type": "малолетний яровой",
+          "epv_note": "ЭПВ: 10–15 шт/м²"
+        },
+        {
+          "ru_name": "Щетинник сизый",
+          "latin_name": "Setaria pumila",
+          "biological_type": "малолетний яровой",
+          "epv_note": "ЭПВ: 10–15 шт/м²"
+        }
+      ],
+      "perennial_species": [
+        {
+          "ru_name": "Пырей ползучий",
+          "latin_name": "Elymus repens",
+          "biological_type": "многолетний корневищный",
+          "priority": "высокий",
+          "epv_note": "ЭПВ: 2–3 шт/м² (критическая угроза)"
+        },
+        {
+          "ru_name": "Свинорой пальчатый",
+          "latin_name": "Cynodon dactylon",
+          "biological_type": "многолетний корневищный",
+          "priority": "высокий",
+          "epv_note": "ЭПВ: 2 шт/м² (критическая угроза)"
+        }
+      ]
+    }
+  },
+  "sprayer_specifications": {
+    "operating_speed_km_h": [18.0, 20.0],
+    "operating_speed_m_s": [5.0, 5.56],
+    "timing_guidelines": {
+      "max_acceptable_inline_latency_s": 0.05,
+      "status_explanation": "При скорости опрыскивателя 18–20 км/ч (5,0–5,56 м/с) задержка конвейера > 0.1 с приводит к смещению штанги более чем на 0.5–1.0 м. Поэтому надёжный полевой контур работает по схеме предварительного картирования (Post-flight Advisory Mapping) перед выездом техники."
     }
   }
 }

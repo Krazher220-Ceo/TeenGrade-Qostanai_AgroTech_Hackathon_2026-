@@ -1,0 +1,55 @@
+{
+  "dataset": "full_test_381_images",
+  "weights": "/workspace/case1/models/weed_detector_finetuned.pt",
+  "data_yaml": "/workspace/case1/configs/combined_detector.yaml",
+  "map50": 0.7715080767502382,
+  "map50_95": 0.4858343583239838,
+  "map75": 0.5293372826050107,
+  "mean_precision": 0.7382888037060886,
+  "mean_recall": 0.7310693513081123,
+  "per_class": {
+    "crop": {
+      "precision": 0.7244460800519293,
+      "recall": 0.748898678414097,
+      "map50": 0.7820334730559076,
+      "map50_95": 0.5405477252697622
+    },
+    "weed": {
+      "precision": 0.752131527360248,
+      "recall": 0.7132400242021276,
+      "map50": 0.7609826804445688,
+      "map50_95": 0.4311209913782054
+    }
+  },
+  "speed_ms": {
+    "preprocess": 0.14493491351201132,
+    "inference": 2.9970455015343407,
+    "loss": 0.0006756085286459585,
+    "postprocess": 0.4567359892677105
+  },
+  "confusion_matrix_path": "/workspace/case1/output/eval_2026-09-18/detector_test/confusion_matrix.png",
+  "confusion_matrix_normalized_path": "/workspace/case1/output/eval_2026-09-18/detector_test/confusion_matrix_normalized.png",
+  "save_dir": "/workspace/case1/output/eval_2026-09-18/detector_test",
+  "confusion_matrix_raw": [
+    [
+      178.0,
+      11.0,
+      71.0
+    ],
+    [
+      5.0,
+      743.0,
+      296.0
+    ],
+    [
+      44.0,
+      216.0,
+      0.0
+    ]
+  ],
+  "confusion_matrix_class_order": [
+    "crop",
+    "weed",
+    "background"
+  ]
+}

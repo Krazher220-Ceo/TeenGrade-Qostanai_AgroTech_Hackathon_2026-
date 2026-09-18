@@ -1,0 +1,80 @@
+{
+  "DJI_20260615134520_0343_D.JPG:68": {
+    "image_id": "DJI_20260615134520_0343_D.JPG",
+    "object_id": 68,
+    "verified_species": "field_thistle",
+    "verified_species_ru": "Бодяк полевой",
+    "verified_stage_ru": "Не определено",
+    "is_crop": false,
+    "action": "spray_weed",
+    "device_id": "field_74a18c8e-56ef-4d3a-b3ea-651d630930c4",
+    "verified_by": "Полевой агроном («Олжа Агро»)",
+    "timestamp": "2026-09-18T08:52:31.236Z",
+    "notes": null
+  },
+  "DJI_20260615134123_0339_D.JPG:15": {
+    "image_id": "DJI_20260615134123_0339_D.JPG",
+    "object_id": 15,
+    "verified_species": "field_thistle",
+    "verified_species_ru": "Бодяк полевой",
+    "verified_stage_ru": "Не определено",
+    "is_crop": false,
+    "action": "spray_weed",
+    "device_id": "field_74a18c8e-56ef-4d3a-b3ea-651d630930c4",
+    "verified_by": "Полевой агроном («Олжа Агро»)",
+    "timestamp": "2026-09-18T08:52:34.256Z",
+    "notes": null
+  },
+  "DJI_20260609122641_0177_D.JPG:6": {
+    "image_id": "DJI_20260609122641_0177_D.JPG",
+    "object_id": 6,
+    "verified_species": "field_bindweed",
+    "verified_species_ru": "Вьюнок полевой",
+    "verified_stage_ru": "Не определено",
+    "is_crop": false,
+    "action": "spray_weed",
+    "device_id": "field_74a18c8e-56ef-4d3a-b3ea-651d630930c4",
+    "verified_by": "Полевой агроном («Олжа Агро»)",
+    "timestamp": "2026-09-18T08:52:42.000Z",
+    "notes": null
+  },
+  "DJI_20260615134123_0339_D.JPG:17": {
+    "image_id": "DJI_20260615134123_0339_D.JPG",
+    "object_id": 17,
+    "verified_species": "couch_grass",
+    "verified_species_ru": "Пырей ползучий",
+    "verified_stage_ru": "Не определено",
+    "is_crop": false,
+    "action": "spray_weed",
+    "device_id": "field_74a18c8e-56ef-4d3a-b3ea-651d630930c4",
+    "verified_by": "Полевой агроном («Олжа Агро»)",
+    "timestamp": "2026-09-18T08:53:17.091Z",
+    "notes": null
+  },
+  "DJI_20260615134123_0339_D.JPG:18": {
+    "image_id": "DJI_20260615134123_0339_D.JPG",
+    "object_id": 18,
+    "verified_species": "field_thistle",
+    "verified_species_ru": "Бодяк полевой",
+    "verified_stage_ru": "Не определено",
+    "is_crop": false,
+    "action": "spray_weed",
+    "device_id": "field_74a18c8e-56ef-4d3a-b3ea-651d630930c4",
+    "verified_by": "Полевой агроном («Олжа Агро»)",
+    "timestamp": "2026-09-18T08:53:18.764Z",
+    "notes": null
+  },
+  "DJI_20260615134123_0339_D.JPG:27": {
+    "image_id": "DJI_20260615134123_0339_D.JPG",
+    "object_id": 27,
+    "verified_species": "crop_wheat",
+    "verified_species_ru": "Пшеница (культура / фон)",
+    "verified_stage_ru": "Не определено",
+    "is_crop": true,
+    "action": "do_not_spray",
+    "device_id": "field_74a18c8e-56ef-4d3a-b3ea-651d630930c4",
+    "verified_by": "Полевой агроном («Олжа Агро»)",
+    "timestamp": "2026-09-18T08:53:21.162Z",
+    "notes": null
+  }
+}

@@ -1,0 +1,1905 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 4,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 6,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 7,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 8,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 9,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 10,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 11,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 13,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 14,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168833333333,
+          52.92379666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260609122641_0177_D.JPG",
+        "object_id": 15,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 3,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 18,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 20,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 23,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 25,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 36,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 45,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 49,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 62,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 64,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 74,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 78,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818333333333,
+          52.944005
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615115515_0164_D.JPG",
+        "object_id": 80,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 1,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 3,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 4,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 5,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 6,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 7,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 8,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 9,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 10,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 11,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 14,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 15,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 16,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 17,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 18,
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 19,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 20,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 21,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 22,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 24,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 25,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 26,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 27,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 28,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 29,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": 30,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 3,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 6,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 7,
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 8,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 9,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 10,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 12,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 20,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 21,
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 24,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 27,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 30,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 31,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 33,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 39,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 42,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 43,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 44,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 45,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 46,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 50,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 52,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 53,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 54,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 58,
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 59,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 61,
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 63,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 67,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 68,
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 70,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 75,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 77,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 78,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 81,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 82,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": 83,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 1,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 2,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 3,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 4,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 5,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 6,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 7,
+        "species": "crop_wheat",
+        "species_ru": "Пшеница (Культура / Фон)",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 8,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Не определено",
+        "action": "manual_review",
+        "rate_l_ha": 0.0,
+        "review_required": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": 9,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "stage_ru": "Стеблевание",
+        "action": "spray_weed",
+        "rate_l_ha": 150.0,
+        "review_required": false
+      }
+    }
+  ]
+}

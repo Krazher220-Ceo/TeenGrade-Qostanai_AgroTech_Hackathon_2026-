@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Мобильная дрон-станция — AgroVision AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f7f4;
+    --card:#ffffff;
+    --border:#dfe8e1;
+    --ink:#122b20;
+    --ink-soft:#52645b;
+    --ink-faint:#84948b;
+    --green:#1f9d55;
+    --green-dark:#0c3d2c;
+    --green-pale:#e6f5ec;
+    --amber:#f59e0b;
+    --amber-pale:#fef3e0;
+    --blue:#2563eb;
+    --blue-pale:#e8f0fe;
+    --purple:#7c3aed;
+    --purple-pale:#f1e9fd;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d1a15; --card:#132a20; --border:#22402f; --ink:#eaf5ef; --ink-soft:#a9c2b4; --ink-faint:#7c9689;
+      --green:#3ecb7d; --green-dark:#8fe3b3; --green-pale:#173d2b; --amber:#fbbf24; --amber-pale:#3a2c10;
+      --blue:#5b8def; --blue-pale:#152c4d; --purple:#a78bfa; --purple-pale:#2c2148;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d1a15; --card:#132a20; --border:#22402f; --ink:#eaf5ef; --ink-soft:#a9c2b4; --ink-faint:#7c9689;
+    --green:#3ecb7d; --green-dark:#8fe3b3; --green-pale:#173d2b; --amber:#fbbf24; --amber-pale:#3a2c10;
+    --blue:#5b8def; --blue-pale:#152c4d; --purple:#a78bfa; --purple-pale:#2c2148;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);}
+  body{
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    min-height:100vh;
+    padding:16px;
+    overflow-y:auto;
+  }
+  .stage{
+    width:100%;
+    max-width:1600px;
+  }
+  .stage svg{
+    width:100%;
+    height:auto;
+    display:block;
+    overflow:visible;
+  }
+  .box-title{ font-weight:700; font-size:19px; line-height:1.22; color:var(--ink); margin:0 0 6px 0; }
+  .box-desc{ font-weight:500; font-size:15px; line-height:1.4; color:var(--ink-soft); margin:0; }
+  .fo-wrap{
+    width:100%; height:100%;
+    display:flex; flex-direction:column; justify-content:flex-start;
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  .stat-title{ font-weight:800; font-size:24px; margin:0 0 8px 0; }
+  .stat-desc{ font-weight:500; font-size:14.5px; line-height:1.4; margin:0; }
+</style>
+</head>
+<body>
+<div class="stage">
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0c3d2c" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f9d55"/>
+    </marker>
+    <marker id="arrowSoft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c9689"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="var(--bg)"/>
+
+  <!-- ===================== HEADER (y 0-160) ===================== -->
+  <g>
+    <circle cx="76" cy="62" r="28" fill="var(--green)"/>
+    <path d="M76 43 C 63 47, 57 58, 61 73 C 69 75, 80 71, 84 60 C 86 53, 82 45, 76 43 Z" fill="#ffffff" opacity="0.95"/>
+    <text x="120" y="60" font-family="Inter" font-weight="800" font-size="40" fill="var(--green-dark)">Мобильная дрон-станция</text>
+    <text x="120" y="92" font-family="Inter" font-weight="500" font-size="20" fill="var(--ink-soft)">Один выезд агронома — четыре дрона по секторам — одна карта-предписание для опрыскивателя</text>
+    <text x="1854" y="46" text-anchor="end" font-family="Inter" font-weight="700" font-size="14" fill="var(--ink-faint)">AgroVision AI</text>
+    <text x="1854" y="68" text-anchor="end" font-family="Inter" font-weight="600" font-size="14" fill="var(--ink-faint)">концепция ментора · Qostanai AgroTech 2026</text>
+  </g>
+  <line x1="60" y1="118" x2="1860" y2="118" stroke="var(--border)" stroke-width="2"/>
+
+  <!-- ===================== ROW 1 (y 180-520, h=340) — 3 cards x520, gaps 120 ===================== -->
+
+  <!-- Card 1: Старт (x60-580) -->
+  <g filter="url(#cardShadow)"><rect x="60" y="180" width="520" height="340" rx="20" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <text x="90" y="216" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--green)">1 · СТАРТ</text>
+  <g transform="translate(160,234)">
+    <rect x="10" y="0" width="200" height="58" rx="10" fill="var(--green-pale)" stroke="var(--green)" stroke-width="3"/>
+    <circle cx="46" cy="29" r="15" fill="var(--card)" stroke="var(--green)" stroke-width="3"/>
+    <circle cx="90" cy="29" r="15" fill="var(--card)" stroke="var(--green)" stroke-width="3"/>
+    <circle cx="134" cy="29" r="15" fill="var(--card)" stroke="var(--green)" stroke-width="3"/>
+    <circle cx="178" cy="29" r="15" fill="var(--card)" stroke="var(--green)" stroke-width="3"/>
+    <path d="M46 19 L56 29 L46 39 L36 29 Z" fill="var(--green)"/>
+    <path d="M90 19 L100 29 L90 39 L80 29 Z" fill="var(--green)"/>
+    <circle cx="134" cy="29" r="5" fill="none" stroke="var(--ink-faint)" stroke-width="2" stroke-dasharray="2 3"/>
+    <circle cx="178" cy="29" r="5" fill="none" stroke="var(--ink-faint)" stroke-width="2" stroke-dasharray="2 3"/>
+    <rect x="0" y="68" width="220" height="62" rx="16" fill="var(--green-dark)"/>
+    <rect x="30" y="52" width="105" height="22" rx="6" fill="var(--green-dark)"/>
+    <circle cx="48" cy="132" r="16" fill="var(--ink)"/><circle cx="48" cy="132" r="6" fill="var(--card)"/>
+    <circle cx="172" cy="132" r="16" fill="var(--ink)"/><circle cx="172" cy="132" r="6" fill="var(--card)"/>
+  </g>
+  <foreignObject x="90" y="392" width="460" height="106">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title">УАЗ / минивэн, крыша открыта</p>
+      <p class="box-desc">Станция на 3–4 гнезда на крыше. Приложение делит поле на сектора и считает высоту и галсы.</p>
+    </div>
+  </foreignObject>
+
+  <!-- arrow 1 (gap 580-700) -->
+  <line x1="596" y1="350" x2="684" y2="350" stroke="var(--green)" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <text x="640" y="312" text-anchor="middle" font-family="Inter" font-weight="700" font-size="14" fill="var(--ink-soft)">взлёт по</text>
+  <text x="640" y="330" text-anchor="middle" font-family="Inter" font-weight="700" font-size="14" fill="var(--ink-soft)">очереди</text>
+  <text x="640" y="378" text-anchor="middle" font-family="Inter" font-weight="600" font-size="13" fill="var(--ink-faint)">15–20 с</text>
+
+  <!-- Card 2: Облёт по секторам (x700-1220) -->
+  <g filter="url(#cardShadow)"><rect x="700" y="180" width="520" height="340" rx="20" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <text x="730" y="216" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--green)">2 · ОБЛЁТ ПО СЕКТОРАМ</text>
+  <text x="1160" y="216" text-anchor="end" font-family="Inter" font-weight="600" font-size="13" fill="var(--ink-faint)">поле 2×2 км</text>
+  <g transform="translate(750,234)">
+    <rect x="0" y="0" width="420" height="176" rx="10" fill="#eef2ee" stroke="var(--border)" stroke-width="2"/>
+    <rect x="0" y="0" width="210" height="88" fill="var(--green-pale)"/>
+    <rect x="210" y="0" width="210" height="88" fill="var(--blue-pale)"/>
+    <rect x="0" y="88" width="210" height="88" fill="var(--amber-pale)"/>
+    <rect x="210" y="88" width="210" height="88" fill="var(--purple-pale)"/>
+    <line x1="210" y1="0" x2="210" y2="176" stroke="var(--card)" stroke-width="3"/>
+    <line x1="0" y1="88" x2="420" y2="88" stroke="var(--card)" stroke-width="3"/>
+    <rect x="0" y="0" width="420" height="176" rx="10" fill="none" stroke="var(--border)" stroke-width="2"/>
+    <path d="M105 44 L114 55 L105 66 L96 55 Z" fill="var(--green)"/>
+    <path d="M20 20 Q 65 5 108 40" fill="none" stroke="var(--green)" stroke-width="2" stroke-dasharray="3 4" opacity="0.7"/>
+    <path d="M315 44 L324 55 L315 66 L306 55 Z" fill="var(--blue)"/>
+    <path d="M225 15 Q 280 30 335 40" fill="none" stroke="var(--blue)" stroke-width="2" stroke-dasharray="3 4" opacity="0.7"/>
+    <path d="M105 132 L114 143 L105 154 L96 143 Z" fill="var(--amber)"/>
+    <path d="M20 100 Q 65 120 108 128" fill="none" stroke="var(--amber)" stroke-width="2" stroke-dasharray="3 4" opacity="0.7"/>
+    <path d="M315 132 L324 143 L315 154 L306 143 Z" fill="var(--purple)"/>
+    <path d="M225 165 Q 280 150 335 128" fill="none" stroke="var(--purple)" stroke-width="2" stroke-dasharray="3 4" opacity="0.7"/>
+  </g>
+  <foreignObject x="730" y="392" width="460" height="106">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title">Каждый дрон — свой сектор и эшелон</p>
+      <p class="box-desc">Эшелоны 30/35/40/45 м и непересекающиеся сектора исключают столкновения при общем облёте.</p>
+    </div>
+  </foreignObject>
+
+  <!-- arrow 2 (gap 1220-1340) -->
+  <line x1="1236" y1="350" x2="1324" y2="350" stroke="var(--green)" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <text x="1280" y="330" text-anchor="middle" font-family="Inter" font-weight="700" font-size="14" fill="var(--ink-soft)">посадка</text>
+
+  <!-- Card 3: Станция принимает дроны (x1340-1860) -->
+  <g filter="url(#cardShadow)"><rect x="1340" y="180" width="520" height="340" rx="20" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <text x="1370" y="216" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--green)">3 · СТАНЦИЯ ПРИНИМАЕТ ДРОНЫ</text>
+  <g transform="translate(1450,244)">
+    <circle cx="30" cy="30" r="30" fill="var(--green-pale)"/>
+    <path d="M35 9 L18 35 L29 35 L25 51 L44 25 L32 25 Z" fill="var(--green)"/>
+    <circle cx="115" cy="30" r="30" fill="var(--blue-pale)"/>
+    <path d="M115 12 L115 40 M104 31 L115 42 L126 31" fill="none" stroke="var(--blue)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M99 50 h32" stroke="var(--blue)" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="200" cy="30" r="30" fill="var(--purple-pale)"/>
+    <rect x="184" y="14" width="32" height="32" rx="6" fill="none" stroke="var(--purple)" stroke-width="4"/>
+    <rect x="193" y="23" width="14" height="14" rx="3" fill="var(--purple)"/>
+  </g>
+  <foreignObject x="1370" y="392" width="460" height="106">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title">Зарядка · выгрузка · edge-детектор</p>
+      <p class="box-desc">Пока дрон заряжается (≈25–35 мин), детектор сорняков в машине уже находит их на снимках — без интернета.</p>
+    </div>
+  </foreignObject>
+
+  <!-- connector row1 -> row2 -->
+  <path d="M1700 520 L1700 540 L1700 552" fill="none" stroke="var(--green)" stroke-width="4" marker-end="url(#arrowGreen)"/>
+
+  <!-- ===================== ROW 2 (y 560-880, h=320) — 5 cards x320, gaps 50 ===================== -->
+
+  <!-- Card 4: Starlink (x1540-1860, rightmost) -->
+  <g filter="url(#cardShadow)"><rect x="1540" y="560" width="320" height="320" rx="20" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <text x="1566" y="596" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--blue)">4 · STARLINK</text>
+  <g transform="translate(1650,610)">
+    <!-- satellite dish icon -->
+    <ellipse cx="30" cy="46" rx="28" ry="15" fill="var(--blue-pale)" stroke="var(--blue)" stroke-width="4" transform="rotate(-16 30 46)"/>
+    <line x1="34" y1="35" x2="54" y2="10" stroke="var(--blue)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="54" cy="10" r="5" fill="var(--blue)"/>
+    <line x1="26" y1="58" x2="26" y2="76" stroke="var(--blue)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M10 76 L42 76 L34 88 L18 88 Z" fill="var(--blue)"/>
+    <path d="M60 2 Q 72 12 60 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+    <path d="M68 -6 Q 88 12 68 32" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+  </g>
+  <foreignObject x="1566" y="706" width="270" height="146">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title" style="font-size:17.5px;">Только кропы + GPS</p>
+      <p class="box-desc" style="font-size:14px;">1000 фото ≈12 ГБ, канал ≈10–30 Мбит/с. На сервер — лишь кропы-боксы: десятки МБ.</p>
+    </div>
+  </foreignObject>
+  <line x1="1540" y1="720" x2="1490" y2="720" stroke="var(--ink-faint)" stroke-width="3.5" marker-end="url(#arrowSoft)"/>
+
+  <!-- Card 5: Сервер (x1170-1490) -->
+  <g filter="url(#cardShadow)"><rect x="1170" y="560" width="320" height="320" rx="20" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <text x="1196" y="596" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--purple)">5 · СЕРВЕР</text>
+  <g transform="translate(1270,614)">
+    <rect x="0" y="0" width="70" height="20" rx="4" fill="var(--purple-pale)" stroke="var(--purple)" stroke-width="2.5"/>
+    <rect x="0" y="24" width="70" height="20" rx="4" fill="var(--purple-pale)" stroke="var(--purple)" stroke-width="2.5"/>
+    <rect x="0" y="48" width="70" height="20" rx="4" fill="var(--purple-pale)" stroke="var(--purple)" stroke-width="2.5"/>
+    <circle cx="10" cy="10" r="3" fill="var(--purple)"/><circle cx="10" cy="34" r="3" fill="var(--purple)"/><circle cx="10" cy="58" r="3" fill="var(--purple)"/>
+  </g>
+  <foreignObject x="1196" y="706" width="270" height="146">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title" style="font-size:17.5px;">2-я модель уточняет</p>
+      <p class="box-desc" style="font-size:14px;">Вид, фазу и высоту сорняка — по кропу, полученному от станции.</p>
+    </div>
+  </foreignObject>
+  <line x1="1170" y1="720" x2="1120" y2="720" stroke="var(--ink-faint)" stroke-width="3.5" marker-end="url(#arrowSoft)"/>
+
+  <!-- Card 6: Телефон / HITL (x800-1120) -->
+  <g filter="url(#cardShadow)"><rect x="800" y="560" width="320" height="320" rx="20" fill="var(--card)" stroke="var(--amber)" stroke-width="2.5"/></g>
+  <text x="826" y="596" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--amber)">6 · АГРОНОМ (HITL)</text>
+  <g transform="translate(930,606)">
+    <rect x="0" y="0" width="60" height="94" rx="12" fill="var(--card)" stroke="var(--amber)" stroke-width="3"/>
+    <rect x="8" y="10" width="44" height="64" rx="4" fill="var(--amber-pale)"/>
+    <circle cx="30" cy="84" r="4" fill="var(--amber)"/>
+    <path d="M18 41 l8 8 l16 -18" fill="none" stroke="var(--amber)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <foreignObject x="826" y="706" width="270" height="146">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title" style="font-size:17.5px;">&lt;75% уверенности</p>
+      <p class="box-desc" style="font-size:14px;">Агроному офлайн: выбрать вариант или указать свой → в дообучение.</p>
+    </div>
+  </foreignObject>
+  <line x1="800" y1="720" x2="750" y2="720" stroke="var(--ink-faint)" stroke-width="3.5" marker-end="url(#arrowSoft)"/>
+
+  <!-- Card 7: Карта-предписание (x430-750) -->
+  <g filter="url(#cardShadow)"><rect x="430" y="560" width="320" height="320" rx="20" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <text x="456" y="596" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--green)">7 · КАРТА-ПРЕДПИСАНИЕ</text>
+  <g transform="translate(550,606)">
+    <circle cx="35" cy="35" r="33" fill="var(--green-pale)" stroke="var(--green)" stroke-width="2" stroke-dasharray="5 5"/>
+    <path d="M35 15 C 23 15, 15 24, 15 33 C 15 46, 35 62, 35 62 C 35 62, 55 46, 55 33 C 55 24, 47 15, 35 15 Z" fill="var(--green)"/>
+    <circle cx="35" cy="32" r="7" fill="#ffffff"/>
+  </g>
+  <foreignObject x="456" y="706" width="270" height="146">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title" style="font-size:17.5px;">GPS-зоны вокруг очагов</p>
+      <p class="box-desc" style="font-size:14px;">Шире для многолетников — их отдельно сохраняем в базу для сравнения по сезонам.</p>
+    </div>
+  </foreignObject>
+  <line x1="430" y1="720" x2="380" y2="720" stroke="var(--ink-faint)" stroke-width="3.5" marker-end="url(#arrowSoft)"/>
+
+  <!-- Card 8: Опрыскиватель (x60-380) -->
+  <g filter="url(#cardShadow)"><rect x="60" y="560" width="320" height="320" rx="20" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <text x="86" y="596" font-family="Inter" font-weight="800" font-size="13" letter-spacing="0.09em" fill="var(--green-dark)">8 · ОПРЫСКИВАТЕЛЬ</text>
+  <g transform="translate(150,616)">
+    <rect x="20" y="30" width="60" height="34" rx="8" fill="var(--green-dark)"/>
+    <circle cx="35" cy="66" r="10" fill="var(--ink)"/><circle cx="75" cy="66" r="10" fill="var(--ink)"/>
+    <line x1="-30" y1="30" x2="130" y2="30" stroke="var(--green-dark)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="-30" y1="30" x2="-30" y2="44" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="10" y1="30" x2="10" y2="44" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="50" y1="30" x2="50" y2="44" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="90" y1="30" x2="90" y2="44" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="130" y1="30" x2="130" y2="44" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <foreignObject x="86" y="706" width="270" height="146">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap">
+      <p class="box-title" style="font-size:17.5px;">ISO-XML TaskData</p>
+      <p class="box-desc" style="font-size:14px;">Готовый файл предписания — точный вылив строго по GPS-зонам.</p>
+    </div>
+  </foreignObject>
+
+  <!-- ===================== FOOTER STATS (y 900-1060, h=160) ===================== -->
+  <g filter="url(#cardShadow)"><rect x="60" y="900" width="560" height="160" rx="18" fill="var(--green-dark)"/></g>
+  <foreignObject x="60" y="900" width="560" height="160">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="padding:24px 28px; color:#ffffff;">
+      <p class="stat-title" style="color:#ffffff;">≈12 ГБ / 1000 фото</p>
+      <p class="stat-desc" style="color:#d7ecdf;">Starlink ≈10–30 Мбит/с → сырьё шло бы &gt;1 часа. Детектор — в машине, на сервер — только кропы.</p>
+    </div>
+  </foreignObject>
+
+  <g filter="url(#cardShadow)"><rect x="680" y="900" width="560" height="160" rx="18" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <foreignObject x="680" y="900" width="560" height="160">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="padding:24px 28px;">
+      <p class="stat-title" style="color:var(--green-dark);">≈25–35 мин зарядка</p>
+      <p class="stat-desc" style="color:var(--ink-soft);">Гнёзда заряжают дроны параллельно. Дальше — автозамена батарей ≈1–2 мин.</p>
+    </div>
+  </foreignObject>
+
+  <g filter="url(#cardShadow)"><rect x="1300" y="900" width="560" height="160" rx="18" fill="var(--card)" stroke="var(--border)" stroke-width="2"/></g>
+  <foreignObject x="1300" y="900" width="560" height="160">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="fo-wrap" style="padding:24px 28px;">
+      <p class="stat-title" style="color:var(--green-dark);">4 дрона ≈28–72 га/цикл</p>
+      <p class="stat-desc" style="color:var(--ink-soft);">12 м → ≈7 га/вылет детально; 30 м → ≈18 га/вылет обзорно. Для 400 га — два прохода.</p>
+    </div>
+  </foreignObject>
+
+</svg>
+</div>
+</body>
+</html>

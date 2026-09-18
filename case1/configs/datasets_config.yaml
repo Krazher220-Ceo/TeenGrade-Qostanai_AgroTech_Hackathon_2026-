@@ -1,0 +1,114 @@
+# Реестр размеченных датасетов AgroVision AI (Qostanai AgroTech Hackathon 2026)
+
+datasets:
+  weed_crop_aerial:
+    id: "weed_crop_aerial"
+    name: "Roboflow-100 Weed Crop Aerial"
+    task: "object_detection"
+    modality: "uav_aerial"
+    license: "CC BY 4.0"
+    source_url: "https://huggingface.co/datasets/Francesco/weed-crop-aerial/resolve/main/dataset.tar.gz"
+    alt_source_url: "https://universe.roboflow.com/roboflow-100/weed-crop-aerial"
+    archive_name: "weed_crop_aerial.tar.gz"
+    extract_dir: "case1/data/external/weed_crop_aerial"
+    yolo_dir: "case1/data/yolo_aerial"
+    yaml_config: "case1/configs/weed_crop_aerial.yaml"
+    expected_images: 1176
+    classes:
+      0: "crop"
+      1: "weed"
+    description: "Размеченные аэрофотоснимки с дрона в COCO/YOLO формате для бинарной детекции сорняков на фоне культурных посевов."
+
+  crop_weed_detection:
+    id: "crop_weed_detection"
+    name: "Crop and Weed Field Detection"
+    task: "object_detection"
+    modality: "field_surface"
+    license: "Open Data Commons / Academic"
+    source_url: "https://raw.githubusercontent.com/Andrew-Boucher/Crop-Weed-Detection/main/Data/Data.zip"
+    alt_source_url: "https://www.kaggle.com/datasets/ravirajsinh45/crop-and-weed-detection-data-with-bounding-boxes"
+    archive_name: "crop_weed_detection.zip"
+    extract_dir: "case1/data/external/crop_weed_detection"
+    yolo_dir: "case1/data/yolo_field"
+    yaml_config: "case1/configs/crop_weed_field.yaml"
+    expected_images: 1300
+    classes:
+      0: "crop"
+      1: "weed"
+    description: "Полевые снимки высокого разрешения с покадровой нормализованной разметкой YOLO для разделения культурных растений и сорняков."
+
+  grass_weeds:
+    id: "grass_weeds"
+    name: "Roboflow-100 Grass Weeds (Rumex)"
+    task: "object_detection"
+    modality: "field_surface"
+    license: "CC BY 4.0"
+    source_url: "https://huggingface.co/datasets/Francesco/grass-weeds/resolve/main/dataset.tar.gz"
+    alt_source_url: "https://universe.roboflow.com/roboflow-100/grass-weeds"
+    archive_name: "grass_weeds.tar.gz"
+    extract_dir: "case1/data/external/grass_weeds"
+    yolo_dir: "case1/data/yolo_grass"
+    yaml_config: "case1/configs/grass_weeds.yaml"
+    expected_images: 1133
+    classes:
+      0: "broadleaf_weed"
+    description: "Размеченный датасет детекции широколистных сорняков (щавель туполистный / Rumex obtusifolius) в травяном покрове."
+
+  hackathon_reference:
+    id: "hackathon_reference"
+    name: "Qostanai Regional Reference Weeds"
+    task: "multi_task_classification"
+    modality: "macro_reference"
+    license: "ТОО «Олжа Агро» / Qostanai AgroTech Hackathon 2026"
+    local_dir: "Dataset 1 кейс/Сорняки"
+    manifest_csv: "case1/data/manifest.csv"
+    manifest_v2_csv: "case1/data/manifest_v2.csv"
+    expected_images: 552
+    target_species:
+      - id: "field_thistle"
+        ru: "Бодяк полевой"
+        latin: "Cirsium arvense"
+        type: "perennial_broadleaf"
+      - id: "field_bindweed"
+        ru: "Вьюнок полевой"
+        latin: "Convolvulus arvensis"
+        type: "perennial_broadleaf"
+      - id: "couch_grass"
+        ru: "Пырей ползучий"
+        latin: "Elytrigia repens"
+        type: "perennial_grass"
+    growth_stages:
+      - id: "rosette"
+        ru: "Розетка"
+      - id: "stem_elongation"
+        ru: "Стеблевание"
+    description: "Официальный эталонный датасет хакатона от агрономов «Олжа Агро»: 552 фото с разметкой вида и фенологической фазы."
+
+  hackathon_reference_detection:
+    id: "hackathon_reference_detection"
+    name: "Qostanai Reference Weed Detection"
+    task: "object_detection"
+    modality: "macro_reference"
+    license: "ТОО «Олжа Агро» / Qostanai AgroTech Hackathon 2026"
+    yolo_dir: "case1/data/yolo_reference"
+    yaml_config: "case1/configs/hackathon_reference_detection.yaml"
+    expected_images: 552
+    classes:
+      0: "field_thistle"
+      1: "field_bindweed"
+      2: "couch_grass"
+    description: "Нормализованный детекционный датасет для локализации ключевых видов сорняков Костанайской области (Бодяк, Вьюнок, Пырей)."
+
+  hackathon_dji_fields:
+    id: "hackathon_dji_fields"
+    name: "Qostanai DJI UAV Field Survey"
+    task: "uav_survey"
+    modality: "uav_aerial_4k"
+    license: "ТОО «Олжа Агро» / Qostanai AgroTech Hackathon 2026"
+    local_dir: "Dataset 1 кейс/ФотоПолей"
+    report_json: "case1/output/all_fields_report.json"
+    detections_csv: "case1/output/all_fields_detections.csv"
+    expected_images: 5
+    resolution: "4096x3072"
+    description: "Полноразмерные полевые снимки с борта БПЛА DJI Phantom с метаданными высоты и GPS-координат для валидации сквозного пайплайна."
+

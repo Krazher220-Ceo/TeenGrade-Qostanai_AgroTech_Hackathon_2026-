@@ -1,10 +1,15 @@
 import csv
 import io
 import json
+import sys
 from pathlib import Path
 
 import pytest
 from PIL import Image
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 from case1.viewer_pipeline import run_uploaded_field_image, validate_uploaded_image
 
@@ -30,7 +35,7 @@ def test_validate_uploaded_image_rejects_invalid_input(filename, payload):
 
 
 def test_run_uploaded_field_image_collects_artifacts(tmp_path):
-    def fake_processor(image_path, output_dir, detector_conf, species_conf):
+    def fake_processor(image_path, output_dir, detector_conf, species_conf, detector_path=None, **kwargs):
         assert detector_conf == 0.65
         assert species_conf == 0.65
         output = Path(output_dir)

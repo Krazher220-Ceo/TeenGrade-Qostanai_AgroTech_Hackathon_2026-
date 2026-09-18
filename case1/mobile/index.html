@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#063b2b">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="AgroVision AI — полевая офлайн-верификация сорняков">
+  <title>AgroVision AI — Проверка объектов</title>
+  <link rel="manifest" href="/mobile/manifest.json">
+  <link rel="icon" href="/mobile/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/mobile/styles.css?v=12">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">К рабочей области</a>
+  <svg class="icon-sprite" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M19.8 3.7C12.8 4.1 7.2 6.5 5.4 11c-1.2 3 .2 6.2 3 7.3 3.1 1.2 6.3-.5 7.5-3.4 1.7-4.3 3.9-11.2 3.9-11.2Z"/><path d="M4 21c2.2-5.2 5.7-8.8 10.7-11.1"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 5-2 8 3 5-2v13l-5 2-8-3-5 2Z"/><path d="M8 4v13m8-10v13"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 15.4a3.4 3.4 0 1 0 0-6.8 3.4 3.4 0 0 0 0 6.8Z"/><path d="m19 13.2 1.4 1-.9 2.2-1.7-.2-1.6 1.6.2 1.7-2.2.9-1-1.4h-2.4l-1 1.4-2.2-.9.2-1.7-1.6-1.6-1.7.2-.9-2.2 1.4-1v-2.4l-1.4-1 .9-2.2 1.7.2 1.6-1.6-.2-1.7 2.2-.9 1 1.4h2.4l1-1.4 2.2.9-.2 1.7L17.8 8l1.7-.2.9 2.2-1.4 1Z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h11a4 4 0 0 0 .7-7.9A7 7 0 0 0 5.2 8.5 4.8 4.8 0 0 0 7 18Z"/></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="m3 3 18 18M8.6 8.6A13.3 13.3 0 0 1 21 9m-18 0a15 15 0 0 1 2.8-1.7M6 13a9 9 0 0 1 7.5-2.4m4.5 2.5a9 9 0 0 0-1.2-.8M9 17a4.5 4.5 0 0 1 5.2-.8M12 21h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m14 5 5 5M4 20l3.5-.7L19 7.8A2.1 2.1 0 0 0 16.2 5L4.7 16.5Z"/></symbol>
+    <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4Zm0 6v5m0 3h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="m9 7-5 5 5 5M5 12h8a6 6 0 0 1 6 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  </svg>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Основная навигация">
+      <a class="brand" href="#" aria-label="AgroVision AI"><span class="brand-mark"><svg><use href="#i-leaf"/></svg></span><span><strong>AgroVision AI</strong><small>Полевой контроль</small></span></a>
+      <nav class="nav-list">
+        <button class="nav-item" type="button" data-toast="Раздел «Обзор» доступен в полной панели"><svg><use href="#i-grid"/></svg><span>Обзор</span></button>
+        <button class="nav-item is-active" type="button" aria-current="page"><svg><use href="#i-leaf"/></svg><span>Проверка</span></button>
+        <button class="nav-item" type="button" data-toast="Карта поля откроется после синхронизации"><svg><use href="#i-map"/></svg><span>Поля</span></button>
+        <button class="nav-item" type="button" data-toast="Настройки устройства сохранены локально"><svg><use href="#i-settings"/></svg><span>Настройки</span></button>
+      </nav>
+      <div class="sidebar-foot"><svg><use href="#i-leaf"/></svg><span><strong>Работает офлайн</strong><small>Решения сохраняются на устройстве</small></span></div>
+    </aside>
+    <div class="app-content">
+      <header class="topbar">
+        <div class="field-selector" aria-label="Текущее поле"><svg><use href="#i-map"/></svg><span><small>Текущее поле</small><strong>Север-12</strong></span></div>
+        <div id="networkState" class="status-block" role="status"><svg><use href="#i-wifi-off"/></svg><span><strong>Проверяем связь</strong><small>Подготовка локальных данных</small></span></div>
+        <button id="syncButton" class="sync-summary" type="button"><svg><use href="#i-cloud"/></svg><span><strong><span id="pendingCount">0</span> сохранено локально</strong><small id="syncHint">Очередь синхронизации</small></span></button>
+        <button id="themeButton" class="icon-button" type="button" aria-label="Сменить тему"><svg><use href="#i-sun"/></svg></button>
+      </header>
+      <section class="filterbar" aria-label="Фильтры очереди">
+        <div class="filter-tabs" role="tablist" aria-label="Фильтр объектов">
+          <button role="tab" aria-selected="true" data-filter="all">Все <span id="allCount">0</span></button>
+          <button role="tab" aria-selected="false" data-filter="low_conf">Сомнительные</button>
+          <button role="tab" aria-selected="false" data-filter="very_low">Критические</button>
+          <button role="tab" aria-selected="false" data-filter="wheat">Возможная культура</button>
+        </div>
+        <label class="sort-control"><span>Сначала</span><select id="sortSelect"><option value="confidence_asc">низкая уверенность</option><option value="confidence_desc">высокая уверенность</option><option value="detector_conf_desc">точный детектор</option></select></label>
+      </section>
+      <main id="workspace" class="workspace" tabindex="-1">
+        <section id="loadingState" class="loading-layout" aria-label="Загрузка очереди" aria-busy="true"><div class="skeleton skeleton-image"></div><div class="skeleton-panel"><i></i><i></i><i></i><i></i></div></section>
+        <section id="errorState" class="center-state" hidden><span class="state-icon state-icon--warning"><svg><use href="#i-alert"/></svg></span><h1>Не удалось открыть очередь</h1><p id="errorMessage">Проверьте соединение или повторите загрузку.</p><button class="button button--primary" id="retryButton" type="button">Повторить</button></section>
+        <section id="emptyState" class="center-state" hidden><span class="state-icon"><svg><use href="#i-leaf"/></svg></span><h1>Объектов для проверки нет</h1><p>Для выбранного фильтра очередь пуста. Решения на устройстве можно синхронизировать отдельно.</p><button class="button button--secondary" id="resetFilterButton" type="button">Показать все</button></section>
+        <section id="reviewState" class="review-layout" hidden aria-label="Проверка объекта">
+          <article class="media-shell" id="gestureSurface">
+            <div class="media-core"><img id="cropImage" alt="Фрагмент снимка с объектом для проверки" draggable="false"><div class="image-shade" aria-hidden="true"></div><div class="object-label"><span></span><strong id="objectLabel">Объект</strong></div><div class="gps-label" id="gpsLabel">Координаты кадра не указаны</div><div class="swipe-hint swipe-hint--left">Не опрыскивать</div><div class="swipe-hint swipe-hint--right">Подтвердить</div></div>
+            <footer class="media-footer"><button id="previousButton" class="button button--ghost" type="button"><svg><use href="#i-chevron"/></svg><span>Предыдущий</span></button><div class="queue-progress"><div><strong id="progressText">Объект 0 из 0</strong><span id="fieldFrame">Кадр —</span></div><progress id="queueProgress" max="1" value="0">0%</progress></div><button id="nextButton" class="button button--primary button--next" type="button"><span>Следующий</span><svg><use href="#i-arrow"/></svg></button></footer>
+          </article>
+          <aside class="decision-shell" aria-label="Решение агронома"><div class="decision-core">
+            <div class="species-heading"><span class="species-icon"><svg><use href="#i-leaf"/></svg></span><div><small>Гипотеза модели</small><h1 id="speciesName">Не определено</h1></div><button id="quickEditButton" class="icon-button" type="button" aria-label="Исправить вид"><svg><use href="#i-edit"/></svg></button></div>
+            <dl class="facts"><div><dt>Фаза развития</dt><dd id="stageName">Не определено</dd></div><div><dt>Уверенность модели</dt><dd id="confidenceValue">—</dd></div><div><dt>Детектор БПЛА</dt><dd id="detectorValue">—</dd></div></dl>
+            <div id="reviewWarning" class="review-warning" role="note"><svg><use href="#i-alert"/></svg><span><strong>Требуется подтверждение агронома</strong><small>Низкая уверенность модели. Проверьте объект до включения в карту обработки.</small></span></div>
+            <div class="decision-actions"><button id="confirmButton" class="button button--primary button--action" type="button"><svg><use href="#i-check"/></svg><span>Подтвердить</span><kbd>D</kbd></button><button id="editButton" class="button button--secondary button--action" type="button"><svg><use href="#i-edit"/></svg><span>Исправить вид</span><kbd>E</kbd></button><button id="rejectButton" class="button button--danger button--action" type="button"><svg><use href="#i-ban"/></svg><span>Не опрыскивать</span><kbd>A</kbd></button></div>
+            <p class="keyboard-help">← / → — навигация · действия доступны с клавиатуры</p>
+          </div></aside>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div id="offlineBar" class="offline-bar" hidden><div><svg><use href="#i-cloud"/></svg><span><strong><span id="offlineCount">0</span> решений в памяти устройства</strong><small>Они не потеряются при закрытии приложения</small></span></div><button id="offlineSyncButton" type="button">Синхронизировать</button></div>
+  <dialog id="speciesDialog" class="species-dialog" aria-labelledby="dialogTitle"><form method="dialog" class="dialog-sheet"><header><div><small>Ручная валидация</small><h2 id="dialogTitle">Исправить вид и фазу</h2></div><button class="icon-button" value="cancel" aria-label="Закрыть"><svg><use href="#i-close"/></svg></button></header><label class="search-field"><span class="sr-only">Поиск вида</span><input id="speciesSearch" type="search" placeholder="Начните вводить название…" autocomplete="off"></label><fieldset class="stage-field"><legend>Фаза развития</legend><div id="stageOptions" class="stage-options"></div></fieldset><div id="speciesList" class="species-list" role="listbox" aria-label="Виды растений"></div></form></dialog>
+  <dialog id="syncDialog" class="sync-dialog" aria-labelledby="syncTitle"><form method="dialog" class="dialog-sheet dialog-sheet--compact"><header><div><small>Offline-first</small><h2 id="syncTitle">Очередь синхронизации</h2></div><button class="icon-button" value="cancel" aria-label="Закрыть"><svg><use href="#i-close"/></svg></button></header><div id="syncList" class="sync-list"></div><footer><button value="cancel" class="button button--ghost">Закрыть</button><button id="dialogSyncButton" value="cancel" class="button button--primary">Синхронизировать</button></footer></form></dialog>
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div><div id="srStatus" class="sr-only" role="status" aria-live="polite"></div>
+  <script type="module" src="/mobile/app.js?v=12"></script>
+</body>
+</html>

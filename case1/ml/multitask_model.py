@@ -13,10 +13,40 @@ import torchvision.models as models
 
 SPECIES_NAMES = ["field_thistle", "field_bindweed", "couch_grass", "crop_wheat"]
 SPECIES_RU = ["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Пшеница (Культура / Фон)"]
-STAGE_NAMES = ["rosette", "stem_elongation"]
-STAGE_RU = ["Розетка", "Стеблевание"]
+STAGE_NAMES = ["cotyledon_to_2_leaves", "4_to_6_leaves", "over_6_leaves_or_flowering"]
+STAGE_RU = ["Семядоли — 2 листа", "4–6 листьев", "Более 6 листьев / цветение"]
 DEFAULT_SPECIES_CONFIDENCE = 0.65
 DEFAULT_STAGE_CONFIDENCE = 0.50
+
+SPECIES_RU_MAP = {
+    "field_thistle": "Бодяк полевой",
+    "perennial_sowthistle": "Осот полевой",
+    "field_bindweed": "Вьюнок полевой",
+    "leafy_spurge": "Молочай лозный",
+    "tatarian_lettuce": "Молокан татарский",
+    "wormwood_bitter": "Полынь горькая",
+    "mugwort": "Полынь обыкновенная",
+    "statice": "Кермек широколистный",
+    "dandelion": "Одуванчик лекарственный",
+    "horse_sorrel": "Конский щавель",
+    "redroot_pigweed": "Щирица запрокинутая",
+    "common_lambsquarters": "Марь белая",
+    "tartary_buckwheat": "Гречишка татарская",
+    "smartweed": "Горцы (виды)",
+    "spear_saltbush": "Лебеда копьелистная",
+    "stickseed": "Липучка ежевидная",
+    "canadian_fleabane": "Мелколепестник канадский",
+    "scentless_mayweed": "Ромашка непахучая",
+    "redstem_filaree": "Аистник цикутовый",
+    "volunteer_flax": "Падалица льна",
+    "volunteer_sunflower": "Падалица подсолнечника",
+    "couch_grass": "Пырей ползучий",
+    "wild_oat": "Овсюг обыкновенный",
+    "barnyard_grass": "Куриное просо",
+    "foxtail": "Щетинник",
+    "volunteer_wheat": "Падалица пшеницы",
+    "crop_wheat": "Пшеница (Культура / Фон)",
+}
 
 
 def infer_num_species_from_state_dict(state_dict: Dict[str, torch.Tensor]) -> int:
@@ -25,6 +55,14 @@ def infer_num_species_from_state_dict(state_dict: Dict[str, torch.Tensor]) -> in
         if key.endswith("species_head.4.weight"):
             return int(value.shape[0])
     raise ValueError("В checkpoint не найден слой species_head.4.weight")
+
+
+def infer_num_stages_from_state_dict(state_dict: Dict[str, torch.Tensor]) -> int:
+    """Определяет число фаз вегетации по последнему слою stage head checkpoint-а."""
+    for key, value in state_dict.items():
+        if key.endswith("stage_head.4.weight"):
+            return int(value.shape[0])
+    return 3
 
 
 class FocalLoss(nn.Module):
@@ -180,17 +218,37 @@ class WeedMultiTaskModel(nn.Module):
         st_idx = int(torch.argmax(stage_probs).item())
         st_conf = float(stage_probs[st_idx].item())
 
-        # Поддерживаем и 3-классовые, и 4-классовые checkpoint: подписи должны
-        # соответствовать фактическому размеру выхода загруженной модели.
-        active_species_names = SPECIES_NAMES[: species_probs.shape[0]]
-        active_species_ru = SPECIES_RU[: species_probs.shape[0]]
+        # Поддерживаем и старый 4-классовый, и новый 26-классовый маппинг
+        from pathlib import Path
+        mapping_path = Path(__file__).resolve().parents[1] / "models" / "species_mapping.json"
+        if mapping_path.exists() and species_probs.shape[0] > 4:
+            import json
+            try:
+                with open(mapping_path, "r", encoding="utf-8") as f:
+                    mapping = json.load(f)
+                idx_map = {int(k): v for k, v in mapping.get("idx_to_species", {}).items()}
+                active_species_names = [idx_map.get(i, f"class_{i}") for i in range(len(idx_map))]
+                active_species_ru = [SPECIES_RU_MAP.get(name, name) for name in active_species_names]
+                active_stage_names = mapping.get("stage_names", STAGE_NAMES)
+                active_stage_ru = mapping.get("stage_ru", STAGE_RU)
+            except Exception:
+                active_species_names = SPECIES_NAMES[: species_probs.shape[0]]
+                active_species_ru = SPECIES_RU[: species_probs.shape[0]]
+                active_stage_names = STAGE_NAMES[: stage_probs.shape[0]]
+                active_stage_ru = STAGE_RU[: stage_probs.shape[0]]
+        else:
+            active_species_names = SPECIES_NAMES[: species_probs.shape[0]]
+            active_species_ru = SPECIES_RU[: species_probs.shape[0]]
+            active_stage_names = STAGE_NAMES[: stage_probs.shape[0]]
+            active_stage_ru = STAGE_RU[: stage_probs.shape[0]]
+
         if not active_species_names:
             raise RuntimeError("Модель не вернула вероятности классов")
 
-        sp_name = active_species_names[sp_idx]
-        sp_ru = active_species_ru[sp_idx]
-        st_name = STAGE_NAMES[st_idx]
-        st_ru = STAGE_RU[st_idx]
+        sp_name = active_species_names[sp_idx] if sp_idx < len(active_species_names) else f"class_{sp_idx}"
+        sp_ru = active_species_ru[sp_idx] if sp_idx < len(active_species_ru) else sp_name
+        st_name = active_stage_names[st_idx] if st_idx < len(active_stage_names) else f"stage_{st_idx}"
+        st_ru = active_stage_ru[st_idx] if st_idx < len(active_stage_ru) else st_name
 
         review_required = sp_conf < species_thresh
 
@@ -245,5 +303,5 @@ class WeedMultiTaskModel(nn.Module):
                 name: round(float(prob), 4)
                 for name, prob in zip(active_species_names, species_probs)
             },
-            "all_stage_probs": {STAGE_NAMES[i]: round(float(stage_probs[i]), 4) for i in range(len(STAGE_NAMES))}
+            "all_stage_probs": {active_stage_names[i]: round(float(stage_probs[i]), 4) for i in range(len(active_stage_names))}
         }

@@ -91,7 +91,14 @@ class SafetyValidator:
                 f"[БЛОКИРОВКА] Недостаточно посадочных площадок: аппаратов {len(plan.vehicles)}, а площадок {len(pads)}"
             )
 
-        # Проверка разнесения площадок (запрет одновременной посадки в одну координату)
+        # Проверка разнесения площадок (запрет одновременной посадки в одну координату).
+        # В dock-режиме (require_independent_pads=False) гнёзда станции физически рядом —
+        # это нормально при условии строгой очерёдности взлёта/посадки; порог ниже, но не нулевой.
+        min_sep_m = (
+            self.policy.min_pad_separation_m
+            if self.policy.require_independent_pads
+            else self.policy.dock_min_slot_separation_m
+        )
         for i in range(len(pads)):
             for j in range(i + 1, len(pads)):
                 pad1 = pads[i]
@@ -101,12 +108,19 @@ class SafetyValidator:
                 d_lon = (pad1.lon - pad2.lon) * 111320.0 * math.cos(math.radians(pad1.lat))
                 dist_m = math.hypot(d_lat, d_lon)
 
-                if dist_m < self.policy.min_pad_separation_m:
-                    violations.append(
-                        f"[БЛОКИРОВКА] Площадки {pad1.pad_id} и {pad2.pad_id} расположены слишком близко "
-                        f"({dist_m:.1f} м < {self.policy.min_pad_separation_m} м). "
-                        f"Одновременная посадка/RTL нескольких БПЛА в одну точку категорически запрещена!"
-                    )
+                if dist_m < min_sep_m:
+                    if self.policy.require_independent_pads:
+                        violations.append(
+                            f"[БЛОКИРОВКА] Площадки {pad1.pad_id} и {pad2.pad_id} расположены слишком близко "
+                            f"({dist_m:.1f} м < {min_sep_m} м). "
+                            f"Одновременная посадка/RTL нескольких БПЛА в одну точку категорически запрещена!"
+                        )
+                    else:
+                        violations.append(
+                            f"[БЛОКИРОВКА] Гнёзда станции {pad1.pad_id} и {pad2.pad_id} расположены практически "
+                            f"в одной точке ({dist_m:.1f} м < {min_sep_m} м) — даже для dock-режима с очерёдностью "
+                            f"взлёта/посадки требуется физическое разнесение гнёзд."
+                        )
 
         # 4. Проверка расхода батареи для каждого аппарата
         for v in plan.vehicles:

@@ -1,0 +1,90 @@
+{
+  "note": "All images here are 'bg_soil' empty negative tiles (no crop/weed labels). Any detection at conf>=0.25 is a false positive.",
+  "num_negative_images": 12,
+  "conf_threshold": 0.25,
+  "total_false_positive_boxes": 1,
+  "images_with_at_least_one_fp": 1,
+  "fp_rate_images": 0.08333333333333333,
+  "avg_fp_boxes_per_image": 0.08333333333333333,
+  "class_breakdown_of_fps": {
+    "weed": 1
+  },
+  "per_image": [
+    {
+      "image": "bg_soil_DJI_20260514160832_0229_D_0133.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260515141149_0115_D_0021.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260519144552_0071_D_0044.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260519153632_0179_D_0005.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260522141538_0591_D_0056.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260522143739_0617_D_0032.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260603161521_0458_D_0010.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260604114632_0633_D_0015.jpg",
+      "num_detections": 1,
+      "confidences": [
+        0.5751057267189026
+      ],
+      "classes": [
+        "weed"
+      ]
+    },
+    {
+      "image": "bg_soil_DJI_20260608145853_0190_D_0079.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260617123042_0643_D_0084.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260624163659_0317_D_0040.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    },
+    {
+      "image": "bg_soil_DJI_20260724104535_0210_D_0098.jpg",
+      "num_detections": 0,
+      "confidences": [],
+      "classes": []
+    }
+  ]
+}
