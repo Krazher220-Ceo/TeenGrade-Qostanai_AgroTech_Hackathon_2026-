@@ -861,6 +861,27 @@ def cmd_dashboard(port: int = 8501):
         print("    Выполните установку: pip install --user streamlit plotly\n")
 
 
+def cmd_hitl_export():
+    """Экспорт верификаций агронома (HITL) в манифест дообучения."""
+    from case1.ml.hitl_export import export_hitl_dataset
+    report = export_hitl_dataset()
+    print("================================================================================")
+    print("HITL-ЭКСПОРТ ВЕРИФИКАЦИЙ АГРОНОМА В ДАТАСЕТ ДООБУЧЕНИЯ")
+    print("================================================================================")
+    print(f"Реестр верификаций:        {report['verified_actions_path']}")
+    print(f"Манифест дообучения:       {report['output_manifest_path']}")
+    print(f"Всего решений в реестре:   {report['total_verified_decisions']}")
+    print(f"Исключено (не вердикт):    {report['excluded_not_decisive']}")
+    print(f"Исключено (нет вырезки):   {report['excluded_missing_crop']}")
+    print(f"Готово к экспорту:         {report['included_records']}")
+    print(f"Новых записей добавлено:   {report['new_records']}")
+    print(f"Обновлено записей:         {report['updated_records']}")
+    print(f"Итого записей в манифесте: {report['total_records_in_manifest']}")
+    print("Новые примеры по видам:")
+    for sp, cnt in sorted(report["new_examples_by_species"].items()):
+        print(f"  - {sp}: {cnt}")
+
+
 def cmd_cluster_analysis():
     """Запуск кластерного анализа эмбеддингов t-SNE / Silhouette для защиты от галлюцинаций."""
     from case1.ml.cluster_analysis import run_cluster_analysis
@@ -943,6 +964,7 @@ def main():
     subparsers.add_parser("audit", help="Детальный аудит данных сорняков и снимков DJI")
     subparsers.add_parser("download-weights", help="Скачать официальные веса с Hugging Face")
     subparsers.add_parser("cluster-analysis", help="Кластерный анализ эмбеддингов (t-SNE/Silhouette)")
+    subparsers.add_parser("hitl-export", help="Экспорт верификаций агронома (HITL) в манифест дообучения")
 
     ds_parser = subparsers.add_parser("download-datasets", help="Загрузка и сборка размеченных датасетов сорняков (YOLOv8)")
     ds_parser.add_argument("--force", action="store_true", help="Принудительная повторная распаковка")
@@ -1008,6 +1030,8 @@ def main():
     elif args.command == "cluster-analysis":
 
         cmd_cluster_analysis()
+    elif args.command == "hitl-export":
+        cmd_hitl_export()
     elif args.command == "benchmark-latency":
         cmd_benchmark_latency(iterations=args.iterations)
     elif args.command == "process":
