@@ -114,6 +114,14 @@ def test_bounding_box_coordinates_bounds():
         assert checked_boxes > 0, f"Не проверено ни одного бокса в {ydir}"
 
 
+@pytest.mark.skipif(
+    not any((DATA_DIR / ds).exists() for ds in ("yolo_aerial", "yolo_field", "yolo_grass")),
+    reason=(
+        "Локальные YOLO-датасеты (case1/data/yolo_*) не распространяются через git "
+        "(см. .gitignore) и не входят в артефакт по умолчанию — соберите их через "
+        "case1/ml/build_full_dataset.py или prepare_yolo_aerial.py, чтобы запустить этот тест."
+    ),
+)
 def test_splits_and_image_label_pairing():
     """Проверка наличия изображений для каждого сплита в датасетах."""
     datasets_to_check = ["yolo_aerial", "yolo_field", "yolo_grass"]

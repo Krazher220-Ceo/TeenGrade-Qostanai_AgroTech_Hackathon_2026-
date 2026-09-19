@@ -15,6 +15,30 @@ from case1.ml.latency_benchmark import (
     get_hardware_environment,
     calculate_travelled_distance,
     run_latency_benchmark,
+    MODEL_PATH,
+)
+
+
+def _is_lfs_pointer(path: Path) -> bool:
+    """True when `path` is a small Git LFS pointer text file rather than the
+    real binary (e.g. a checkout with `git lfs pull` skipped / `lfs: false`
+    in CI). Used to skip weight-dependent tests instead of failing them."""
+    if not path.exists():
+        return True
+    try:
+        if path.stat().st_size >= 1024 * 1024:
+            return False
+        return path.read_bytes()[:200].startswith(b"version https://git-lfs")
+    except OSError:
+        return True
+
+
+requires_classifier_weights = pytest.mark.skipif(
+    _is_lfs_pointer(MODEL_PATH),
+    reason=(
+        "Веса классификатора не загружены (обнаружен Git LFS pointer вместо бинарного файла). "
+        "Выполните `git lfs pull` (или `make lfs-pull`), чтобы запустить этот тест."
+    ),
 )
 
 
@@ -38,6 +62,7 @@ def test_calculate_travelled_distance():
     assert res_100ms["displacement_20kmh_m"] == 0.556
 
 
+@requires_classifier_weights
 def test_run_latency_benchmark_smoke(tmp_path):
     report_file = tmp_path / "benchmark_report.json"
     report = run_latency_benchmark(iterations=10, output_file=report_file)
