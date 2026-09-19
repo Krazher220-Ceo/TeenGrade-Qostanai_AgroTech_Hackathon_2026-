@@ -114,6 +114,61 @@ class SyncBatchResponse(BaseModel):
     message: str
 
 
+class HitlStatsResponse(BaseModel):
+    """Сводка по HITL-верификациям агронома для дообучения модели (GET /api/v1/hitl/stats)."""
+    total_verified_decisions: int = Field(..., description="Всего решений в реестре verified_actions.json")
+    decisive_decisions: int = Field(..., description="Решения с окончательным вердиктом (spray_weed/do_not_spray)")
+    excluded_decisions: int = Field(..., description="Исключено: manual_review, отмена и т.п.")
+    exported_to_training: int = Field(..., description="Уже экспортировано в манифест дообучения")
+    pending_export: int = Field(..., description="Решительные вердикты, ещё не попавшие в манифест дообучения")
+    decisions_by_species: Dict[str, int] = Field(..., description="Распределение решений по видам")
+    manifest_path: str = Field(..., description="Путь к манифесту дообучения (manifest_hitl.csv)")
+    manifest_exists: bool = Field(..., description="Существует ли файл манифеста на диске")
+
+
+class PerennialOccurrence(BaseModel):
+    """Одна агрегированная запись многолетника в реестре (поле/сезон/кадр/вид)."""
+    id: int
+    field: str
+    season: str
+    image_id: str
+    species: str
+    species_ru: str
+    lat: Optional[float] = None
+    lon: Optional[float] = None
+    density_per_m2: float
+    occurrence_count: int
+    field_area_m2: float
+    source: str
+    created_at: str
+
+
+class PerennialListResponse(BaseModel):
+    field: Optional[str] = None
+    season: Optional[str] = None
+    total_items: int
+    items: List[PerennialOccurrence]
+
+
+class PerennialSpeciesComparison(BaseModel):
+    species: str
+    species_ru: str
+    density_season_a: float
+    density_season_b: float
+    delta_density: float
+    delta_pct: Optional[float] = None
+    status: str = Field(..., description="new_focus / disappeared / increased / decreased / stable")
+
+
+class PerennialCompareResponse(BaseModel):
+    field: str
+    season_a: str
+    season_b: str
+    species_comparison: List[PerennialSpeciesComparison]
+    new_foci: List[str]
+    disappeared_foci: List[str]
+
+
 class ExecutiveStatsResponse(BaseModel):
     total_images_processed: int
     total_weeds_detected: int

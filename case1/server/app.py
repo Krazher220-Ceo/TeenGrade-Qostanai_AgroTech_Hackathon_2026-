@@ -30,7 +30,10 @@ from case1.server.schemas import (
     VerifyItemResponse,
     SyncBatchRequest,
     SyncBatchResponse,
-    ExecutiveStatsResponse
+    ExecutiveStatsResponse,
+    HitlStatsResponse,
+    PerennialListResponse,
+    PerennialCompareResponse,
 )
 from case1.ml.multitask_model import (
     WeedMultiTaskModel,
@@ -72,6 +75,7 @@ CSV_PATH = OUTPUT_DIR / "all_fields_detections.csv"
 REPORT_PATH = OUTPUT_DIR / "all_fields_report.json"
 CROPS_DIR = OUTPUT_DIR / "crops"
 VERIFIED_ACTIONS_PATH = OUTPUT_DIR / "verified_actions.json"
+HITL_MANIFEST_PATH = CASE1_DIR / "data" / "manifest_hitl.csv"
 MOBILE_DIR = CASE1_DIR / "mobile"
 MOBILE_DIR.mkdir(parents=True, exist_ok=True)
 MODEL_PATH = CASE1_DIR / "models" / "multitask_weeds_best.pt"
@@ -557,6 +561,53 @@ def get_executive_stats():
         stages_distribution=stage_dist,
         status="active"
     )
+
+
+# ==============================================================================
+# HITL (HUMAN-IN-THE-LOOP) ДООБУЧЕНИЕ: СТАТИСТИКА НАКОПЛЕННЫХ ВЕРИФИКАЦИЙ
+# ==============================================================================
+
+@app.get("/api/v1/hitl/stats", response_model=HitlStatsResponse)
+def get_hitl_stats():
+    """
+    Сколько решений агронома накоплено в реестре verified_actions.json, сколько
+    из них — окончательный вердикт (годится для дообучения), распределение по
+    видам и сколько ещё не экспортировано в манифест дообучения (см.
+    `python3 case1_main.py hitl-export` / case1.ml.hitl_export.export_hitl_dataset).
+    """
+    from case1.ml.hitl_export import compute_hitl_stats
+    return compute_hitl_stats(
+        verified_actions_path=VERIFIED_ACTIONS_PATH,
+        output_manifest_path=HITL_MANIFEST_PATH,
+    )
+
+
+# ==============================================================================
+# РЕЕСТР МНОГОЛЕТНИХ СОРНЯКОВ: СРАВНЕНИЕ ПОЛЯ ОТ СЕЗОНА К СЕЗОНУ
+# ==============================================================================
+
+@app.get("/api/v1/perennials", response_model=PerennialListResponse)
+def api_list_perennials(
+    field: Optional[str] = Query(None, description="Идентификатор поля"),
+    season: Optional[str] = Query(None, description="Сезон/дата облёта"),
+):
+    """Список сохранённых многолетников из case1/output/perennial_registry.sqlite."""
+    from case1.data.perennial_registry import get_default_registry
+    registry = get_default_registry()
+    items = registry.list_perennials(field=field, season=season)
+    return PerennialListResponse(field=field, season=season, total_items=len(items), items=items)
+
+
+@app.get("/api/v1/perennials/compare", response_model=PerennialCompareResponse)
+def api_compare_perennials(
+    field: str = Query(..., description="Идентификатор поля"),
+    season_a: str = Query(..., description="Первый сезон (база сравнения)"),
+    season_b: str = Query(..., description="Второй сезон (текущий облёт)"),
+):
+    """Сравнение плотности многолетников по видам между двумя сезонами одного поля."""
+    from case1.data.perennial_registry import get_default_registry
+    registry = get_default_registry()
+    return registry.compare_seasons(field=field, season_a=season_a, season_b=season_b)
 
 
 # Монтирование статических файлов
