@@ -1,0 +1,32 @@
+name: tests
+
+on:
+  push:
+    branches: [main, "feature/**"]
+  pull_request:
+    branches: [main, "feature/**"]
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (no LFS download — weight-dependent tests self-skip)
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: case1/requirements.txt
+
+      - name: Install CPU-only PyTorch + project dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "torch>=2.2.0" "torchvision>=0.17.0" --index-url https://download.pytorch.org/whl/cpu
+          pip install -r case1/requirements.txt
+
+      - name: Run pytest (case1/tests)
+        run: python -m pytest case1/tests -q
