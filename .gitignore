@@ -38,6 +38,9 @@ case1/output/viewer_runs/
 case1/output/detector_boxes/
 case1/output/dock_simulation/
 case1/output/e2e_simulation/
+# Сырой вывод `case1_main.py process` — промежуточный вход для `prescribe`,
+# не публикуемый артефакт (публикуемый результат — case1/output/prescription_v2/).
+case1/output/prescription_v2_raw/
 
 # Вложенный upstream-репозиторий модели не должен случайно стать submodule
 weedblaster-vision-yolov8s/.git/
