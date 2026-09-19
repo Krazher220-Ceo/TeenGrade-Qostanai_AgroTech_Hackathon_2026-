@@ -127,7 +127,7 @@ def extract_dji_metadata(file_path: Path) -> Dict[str, Any]:
     except Exception:
         pass
 
-    # Извлечение относительной высоты из DJI XMP
+    # Извлечение относительной высоты и углов из DJI XMP
     try:
         with open(file_path, "rb") as f:
             chunk = f.read(131072)
@@ -137,6 +137,26 @@ def extract_dji_metadata(file_path: Path) -> Dict[str, Any]:
             match_abs = re.search(rb'drone-dji:AbsoluteAltitude=\"([^\"]+)\"', chunk)
             if match_abs and meta["abs_alt"] is None:
                 meta["abs_alt"] = float(match_abs.group(1).decode())
+            
+            match_yaw = re.search(rb'drone-dji:GimbalYaw=\"([^\"]+)\"', chunk)
+            if match_yaw:
+                meta["gimbal_yaw"] = float(match_yaw.group(1).decode())
+            else:
+                match_yaw2 = re.search(rb'drone-dji:FlightYaw=\"([^\"]+)\"', chunk)
+                if match_yaw2:
+                    meta["gimbal_yaw"] = float(match_yaw2.group(1).decode())
+    except Exception:
+        pass
+
+    try:
+        from PIL import Image, ExifTags
+        with Image.open(file_path) as img:
+            exif = img.getexif()
+            if exif:
+                # 37386 = FocalLength
+                focal = exif.get(37386)
+                if focal:
+                    meta["focal_length"] = float(focal)
     except Exception:
         pass
 
@@ -697,6 +717,16 @@ def cmd_process(
                 )
             draw_box_label(classified_img, (bx1, by1, bx2, by2), label_text, color, 4)
 
+            # Расчет геокоординат сорняка
+            from case1.geo.georef import pixel_to_latlon
+            cx = bx1 + bw / 2
+            cy = by1 + bh / 2
+            w_lat, w_lon, g_qual, g_err = pixel_to_latlon(cx, cy, W, H, meta)
+            if w_lat is None: w_lat = meta.get("lat")
+            if w_lon is None: w_lon = meta.get("lon")
+            if g_qual == "error": g_qual = "frame_only"
+            if g_err is None: g_err = 0.0
+
             det_entry = {
                 "object_id": object_id,
                 "bbox_xyxy": [bx1, by1, bx2, by2],
@@ -713,6 +743,8 @@ def cmd_process(
                 "stage_conf": c_res["stage_conf"],
                 "spray_action": c_res.get("spray_action", "manual_review"),
                 "review_required": review,
+                "lat": w_lat, "lon": w_lon,
+                "geo_quality": g_qual, "geo_error_m": g_err,
                 "crop_file": f"crops/{p.stem}/{crop_filename}"
             }
             detections_data.append(det_entry)
@@ -735,6 +767,8 @@ def cmd_process(
                 "bbox_x1": bx1, "bbox_y1": by1, "bbox_x2": bx2, "bbox_y2": by2,
                 "bbox_width": bw, "bbox_height": bh,
                 "drone_lat": meta["lat"], "drone_lon": meta["lon"],
+                "lat": w_lat, "lon": w_lon,
+                "geo_quality": g_qual, "geo_error_m": g_err,
                 "drone_abs_alt": meta["abs_alt"], "drone_rel_alt": meta["rel_alt"],
                 "timestamp": meta["datetime"],
                 "crop_path": f"crops/{p.stem}/{crop_filename}"
@@ -797,6 +831,7 @@ def cmd_process(
         "stage", "stage_ru", "stage_conf", "spray_action",
         "review_required", "bbox_x1", "bbox_y1", "bbox_x2", "bbox_y2",
         "bbox_width", "bbox_height", "drone_lat", "drone_lon",
+        "lat", "lon", "geo_quality", "geo_error_m",
         "drone_abs_alt", "drone_rel_alt", "timestamp", "crop_path",
     ]
     with open(csv_file, "w", newline="", encoding="utf-8") as f:
@@ -819,6 +854,79 @@ def cmd_process(
         "images_processed": len(summary_stats),
         "detections_total": len(all_csv_rows),
     }
+
+
+def cmd_prescribe(input_path: str, out_dir: str):
+    import json
+    import csv
+    from pathlib import Path
+    from case1.geo.zones import create_treatment_zones
+    from case1.geo.isoxml import export_isoxml
+    import geopandas as gpd
+    
+    in_p = Path(input_path)
+    out_p = Path(out_dir)
+    out_p.mkdir(parents=True, exist_ok=True)
+    
+    # Read input
+    detections = []
+    if in_p.suffix == ".json":
+        with open(in_p, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            # if it's the report.json, it might be a list of dicts with 'detections'
+            for item in data:
+                if "detections" in item:
+                    detections.extend(item["detections"])
+                else:
+                    detections.append(item)
+    elif in_p.suffix == ".csv":
+        with open(in_p, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                row["lat"] = float(row["lat"])
+                row["lon"] = float(row["lon"])
+                detections.append(row)
+                
+    print(f"Loaded {len(detections)} detections from {input_path}")
+    
+    # Create zones
+    zones_geojson = create_treatment_zones(detections)
+    
+    # Export points geojson
+    pts = [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [d["lon"], d["lat"]]}, "properties": d} for d in detections if d.get("spray_action") not in ["ignore", "manual_review", "monitor"]]
+    pts_fc = {"type": "FeatureCollection", "features": pts}
+    with open(out_p / "points.geojson", "w", encoding="utf-8") as f:
+        json.dump(pts_fc, f, indent=2, ensure_ascii=False)
+        
+    # Export zones geojson
+    with open(out_p / "zones.geojson", "w", encoding="utf-8") as f:
+        json.dump(zones_geojson, f, indent=2, ensure_ascii=False)
+        
+    # Export shapefile
+    if zones_geojson["features"]:
+        gdf = gpd.GeoDataFrame.from_features(zones_geojson["features"], crs="EPSG:4326")
+        gdf.to_file(out_p / "zones.shp", driver="ESRI Shapefile")
+        # Ensure .prj is created
+        prj_str = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]'
+        with open(out_p / "zones.prj", "w") as prj:
+            prj.write(prj_str)
+    
+    # Export TASKDATA.XML
+    xml_path = export_isoxml(zones_geojson, out_p)
+    
+    # Summary
+    area_total = sum(f["properties"]["area_m2"] for f in zones_geojson["features"])
+    vol_total = sum(f["properties"]["area_m2"] * f["properties"]["rate_l_ha"] / 10000.0 for f in zones_geojson["features"])
+    
+    summary = {
+        "zones_count": len(zones_geojson["features"]),
+        "area_m2": area_total,
+        "volume_l": vol_total
+    }
+    with open(out_p / "summary.json", "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+        
+    print(f"Exported to {out_p}: zones={summary['zones_count']}, area={summary['area_m2']:.1f} m2, volume={summary['volume_l']:.1f} L")
 
 
 def cmd_train_classifier(epochs: int = 35, use_focal: bool = True):
@@ -1003,6 +1111,10 @@ def main():
         help=f"Порог уверенности вида (по умолчанию {DEFAULT_SPECIES_CONF:.2f} из case1/configs/settings.yaml)",
     )
 
+    presc_parser = subparsers.add_parser("prescribe", help="Формирование предписания (зоны, TASKDATA, shapefile)")
+    presc_parser.add_argument("--input", type=str, required=True, help="Отчет детекций JSON или CSV")
+    presc_parser.add_argument("--out", type=str, required=True, help="Папка для экспорта")
+
     tr_cls_parser = subparsers.add_parser("train-classifier", help="Обучение многозадачного классификатора сорняков")
     tr_cls_parser.add_argument("--epochs", type=int, default=35, help="Количество эпох")
     tr_cls_parser.add_argument("--no-focal", action="store_true", help="Отключить Focal Loss")
@@ -1062,6 +1174,8 @@ def main():
             species_conf=args.species_conf,
             limit=args.limit
         )
+    elif args.command == "prescribe":
+        cmd_prescribe(input_path=args.input, out_dir=args.out)
     elif args.command == "train-classifier":
         cmd_train_classifier(epochs=args.epochs, use_focal=not args.no_focal)
     elif args.command == "build-detector-dataset":

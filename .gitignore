@@ -42,3 +42,4 @@ case1/output/e2e_simulation/
 # Вложенный upstream-репозиторий модели не должен случайно стать submodule
 weedblaster-vision-yolov8s/.git/
 weedblaster-vision-yolov8s/results/
+Dataset 1 кейс

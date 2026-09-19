@@ -15,6 +15,12 @@ Run:
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 import argparse
 import hashlib
 import json
@@ -259,30 +265,43 @@ def server_sync(batch: Sequence[Decision], ledger_path: Path) -> dict:
     return {"applied": applied, "duplicate": duplicate, "rejected": rejected, "server_count": len(ledger)}
 
 
-def write_geojson(decisions: Sequence[Decision], path: Path) -> None:
-    features = []
+def write_geojson(decisions, path) -> None:
+    from case1.geo.zones import create_treatment_zones
+    from case1.geo.isoxml import export_isoxml
+    import json
+    
+    detections = []
     for d in decisions:
-        features.append({"type": "Feature", "id": d.event_id,
-                         "geometry": {"type": "Point", "coordinates": [d.lon, d.lat]},
-                         "properties": {"species": d.predicted_species, "stage": d.predicted_stage,
-                                        "action": d.action, "rate_l_ha": SPRAY_RATE_L_HA if d.action == "spray_weed" else 0.0,
-                                        "source": d.source, "crs": "EPSG:4326"}})
-    path.write_text(json.dumps({"type": "FeatureCollection", "features": features}, ensure_ascii=False, indent=2), "utf-8")
+        detections.append({
+            "lat": d.lat, "lon": d.lon,
+            "species": d.predicted_species,
+            "spray_action": d.action
+        })
+        
+    zones = create_treatment_zones(detections)
+    path.write_text(json.dumps(zones, ensure_ascii=False, indent=2), "utf-8")
 
-
-def write_taskdata(decisions: Sequence[Decision], path: Path) -> None:
-    """Write a well-formed ISOXML-like demo artifact, not a certified TC file."""
-    root = ET.Element("ISO11783_TaskData", VersionMajor="4", VersionMinor="3", DataTransferOrigin="1",
-                      ManagementSoftwareManufacturer="Qostanai AgroVision", ManagementSoftwareVersion="simulation-1")
-    task = ET.SubElement(root, "TSK", A="TSK-1", B="Synthetic spot-spray prescription", G="1")
-    zone = ET.SubElement(task, "TZN", A="1", B="Reviewed targets")
-    for index, d in enumerate(decisions, 1):
-        point = ET.SubElement(zone, "PNT", A="2", B=f"{d.lat:.7f}", C=f"{d.lon:.7f}", D="0", E=str(index))
-        ET.SubElement(point, "PDV", A="1", B=str(int(SPRAY_RATE_L_HA * 1000) if d.action == "spray_weed" else 0), C="0")
-    ET.indent(root)
-    ET.ElementTree(root).write(path, encoding="utf-8", xml_declaration=True)
-    ET.parse(path)  # well-formedness check only
-
+def write_taskdata(decisions, path) -> None:
+    from case1.geo.zones import create_treatment_zones
+    from case1.geo.isoxml import export_isoxml
+    import shutil
+    
+    detections = []
+    for d in decisions:
+        detections.append({
+            "lat": d.lat, "lon": d.lon,
+            "species": d.predicted_species,
+            "spray_action": d.action
+        })
+    zones = create_treatment_zones(detections)
+    
+    output_dir = path.parent
+    xml_path = export_isoxml(zones, output_dir)
+    # The generated TASKDATA.XML is at output_dir / TASKDATA / TASKDATA.XML
+    # We copy it to path
+    taskdata_gen = output_dir / "TASKDATA" / "TASKDATA.XML"
+    if taskdata_gen.exists():
+        shutil.copy(taskdata_gen, path)
 
 def confusion(y_true: Sequence[str], y_pred: Sequence[str], classes: Sequence[str]) -> np.ndarray:
     index = {c: i for i, c in enumerate(classes)}; matrix = np.zeros((len(classes), len(classes)), dtype=int)
