@@ -1,0 +1,2062 @@
+[
+  {
+    "filename": "DJI_20260609122641_0177_D.JPG",
+    "rel_alt_m": 2.2,
+    "abs_alt_m": 319.296,
+    "lat": 52.92379666666667,
+    "lon": 63.36168833333333,
+    "time_s": 2.42,
+    "total_weeds": 9,
+    "review_required_count": 9,
+    "counts_by_species": {
+      "Не определено": 9
+    },
+    "counts_by_stage": {
+      "Не определено": 9
+    },
+    "avg_species_conf": 0.506,
+    "median_box_wh": [
+      267,
+      376
+    ],
+    "annotated_image": "annotated_DJI_20260609122641_0177_D.JPG",
+    "detector_boxes_image": "detector_boxes_DJI_20260609122641_0177_D.JPG",
+    "agronomy_evaluation": {
+      "rules_version": "2026.1-cheatsheet",
+      "threat_level": "review_required",
+      "recommended_action": "manual_review",
+      "recommended_action_ru": "ручная проверка агрономом",
+      "growth_stage_status": "optimal",
+      "growth_stage_status_ru": "Оптимальное технологическое окно",
+      "dosage_adjustment_note": "",
+      "explanation": "Вид сорняка не определён достоверно (уверенность < 65%). Автоматическое опрыскивание запрещено. Требуется ручной осмотр специалистом. \nФаза сорняков «Семядоли — 2 листа»: Максимальная чувствительность сорняков, минимальное угнетение культурных растений.",
+      "model_version_or_hash": "unspecified",
+      "human_confirmation_required": true,
+      "auto_spray_enabled": false,
+      "field_area_m2": 7.34,
+      "annual_density_per_m2": 0.0,
+      "perennial_density_per_m2": 0.0,
+      "counts": {
+        "perennial": 0,
+        "annual": 0,
+        "unknown": 9,
+        "crop": 0,
+        "total_weeds": 0
+      },
+      "sprayer_displacement": {
+        "speed_18kmh_m_s": 5.0,
+        "displacement_18kmh_m": 0.327,
+        "speed_20kmh_m_s": 5.56,
+        "displacement_20kmh_m": 0.364,
+        "latency_s": 0.0654,
+        "recommendation": "Real-time Capable"
+      }
+    },
+    "detections": [
+      {
+        "object_id": 4,
+        "bbox_xyxy": [
+          3539,
+          2431,
+          4096,
+          3072
+        ],
+        "bbox_wh": [
+          557,
+          641
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4932,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.4932,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.835,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0003_0.70.jpg"
+      },
+      {
+        "object_id": 5,
+        "bbox_xyxy": [
+          3255,
+          614,
+          3670,
+          1046
+        ],
+        "bbox_wh": [
+          415,
+          432
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5868,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5868,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7022,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0004_0.70.jpg"
+      },
+      {
+        "object_id": 7,
+        "bbox_xyxy": [
+          2779,
+          14,
+          3494,
+          509
+        ],
+        "bbox_wh": [
+          715,
+          495
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5608,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5608,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7608,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0006_0.70.jpg"
+      },
+      {
+        "object_id": 9,
+        "bbox_xyxy": [
+          3829,
+          2086,
+          4096,
+          2488
+        ],
+        "bbox_wh": [
+          267,
+          402
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4134,
+        "top_species": "field_thistle",
+        "top_species_ru": "Бодяк полевой",
+        "top_species_conf": 0.4134,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6297,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0008_0.70.jpg"
+      },
+      {
+        "object_id": 12,
+        "bbox_xyxy": [
+          1006,
+          1335,
+          1208,
+          1711
+        ],
+        "bbox_wh": [
+          202,
+          376
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4716,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.4716,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8582,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0011_0.70.jpg"
+      },
+      {
+        "object_id": 31,
+        "bbox_xyxy": [
+          0,
+          2672,
+          159,
+          3043
+        ],
+        "bbox_wh": [
+          159,
+          371
+        ],
+        "detector_conf": 0.2991,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4842,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.4842,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.5271,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0030_0.30.jpg"
+      },
+      {
+        "object_id": 32,
+        "bbox_xyxy": [
+          1325,
+          1471,
+          1527,
+          1751
+        ],
+        "bbox_wh": [
+          202,
+          280
+        ],
+        "detector_conf": 0.2755,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4326,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.4326,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.5238,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0031_0.28.jpg"
+      },
+      {
+        "object_id": 35,
+        "bbox_xyxy": [
+          0,
+          342,
+          123,
+          718
+        ],
+        "bbox_wh": [
+          123,
+          376
+        ],
+        "detector_conf": 0.2537,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5422,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5422,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6105,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0034_0.25.jpg"
+      },
+      {
+        "object_id": 37,
+        "bbox_xyxy": [
+          3517,
+          0,
+          3907,
+          83
+        ],
+        "bbox_wh": [
+          390,
+          83
+        ],
+        "detector_conf": 0.212,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5663,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5663,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8547,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92379666666667,
+        "lon": 63.36168833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0036_0.21.jpg"
+      }
+    ]
+  },
+  {
+    "filename": "DJI_20260615115515_0164_D.JPG",
+    "rel_alt_m": 0.2,
+    "abs_alt_m": 286.437,
+    "lat": 52.944005,
+    "lon": 63.33818333333333,
+    "time_s": 3.14,
+    "total_weeds": 1,
+    "review_required_count": 1,
+    "counts_by_species": {
+      "Не определено": 1
+    },
+    "counts_by_stage": {
+      "Не определено": 1
+    },
+    "avg_species_conf": 0.581,
+    "median_box_wh": [
+      246,
+      334
+    ],
+    "annotated_image": "annotated_DJI_20260615115515_0164_D.JPG",
+    "detector_boxes_image": "detector_boxes_DJI_20260615115515_0164_D.JPG",
+    "agronomy_evaluation": {
+      "rules_version": "2026.1-cheatsheet",
+      "threat_level": "review_required",
+      "recommended_action": "manual_review",
+      "recommended_action_ru": "ручная проверка агрономом",
+      "growth_stage_status": "optimal",
+      "growth_stage_status_ru": "Оптимальное технологическое окно",
+      "dosage_adjustment_note": "",
+      "explanation": "Вид сорняка не определён достоверно (уверенность < 65%). Автоматическое опрыскивание запрещено. Требуется ручной осмотр специалистом. \nФаза сорняков «Семядоли — 2 листа»: Максимальная чувствительность сорняков, минимальное угнетение культурных растений.",
+      "model_version_or_hash": "unspecified",
+      "human_confirmation_required": true,
+      "auto_spray_enabled": false,
+      "field_area_m2": 1.0,
+      "annual_density_per_m2": 0.0,
+      "perennial_density_per_m2": 0.0,
+      "counts": {
+        "perennial": 0,
+        "annual": 0,
+        "unknown": 1,
+        "crop": 0,
+        "total_weeds": 0
+      },
+      "sprayer_displacement": {
+        "speed_18kmh_m_s": 5.0,
+        "displacement_18kmh_m": 0.327,
+        "speed_20kmh_m_s": 5.56,
+        "displacement_20kmh_m": 0.363,
+        "latency_s": 0.0653,
+        "recommendation": "Real-time Capable"
+      }
+    },
+    "detections": [
+      {
+        "object_id": 48,
+        "bbox_xyxy": [
+          2993,
+          1962,
+          3239,
+          2296
+        ],
+        "bbox_wh": [
+          246,
+          334
+        ],
+        "detector_conf": 0.2994,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.581,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.581,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6814,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.944005,
+        "lon": 63.33818333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0047_0.30.jpg"
+      }
+    ]
+  },
+  {
+    "filename": "DJI_20260615134123_0339_D.JPG",
+    "rel_alt_m": 2.3,
+    "abs_alt_m": 314.749,
+    "lat": 52.91280166666667,
+    "lon": 63.37184833333333,
+    "time_s": 1.89,
+    "total_weeds": 25,
+    "review_required_count": 18,
+    "counts_by_species": {
+      "Не определено": 18,
+      "Вьюнок полевой": 1,
+      "Пырей ползучий": 6
+    },
+    "counts_by_stage": {
+      "Не определено": 18,
+      "4–6 листьев": 1,
+      "Стеблевание": 6
+    },
+    "avg_species_conf": 0.572,
+    "median_box_wh": [
+      352,
+      376
+    ],
+    "annotated_image": "annotated_DJI_20260615134123_0339_D.JPG",
+    "detector_boxes_image": "detector_boxes_DJI_20260615134123_0339_D.JPG",
+    "agronomy_evaluation": {
+      "rules_version": "2026.1-cheatsheet",
+      "threat_level": "low",
+      "recommended_action": "do_not_spray",
+      "recommended_action_ru": "не опрыскивать",
+      "growth_stage_status": "acceptable_with_increased_dose",
+      "growth_stage_status_ru": "Допустимое окно с увеличением дозировки",
+      "dosage_adjustment_note": "Рекомендация: +15-20% к базовой дозе",
+      "explanation": "Малолетние сорняки (0.0 шт/м² <= 5.0 шт/м²): ниже экономического порога вредоносности. Обработка не рекомендуется для экономии гербицида. \nФаза сорняков «4–6 листьев»: Сорняки огрубевают, формируется восковой налёт. Рекомендация из шпаргалки: увеличение дозировки на 15–20%.",
+      "model_version_or_hash": "unspecified",
+      "human_confirmation_required": true,
+      "auto_spray_enabled": false,
+      "field_area_m2": 8.03,
+      "annual_density_per_m2": 0.0,
+      "perennial_density_per_m2": 0.87,
+      "counts": {
+        "perennial": 7,
+        "annual": 0,
+        "unknown": 18,
+        "crop": 0,
+        "total_weeds": 7
+      },
+      "sprayer_displacement": {
+        "speed_18kmh_m_s": 5.0,
+        "displacement_18kmh_m": 0.286,
+        "speed_20kmh_m_s": 5.56,
+        "displacement_20kmh_m": 0.318,
+        "latency_s": 0.0572,
+        "recommendation": "Real-time Capable"
+      }
+    },
+    "detections": [
+      {
+        "object_id": 1,
+        "bbox_xyxy": [
+          3497,
+          0,
+          3745,
+          267
+        ],
+        "bbox_wh": [
+          248,
+          267
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4068,
+        "top_species": "field_thistle",
+        "top_species_ru": "Бодяк полевой",
+        "top_species_conf": 0.4068,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6231,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0000_0.70.jpg"
+      },
+      {
+        "object_id": 2,
+        "bbox_xyxy": [
+          0,
+          1689,
+          1172,
+          2634
+        ],
+        "bbox_wh": [
+          1172,
+          945
+        ],
+        "detector_conf": 0.7,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "species_conf": 0.6605,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.6605,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8968,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0001_0.70.jpg"
+      },
+      {
+        "object_id": 5,
+        "bbox_xyxy": [
+          1713,
+          2615,
+          2023,
+          3060
+        ],
+        "bbox_wh": [
+          310,
+          445
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5411,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5411,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8047,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0004_0.70.jpg"
+      },
+      {
+        "object_id": 6,
+        "bbox_xyxy": [
+          2414,
+          2556,
+          2776,
+          3072
+        ],
+        "bbox_wh": [
+          362,
+          516
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.6001,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.6001,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.8465,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0005_0.70.jpg"
+      },
+      {
+        "object_id": 7,
+        "bbox_xyxy": [
+          1337,
+          2447,
+          1811,
+          3072
+        ],
+        "bbox_wh": [
+          474,
+          625
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5873,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.5873,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8761,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0006_0.70.jpg"
+      },
+      {
+        "object_id": 8,
+        "bbox_xyxy": [
+          1823,
+          2272,
+          2182,
+          2669
+        ],
+        "bbox_wh": [
+          359,
+          397
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5359,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.5359,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.9137,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0007_0.70.jpg"
+      },
+      {
+        "object_id": 10,
+        "bbox_xyxy": [
+          3817,
+          0,
+          4096,
+          379
+        ],
+        "bbox_wh": [
+          279,
+          379
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.447,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.447,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7611,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0009_0.70.jpg"
+      },
+      {
+        "object_id": 11,
+        "bbox_xyxy": [
+          1482,
+          2200,
+          1861,
+          2491
+        ],
+        "bbox_wh": [
+          379,
+          291
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4835,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.4835,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.9479,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0010_0.70.jpg"
+      },
+      {
+        "object_id": 12,
+        "bbox_xyxy": [
+          3203,
+          2031,
+          4083,
+          2895
+        ],
+        "bbox_wh": [
+          880,
+          864
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.6778,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.6778,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.7475,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0011_0.70.jpg"
+      },
+      {
+        "object_id": 13,
+        "bbox_xyxy": [
+          1470,
+          1943,
+          1708,
+          2220
+        ],
+        "bbox_wh": [
+          238,
+          277
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5932,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5932,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8409,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0012_0.70.jpg"
+      },
+      {
+        "object_id": 14,
+        "bbox_xyxy": [
+          3109,
+          1854,
+          3356,
+          2200
+        ],
+        "bbox_wh": [
+          247,
+          346
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5326,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5326,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.5646,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0013_0.70.jpg"
+      },
+      {
+        "object_id": 15,
+        "bbox_xyxy": [
+          3488,
+          1633,
+          3839,
+          1958
+        ],
+        "bbox_wh": [
+          351,
+          325
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5264,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5264,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7464,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0014_0.70.jpg"
+      },
+      {
+        "object_id": 16,
+        "bbox_xyxy": [
+          0,
+          1340,
+          223,
+          1588
+        ],
+        "bbox_wh": [
+          223,
+          248
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5276,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5276,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6267,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0015_0.70.jpg"
+      },
+      {
+        "object_id": 17,
+        "bbox_xyxy": [
+          0,
+          1044,
+          389,
+          1369
+        ],
+        "bbox_wh": [
+          389,
+          325
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5599,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.5599,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7881,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0016_0.70.jpg"
+      },
+      {
+        "object_id": 18,
+        "bbox_xyxy": [
+          315,
+          908,
+          825,
+          1605
+        ],
+        "bbox_wh": [
+          510,
+          697
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.613,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.613,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.8702,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0017_0.70.jpg"
+      },
+      {
+        "object_id": 19,
+        "bbox_xyxy": [
+          774,
+          862,
+          1195,
+          1344
+        ],
+        "bbox_wh": [
+          421,
+          482
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4373,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.4373,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8136,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0018_0.70.jpg"
+      },
+      {
+        "object_id": 20,
+        "bbox_xyxy": [
+          3398,
+          784,
+          3740,
+          1160
+        ],
+        "bbox_wh": [
+          342,
+          376
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5898,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.5898,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6989,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0019_0.70.jpg"
+      },
+      {
+        "object_id": 21,
+        "bbox_xyxy": [
+          594,
+          512,
+          842,
+          891
+        ],
+        "bbox_wh": [
+          248,
+          379
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.7024,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.7024,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.8173,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0020_0.70.jpg"
+      },
+      {
+        "object_id": 22,
+        "bbox_xyxy": [
+          0,
+          373,
+          366,
+          639
+        ],
+        "bbox_wh": [
+          366,
+          266
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5927,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5927,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6862,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0021_0.70.jpg"
+      },
+      {
+        "object_id": 23,
+        "bbox_xyxy": [
+          3662,
+          337,
+          4083,
+          726
+        ],
+        "bbox_wh": [
+          421,
+          389
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.7034,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.7034,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.8022,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0022_0.70.jpg"
+      },
+      {
+        "object_id": 24,
+        "bbox_xyxy": [
+          1062,
+          331,
+          1411,
+          693
+        ],
+        "bbox_wh": [
+          349,
+          362
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.486,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.486,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7973,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0023_0.70.jpg"
+      },
+      {
+        "object_id": 25,
+        "bbox_xyxy": [
+          333,
+          85,
+          772,
+          430
+        ],
+        "bbox_wh": [
+          439,
+          345
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5958,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5958,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7742,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0024_0.70.jpg"
+      },
+      {
+        "object_id": 27,
+        "bbox_xyxy": [
+          3744,
+          1398,
+          4096,
+          1955
+        ],
+        "bbox_wh": [
+          352,
+          557
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.8256,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.8256,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.8643,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0026_0.70.jpg"
+      },
+      {
+        "object_id": 30,
+        "bbox_xyxy": [
+          817,
+          3030,
+          891,
+          3071
+        ],
+        "bbox_wh": [
+          74,
+          41
+        ],
+        "detector_conf": 0.4708,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5762,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5762,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6759,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0029_0.47.jpg"
+      },
+      {
+        "object_id": 31,
+        "bbox_xyxy": [
+          1227,
+          2051,
+          1323,
+          2152
+        ],
+        "bbox_wh": [
+          96,
+          101
+        ],
+        "detector_conf": 0.3344,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4982,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.4982,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.5174,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0030_0.33.jpg"
+      }
+    ]
+  },
+  {
+    "filename": "DJI_20260615134520_0343_D.JPG",
+    "rel_alt_m": 1.7,
+    "abs_alt_m": 314.149,
+    "lat": 52.92513666666667,
+    "lon": 63.36393,
+    "time_s": 1.93,
+    "total_weeds": 9,
+    "review_required_count": 8,
+    "counts_by_species": {
+      "Не определено": 8,
+      "Бодяк полевой": 1
+    },
+    "counts_by_stage": {
+      "Не определено": 8,
+      "4–6 листьев": 1
+    },
+    "avg_species_conf": 0.528,
+    "median_box_wh": [
+      144,
+      70
+    ],
+    "annotated_image": "annotated_DJI_20260615134520_0343_D.JPG",
+    "detector_boxes_image": "detector_boxes_DJI_20260615134520_0343_D.JPG",
+    "agronomy_evaluation": {
+      "rules_version": "2026.1-cheatsheet",
+      "threat_level": "low",
+      "recommended_action": "do_not_spray",
+      "recommended_action_ru": "не опрыскивать",
+      "growth_stage_status": "acceptable_with_increased_dose",
+      "growth_stage_status_ru": "Допустимое окно с увеличением дозировки",
+      "dosage_adjustment_note": "Рекомендация: +15-20% к базовой дозе",
+      "explanation": "Малолетние сорняки (0.0 шт/м² <= 5.0 шт/м²): ниже экономического порога вредоносности. Обработка не рекомендуется для экономии гербицида. \nФаза сорняков «4–6 листьев»: Сорняки огрубевают, формируется восковой налёт. Рекомендация из шпаргалки: увеличение дозировки на 15–20%.",
+      "model_version_or_hash": "unspecified",
+      "human_confirmation_required": true,
+      "auto_spray_enabled": false,
+      "field_area_m2": 4.38,
+      "annual_density_per_m2": 0.0,
+      "perennial_density_per_m2": 0.23,
+      "counts": {
+        "perennial": 1,
+        "annual": 0,
+        "unknown": 8,
+        "crop": 0,
+        "total_weeds": 1
+      },
+      "sprayer_displacement": {
+        "speed_18kmh_m_s": 5.0,
+        "displacement_18kmh_m": 0.386,
+        "speed_20kmh_m_s": 5.56,
+        "displacement_20kmh_m": 0.429,
+        "latency_s": 0.0772,
+        "recommendation": "Real-time Capable"
+      }
+    },
+    "detections": [
+      {
+        "object_id": 1,
+        "bbox_xyxy": [
+          754,
+          18,
+          4096,
+          3072
+        ],
+        "bbox_wh": [
+          3342,
+          3054
+        ],
+        "detector_conf": 0.7925,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4525,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.4525,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8309,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0000_0.79.jpg"
+      },
+      {
+        "object_id": 2,
+        "bbox_xyxy": [
+          0,
+          288,
+          2209,
+          1692
+        ],
+        "bbox_wh": [
+          2209,
+          1404
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4908,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.4908,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7554,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0001_0.70.jpg"
+      },
+      {
+        "object_id": 6,
+        "bbox_xyxy": [
+          1171,
+          2591,
+          1436,
+          2865
+        ],
+        "bbox_wh": [
+          265,
+          274
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4635,
+        "top_species": "field_thistle",
+        "top_species_ru": "Бодяк полевой",
+        "top_species_conf": 0.4635,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6433,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0005_0.70.jpg"
+      },
+      {
+        "object_id": 13,
+        "bbox_xyxy": [
+          2753,
+          1175,
+          2791,
+          1240
+        ],
+        "bbox_wh": [
+          38,
+          65
+        ],
+        "detector_conf": 0.5806,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.508,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.508,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.5442,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0012_0.58.jpg"
+      },
+      {
+        "object_id": 14,
+        "bbox_xyxy": [
+          1564,
+          149,
+          1708,
+          217
+        ],
+        "bbox_wh": [
+          144,
+          68
+        ],
+        "detector_conf": 0.5679,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5013,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5013,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8598,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0013_0.57.jpg"
+      },
+      {
+        "object_id": 18,
+        "bbox_xyxy": [
+          1024,
+          391,
+          1656,
+          1068
+        ],
+        "bbox_wh": [
+          632,
+          677
+        ],
+        "detector_conf": 0.3703,
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "species_conf": 0.6578,
+        "top_species": "field_thistle",
+        "top_species_ru": "Бодяк полевой",
+        "top_species_conf": 0.6578,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.6016,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0017_0.37.jpg"
+      },
+      {
+        "object_id": 22,
+        "bbox_xyxy": [
+          2041,
+          395,
+          2077,
+          449
+        ],
+        "bbox_wh": [
+          36,
+          54
+        ],
+        "detector_conf": 0.2898,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5945,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5945,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.639,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0021_0.29.jpg"
+      },
+      {
+        "object_id": 24,
+        "bbox_xyxy": [
+          1848,
+          1023,
+          1898,
+          1093
+        ],
+        "bbox_wh": [
+          50,
+          70
+        ],
+        "detector_conf": 0.259,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5428,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5428,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7282,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0023_0.26.jpg"
+      },
+      {
+        "object_id": 25,
+        "bbox_xyxy": [
+          2755,
+          732,
+          2787,
+          774
+        ],
+        "bbox_wh": [
+          32,
+          42
+        ],
+        "detector_conf": 0.2269,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5377,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5377,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6347,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0024_0.23.jpg"
+      }
+    ]
+  },
+  {
+    "filename": "DJI_20260615134710_0347_D.JPG",
+    "rel_alt_m": 1.6,
+    "abs_alt_m": 314.049,
+    "lat": 52.925225,
+    "lon": 63.36423333333333,
+    "time_s": 1.97,
+    "total_weeds": 15,
+    "review_required_count": 11,
+    "counts_by_species": {
+      "Не определено": 11,
+      "Вьюнок полевой": 2,
+      "Пырей ползучий": 2
+    },
+    "counts_by_stage": {
+      "Не определено": 11,
+      "4–6 листьев": 2,
+      "Стеблевание": 2
+    },
+    "avg_species_conf": 0.543,
+    "median_box_wh": [
+      573,
+      662
+    ],
+    "annotated_image": "annotated_DJI_20260615134710_0347_D.JPG",
+    "detector_boxes_image": "detector_boxes_DJI_20260615134710_0347_D.JPG",
+    "agronomy_evaluation": {
+      "rules_version": "2026.1-cheatsheet",
+      "threat_level": "low",
+      "recommended_action": "do_not_spray",
+      "recommended_action_ru": "не опрыскивать",
+      "growth_stage_status": "acceptable_with_increased_dose",
+      "growth_stage_status_ru": "Допустимое окно с увеличением дозировки",
+      "dosage_adjustment_note": "Рекомендация: +15-20% к базовой дозе",
+      "explanation": "Малолетние сорняки (0.0 шт/м² <= 5.0 шт/м²): ниже экономического порога вредоносности. Обработка не рекомендуется для экономии гербицида. \nФаза сорняков «4–6 листьев»: Сорняки огрубевают, формируется восковой налёт. Рекомендация из шпаргалки: увеличение дозировки на 15–20%.",
+      "model_version_or_hash": "unspecified",
+      "human_confirmation_required": true,
+      "auto_spray_enabled": false,
+      "field_area_m2": 3.88,
+      "annual_density_per_m2": 0.0,
+      "perennial_density_per_m2": 1.03,
+      "counts": {
+        "perennial": 4,
+        "annual": 0,
+        "unknown": 11,
+        "crop": 0,
+        "total_weeds": 4
+      },
+      "sprayer_displacement": {
+        "speed_18kmh_m_s": 5.0,
+        "displacement_18kmh_m": 0.234,
+        "speed_20kmh_m_s": 5.56,
+        "displacement_20kmh_m": 0.26,
+        "latency_s": 0.0468,
+        "recommendation": "Real-time Capable"
+      }
+    },
+    "detections": [
+      {
+        "object_id": 1,
+        "bbox_xyxy": [
+          2059,
+          0,
+          4096,
+          1151
+        ],
+        "bbox_wh": [
+          2037,
+          1151
+        ],
+        "detector_conf": 0.8232,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.3701,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.3701,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7721,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0000_0.82.jpg"
+      },
+      {
+        "object_id": 2,
+        "bbox_xyxy": [
+          1213,
+          370,
+          2794,
+          2569
+        ],
+        "bbox_wh": [
+          1581,
+          2199
+        ],
+        "detector_conf": 0.7516,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "species_conf": 0.6087,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.6087,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.7938,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0001_0.75.jpg"
+      },
+      {
+        "object_id": 3,
+        "bbox_xyxy": [
+          812,
+          711,
+          1394,
+          1370
+        ],
+        "bbox_wh": [
+          582,
+          659
+        ],
+        "detector_conf": 0.7502,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.3787,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.3787,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.81,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0002_0.75.jpg"
+      },
+      {
+        "object_id": 4,
+        "bbox_xyxy": [
+          2041,
+          1029,
+          3512,
+          3072
+        ],
+        "bbox_wh": [
+          1471,
+          2043
+        ],
+        "detector_conf": 0.7344,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4708,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.4708,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.9312,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0003_0.73.jpg"
+      },
+      {
+        "object_id": 6,
+        "bbox_xyxy": [
+          846,
+          0,
+          1763,
+          662
+        ],
+        "bbox_wh": [
+          917,
+          662
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5656,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5656,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.953,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0005_0.70.jpg"
+      },
+      {
+        "object_id": 8,
+        "bbox_xyxy": [
+          1,
+          2437,
+          574,
+          3072
+        ],
+        "bbox_wh": [
+          573,
+          635
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5128,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.5128,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8468,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0007_0.70.jpg"
+      },
+      {
+        "object_id": 9,
+        "bbox_xyxy": [
+          54,
+          2288,
+          405,
+          2645
+        ],
+        "bbox_wh": [
+          351,
+          357
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5468,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5468,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8213,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0008_0.70.jpg"
+      },
+      {
+        "object_id": 12,
+        "bbox_xyxy": [
+          3137,
+          1904,
+          4096,
+          3072
+        ],
+        "bbox_wh": [
+          959,
+          1168
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.7274,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.7274,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.8494,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0011_0.70.jpg"
+      },
+      {
+        "object_id": 13,
+        "bbox_xyxy": [
+          0,
+          665,
+          408,
+          2183
+        ],
+        "bbox_wh": [
+          408,
+          1518
+        ],
+        "detector_conf": 0.7,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "species_conf": 0.6173,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.6173,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8487,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0012_0.70.jpg"
+      },
+      {
+        "object_id": 14,
+        "bbox_xyxy": [
+          514,
+          1431,
+          834,
+          2021
+        ],
+        "bbox_wh": [
+          320,
+          590
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5329,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5329,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.8768,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0013_0.70.jpg"
+      },
+      {
+        "object_id": 16,
+        "bbox_xyxy": [
+          0,
+          90,
+          459,
+          787
+        ],
+        "bbox_wh": [
+          459,
+          697
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4031,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.4031,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.6829,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0015_0.70.jpg"
+      },
+      {
+        "object_id": 18,
+        "bbox_xyxy": [
+          3824,
+          140,
+          4091,
+          396
+        ],
+        "bbox_wh": [
+          267,
+          256
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4817,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.4817,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.5413,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0017_0.70.jpg"
+      },
+      {
+        "object_id": 20,
+        "bbox_xyxy": [
+          3316,
+          804,
+          3657,
+          1137
+        ],
+        "bbox_wh": [
+          341,
+          333
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.4716,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.4716,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.7773,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0019_0.70.jpg"
+      },
+      {
+        "object_id": 21,
+        "bbox_xyxy": [
+          3398,
+          1030,
+          4096,
+          2125
+        ],
+        "bbox_wh": [
+          698,
+          1095
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.8552,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.8552,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.9002,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0020_0.70.jpg"
+      },
+      {
+        "object_id": 22,
+        "bbox_xyxy": [
+          1016,
+          1778,
+          1375,
+          2182
+        ],
+        "bbox_wh": [
+          359,
+          404
+        ],
+        "detector_conf": 0.7,
+        "species": "unknown",
+        "species_ru": "Не определено",
+        "species_conf": 0.5975,
+        "top_species": "crop_wheat",
+        "top_species_ru": "Пшеница (Культура / Фон)",
+        "top_species_conf": 0.5975,
+        "stage": "unknown",
+        "stage_ru": "Не определено",
+        "stage_conf": 0.916,
+        "spray_action": "manual_review",
+        "review_required": true,
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": 0.0,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0021_0.70.jpg"
+      }
+    ]
+  }
+]

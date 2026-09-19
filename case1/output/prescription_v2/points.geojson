@@ -1,0 +1,509 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": "2",
+        "detector_conf": "0.7",
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "species_conf": "0.6605",
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": "0.6605",
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": "0.8968",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "0",
+        "bbox_y1": "1689",
+        "bbox_x2": "1172",
+        "bbox_y2": "2634",
+        "bbox_width": "1172",
+        "bbox_height": "945",
+        "drone_lat": "52.91280166666667",
+        "drone_lon": "63.37184833333333",
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.749",
+        "drone_rel_alt": "2.3",
+        "timestamp": "2026-06-15 08:41:23 +0000",
+        "crop_path": "crops/DJI_20260615134123_0339_D/crop_0001_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": "6",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.6001",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.6001",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.8465",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "2414",
+        "bbox_y1": "2556",
+        "bbox_x2": "2776",
+        "bbox_y2": "3072",
+        "bbox_width": "362",
+        "bbox_height": "516",
+        "drone_lat": "52.91280166666667",
+        "drone_lon": "63.37184833333333",
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.749",
+        "drone_rel_alt": "2.3",
+        "timestamp": "2026-06-15 08:41:23 +0000",
+        "crop_path": "crops/DJI_20260615134123_0339_D/crop_0005_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": "12",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.6778",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.6778",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.7475",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "3203",
+        "bbox_y1": "2031",
+        "bbox_x2": "4083",
+        "bbox_y2": "2895",
+        "bbox_width": "880",
+        "bbox_height": "864",
+        "drone_lat": "52.91280166666667",
+        "drone_lon": "63.37184833333333",
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.749",
+        "drone_rel_alt": "2.3",
+        "timestamp": "2026-06-15 08:41:23 +0000",
+        "crop_path": "crops/DJI_20260615134123_0339_D/crop_0011_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": "18",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.613",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.613",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.8702",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "315",
+        "bbox_y1": "908",
+        "bbox_x2": "825",
+        "bbox_y2": "1605",
+        "bbox_width": "510",
+        "bbox_height": "697",
+        "drone_lat": "52.91280166666667",
+        "drone_lon": "63.37184833333333",
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.749",
+        "drone_rel_alt": "2.3",
+        "timestamp": "2026-06-15 08:41:23 +0000",
+        "crop_path": "crops/DJI_20260615134123_0339_D/crop_0017_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": "21",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.7024",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.7024",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.8173",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "594",
+        "bbox_y1": "512",
+        "bbox_x2": "842",
+        "bbox_y2": "891",
+        "bbox_width": "248",
+        "bbox_height": "379",
+        "drone_lat": "52.91280166666667",
+        "drone_lon": "63.37184833333333",
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.749",
+        "drone_rel_alt": "2.3",
+        "timestamp": "2026-06-15 08:41:23 +0000",
+        "crop_path": "crops/DJI_20260615134123_0339_D/crop_0020_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": "23",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.7034",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.7034",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.8022",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "3662",
+        "bbox_y1": "337",
+        "bbox_x2": "4083",
+        "bbox_y2": "726",
+        "bbox_width": "421",
+        "bbox_height": "389",
+        "drone_lat": "52.91280166666667",
+        "drone_lon": "63.37184833333333",
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.749",
+        "drone_rel_alt": "2.3",
+        "timestamp": "2026-06-15 08:41:23 +0000",
+        "crop_path": "crops/DJI_20260615134123_0339_D/crop_0022_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37184833333333,
+          52.91280166666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134123_0339_D.JPG",
+        "object_id": "27",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.8256",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.8256",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.8643",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "3744",
+        "bbox_y1": "1398",
+        "bbox_x2": "4096",
+        "bbox_y2": "1955",
+        "bbox_width": "352",
+        "bbox_height": "557",
+        "drone_lat": "52.91280166666667",
+        "drone_lon": "63.37184833333333",
+        "lat": 52.91280166666667,
+        "lon": 63.37184833333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.749",
+        "drone_rel_alt": "2.3",
+        "timestamp": "2026-06-15 08:41:23 +0000",
+        "crop_path": "crops/DJI_20260615134123_0339_D/crop_0026_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36393,
+          52.92513666666667
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134520_0343_D.JPG",
+        "object_id": "18",
+        "detector_conf": "0.3703",
+        "species": "field_thistle",
+        "species_ru": "Бодяк полевой",
+        "species_conf": "0.6578",
+        "top_species": "field_thistle",
+        "top_species_ru": "Бодяк полевой",
+        "top_species_conf": "0.6578",
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": "0.6016",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "1024",
+        "bbox_y1": "391",
+        "bbox_x2": "1656",
+        "bbox_y2": "1068",
+        "bbox_width": "632",
+        "bbox_height": "677",
+        "drone_lat": "52.92513666666667",
+        "drone_lon": "63.36393",
+        "lat": 52.92513666666667,
+        "lon": 63.36393,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.149",
+        "drone_rel_alt": "1.7",
+        "timestamp": "2026-06-15 08:45:20 +0000",
+        "crop_path": "crops/DJI_20260615134520_0343_D/crop_0017_0.37.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": "2",
+        "detector_conf": "0.7516",
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "species_conf": "0.6087",
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": "0.6087",
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": "0.7938",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "1213",
+        "bbox_y1": "370",
+        "bbox_x2": "2794",
+        "bbox_y2": "2569",
+        "bbox_width": "1581",
+        "bbox_height": "2199",
+        "drone_lat": "52.925225",
+        "drone_lon": "63.36423333333333",
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.049",
+        "drone_rel_alt": "1.6",
+        "timestamp": "2026-06-15 08:47:10 +0000",
+        "crop_path": "crops/DJI_20260615134710_0347_D/crop_0001_0.75.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": "12",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.7274",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.7274",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.8494",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "3137",
+        "bbox_y1": "1904",
+        "bbox_x2": "4096",
+        "bbox_y2": "3072",
+        "bbox_width": "959",
+        "bbox_height": "1168",
+        "drone_lat": "52.925225",
+        "drone_lon": "63.36423333333333",
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.049",
+        "drone_rel_alt": "1.6",
+        "timestamp": "2026-06-15 08:47:10 +0000",
+        "crop_path": "crops/DJI_20260615134710_0347_D/crop_0011_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": "13",
+        "detector_conf": "0.7",
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "species_conf": "0.6173",
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": "0.6173",
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": "0.8487",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "0",
+        "bbox_y1": "665",
+        "bbox_x2": "408",
+        "bbox_y2": "2183",
+        "bbox_width": "408",
+        "bbox_height": "1518",
+        "drone_lat": "52.925225",
+        "drone_lon": "63.36423333333333",
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.049",
+        "drone_rel_alt": "1.6",
+        "timestamp": "2026-06-15 08:47:10 +0000",
+        "crop_path": "crops/DJI_20260615134710_0347_D/crop_0012_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36423333333333,
+          52.925225
+        ]
+      },
+      "properties": {
+        "image_id": "DJI_20260615134710_0347_D.JPG",
+        "object_id": "21",
+        "detector_conf": "0.7",
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": "0.8552",
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": "0.8552",
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": "0.9002",
+        "spray_action": "spray_weed",
+        "review_required": "False",
+        "bbox_x1": "3398",
+        "bbox_y1": "1030",
+        "bbox_x2": "4096",
+        "bbox_y2": "2125",
+        "bbox_width": "698",
+        "bbox_height": "1095",
+        "drone_lat": "52.925225",
+        "drone_lon": "63.36423333333333",
+        "lat": 52.925225,
+        "lon": 63.36423333333333,
+        "geo_quality": "frame_only",
+        "geo_error_m": "0.0",
+        "drone_abs_alt": "314.049",
+        "drone_rel_alt": "1.6",
+        "timestamp": "2026-06-15 08:47:10 +0000",
+        "crop_path": "crops/DJI_20260615134710_0347_D/crop_0020_0.70.jpg"
+      }
+    }
+  ]
+}
