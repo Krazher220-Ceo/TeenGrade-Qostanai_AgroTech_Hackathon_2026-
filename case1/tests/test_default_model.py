@@ -37,11 +37,25 @@ EXPECTED_NUM_SPECIES = 26
 EXPECTED_NUM_STAGES = 3
 
 
+def _is_lfs_pointer(path: Path) -> bool:
+    """True, если вместо весов лежит Git LFS pointer (checkout без `git lfs pull`, как в CI)."""
+    try:
+        return path.read_bytes()[:200].startswith(b"version https://git-lfs")
+    except OSError:
+        return False
+
+
+def _skip_if_lfs_pointer(path: Path) -> None:
+    if _is_lfs_pointer(path):
+        pytest.skip(f"{path.name}: Git LFS pointer вместо весов, выполните `git lfs pull`")
+
+
 def test_default_model_path_is_the_26_species_checkpoint():
     """case1/models/multitask_weeds_best.pt (путь по умолчанию во всех модулях)
     обязан быть 26-видовым/3-фазным серверным чекпоинтом, а не старым
     4-видовым/2-фазным."""
     assert DEFAULT_MODEL_PATH.exists(), f"Дефолтный чекпоинт {DEFAULT_MODEL_PATH} не найден"
+    _skip_if_lfs_pointer(DEFAULT_MODEL_PATH)
     state_dict = torch.load(DEFAULT_MODEL_PATH, map_location="cpu")
 
     num_species = infer_num_species_from_state_dict(state_dict)
@@ -73,6 +87,7 @@ def test_legacy_4class_checkpoint_still_available_but_not_default():
     assert LEGACY_MODEL_PATH.exists(), f"Легаси чекпоинт {LEGACY_MODEL_PATH} не найден"
     assert LEGACY_MODEL_PATH != DEFAULT_MODEL_PATH
 
+    _skip_if_lfs_pointer(LEGACY_MODEL_PATH)
     state_dict = torch.load(LEGACY_MODEL_PATH, map_location="cpu")
     assert infer_num_species_from_state_dict(state_dict) == 4
     assert infer_num_stages_from_state_dict(state_dict) == 2
