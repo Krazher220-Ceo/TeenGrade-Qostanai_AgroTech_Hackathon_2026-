@@ -38,11 +38,13 @@ from case1.server.schemas import (
 from case1.ml.multitask_model import (
     WeedMultiTaskModel,
     infer_num_species_from_state_dict,
+    infer_num_stages_from_state_dict,
     SPECIES_NAMES,
     SPECIES_RU,
     STAGE_NAMES,
     STAGE_RU,
-    SPECIES_RU_MAP
+    SPECIES_RU_MAP,
+    DEFAULT_SPECIES_CONFIDENCE,
 )
 
 app = FastAPI(
@@ -95,11 +97,7 @@ def load_model():
     if MODEL_PATH.exists():
         state_dict = torch.load(MODEL_PATH, map_location=DEVICE)
         num_species = infer_num_species_from_state_dict(state_dict)
-        num_stages = 3
-        for k, v in state_dict.items():
-            if k.endswith("stage_head.4.weight"):
-                num_stages = int(v.shape[0])
-                break
+        num_stages = infer_num_stages_from_state_dict(state_dict)
         MODEL = WeedMultiTaskModel(
             num_species=num_species,
             num_stages=num_stages,
@@ -151,12 +149,17 @@ def health_check():
 
 @app.get("/model-info")
 def model_info():
+    # Каталог видов строится из SPECIES_RU_MAP (26 сорняков, см. species_mapping.json),
+    # а не из захардкоженного списка — иначе модель и справочник рассинхронизируются.
     supported_species = [
-        {"id": "field_thistle", "ru": "Бодяк полевой", "latin": "Cirsium arvense"},
-        {"id": "field_bindweed", "ru": "Вьюнок полевой", "latin": "Convolvulus arvensis"},
-        {"id": "couch_grass", "ru": "Пырей ползучий", "latin": "Elymus repens"},
+        {"id": sp_id, "ru": sp_ru, "latin": None}
+        for sp_id, sp_ru in SPECIES_RU_MAP.items()
+        if sp_id != "crop_wheat"
     ]
-    if MODEL is not None and MODEL.num_species >= 4:
+    if MODEL is not None and MODEL.num_species >= 4 and "crop_wheat" not in {s["id"] for s in supported_species}:
+        # Легаси 4-классовая модель распознаёт культуру как отдельный класс;
+        # у 26-классового классификатора такого класса нет (культура отфильтровывается
+        # детектором, а не классификатором).
         supported_species.append(
             {"id": "crop_wheat", "ru": "Пшеница (Культура / Фон)", "latin": "Triticum"}
         )
@@ -169,12 +172,12 @@ def model_info():
         "classifier_model": "EfficientNet-B0 Multi-Task (Species + Stage, Focal Loss)",
         "supported_species": supported_species,
         "supported_stages": [
-            {"id": "rosette", "ru": "Розетка"},
-            {"id": "stem_elongation", "ru": "Стеблевание"},
-            {"id": "unknown", "ru": "Не определено"}
-        ],
+            {"id": STAGE_NAMES[i] if i < len(STAGE_NAMES) else f"stage_{i}", "ru": ru}
+            for i, ru in enumerate(STAGE_RU)
+        ] + [{"id": "unknown", "ru": "Не определено"}],
         "constraints": [
-            "Вид подтверждается только при уверенности 70% или выше; иначе результат unknown и manual_review",
+            f"Вид подтверждается только при уверенности {DEFAULT_SPECIES_CONFIDENCE:.0%} или выше; "
+            "иначе результат unknown и manual_review",
             "Фаза 'Розетка' для пырея ползучего автоматически переводится в unknown (нет эталона)"
         ]
     }

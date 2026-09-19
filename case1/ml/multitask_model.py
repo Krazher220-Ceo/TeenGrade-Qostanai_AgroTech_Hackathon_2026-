@@ -11,11 +11,17 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as models
 
+from case1.configs.loader import get_species_confidence_threshold
+
 SPECIES_NAMES = ["field_thistle", "field_bindweed", "couch_grass", "crop_wheat"]
 SPECIES_RU = ["Бодяк полевой", "Вьюнок полевой", "Пырей ползучий", "Пшеница (Культура / Фон)"]
 STAGE_NAMES = ["cotyledon_to_2_leaves", "4_to_6_leaves", "over_6_leaves_or_flowering"]
 STAGE_RU = ["Семядоли — 2 листа", "4–6 листьев", "Более 6 листьев / цветение"]
-DEFAULT_SPECIES_CONFIDENCE = 0.65
+
+# Единый порог уверенности вида читается из case1/configs/settings.yaml
+# (review.species_confidence_threshold) через case1.configs.loader — не задавать
+# здесь отдельную захардкоженную константу, чтобы CLI/сервер/дашборд не расходились.
+DEFAULT_SPECIES_CONFIDENCE = get_species_confidence_threshold()
 DEFAULT_STAGE_CONFIDENCE = 0.50
 
 SPECIES_RU_MAP = {

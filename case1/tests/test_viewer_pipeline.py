@@ -11,6 +11,7 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
+from case1.configs.loader import get_species_confidence_threshold
 from case1.viewer_pipeline import run_uploaded_field_image, validate_uploaded_image
 
 
@@ -37,7 +38,9 @@ def test_validate_uploaded_image_rejects_invalid_input(filename, payload):
 def test_run_uploaded_field_image_collects_artifacts(tmp_path):
     def fake_processor(image_path, output_dir, detector_conf, species_conf, detector_path=None, **kwargs):
         assert detector_conf == 0.65
-        assert species_conf == 0.65
+        # Порог вида приходит из единого конфига (case1/configs/settings.yaml ->
+        # review.species_confidence_threshold), а не захардкожен в viewer_pipeline.py.
+        assert species_conf == get_species_confidence_threshold()
         output = Path(output_dir)
         annotated = output / "annotated"
         detector_boxes = output / "detector_boxes"
