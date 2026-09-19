@@ -32,6 +32,16 @@ from typing import Dict, List, Optional, Tuple, Any
 
 # Базовые пути проекта
 ROOT_DIR = Path(__file__).resolve().parent
+
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+# Единый порог уверенности вида сорняка (case1/configs/settings.yaml ->
+# review.species_confidence_threshold). Лёгкий импорт (без torch), поэтому
+# читается сразу при старте CLI, не замедляя команды status/audit.
+from case1.configs.loader import get_species_confidence_threshold
+
+DEFAULT_SPECIES_CONF = get_species_confidence_threshold()
 if Path("/data").exists() and (Path("/data/Сорняки").exists() or Path("/data/Auto").exists()):
     DATASET_DIR = Path("/data")
 else:
@@ -328,7 +338,7 @@ def cmd_process(
     output_dir: Optional[str] = None,
     detector_path: Optional[str] = None,
     detector_conf: float = 0.30,
-    species_conf: float = 0.60,
+    species_conf: float = DEFAULT_SPECIES_CONF,
     limit: Optional[int] = None,
 ):
     """Полноценная тайловая обработка полевых снимков с детекцией сорняков."""
@@ -438,7 +448,10 @@ def cmd_process(
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
-        species_label_map = dict(zip(SPECIES_NAMES, SPECIES_RU))
+        # SPECIES_RU_MAP покрывает все 26 видов (+ crop_wheat), в отличие от
+        # SPECIES_NAMES/SPECIES_RU (легаси 4-классовый список) — иначе для
+        # 26-классового классификатора top_species_ru деградировал бы до id.
+        species_label_map = {**dict(zip(SPECIES_NAMES, SPECIES_RU)), **SPECIES_RU_MAP}
         print(f"Классификатор: {classifier_path.name} | Классов: {num_species} | Фаз: {num_stages} | Device: {dev}")
 
     tile_size = 1280
@@ -961,7 +974,12 @@ def main():
         help="finetuned — дообученный YOLOv8s (аэро/полевой); baseline — WeedBlaster",
     )
     proc_parser.add_argument("--conf", type=float, default=0.30, help="Порог уверенности детектора (0.30)")
-    proc_parser.add_argument("--species-conf", type=float, default=0.60, help="Порог уверенности вида (0.60)")
+    proc_parser.add_argument(
+        "--species-conf",
+        type=float,
+        default=DEFAULT_SPECIES_CONF,
+        help=f"Порог уверенности вида (по умолчанию {DEFAULT_SPECIES_CONF:.2f} из case1/configs/settings.yaml)",
+    )
 
     tr_cls_parser = subparsers.add_parser("train-classifier", help="Обучение многозадачного классификатора сорняков")
     tr_cls_parser.add_argument("--epochs", type=int, default=35, help="Количество эпох")

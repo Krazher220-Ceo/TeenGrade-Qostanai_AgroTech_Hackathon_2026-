@@ -21,7 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-from case1.ml.multitask_model import WeedMultiTaskModel, infer_num_species_from_state_dict
+from case1.ml.multitask_model import (
+    WeedMultiTaskModel,
+    infer_num_species_from_state_dict,
+    infer_num_stages_from_state_dict,
+    DEFAULT_SPECIES_CONFIDENCE,
+)
 from case1.server.app import app
 WEIGHTS_PATH = BASE_DIR / "weedblaster-vision-yolov8s" / "best.pt"
 CLASSIFIER_PATH = BASE_DIR / "case1" / "models" / "multitask_weeds_best.pt"
@@ -46,7 +51,8 @@ def test_classifier_loads():
     assert CLASSIFIER_PATH.exists(), f"Файл классификатора {CLASSIFIER_PATH} не найден"
     state = torch.load(CLASSIFIER_PATH, map_location="cpu")
     num_species = infer_num_species_from_state_dict(state)
-    model = WeedMultiTaskModel(num_species=num_species, num_stages=2, backbone_name="efficientnet_b0", pretrained=False)
+    num_stages = infer_num_stages_from_state_dict(state)
+    model = WeedMultiTaskModel(num_species=num_species, num_stages=num_stages, backbone_name="efficientnet_b0", pretrained=False)
     model.load_state_dict(state)
     model.eval()
 
@@ -54,7 +60,7 @@ def test_classifier_loads():
     dummy = torch.randn(1, 3, 224, 224)
     sp_logits, st_logits = model(dummy)
     assert sp_logits.shape == (1, num_species)
-    assert st_logits.shape == (1, 2)
+    assert st_logits.shape == (1, num_stages)
 
 
 def test_couch_grass_rosette_constraint():
@@ -80,7 +86,9 @@ def test_uncertain_detection_is_not_marked_for_spraying():
     assert pred["spray_action"] == "manual_review"
 
 
-def test_species_below_sixty_five_percent_requires_review():
+def test_species_below_confidence_threshold_requires_review():
+    """Единый порог (case1/configs/settings.yaml -> review.species_confidence_threshold,
+    сейчас 0.75): уверенность 0.60 ниже порога -> unknown / manual_review."""
     model = WeedMultiTaskModel(num_species=4, num_stages=2, backbone_name="mobilenet_v3_small", pretrained=False)
     model.forward = lambda _: (
         torch.log(torch.tensor([[0.60, 0.20, 0.10, 0.10]])),
@@ -89,6 +97,7 @@ def test_species_below_sixty_five_percent_requires_review():
 
     pred = model.predict_crop(torch.randn(3, 32, 32))
 
+    assert 0.60 < DEFAULT_SPECIES_CONFIDENCE
     assert pred["species"] == "unknown"
     assert pred["species_ru"] == "Не определено"
     assert pred["species_conf"] == 0.6
@@ -97,17 +106,19 @@ def test_species_below_sixty_five_percent_requires_review():
     assert pred["all_species_probs"]["field_thistle"] == 0.6
 
 
-def test_species_at_or_above_sixty_five_percent_is_displayed():
+def test_species_at_or_above_confidence_threshold_is_displayed():
+    """Уверенность 0.80 выше единого порога (0.75) -> вид подтверждён и передан на опрыскивание."""
     model = WeedMultiTaskModel(num_species=4, num_stages=2, backbone_name="mobilenet_v3_small", pretrained=False)
     model.forward = lambda _: (
-        torch.log(torch.tensor([[0.70, 0.15, 0.10, 0.05]])),
+        torch.log(torch.tensor([[0.80, 0.10, 0.06, 0.04]])),
         torch.log(torch.tensor([[0.10, 0.90]])),
     )
 
     pred = model.predict_crop(torch.randn(3, 32, 32))
 
+    assert 0.80 >= DEFAULT_SPECIES_CONFIDENCE
     assert pred["species"] == "field_thistle"
-    assert pred["species_conf"] == 0.7
+    assert pred["species_conf"] == 0.8
     assert pred["review_required"] is False
     assert pred["spray_action"] == "spray_weed"
 

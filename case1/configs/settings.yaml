@@ -29,3 +29,10 @@ server:
   port: 8000
   api_prefix: "/api/v1"
   fallback_offline_mode: true
+
+review:
+  # Единый порог уверенности вида сорняка (26-классовый классификатор).
+  # Всё ниже этого значения -> статус unknown / manual_review -> уходит агроному.
+  # Читается через case1.configs.loader.get_species_confidence_threshold(); не
+  # дублировать это значение как отдельную константу в других модулях.
+  species_confidence_threshold: 0.75
