@@ -106,20 +106,33 @@ class AgronomyRuleEngine:
                 )
 
         # 3. Анализ фазы вегетации
-        stage_info = stage_cfg.get(growth_stage)
         dosage_note = ""
-        if stage_info:
-            explanations.append(
-                f"Фаза сорняков «{stage_info['stage_ru']}»: {stage_info['description']}"
-            )
-            if "dosage_change_pct" in stage_info:
-                dosage_note = f"Рекомендация: {stage_info['dosage_change_pct']} к базовой дозе"
-        else:
+        if is_unknown:
+            # Вид сорняка не определён достоверно -> фаза вегетации тоже не может
+            # считаться определённой. growth_stage здесь хранит лишь технический
+            # параметр по умолчанию ('cotyledon_to_2_leaves') и НЕ должен
+            # подставляться в agronomy_rules.json как настоящая фаза окна
+            # обработки (иначе неопознанный объект ошибочно получит статус
+            # 'optimal' вместо честного 'undetermined').
             stage_info = {
-                "stage_ru": growth_stage,
-                "window_status": "unknown",
-                "window_status_ru": "Фаза требует осмотра",
+                "stage_ru": "Не определено",
+                "window_status": "undetermined",
+                "window_status_ru": "Фаза не определена (вид сорняка не распознан)",
             }
+        else:
+            stage_info = stage_cfg.get(growth_stage)
+            if stage_info:
+                explanations.append(
+                    f"Фаза сорняков «{stage_info['stage_ru']}»: {stage_info['description']}"
+                )
+                if "dosage_change_pct" in stage_info:
+                    dosage_note = f"Рекомендация: {stage_info['dosage_change_pct']} к базовой дозе"
+            else:
+                stage_info = {
+                    "stage_ru": growth_stage,
+                    "window_status": "unknown",
+                    "window_status_ru": "Фаза требует осмотра",
+                }
 
         return {
             "rules_version": self.version,
