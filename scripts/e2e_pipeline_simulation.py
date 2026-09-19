@@ -294,14 +294,23 @@ def write_taskdata(decisions, path) -> None:
             "spray_action": d.action
         })
     zones = create_treatment_zones(detections)
-    
+
     output_dir = path.parent
     xml_path = export_isoxml(zones, output_dir)
-    # The generated TASKDATA.XML is at output_dir / TASKDATA / TASKDATA.XML
-    # We copy it to path
-    taskdata_gen = output_dir / "TASKDATA" / "TASKDATA.XML"
-    if taskdata_gen.exists():
-        shutil.copy(taskdata_gen, path)
+    # export_isoxml writes TASKDATA.XML *and* its GRD00001.bin sibling under
+    # output_dir/TASKDATA/. The GRD binary file must sit next to whichever
+    # TASKDATA.XML references it (that's how a real ISO-XML USB stick is
+    # laid out, and how scripts/verify_prescription_and_taskdata.py locates
+    # it), so copy the whole TASKDATA/ directory contents next to `path`,
+    # not just the XML file on its own.
+    taskdata_gen_dir = output_dir / "TASKDATA"
+    if taskdata_gen_dir.exists():
+        for generated_file in taskdata_gen_dir.iterdir():
+            if generated_file.is_file():
+                shutil.copy(generated_file, path.parent / generated_file.name)
+        # Keep the caller-requested filename (`path`) as the canonical copy.
+        if (path.parent / "TASKDATA.XML") != path and (path.parent / "TASKDATA.XML").exists():
+            shutil.move(str(path.parent / "TASKDATA.XML"), str(path))
 
 def confusion(y_true: Sequence[str], y_pred: Sequence[str], classes: Sequence[str]) -> np.ndarray:
     index = {c: i for i, c in enumerate(classes)}; matrix = np.zeros((len(classes), len(classes)), dtype=int)
