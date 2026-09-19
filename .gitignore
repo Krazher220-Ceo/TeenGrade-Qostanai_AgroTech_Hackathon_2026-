@@ -5,6 +5,9 @@ __pycache__/
 .streamlit/
 .pytest_cache/
 
+# Локальные TLS-сертификаты mkcert для scripts/serve_https.sh
+.certs/
+
 # Локальные инструкции и промпты для AI/agent-инструментов
 AGENTS.md
 **/AGENTS.md
