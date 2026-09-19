@@ -58,6 +58,28 @@ def test_agronomy_rules_thresholds():
     assert res_unknown["human_confirmation_required"] is True
 
 
+def test_unknown_species_growth_stage_is_undetermined_not_optimal():
+    """Регресс: при is_unknown=True фаза не может быть достоверно определена,
+    поэтому growth_stage_status обязан быть 'undetermined', а не 'optimal'
+    (даже если внутренне используется growth_stage по умолчанию
+    'cotyledon_to_2_leaves', которому в agronomy_rules.json соответствует
+    window_status='optimal' — это значение не должно "просачиваться" наружу
+    для неопознанного объекта)."""
+    engine = AgronomyRuleEngine()
+    res_unknown = engine.evaluate_weed_patch(is_unknown=True)
+    assert res_unknown["growth_stage_status"] == "undetermined"
+    assert res_unknown["growth_stage_status"] != "optimal"
+    assert "не определ" in res_unknown["growth_stage_status_ru"].lower()
+
+    # Тот же инвариант должен соблюдаться и на уровне агрегации кадра, когда
+    # все детекции на снимке — неопознанные объекты.
+    res_field = engine.evaluate_field_detections(
+        detections=[{"species": "unknown", "stage": "unknown", "review_required": True}],
+        field_area_m2=1.0,
+    )
+    assert res_field["growth_stage_status"] == "undetermined"
+
+
 def test_growth_stage_recommendations():
     engine = AgronomyRuleEngine()
 

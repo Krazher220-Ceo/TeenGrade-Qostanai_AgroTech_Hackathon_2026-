@@ -1,0 +1,36 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: agrovision-case1:latest
+    container_name: agrovision-api
+    command: ["python", "-m", "uvicorn", "case1.server.app:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./case1/output:/app/case1/output
+      - ./case1/models:/app/case1/models
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: agrovision-case1:latest
+    container_name: agrovision-dashboard
+    command: ["python", "-m", "streamlit", "run", "case1/dashboard/app.py", "--server.port", "8501", "--server.address", "0.0.0.0"]
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./case1/output:/app/case1/output
+      - ./case1/models:/app/case1/models
+    depends_on:
+      - api
+    restart: unless-stopped

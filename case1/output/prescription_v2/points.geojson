@@ -1,0 +1,2205 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.361688201172456,
+          52.923801244937344
+        ]
+      },
+      "properties": {
+        "object_id": 2,
+        "bbox_xyxy": [
+          1644,
+          827,
+          1864,
+          1125
+        ],
+        "bbox_wh": [
+          220,
+          298
+        ],
+        "detector_conf": 0.7536,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.945,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.945,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.8456,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.923801244937344,
+        "lon": 63.361688201172456,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0001_0.75.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36170891002429,
+          52.92379239763048
+        ]
+      },
+      "properties": {
+        "object_id": 10,
+        "bbox_xyxy": [
+          3599,
+          1113,
+          4096,
+          1469
+        ],
+        "bbox_wh": [
+          497,
+          356
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.7899,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.7899,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.729,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92379239763048,
+        "lon": 63.36170891002429,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0009_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.361697006397286,
+          52.92379382782427
+        ]
+      },
+      "properties": {
+        "object_id": 11,
+        "bbox_xyxy": [
+          2742,
+          1404,
+          3000,
+          1718
+        ],
+        "bbox_wh": [
+          258,
+          314
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.7506,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.7506,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.6507,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92379382782427,
+        "lon": 63.361697006397286,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0010_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36167833285959,
+          52.923799811739926
+        ]
+      },
+      "properties": {
+        "object_id": 12,
+        "bbox_xyxy": [
+          1006,
+          1335,
+          1208,
+          1711
+        ],
+        "bbox_wh": [
+          202,
+          376
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8715,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8715,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.7549,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.923799811739926,
+        "lon": 63.36167833285959,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0011_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.361664837814516,
+          52.92379360164693
+        ]
+      },
+      "properties": {
+        "object_id": 20,
+        "bbox_xyxy": [
+          434,
+          2743,
+          538,
+          2848
+        ],
+        "bbox_wh": [
+          104,
+          105
+        ],
+        "detector_conf": 0.5655,
+        "species": "smartweed",
+        "species_ru": "Горцы (виды)",
+        "species_conf": 0.8915,
+        "top_species": "smartweed",
+        "top_species_ru": "Горцы (виды)",
+        "top_species_conf": 0.8915,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8645,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92379360164693,
+        "lon": 63.361664837814516,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0019_0.57.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36168127309413,
+          52.92379820490224
+        ]
+      },
+      "properties": {
+        "object_id": 32,
+        "bbox_xyxy": [
+          1325,
+          1471,
+          1527,
+          1751
+        ],
+        "bbox_wh": [
+          202,
+          280
+        ],
+        "detector_conf": 0.2755,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9057,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9057,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.8701,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92379820490224,
+        "lon": 63.36168127309413,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0031_0.28.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.361698135416546,
+          52.92378866697058
+        ]
+      },
+      "properties": {
+        "object_id": 33,
+        "bbox_xyxy": [
+          3203,
+          2089,
+          3348,
+          2222
+        ],
+        "bbox_wh": [
+          145,
+          133
+        ],
+        "detector_conf": 0.2678,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8816,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8816,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.7544,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92378866697058,
+        "lon": 63.361698135416546,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0032_0.27.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36167248886142,
+          52.92380963509127
+        ]
+      },
+      "properties": {
+        "object_id": 35,
+        "bbox_xyxy": [
+          0,
+          342,
+          123,
+          718
+        ],
+        "bbox_wh": [
+          123,
+          376
+        ],
+        "detector_conf": 0.2537,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.8601,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.8601,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.8282,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92380963509127,
+        "lon": 63.36167248886142,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0034_0.25.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36166813302327,
+          52.92380403848192
+        ]
+      },
+      "properties": {
+        "object_id": 36,
+        "bbox_xyxy": [
+          0,
+          1274,
+          168,
+          1494
+        ],
+        "bbox_wh": [
+          168,
+          220
+        ],
+        "detector_conf": 0.2276,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.94,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.94,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.6199,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92380403848192,
+        "lon": 63.36166813302327,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.11,
+        "crop_file": "crops/DJI_20260609122641_0177_D/crop_0035_0.23.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338183372494996,
+          52.944004469481335
+        ]
+      },
+      "properties": {
+        "object_id": 1,
+        "bbox_xyxy": [
+          1139,
+          695,
+          1801,
+          1251
+        ],
+        "bbox_wh": [
+          662,
+          556
+        ],
+        "detector_conf": 0.8047,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.7829,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.7829,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9749,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.944004469481335,
+        "lon": 63.338183372494996,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0000_0.80.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818255237035,
+          52.94400431399627
+        ]
+      },
+      "properties": {
+        "object_id": 3,
+        "bbox_xyxy": [
+          1603,
+          45,
+          2111,
+          526
+        ],
+        "bbox_wh": [
+          508,
+          481
+        ],
+        "detector_conf": 0.7077,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9666,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9666,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9915,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400431399627,
+        "lon": 63.33818255237035,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0002_0.71.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338184151814325,
+          52.94400538709531
+        ]
+      },
+      "properties": {
+        "object_id": 4,
+        "bbox_xyxy": [
+          1529,
+          2261,
+          2277,
+          2697
+        ],
+        "bbox_wh": [
+          748,
+          436
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.7805,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.7805,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9713,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400538709531,
+        "lon": 63.338184151814325,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0003_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338182740604964,
+          52.944005725809994
+        ]
+      },
+      "properties": {
+        "object_id": 5,
+        "bbox_xyxy": [
+          2913,
+          1670,
+          3486,
+          2265
+        ],
+        "bbox_wh": [
+          573,
+          595
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.964,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.964,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.974,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.944005725809994,
+        "lon": 63.338182740604964,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0004_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338183572125565,
+          52.94400517331712
+        ]
+      },
+      "properties": {
+        "object_id": 7,
+        "bbox_xyxy": [
+          1912,
+          1705,
+          2225,
+          2051
+        ],
+        "bbox_wh": [
+          313,
+          346
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9778,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9778,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.986,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400517331712,
+        "lon": 63.338183572125565,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0006_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338183898286665,
+          52.94400511921224
+        ]
+      },
+      "properties": {
+        "object_id": 8,
+        "bbox_xyxy": [
+          1591,
+          1851,
+          1997,
+          2195
+        ],
+        "bbox_wh": [
+          406,
+          344
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.936,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.936,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9439,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400511921224,
+        "lon": 63.338183898286665,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0007_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818459963383,
+          52.944004861307995
+        ]
+      },
+      "properties": {
+        "object_id": 9,
+        "bbox_xyxy": [
+          846,
+          2050,
+          1267,
+          2306
+        ],
+        "bbox_wh": [
+          421,
+          256
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9537,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9537,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9795,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.944004861307995,
+        "lon": 63.33818459963383,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0008_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338183680028955,
+          52.94400553644682
+        ]
+      },
+      "properties": {
+        "object_id": 10,
+        "bbox_xyxy": [
+          2211,
+          2173,
+          2537,
+          2523
+        ],
+        "bbox_wh": [
+          326,
+          350
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8676,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8676,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9667,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400553644682,
+        "lon": 63.338183680028955,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0009_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818268650807,
+          52.94400626931504
+        ]
+      },
+      "properties": {
+        "object_id": 12,
+        "bbox_xyxy": [
+          3506,
+          2266,
+          4096,
+          2805
+        ],
+        "bbox_wh": [
+          590,
+          539
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9061,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9061,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9831,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400626931504,
+        "lon": 63.33818268650807,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0011_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818332553376,
+          52.94400521659383
+        ]
+      },
+      "properties": {
+        "object_id": 13,
+        "bbox_xyxy": [
+          2127,
+          1598,
+          2430,
+          1944
+        ],
+        "bbox_wh": [
+          303,
+          346
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9535,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9535,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8741,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400521659383,
+        "lon": 63.33818332553376,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0012_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818315662805,
+          52.94400613715952
+        ]
+      },
+      "properties": {
+        "object_id": 15,
+        "bbox_xyxy": [
+          3112,
+          2445,
+          3586,
+          2924
+        ],
+        "bbox_wh": [
+          474,
+          479
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8272,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8272,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9833,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400613715952,
+        "lon": 63.33818315662805,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0014_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818577480529,
+          52.94400488897155
+        ]
+      },
+      "properties": {
+        "object_id": 18,
+        "bbox_xyxy": [
+          154,
+          2822,
+          444,
+          3072
+        ],
+        "bbox_wh": [
+          290,
+          250
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9698,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9698,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9824,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400488897155,
+        "lon": 63.33818577480529,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0017_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818112284596,
+          52.94400511587895
+        ]
+      },
+      "properties": {
+        "object_id": 19,
+        "bbox_xyxy": [
+          3379,
+          0,
+          3916,
+          551
+        ],
+        "bbox_wh": [
+          537,
+          551
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9774,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9774,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9816,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400511587895,
+        "lon": 63.33818112284596,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0018_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818375786704,
+          52.94400358096162
+        ]
+      },
+      "properties": {
+        "object_id": 21,
+        "bbox_xyxy": [
+          0,
+          0,
+          576,
+          462
+        ],
+        "bbox_wh": [
+          576,
+          462
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8042,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8042,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9888,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400358096162,
+        "lon": 63.33818375786704,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0020_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338182847657656,
+          52.94400541634851
+        ]
+      },
+      "properties": {
+        "object_id": 22,
+        "bbox_xyxy": [
+          2588,
+          1493,
+          3024,
+          1891
+        ],
+        "bbox_wh": [
+          436,
+          398
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8712,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8712,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8075,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400541634851,
+        "lon": 63.338182847657656,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0021_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818400020478,
+          52.94400463435076
+        ]
+      },
+      "properties": {
+        "object_id": 23,
+        "bbox_xyxy": [
+          1030,
+          1399,
+          1413,
+          1701
+        ],
+        "bbox_wh": [
+          383,
+          302
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9647,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9647,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.979,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400463435076,
+        "lon": 63.33818400020478,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0022_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338183556124335,
+          52.944004014107705
+        ]
+      },
+      "properties": {
+        "object_id": 26,
+        "bbox_xyxy": [
+          737,
+          441,
+          1010,
+          727
+        ],
+        "bbox_wh": [
+          273,
+          286
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9649,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9649,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9866,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.944004014107705,
+        "lon": 63.338183556124335,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0025_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818354694293,
+          52.94400418318299
+        ]
+      },
+      "properties": {
+        "object_id": 29,
+        "bbox_xyxy": [
+          880,
+          528,
+          1231,
+          1003
+        ],
+        "bbox_wh": [
+          351,
+          475
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.7833,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.7833,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.6054,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400418318299,
+        "lon": 63.33818354694293,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0028_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338181842078164,
+          52.94400529203085
+        ]
+      },
+      "properties": {
+        "object_id": 30,
+        "bbox_xyxy": [
+          3069,
+          647,
+          3630,
+          1198
+        ],
+        "bbox_wh": [
+          561,
+          551
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9788,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9788,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8708,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400529203085,
+        "lon": 63.338181842078164,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0029_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818260263942,
+          52.94400501453102
+        ]
+      },
+      "properties": {
+        "object_id": 31,
+        "bbox_xyxy": [
+          2261,
+          840,
+          2843,
+          1346
+        ],
+        "bbox_wh": [
+          582,
+          506
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9707,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9707,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9548,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400501453102,
+        "lon": 63.33818260263942,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0030_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818390413043,
+          52.94400434757301
+        ]
+      },
+      "properties": {
+        "object_id": 32,
+        "bbox_xyxy": [
+          787,
+          963,
+          1188,
+          1381
+        ],
+        "bbox_wh": [
+          401,
+          418
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9564,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9564,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9262,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400434757301,
+        "lon": 63.33818390413043,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0031_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818297845406,
+          52.94400492458547
+        ]
+      },
+      "properties": {
+        "object_id": 33,
+        "bbox_xyxy": [
+          2091,
+          1092,
+          2323,
+          1367
+        ],
+        "bbox_wh": [
+          232,
+          275
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.887,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.887,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9561,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400492458547,
+        "lon": 63.33818297845406,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0032_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338184215687015,
+          52.94400420379358
+        ]
+      },
+      "properties": {
+        "object_id": 34,
+        "bbox_xyxy": [
+          436,
+          1119,
+          823,
+          1298
+        ],
+        "bbox_wh": [
+          387,
+          179
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8554,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8554,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9053,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400420379358,
+        "lon": 63.338184215687015,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0033_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338184523238326,
+          52.9440040555148
+        ]
+      },
+      "properties": {
+        "object_id": 35,
+        "bbox_xyxy": [
+          0,
+          873,
+          539,
+          1602
+        ],
+        "bbox_wh": [
+          539,
+          729
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.7656,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.7656,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9287,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.9440040555148,
+        "lon": 63.338184523238326,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0034_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818231880635,
+          52.94400552178049
+        ]
+      },
+      "properties": {
+        "object_id": 36,
+        "bbox_xyxy": [
+          2987,
+          1215,
+          3552,
+          1738
+        ],
+        "bbox_wh": [
+          565,
+          523
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8603,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8603,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.5629,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400552178049,
+        "lon": 63.33818231880635,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0035_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338181621869005,
+          52.94400571714377
+        ]
+      },
+      "properties": {
+        "object_id": 38,
+        "bbox_xyxy": [
+          3782,
+          1149,
+          4096,
+          1361
+        ],
+        "bbox_wh": [
+          314,
+          212
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.972,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.972,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9639,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400571714377,
+        "lon": 63.338181621869005,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0037_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338183771280214,
+          52.94400482695837
+        ]
+      },
+      "properties": {
+        "object_id": 39,
+        "bbox_xyxy": [
+          1475,
+          1512,
+          1675,
+          1727
+        ],
+        "bbox_wh": [
+          200,
+          215
+        ],
+        "detector_conf": 0.6045,
+        "species": "foxtail",
+        "species_ru": "Щетинник",
+        "species_conf": 0.8933,
+        "top_species": "foxtail",
+        "top_species_ru": "Щетинник",
+        "top_species_conf": 0.8933,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.7602,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400482695837,
+        "lon": 63.338183771280214,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0038_0.60.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818344438261,
+          52.944005591571596
+        ]
+      },
+      "properties": {
+        "object_id": 40,
+        "bbox_xyxy": [
+          2508,
+          2177,
+          2670,
+          2345
+        ],
+        "bbox_wh": [
+          162,
+          168
+        ],
+        "detector_conf": 0.6007,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.821,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.821,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9347,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.944005591571596,
+        "lon": 63.33818344438261,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0039_0.60.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818499632178,
+          52.944004777578826
+        ]
+      },
+      "properties": {
+        "object_id": 41,
+        "bbox_xyxy": [
+          603,
+          2265,
+          805,
+          2404
+        ],
+        "bbox_wh": [
+          202,
+          139
+        ],
+        "detector_conf": 0.5826,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9394,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9394,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.6737,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.944004777578826,
+        "lon": 63.33818499632178,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0040_0.58.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.338182648853596,
+          52.944004229922655
+        ]
+      },
+      "properties": {
+        "object_id": 43,
+        "bbox_xyxy": [
+          1639,
+          160,
+          1771,
+          346
+        ],
+        "bbox_wh": [
+          132,
+          186
+        ],
+        "detector_conf": 0.5188,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9278,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9278,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9823,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.944004229922655,
+        "lon": 63.338182648853596,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0042_0.52.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.33818292737462,
+          52.94400576567321
+        ]
+      },
+      "properties": {
+        "object_id": 48,
+        "bbox_xyxy": [
+          2993,
+          1962,
+          3239,
+          2296
+        ],
+        "bbox_wh": [
+          246,
+          334
+        ],
+        "detector_conf": 0.2994,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9142,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9142,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.9753,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.94400576567321,
+        "lon": 63.33818292737462,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.01,
+        "crop_file": "crops/DJI_20260615115515_0164_D/crop_0047_0.30.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37183043090507,
+          52.912813346322814
+        ]
+      },
+      "properties": {
+        "object_id": 3,
+        "bbox_xyxy": [
+          3438,
+          2847,
+          3756,
+          3072
+        ],
+        "bbox_wh": [
+          318,
+          225
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.8152,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.8152,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.962,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.912813346322814,
+        "lon": 63.37183043090507,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.115,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0002_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37182316284398,
+          52.91279266664372
+        ]
+      },
+      "properties": {
+        "object_id": 10,
+        "bbox_xyxy": [
+          3817,
+          0,
+          4096,
+          379
+        ],
+        "bbox_wh": [
+          279,
+          379
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8819,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8819,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.7535,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91279266664372,
+        "lon": 63.37182316284398,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.115,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0009_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.371872428911196,
+          52.91279994800397
+        ]
+      },
+      "properties": {
+        "object_id": 16,
+        "bbox_xyxy": [
+          0,
+          1340,
+          223,
+          1588
+        ],
+        "bbox_wh": [
+          223,
+          248
+        ],
+        "detector_conf": 0.7,
+        "species": "couch_grass",
+        "species_ru": "Пырей ползучий",
+        "species_conf": 0.8657,
+        "top_species": "couch_grass",
+        "top_species_ru": "Пырей ползучий",
+        "top_species_conf": 0.8657,
+        "stage": "stem_elongation",
+        "stage_ru": "Стеблевание",
+        "stage_conf": 0.9644,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91279994800397,
+        "lon": 63.371872428911196,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.115,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0015_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.37186097857053,
+          52.91279550479627
+        ]
+      },
+      "properties": {
+        "object_id": 29,
+        "bbox_xyxy": [
+          879,
+          698,
+          1073,
+          913
+        ],
+        "bbox_wh": [
+          194,
+          215
+        ],
+        "detector_conf": 0.5709,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.7511,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.7511,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.5856,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.91279550479627,
+        "lon": 63.37186097857053,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.115,
+        "crop_file": "crops/DJI_20260615134123_0339_D/crop_0028_0.57.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36392004042719,
+          52.9251475294205
+        ]
+      },
+      "properties": {
+        "object_id": 3,
+        "bbox_xyxy": [
+          0,
+          40,
+          500,
+          428
+        ],
+        "bbox_wh": [
+          500,
+          388
+        ],
+        "detector_conf": 0.7,
+        "species": "horse_sorrel",
+        "species_ru": "Конский щавель",
+        "species_conf": 0.7893,
+        "top_species": "horse_sorrel",
+        "top_species_ru": "Конский щавель",
+        "top_species_conf": 0.7893,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8387,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.9251475294205,
+        "lon": 63.36392004042719,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.085,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0002_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.363942979587684,
+          52.92514148342964
+        ]
+      },
+      "properties": {
+        "object_id": 8,
+        "bbox_xyxy": [
+          2659,
+          0,
+          3246,
+          323
+        ],
+        "bbox_wh": [
+          587,
+          323
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9367,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9367,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.6381,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92514148342964,
+        "lon": 63.363942979587684,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.085,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0007_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36394850609333,
+          52.9251352671601
+        ]
+      },
+      "properties": {
+        "object_id": 9,
+        "bbox_xyxy": [
+          3833,
+          733,
+          4096,
+          1096
+        ],
+        "bbox_wh": [
+          263,
+          363
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.988,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.988,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.5734,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.9251352671601,
+        "lon": 63.36394850609333,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.085,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0008_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36391179682305,
+          52.92513868775702
+        ]
+      },
+      "properties": {
+        "object_id": 17,
+        "bbox_xyxy": [
+          0,
+          1893,
+          228,
+          2193
+        ],
+        "bbox_wh": [
+          228,
+          300
+        ],
+        "detector_conf": 0.3952,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9705,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9705,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.8379,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92513868775702,
+        "lon": 63.36391179682305,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.085,
+        "crop_file": "crops/DJI_20260615134520_0343_D/crop_0016_0.40.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.3642361142273,
+          52.92521846702403
+        ]
+      },
+      "properties": {
+        "object_id": 10,
+        "bbox_xyxy": [
+          2804,
+          2222,
+          3194,
+          2567
+        ],
+        "bbox_wh": [
+          390,
+          345
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8823,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8823,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.6083,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92521846702403,
+        "lon": 63.3642361142273,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.08,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0009_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.364219655870926,
+          52.92522511349931
+        ]
+      },
+      "properties": {
+        "object_id": 11,
+        "bbox_xyxy": [
+          602,
+          2199,
+          852,
+          2570
+        ],
+        "bbox_wh": [
+          250,
+          371
+        ],
+        "detector_conf": 0.7,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.9898,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.9898,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.6819,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92522511349931,
+        "lon": 63.364219655870926,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.08,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0010_0.70.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36422939728415,
+          52.925227811973265
+        ]
+      },
+      "properties": {
+        "object_id": 25,
+        "bbox_xyxy": [
+          1236,
+          1196,
+          1517,
+          1484
+        ],
+        "bbox_wh": [
+          281,
+          288
+        ],
+        "detector_conf": 0.6628,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8359,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8359,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.8723,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.925227811973265,
+        "lon": 63.36422939728415,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.08,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0024_0.66.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.364233691075434,
+          52.9252247590354
+        ]
+      },
+      "properties": {
+        "object_id": 28,
+        "bbox_xyxy": [
+          2048,
+          1451,
+          2167,
+          1652
+        ],
+        "bbox_wh": [
+          119,
+          201
+        ],
+        "detector_conf": 0.5174,
+        "species": "field_bindweed",
+        "species_ru": "Вьюнок полевой",
+        "species_conf": 0.7749,
+        "top_species": "field_bindweed",
+        "top_species_ru": "Вьюнок полевой",
+        "top_species_conf": 0.7749,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.8846,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.9252247590354,
+        "lon": 63.364233691075434,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.08,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0027_0.52.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36422786960565,
+          52.92522944592131
+        ]
+      },
+      "properties": {
+        "object_id": 33,
+        "bbox_xyxy": [
+          1024,
+          1140,
+          1094,
+          1216
+        ],
+        "bbox_wh": [
+          70,
+          76
+        ],
+        "detector_conf": 0.3561,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.849,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.849,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.6877,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92522944592131,
+        "lon": 63.36422786960565,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.08,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0032_0.36.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.36422831015299,
+          52.925229967406075
+        ]
+      },
+      "properties": {
+        "object_id": 41,
+        "bbox_xyxy": [
+          967,
+          976,
+          1126,
+          1159
+        ],
+        "bbox_wh": [
+          159,
+          183
+        ],
+        "detector_conf": 0.2344,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8996,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8996,
+        "stage": "cotyledon_to_2_leaves",
+        "stage_ru": "Семядоли — 2 листа",
+        "stage_conf": 0.6263,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.925229967406075,
+        "lon": 63.36422831015299,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.08,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0040_0.23.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.364218514995066,
+          52.92522957611863
+        ]
+      },
+      "properties": {
+        "object_id": 42,
+        "bbox_xyxy": [
+          16,
+          1634,
+          284,
+          1866
+        ],
+        "bbox_wh": [
+          268,
+          232
+        ],
+        "detector_conf": 0.2295,
+        "species": "leafy_spurge",
+        "species_ru": "Молочай лозный",
+        "species_conf": 0.8067,
+        "top_species": "leafy_spurge",
+        "top_species_ru": "Молочай лозный",
+        "top_species_conf": 0.8067,
+        "stage": "4_to_6_leaves",
+        "stage_ru": "4–6 листьев",
+        "stage_conf": 0.869,
+        "spray_action": "spray_weed",
+        "review_required": false,
+        "lat": 52.92522957611863,
+        "lon": 63.364218514995066,
+        "geo_quality": "estimated",
+        "geo_error_m": 1.08,
+        "crop_file": "crops/DJI_20260615134710_0347_D/crop_0041_0.23.jpg"
+      }
+    }
+  ]
+}

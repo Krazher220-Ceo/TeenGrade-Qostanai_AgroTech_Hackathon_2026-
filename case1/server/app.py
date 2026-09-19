@@ -30,16 +30,21 @@ from case1.server.schemas import (
     VerifyItemResponse,
     SyncBatchRequest,
     SyncBatchResponse,
-    ExecutiveStatsResponse
+    ExecutiveStatsResponse,
+    HitlStatsResponse,
+    PerennialListResponse,
+    PerennialCompareResponse,
 )
 from case1.ml.multitask_model import (
     WeedMultiTaskModel,
     infer_num_species_from_state_dict,
+    infer_num_stages_from_state_dict,
     SPECIES_NAMES,
     SPECIES_RU,
     STAGE_NAMES,
     STAGE_RU,
-    SPECIES_RU_MAP
+    SPECIES_RU_MAP,
+    DEFAULT_SPECIES_CONFIDENCE,
 )
 
 app = FastAPI(
@@ -72,6 +77,7 @@ CSV_PATH = OUTPUT_DIR / "all_fields_detections.csv"
 REPORT_PATH = OUTPUT_DIR / "all_fields_report.json"
 CROPS_DIR = OUTPUT_DIR / "crops"
 VERIFIED_ACTIONS_PATH = OUTPUT_DIR / "verified_actions.json"
+HITL_MANIFEST_PATH = CASE1_DIR / "data" / "manifest_hitl.csv"
 MOBILE_DIR = CASE1_DIR / "mobile"
 MOBILE_DIR.mkdir(parents=True, exist_ok=True)
 MODEL_PATH = CASE1_DIR / "models" / "multitask_weeds_best.pt"
@@ -91,11 +97,7 @@ def load_model():
     if MODEL_PATH.exists():
         state_dict = torch.load(MODEL_PATH, map_location=DEVICE)
         num_species = infer_num_species_from_state_dict(state_dict)
-        num_stages = 3
-        for k, v in state_dict.items():
-            if k.endswith("stage_head.4.weight"):
-                num_stages = int(v.shape[0])
-                break
+        num_stages = infer_num_stages_from_state_dict(state_dict)
         MODEL = WeedMultiTaskModel(
             num_species=num_species,
             num_stages=num_stages,
@@ -147,12 +149,17 @@ def health_check():
 
 @app.get("/model-info")
 def model_info():
+    # Каталог видов строится из SPECIES_RU_MAP (26 сорняков, см. species_mapping.json),
+    # а не из захардкоженного списка — иначе модель и справочник рассинхронизируются.
     supported_species = [
-        {"id": "field_thistle", "ru": "Бодяк полевой", "latin": "Cirsium arvense"},
-        {"id": "field_bindweed", "ru": "Вьюнок полевой", "latin": "Convolvulus arvensis"},
-        {"id": "couch_grass", "ru": "Пырей ползучий", "latin": "Elymus repens"},
+        {"id": sp_id, "ru": sp_ru, "latin": None}
+        for sp_id, sp_ru in SPECIES_RU_MAP.items()
+        if sp_id != "crop_wheat"
     ]
-    if MODEL is not None and MODEL.num_species >= 4:
+    if MODEL is not None and MODEL.num_species >= 4 and "crop_wheat" not in {s["id"] for s in supported_species}:
+        # Легаси 4-классовая модель распознаёт культуру как отдельный класс;
+        # у 26-классового классификатора такого класса нет (культура отфильтровывается
+        # детектором, а не классификатором).
         supported_species.append(
             {"id": "crop_wheat", "ru": "Пшеница (Культура / Фон)", "latin": "Triticum"}
         )
@@ -165,12 +172,12 @@ def model_info():
         "classifier_model": "EfficientNet-B0 Multi-Task (Species + Stage, Focal Loss)",
         "supported_species": supported_species,
         "supported_stages": [
-            {"id": "rosette", "ru": "Розетка"},
-            {"id": "stem_elongation", "ru": "Стеблевание"},
-            {"id": "unknown", "ru": "Не определено"}
-        ],
+            {"id": STAGE_NAMES[i] if i < len(STAGE_NAMES) else f"stage_{i}", "ru": ru}
+            for i, ru in enumerate(STAGE_RU)
+        ] + [{"id": "unknown", "ru": "Не определено"}],
         "constraints": [
-            "Вид подтверждается только при уверенности 70% или выше; иначе результат unknown и manual_review",
+            f"Вид подтверждается только при уверенности {DEFAULT_SPECIES_CONFIDENCE:.0%} или выше; "
+            "иначе результат unknown и manual_review",
             "Фаза 'Розетка' для пырея ползучего автоматически переводится в unknown (нет эталона)"
         ]
     }
@@ -557,6 +564,53 @@ def get_executive_stats():
         stages_distribution=stage_dist,
         status="active"
     )
+
+
+# ==============================================================================
+# HITL (HUMAN-IN-THE-LOOP) ДООБУЧЕНИЕ: СТАТИСТИКА НАКОПЛЕННЫХ ВЕРИФИКАЦИЙ
+# ==============================================================================
+
+@app.get("/api/v1/hitl/stats", response_model=HitlStatsResponse)
+def get_hitl_stats():
+    """
+    Сколько решений агронома накоплено в реестре verified_actions.json, сколько
+    из них — окончательный вердикт (годится для дообучения), распределение по
+    видам и сколько ещё не экспортировано в манифест дообучения (см.
+    `python3 case1_main.py hitl-export` / case1.ml.hitl_export.export_hitl_dataset).
+    """
+    from case1.ml.hitl_export import compute_hitl_stats
+    return compute_hitl_stats(
+        verified_actions_path=VERIFIED_ACTIONS_PATH,
+        output_manifest_path=HITL_MANIFEST_PATH,
+    )
+
+
+# ==============================================================================
+# РЕЕСТР МНОГОЛЕТНИХ СОРНЯКОВ: СРАВНЕНИЕ ПОЛЯ ОТ СЕЗОНА К СЕЗОНУ
+# ==============================================================================
+
+@app.get("/api/v1/perennials", response_model=PerennialListResponse)
+def api_list_perennials(
+    field: Optional[str] = Query(None, description="Идентификатор поля"),
+    season: Optional[str] = Query(None, description="Сезон/дата облёта"),
+):
+    """Список сохранённых многолетников из case1/output/perennial_registry.sqlite."""
+    from case1.data.perennial_registry import get_default_registry
+    registry = get_default_registry()
+    items = registry.list_perennials(field=field, season=season)
+    return PerennialListResponse(field=field, season=season, total_items=len(items), items=items)
+
+
+@app.get("/api/v1/perennials/compare", response_model=PerennialCompareResponse)
+def api_compare_perennials(
+    field: str = Query(..., description="Идентификатор поля"),
+    season_a: str = Query(..., description="Первый сезон (база сравнения)"),
+    season_b: str = Query(..., description="Второй сезон (текущий облёт)"),
+):
+    """Сравнение плотности многолетников по видам между двумя сезонами одного поля."""
+    from case1.data.perennial_registry import get_default_registry
+    registry = get_default_registry()
+    return registry.compare_seasons(field=field, season_a=season_a, season_b=season_b)
 
 
 # Монтирование статических файлов

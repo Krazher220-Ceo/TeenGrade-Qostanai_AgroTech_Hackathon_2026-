@@ -32,6 +32,16 @@ from typing import Dict, List, Optional, Tuple, Any
 
 # Базовые пути проекта
 ROOT_DIR = Path(__file__).resolve().parent
+
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+# Единый порог уверенности вида сорняка (case1/configs/settings.yaml ->
+# review.species_confidence_threshold). Лёгкий импорт (без torch), поэтому
+# читается сразу при старте CLI, не замедляя команды status/audit.
+from case1.configs.loader import get_species_confidence_threshold
+
+DEFAULT_SPECIES_CONF = get_species_confidence_threshold()
 if Path("/data").exists() and (Path("/data/Сорняки").exists() or Path("/data/Auto").exists()):
     DATASET_DIR = Path("/data")
 else:
@@ -88,6 +98,9 @@ def extract_dji_metadata(file_path: Path) -> Dict[str, Any]:
         "rel_alt": None,
         "model": None,
         "datetime": None,
+        "gimbal_yaw": None,
+        "focal_length": None,
+        "focal_length_35mm": None,
     }
 
     # Попытка через macOS mdls
@@ -117,7 +130,7 @@ def extract_dji_metadata(file_path: Path) -> Dict[str, Any]:
     except Exception:
         pass
 
-    # Извлечение относительной высоты из DJI XMP
+    # Извлечение относительной высоты и углов из DJI XMP
     try:
         with open(file_path, "rb") as f:
             chunk = f.read(131072)
@@ -127,6 +140,42 @@ def extract_dji_metadata(file_path: Path) -> Dict[str, Any]:
             match_abs = re.search(rb'drone-dji:AbsoluteAltitude=\"([^\"]+)\"', chunk)
             if match_abs and meta["abs_alt"] is None:
                 meta["abs_alt"] = float(match_abs.group(1).decode())
+            
+            # Реальный атрибут DJI XMP — GimbalYawDegree / FlightYawDegree
+            # (без суффикса "Degree" регекс никогда не совпадает с настоящими
+            # кадрами DJI, и gimbal_yaw оставался пустым на всех 5 кадрах
+            # датасета -> georef всегда уходил в geo_quality="frame_only").
+            match_yaw = re.search(rb'drone-dji:GimbalYawDegree=\"([^\"]+)\"', chunk)
+            if match_yaw:
+                meta["gimbal_yaw"] = float(match_yaw.group(1).decode())
+            else:
+                match_yaw2 = re.search(rb'drone-dji:FlightYawDegree=\"([^\"]+)\"', chunk)
+                if match_yaw2:
+                    meta["gimbal_yaw"] = float(match_yaw2.group(1).decode())
+    except Exception:
+        pass
+
+    try:
+        from PIL import Image, ExifTags
+        with Image.open(file_path) as img:
+            exif = img.getexif()
+            if exif:
+                # FocalLength (37386) и FocalLengthIn35mmFormat (41989) лежат
+                # в под-IFD "Exif" (тег 0x8769), а не в верхнем IFD0 — вызов
+                # exif.get(37386) на кадрах DJI всегда возвращал None, и
+                # focal_length оставался пустым (GSD нельзя было посчитать).
+                exif_ifd = exif.get_ifd(ExifTags.IFD.Exif) if hasattr(ExifTags, "IFD") else {}
+                focal = exif_ifd.get(37386) or exif.get(37386)
+                if focal:
+                    meta["focal_length"] = float(focal)
+                # 35-мм эквивалент фокусного расстояния: DJI (и большинство
+                # дронов) не публикуют реальную ширину сенсора (SensorWidth)
+                # через EXIF, но всегда публикуют этот тег. См.
+                # case1/geo/georef.py — используется вместе с условными 36 мм
+                # полнокадрового сенсора, а не с реальным FocalLength.
+                focal_35mm = exif_ifd.get(41989) or exif.get(41989)
+                if focal_35mm:
+                    meta["focal_length_35mm"] = float(focal_35mm)
     except Exception:
         pass
 
@@ -328,7 +377,7 @@ def cmd_process(
     output_dir: Optional[str] = None,
     detector_path: Optional[str] = None,
     detector_conf: float = 0.30,
-    species_conf: float = 0.60,
+    species_conf: float = DEFAULT_SPECIES_CONF,
     limit: Optional[int] = None,
 ):
     """Полноценная тайловая обработка полевых снимков с детекцией сорняков."""
@@ -398,7 +447,14 @@ def cmd_process(
     print(f"Детектор: {selected_detector} | Weed class IDs: {sorted(weed_class_ids)}")
 
     if image_path:
-        photos = [Path(image_path)]
+        image_p = Path(image_path)
+        if image_p.is_dir():
+            # Реальные данные кейса лежат вне git-репозитория (worktree),
+            # поэтому --image должен уметь принимать абсолютный путь к
+            # папке с кадрами, а не только к одному файлу.
+            photos = sorted(image_p.rglob("*.[jJ][pP][gG]"))
+        else:
+            photos = [image_p]
     else:
         photos = sorted(FIELD_DIR.rglob("*.[jJ][pP][gG]"))
 
@@ -438,7 +494,10 @@ def cmd_process(
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
-        species_label_map = dict(zip(SPECIES_NAMES, SPECIES_RU))
+        # SPECIES_RU_MAP покрывает все 26 видов (+ crop_wheat), в отличие от
+        # SPECIES_NAMES/SPECIES_RU (легаси 4-классовый список) — иначе для
+        # 26-классового классификатора top_species_ru деградировал бы до id.
+        species_label_map = {**dict(zip(SPECIES_NAMES, SPECIES_RU)), **SPECIES_RU_MAP}
         print(f"Классификатор: {classifier_path.name} | Классов: {num_species} | Фаз: {num_stages} | Device: {dev}")
 
     tile_size = 1280
@@ -684,6 +743,16 @@ def cmd_process(
                 )
             draw_box_label(classified_img, (bx1, by1, bx2, by2), label_text, color, 4)
 
+            # Расчет геокоординат сорняка
+            from case1.geo.georef import pixel_to_latlon
+            cx = bx1 + bw / 2
+            cy = by1 + bh / 2
+            w_lat, w_lon, g_qual, g_err = pixel_to_latlon(cx, cy, W, H, meta)
+            if w_lat is None: w_lat = meta.get("lat")
+            if w_lon is None: w_lon = meta.get("lon")
+            if g_qual == "error": g_qual = "frame_only"
+            if g_err is None: g_err = 0.0
+
             det_entry = {
                 "object_id": object_id,
                 "bbox_xyxy": [bx1, by1, bx2, by2],
@@ -700,6 +769,8 @@ def cmd_process(
                 "stage_conf": c_res["stage_conf"],
                 "spray_action": c_res.get("spray_action", "manual_review"),
                 "review_required": review,
+                "lat": w_lat, "lon": w_lon,
+                "geo_quality": g_qual, "geo_error_m": g_err,
                 "crop_file": f"crops/{p.stem}/{crop_filename}"
             }
             detections_data.append(det_entry)
@@ -722,6 +793,8 @@ def cmd_process(
                 "bbox_x1": bx1, "bbox_y1": by1, "bbox_x2": bx2, "bbox_y2": by2,
                 "bbox_width": bw, "bbox_height": bh,
                 "drone_lat": meta["lat"], "drone_lon": meta["lon"],
+                "lat": w_lat, "lon": w_lon,
+                "geo_quality": g_qual, "geo_error_m": g_err,
                 "drone_abs_alt": meta["abs_alt"], "drone_rel_alt": meta["rel_alt"],
                 "timestamp": meta["datetime"],
                 "crop_path": f"crops/{p.stem}/{crop_filename}"
@@ -784,6 +857,7 @@ def cmd_process(
         "stage", "stage_ru", "stage_conf", "spray_action",
         "review_required", "bbox_x1", "bbox_y1", "bbox_x2", "bbox_y2",
         "bbox_width", "bbox_height", "drone_lat", "drone_lon",
+        "lat", "lon", "geo_quality", "geo_error_m",
         "drone_abs_alt", "drone_rel_alt", "timestamp", "crop_path",
     ]
     with open(csv_file, "w", newline="", encoding="utf-8") as f:
@@ -806,6 +880,142 @@ def cmd_process(
         "images_processed": len(summary_stats),
         "detections_total": len(all_csv_rows),
     }
+
+
+def cmd_prescribe(input_path: str, out_dir: str):
+    import json
+    import csv
+    from pathlib import Path
+    from case1.geo.zones import create_treatment_zones
+    from case1.geo.isoxml import export_isoxml
+    import geopandas as gpd
+    
+    in_p = Path(input_path)
+    out_p = Path(out_dir)
+    out_p.mkdir(parents=True, exist_ok=True)
+    
+    # Read input
+    detections = []
+    if in_p.suffix == ".json":
+        with open(in_p, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            # if it's the report.json, it might be a list of dicts with 'detections'
+            for item in data:
+                if "detections" in item:
+                    detections.extend(item["detections"])
+                else:
+                    detections.append(item)
+    elif in_p.suffix == ".csv":
+        with open(in_p, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                row["lat"] = float(row["lat"])
+                row["lon"] = float(row["lon"])
+                detections.append(row)
+                
+    print(f"Loaded {len(detections)} detections from {input_path}")
+    
+    # Create zones
+    zones_geojson = create_treatment_zones(detections)
+    
+    # Export points geojson
+    pts = [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [d["lon"], d["lat"]]}, "properties": d} for d in detections if d.get("spray_action") not in ["ignore", "manual_review", "monitor"]]
+    pts_fc = {"type": "FeatureCollection", "features": pts}
+    with open(out_p / "points.geojson", "w", encoding="utf-8") as f:
+        json.dump(pts_fc, f, indent=2, ensure_ascii=False)
+        
+    # Export zones geojson
+    with open(out_p / "zones.geojson", "w", encoding="utf-8") as f:
+        json.dump(zones_geojson, f, indent=2, ensure_ascii=False)
+        
+    # Export shapefile
+    if zones_geojson["features"]:
+        gdf = gpd.GeoDataFrame.from_features(zones_geojson["features"], crs="EPSG:4326")
+        gdf.to_file(out_p / "zones.shp", driver="ESRI Shapefile")
+        # Ensure .prj is created
+        prj_str = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]'
+        with open(out_p / "zones.prj", "w") as prj:
+            prj.write(prj_str)
+    
+    # Export TASKDATA.XML
+    xml_path = export_isoxml(zones_geojson, out_p)
+
+    # Summary
+    area_total = sum(f["properties"]["area_m2"] for f in zones_geojson["features"])
+    vol_total = sum(f["properties"]["area_m2"] * f["properties"]["rate_l_ha"] / 10000.0 for f in zones_geojson["features"])
+
+    objects_total = len(detections)
+
+    def _det_get(d, key, default=None):
+        v = d.get(key, default)
+        return v
+
+    manual_review_count = sum(1 for d in detections if _det_get(d, "spray_action") == "manual_review")
+    spray_count = sum(1 for d in detections if _det_get(d, "spray_action") in ("spray", "spray_weed"))
+    in_zones_count = sum(f["properties"]["weed_count"] for f in zones_geojson["features"])
+
+    geo_quality_counts = {}
+    for d in detections:
+        q = _det_get(d, "geo_quality") or "unknown"
+        geo_quality_counts[q] = geo_quality_counts.get(q, 0) + 1
+    geo_quality_share = {
+        q: round(c / objects_total, 4) for q, c in geo_quality_counts.items()
+    } if objects_total else {}
+
+    # Treatment-zone buffer radii / rates actually used by create_treatment_zones()
+    # (case1/geo/zones.py) — read from the same config file it reads, so the
+    # summary can never silently drift from what was actually applied.
+    agronomy_config_path = CASE1_DIR / "configs" / "agronomy_rules.json"
+    tz_cfg = {}
+    try:
+        with open(agronomy_config_path, "r", encoding="utf-8") as f:
+            tz_cfg = json.load(f).get("treatment_zones", {})
+    except Exception:
+        pass
+    tz_defaults = {
+        "annual_radius_m": 0.5, "perennial_radius_m": 1.5,
+        "base_rate_l_ha": 200, "perennial_rate_l_ha": 250,
+    }
+    tz_cfg = {**tz_defaults, **tz_cfg}
+
+    # Effective GRD cell size actually written (export_isoxml may coarsen it
+    # from the requested default when zones span an unusually large bbox —
+    # see case1/geo/isoxml.py MAX_GRID_CELLS).
+    grid_summary = None
+    try:
+        from case1.geo.isoxml import read_grid
+        grid_info = read_grid(xml_path)
+        if grid_info is not None:
+            grid_summary = {
+                "cols": grid_info["cols"],
+                "rows": grid_info["rows"],
+                "cell_size_m_north_south": round(grid_info["lat_size"] * 111111.0, 3),
+                "bin_file_bytes": int(grid_info["cols"]) * int(grid_info["rows"]),
+            }
+    except Exception:
+        pass
+
+    summary = {
+        "zones_count": len(zones_geojson["features"]),
+        "area_m2": round(area_total, 2),
+        "volume_l": round(vol_total, 3),
+        "objects_total": objects_total,
+        "objects_in_zones": in_zones_count,
+        "objects_spray_action": spray_count,
+        "objects_manual_review": manual_review_count,
+        "geo_quality_counts": geo_quality_counts,
+        "geo_quality_share": geo_quality_share,
+        "treatment_zone_params": tz_cfg,
+        "grid": grid_summary,
+    }
+    with open(out_p / "summary.json", "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+
+    print(
+        f"Exported to {out_p}: zones={summary['zones_count']}, area={summary['area_m2']:.1f} m2, "
+        f"volume={summary['volume_l']:.1f} L, objects={objects_total} "
+        f"(in_zones={in_zones_count}, manual_review={manual_review_count})"
+    )
 
 
 def cmd_train_classifier(epochs: int = 35, use_focal: bool = True):
@@ -859,6 +1069,27 @@ def cmd_dashboard(port: int = 8501):
     except FileNotFoundError:
         print("\n[-] Ошибка: Streamlit не найден!")
         print("    Выполните установку: pip install --user streamlit plotly\n")
+
+
+def cmd_hitl_export():
+    """Экспорт верификаций агронома (HITL) в манифест дообучения."""
+    from case1.ml.hitl_export import export_hitl_dataset
+    report = export_hitl_dataset()
+    print("================================================================================")
+    print("HITL-ЭКСПОРТ ВЕРИФИКАЦИЙ АГРОНОМА В ДАТАСЕТ ДООБУЧЕНИЯ")
+    print("================================================================================")
+    print(f"Реестр верификаций:        {report['verified_actions_path']}")
+    print(f"Манифест дообучения:       {report['output_manifest_path']}")
+    print(f"Всего решений в реестре:   {report['total_verified_decisions']}")
+    print(f"Исключено (не вердикт):    {report['excluded_not_decisive']}")
+    print(f"Исключено (нет вырезки):   {report['excluded_missing_crop']}")
+    print(f"Готово к экспорту:         {report['included_records']}")
+    print(f"Новых записей добавлено:   {report['new_records']}")
+    print(f"Обновлено записей:         {report['updated_records']}")
+    print(f"Итого записей в манифесте: {report['total_records_in_manifest']}")
+    print("Новые примеры по видам:")
+    for sp, cnt in sorted(report["new_examples_by_species"].items()):
+        print(f"  - {sp}: {cnt}")
 
 
 def cmd_cluster_analysis():
@@ -943,6 +1174,7 @@ def main():
     subparsers.add_parser("audit", help="Детальный аудит данных сорняков и снимков DJI")
     subparsers.add_parser("download-weights", help="Скачать официальные веса с Hugging Face")
     subparsers.add_parser("cluster-analysis", help="Кластерный анализ эмбеддингов (t-SNE/Silhouette)")
+    subparsers.add_parser("hitl-export", help="Экспорт верификаций агронома (HITL) в манифест дообучения")
 
     ds_parser = subparsers.add_parser("download-datasets", help="Загрузка и сборка размеченных датасетов сорняков (YOLOv8)")
     ds_parser.add_argument("--force", action="store_true", help="Принудительная повторная распаковка")
@@ -961,7 +1193,16 @@ def main():
         help="finetuned — дообученный YOLOv8s (аэро/полевой); baseline — WeedBlaster",
     )
     proc_parser.add_argument("--conf", type=float, default=0.30, help="Порог уверенности детектора (0.30)")
-    proc_parser.add_argument("--species-conf", type=float, default=0.60, help="Порог уверенности вида (0.60)")
+    proc_parser.add_argument(
+        "--species-conf",
+        type=float,
+        default=DEFAULT_SPECIES_CONF,
+        help=f"Порог уверенности вида (по умолчанию {DEFAULT_SPECIES_CONF:.2f} из case1/configs/settings.yaml)",
+    )
+
+    presc_parser = subparsers.add_parser("prescribe", help="Формирование предписания (зоны, TASKDATA, shapefile)")
+    presc_parser.add_argument("--input", type=str, required=True, help="Отчет детекций JSON или CSV")
+    presc_parser.add_argument("--out", type=str, required=True, help="Папка для экспорта")
 
     tr_cls_parser = subparsers.add_parser("train-classifier", help="Обучение многозадачного классификатора сорняков")
     tr_cls_parser.add_argument("--epochs", type=int, default=35, help="Количество эпох")
@@ -1008,6 +1249,8 @@ def main():
     elif args.command == "cluster-analysis":
 
         cmd_cluster_analysis()
+    elif args.command == "hitl-export":
+        cmd_hitl_export()
     elif args.command == "benchmark-latency":
         cmd_benchmark_latency(iterations=args.iterations)
     elif args.command == "process":
@@ -1020,6 +1263,8 @@ def main():
             species_conf=args.species_conf,
             limit=args.limit
         )
+    elif args.command == "prescribe":
+        cmd_prescribe(input_path=args.input, out_dir=args.out)
     elif args.command == "train-classifier":
         cmd_train_classifier(epochs=args.epochs, use_focal=not args.no_focal)
     elif args.command == "build-detector-dataset":

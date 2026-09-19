@@ -11,13 +11,18 @@ import hashlib
 import io
 import json
 from pathlib import Path
-from typing import Any, Callable, Dict
+from typing import Any, Callable, Dict, Optional
 
 from PIL import Image, UnidentifiedImageError
+
+from case1.configs.loader import get_species_confidence_threshold
 
 
 MAX_UPLOAD_BYTES = 50 * 1024 * 1024
 ALLOWED_SUFFIXES = {".jpg", ".jpeg", ".png"}
+# Единый порог уверенности вида (case1/configs/settings.yaml ->
+# review.species_confidence_threshold), тот же, что использует CLI/сервер/дашборд.
+DEFAULT_SPECIES_CONF = get_species_confidence_threshold()
 
 
 def validate_uploaded_image(image_bytes: bytes, filename: str) -> Dict[str, Any]:
@@ -64,7 +69,7 @@ def run_uploaded_field_image(
     output_root: Path,
     processor: Callable[..., Any] | None = None,
     detector_conf: float = 0.65,
-    species_conf: float = 0.65,
+    species_conf: float = DEFAULT_SPECIES_CONF,
     detector_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Run the existing detector/classifier pipeline for one uploaded image."""

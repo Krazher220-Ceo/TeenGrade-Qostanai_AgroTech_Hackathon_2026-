@@ -114,6 +114,12 @@
       "latin_name": "Incertae sedis"
     }
   },
+  "treatment_zones": {
+    "annual_radius_m": 0.5,
+    "perennial_radius_m": 1.5,
+    "base_rate_l_ha": 200,
+    "perennial_rate_l_ha": 250
+  },
   "botanical_reference": {
     "class_A_broadleaf": {
       "group_ru": "Класс A — Двудольные (широколистные)",

@@ -13,6 +13,37 @@ from typing import Dict, Any, Optional
 
 RULES_FILE = Path(__file__).resolve().parents[1] / "configs" / "agronomy_rules.json"
 
+# Полный справочник агрономической классификации «Олжа Агро» (26 сорняков):
+# Класс A: Двудольные (Широколистные), Класс B: Злаковые (Узколистные).
+# Многолетники — самый опасный и приоритетный сектор. Список содержит и коды
+# видов (SPECIES_RU_MAP), и русские названия/синонимы для сопоставления по
+# произвольному текстовому полю species/species_ru. Единственный источник
+# истины для "что считается многолетником" в проекте — используйте этот
+# набор (например, case1/data/perennial_registry.py), не дублируйте список.
+PERENNIAL_SPECIES_MARKERS = {
+    # Класс A — многолетники:
+    "field_thistle", "бодяк полевой", "бодяк",
+    "field_bindweed", "вьюнок полевой", "вьюнок",
+    "осот полевой", "осот", "perennial_sowthistle",
+    "молочай лозный", "молочай", "leafy_spurge",
+    "молокан татарский", "молокан", "tatarian_lettuce",
+    "полынь горькая", "полынь обыкновенная", "полынь", "wormwood",
+    "кермек широколистный", "кермек", "statice",
+    "одуванчик лекарственный", "одуванчик", "dandelion",
+    "конский щавель", "щавель", "horse_sorrel",
+    # Класс B — многолетники:
+    "couch_grass", "пырей ползучий", "пырей",
+}
+
+# Коды видов (совпадающие с SPECIES_RU_MAP из case1.ml.multitask_model),
+# которые относятся к многолетним сорнякам. Подмножество PERENNIAL_SPECIES_MARKERS,
+# содержащее только машинные идентификаторы (без русских синонимов).
+PERENNIAL_SPECIES_CODES = {
+    "field_thistle", "field_bindweed", "perennial_sowthistle", "leafy_spurge",
+    "tatarian_lettuce", "wormwood_bitter", "mugwort", "statice", "dandelion",
+    "horse_sorrel", "couch_grass",
+}
+
 
 class AgronomyRuleEngine:
     """Движок применения агрономических порогов к данным засорённости."""
@@ -106,20 +137,33 @@ class AgronomyRuleEngine:
                 )
 
         # 3. Анализ фазы вегетации
-        stage_info = stage_cfg.get(growth_stage)
         dosage_note = ""
-        if stage_info:
-            explanations.append(
-                f"Фаза сорняков «{stage_info['stage_ru']}»: {stage_info['description']}"
-            )
-            if "dosage_change_pct" in stage_info:
-                dosage_note = f"Рекомендация: {stage_info['dosage_change_pct']} к базовой дозе"
-        else:
+        if is_unknown:
+            # Вид сорняка не определён достоверно -> фаза вегетации тоже не может
+            # считаться определённой. growth_stage здесь хранит лишь технический
+            # параметр по умолчанию ('cotyledon_to_2_leaves') и НЕ должен
+            # подставляться в agronomy_rules.json как настоящая фаза окна
+            # обработки (иначе неопознанный объект ошибочно получит статус
+            # 'optimal' вместо честного 'undetermined').
             stage_info = {
-                "stage_ru": growth_stage,
-                "window_status": "unknown",
-                "window_status_ru": "Фаза требует осмотра",
+                "stage_ru": "Не определено",
+                "window_status": "undetermined",
+                "window_status_ru": "Фаза не определена (вид сорняка не распознан)",
             }
+        else:
+            stage_info = stage_cfg.get(growth_stage)
+            if stage_info:
+                explanations.append(
+                    f"Фаза сорняков «{stage_info['stage_ru']}»: {stage_info['description']}"
+                )
+                if "dosage_change_pct" in stage_info:
+                    dosage_note = f"Рекомендация: {stage_info['dosage_change_pct']} к базовой дозе"
+            else:
+                stage_info = {
+                    "stage_ru": growth_stage,
+                    "window_status": "unknown",
+                    "window_status_ru": "Фаза требует осмотра",
+                }
 
         return {
             "rules_version": self.version,
@@ -152,24 +196,10 @@ class AgronomyRuleEngine:
         """
         area = max(float(field_area_m2), 0.1)
 
-        # Полный справочник агрономической классификации «Олжа Агро» (26 сорняков):
-        # Класс A: Двудольные (Широколистные), Класс B: Злаковые (Узколистные)
-        # Многолетники — самый опасный и приоритетный сектор!
-        perennial_names = {
-            # Класс A — многолетники:
-            "field_thistle", "бодяк полевой", "бодяк",
-            "field_bindweed", "вьюнок полевой", "вьюнок",
-            "осот полевой", "осот", "perennial_sowthistle",
-            "молочай лозный", "молочай", "leafy_spurge",
-            "молокан татарский", "молокан", "tatarian_lettuce",
-            "полынь горькая", "полынь обыкновенная", "полынь", "wormwood",
-            "кермек широколистный", "кермек", "statice",
-            "одуванчик лекарственный", "одуванчик", "dandelion",
-            "конский щавель", "щавель", "horse_sorrel",
-            # Класс B — многолетники:
-            "couch_grass", "пырей ползучий", "пырей",
-        }
-        
+        # Единый справочник многолетников проекта — см. PERENNIAL_SPECIES_MARKERS
+        # в начале модуля (используется также case1/data/perennial_registry.py).
+        perennial_names = PERENNIAL_SPECIES_MARKERS
+
         annual_count = 0
         perennial_count = 0
         unknown_count = 0

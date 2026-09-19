@@ -1,0 +1,27 @@
+{
+  "zones_count": 10,
+  "area_m2": 36.73,
+  "volume_l": 0.883,
+  "objects_total": 185,
+  "objects_in_zones": 55,
+  "objects_spray_action": 55,
+  "objects_manual_review": 130,
+  "geo_quality_counts": {
+    "estimated": 185
+  },
+  "geo_quality_share": {
+    "estimated": 1.0
+  },
+  "treatment_zone_params": {
+    "annual_radius_m": 0.5,
+    "perennial_radius_m": 1.5,
+    "base_rate_l_ha": 200,
+    "perennial_rate_l_ha": 250
+  },
+  "grid": {
+    "cols": 1614,
+    "rows": 2479,
+    "cell_size_m_north_south": 1.4,
+    "bin_file_bytes": 4001106
+  }
+}
