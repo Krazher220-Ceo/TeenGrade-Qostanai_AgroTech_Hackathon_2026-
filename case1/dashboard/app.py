@@ -194,21 +194,38 @@ def generate_geojson(df_weeds):
 
 
 def generate_iso_xml(df_weeds, task_name="Task_WeedSpray_Kostanay_2026"):
+    """Собирает зоны обработки и возвращает ZIP-архив папки TASKDATA/
+    (TASKDATA.XML + GRD00001.bin) — именно в таком виде задание переносят
+    на терминал опрыскивателя."""
+    import io
+    import tempfile
+    import zipfile
+
     from case1.geo.zones import create_treatment_zones
-    from case1.geo.isoxml import create_isoxml_taskdata
+    from case1.geo.isoxml import export_isoxml
+
     detections = []
     if not df_weeds.empty:
         for _, row in df_weeds.iterrows():
-            if pd.notna(row.get("drone_lat")) and pd.notna(row.get("drone_lon")):
+            lat = row.get("weed_lat", row.get("drone_lat"))
+            lon = row.get("weed_lon", row.get("drone_lon"))
+            if pd.notna(lat) and pd.notna(lon):
                 detections.append({
-                    "lat": float(row["drone_lat"]),
-                    "lon": float(row["drone_lon"]),
+                    "lat": float(lat),
+                    "lon": float(lon),
                     "action": str(row.get("spray_action", "spray_weed")),
                     "species": str(row.get("species", "unknown"))
                 })
-    geojson_data = create_treatment_zones(detections)
-    xml_str, _ = create_isoxml_taskdata(geojson_data, task_name=task_name)
-    return xml_str
+    zones_geojson = create_treatment_zones(detections)
+
+    buffer = io.BytesIO()
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        export_isoxml(zones_geojson, tmp_dir)
+        taskdata_dir = Path(tmp_dir) / "TASKDATA"
+        with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            for item in sorted(taskdata_dir.iterdir()):
+                archive.write(item, f"TASKDATA/{item.name}")
+    return buffer.getvalue()
 
 
 def load_all_detections_raw():
@@ -560,13 +577,13 @@ with tab_exec:
     with col_exp2:
         iso_xml_data = generate_iso_xml(df_raw)
         st.download_button(
-            label="📥 Скачать ISO-XML TaskController (.xml)",
+            label="📥 Скачать ISO-XML TaskController (.zip)",
             data=iso_xml_data,
-            file_name="TASKDATA.XML",
-            mime="application/xml",
+            file_name="TASKDATA.zip",
+            mime="application/zip",
             use_container_width=True
         )
-        st.caption("Международный стандарт ISO 11783 для терминалов умных штанг")
+        st.caption("ISO 11783-10: TASKDATA.XML + сетка GRD00001.bin (на терминале не проверялось)")
 
     with col_exp3:
         csv_export = df_raw.to_csv(index=False).encode('utf-8')
@@ -893,16 +910,19 @@ with tab2:
                 
                 gj = create_treatment_zones(det_list)
                 if gj["features"]:
-                    gdf = gpd.GeoDataFrame.from_features(gj)
-                    fig_map = px.choropleth_mapbox(
+                    gdf = gpd.GeoDataFrame.from_features(gj, crs="EPSG:4326")
+                    # plotly >= 6 убрал choropleth_mapbox в пользу choropleth_map (MapLibre).
+                    # Центроиды считаем в метрической проекции, иначе geopandas предупреждает.
+                    centroid = gdf.to_crs(gdf.estimate_utm_crs()).geometry.centroid.to_crs("EPSG:4326")
+                    fig_map = px.choropleth_map(
                         gdf,
                         geojson=gdf.geometry.__geo_interface__,
                         locations=gdf.index,
                         color="rate_l_ha",
                         color_continuous_scale="Viridis",
-                        mapbox_style="carto-positron",
+                        map_style="carto-positron",
                         zoom=18,
-                        center={"lat": gdf.geometry.centroid.y.mean(), "lon": gdf.geometry.centroid.x.mean()},
+                        center={"lat": float(centroid.y.mean()), "lon": float(centroid.x.mean())},
                         opacity=0.5,
                         title="Полигоны для опрыскивания (WGS84)"
                     )
